@@ -105,7 +105,7 @@ class TitleState extends OSAState
 
 			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurUnfocus, _blurFocusChangeSpeed);
 			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurUnfocus, _blurFocusChangeSpeed);
-			_blurCamFG.alpha = FlxMath.lerp(_blurCamFG.alpha, 0.3, _blurFocusChangeSpeed);
+			_blurCamFG.alpha = FlxMath.lerp(_blurCamFG.alpha, 0.15, _blurFocusChangeSpeed);
 		}
 		else
 		{
