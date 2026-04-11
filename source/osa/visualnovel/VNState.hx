@@ -26,5 +26,7 @@ class VNState extends FlxState
 
 		_dialogueList = scene.parseDialogueFile();
         _dialogueEntry = 0;
+
+        trace('Dialogue List: ${_dialogueList}');
 	}
 }
