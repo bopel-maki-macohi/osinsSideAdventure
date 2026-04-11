@@ -1,1 +1,1 @@
-# 0.1.0
+The changelog will only come into effect in non-0.x.y versions, or once a public release has happened
