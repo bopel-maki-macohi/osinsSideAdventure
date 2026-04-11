@@ -122,20 +122,13 @@ class VNState extends FlxState
 		if (_dialogueLine._line == null)
 			FlxTimer.wait(0.03 * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
 
-		FlxTween.cancelTweensOf(_dialogueBG);
-		FlxTween.cancelTweensOf(_dialogueCharacter);
-
 		_dialogueBG.build(_dialogueLine._bg);
 		_dialogueCharacter.build(_dialogueLine._character);
 
-		if (_dialogueLine._bg != null)
-			FlxTween.tween(_dialogueBG, {alpha: 1}, (getTextFadeTime() / 5));
-
-		if (_dialogueLine._character != null)
-			FlxTween.tween(_dialogueCharacter, {alpha: 1}, (getTextFadeTime() / 5));
+		_dialogueBG.alpha = (_dialogueBG._background == null) ? 0 : 1;
+		_dialogueCharacter.alpha = (_dialogueCharacter._character == null) ? 0 : 1;
 
 		_dialogueBG.screenCenter();
-
 		_dialogueCharacter.screenCenter();
 
 		_dialogueCharacter.y = _dialogueBox.y + (_dialogueBox.height * 0.5) - _dialogueCharacter.height;

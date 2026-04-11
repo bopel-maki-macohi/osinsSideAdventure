@@ -9,15 +9,14 @@ class DialogueBG extends FlxSprite
 		super();
 	}
 
-	public var background:String = null;
+	public var _background:String = null;
 
 	public function build(background:String)
 	{
-		this.background = background;
+		this._background = background;
 
 		if (background == null)
 		{
-			alpha = 0;
 			return;
 		}
 

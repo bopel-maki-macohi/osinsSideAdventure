@@ -9,15 +9,14 @@ class DialogueCharacter extends FlxSprite
 		super();
 	}
 
-	public var character:String = null;
+	public var _character:String = null;
 
 	public function build(character:String)
 	{
-		this.character = character;
+		this._character = character;
 
 		if (character == null)
 		{
-			alpha = 0;
 			return;
 		}
 
