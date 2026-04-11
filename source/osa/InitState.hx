@@ -80,6 +80,7 @@ class InitState extends OSAState
 			'I know what you are.',
 			'SO.--YOU COULDN\'T KEEP.--YOUR GOOFY,--LITTLE,--FUCKING MOUTH,--SHUT.',
 			'Am I...------Getting through?',
+			'She was 17 Scott.',
 		];
 
 		if (clearWatermark.contains(line.replace('\n', '--')))
