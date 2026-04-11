@@ -1,5 +1,7 @@
 package osa;
 
+import osa.visualnovel.VNState;
+import flixel.FlxG;
 import flixel.FlxState;
 
 class InitState extends FlxState
@@ -7,10 +9,7 @@ class InitState extends FlxState
 	override public function create()
 	{
 		super.create();
-	}
 
-	override public function update(elapsed:Float)
-	{
-		super.update(elapsed);
+		FlxG.switchState(() -> new VNState('intro'));
 	}
 }
