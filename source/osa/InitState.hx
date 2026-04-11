@@ -56,6 +56,8 @@ class InitState extends OSAState
 			'Here I come!',
 			'April fools!\nI rearranged your guts.',
 			'Written before TADC Episode 9 : Alan we are so fucked.',
+			'E-E-A-OO',
+			'I know what you are.',
 		];
 
 		if (clearWatermark.contains(line))
