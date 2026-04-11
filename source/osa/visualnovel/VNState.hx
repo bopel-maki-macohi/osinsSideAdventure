@@ -1,5 +1,6 @@
 package osa.visualnovel;
 
+import flixel.util.FlxTimer;
 import flixel.addons.text.FlxTypeText;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
@@ -49,15 +50,9 @@ class VNState extends FlxState
 		_dialogueBox.screenCenter();
 		_dialogueBox.y = FlxG.height * 0.55;
 
-		_dialogueText = new FlxTypeText(_dialogueBox.x, _dialogueBox.y, Math.round(_dialogueBox.width), '', 16);
+		_dialogueText = new FlxTypeText(_dialogueBox.x, _dialogueBox.y, Math.round(_dialogueBox.width), 'Lorem Ipsum Dolar Sit Amet', 16);
 		// _dialogueText.setBorderStyle(SHADOW, FlxColor.BLACK);
 		_dialogueText.color = FlxColor.BLACK;
-
-		_dialogueText.delay = 0.1;
-		_dialogueText.eraseDelay = 0.2;
-
-		_dialogueText.showCursor = false;
-		_dialogueText.cursorBlinkSpeed = 1.0;
 
 		_dialogueText.setTypingVariation(0.75, true);
 
@@ -73,7 +68,10 @@ class VNState extends FlxState
 	{
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
-			onEnd();
+			_dialogueText.erase(0.02, true, null, () ->
+			{
+				onEnd();
+			});
 			return;
 		}
 
@@ -85,11 +83,8 @@ class VNState extends FlxState
 		_dialogueBox.visible = _dialogueLine._line != null;
 		_dialogueText.visible = _dialogueBox.visible;
 
-		_dialogueText.erase(0.02, true, null, () ->
-		{
-			_dialogueText.resetText(_dialogueLine?._line ?? '');
-			_dialogueText.start(0.03, true, false, null, null);
-		});
+		_dialogueText.resetText(_dialogueLine?._line ?? '');
+		_dialogueText.start(0.03);
 	}
 
 	public function onEnd() {}
