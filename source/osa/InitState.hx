@@ -39,7 +39,7 @@ class InitState extends OSAState
 		FlxG.stage.application.window.title = _watermark.text;
 
 		var line:String = 'Have fun!';
-		var msgs:Array<String> = 'initStateMSGS'.miscAsset().textSplit();
+		var msgs:Array<String> = 'splashTexts'.miscAsset().textSplit();
 
 		if (msgs.length > 0)
 		{
