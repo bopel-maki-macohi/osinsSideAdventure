@@ -1,5 +1,6 @@
 package osa.visualnovel;
 
+import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.addons.text.FlxTypeText;
 import flixel.util.FlxColor;
@@ -69,7 +70,10 @@ class VNState extends FlxState
 	{
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
-			_dialogueText.erase(0.02, true, null, () ->
+			final delay = 0.05;
+
+			FlxTween.tween(_dialogueBox, {alpha: 0}, _dialogueText.text.length * delay);
+			_dialogueText.erase(delay, true, null, () ->
 			{
 				onEnd();
 			});
