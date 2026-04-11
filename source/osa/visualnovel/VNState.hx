@@ -14,7 +14,10 @@ class VNState extends FlxState
 	function set__dialogueEntry(value:Int):Int
 	{
 		if (_dialogueList[value] == null)
+		{
+			trace('THERE IS NO DIALOGUE LINE AT $value');
 			return _dialogueEntry;
+		}
 
 		_dialogueLine._rawline = _dialogueList[_dialogueEntry];
 		return value;
@@ -49,8 +52,19 @@ class VNState extends FlxState
 
 	public function changeLine(increment:Int)
 	{
+		if (_dialogueEntry + increment > _dialogueList.length - 1)
+		{
+			onEnd();
+			return;
+		}
+
+		if (_dialogueEntry + increment < 0)
+			return;
+
 		_dialogueEntry += increment;
 
 		_dialogueBox.visible = _dialogueLine._line != null;
 	}
+
+	public function onEnd() {}
 }
