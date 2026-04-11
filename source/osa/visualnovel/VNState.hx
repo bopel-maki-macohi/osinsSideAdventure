@@ -14,11 +14,11 @@ class VNState extends FlxState
         if (_dialogueList[value] == null)
             return _dialogueEntry;
 
-        _dialogueLine =  _dialogueList[_dialogueEntry];
+        _dialogueLine._rawline =  _dialogueList[_dialogueEntry];
 		return value;
 	}
 
-	public var _dialogueLine(default, null):String = null;
+	public var _dialogueLine(default, null):DialogueLine = new DialogueLine(null);
 
 	public function new(scene:String)
 	{
