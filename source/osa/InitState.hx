@@ -28,6 +28,9 @@ class InitState extends OSAState
 		FlxTransitionableState.defaultTransOut = FlxTransitionableState.defaultTransIn;
 
 		super();
+
+		this.transIn.duration = 1;
+		this.transOut.duration = 1;
 	}
 
 	override public function create()
@@ -37,6 +40,12 @@ class InitState extends OSAState
 		#if !debug
 		add(_watermark);
 		#end
+		_watermark.alignment = CENTER;
+		_watermark.size = 32;
+
+		_watermark.text = _watermark.text.replace('O.S.A.', 'Osin\'s side Adventure');
+		FlxG.stage.application.window.title = _watermark.text;
+
 		_watermark.screenCenter();
 
 		FlxG.switchState(() -> new TitleState());
