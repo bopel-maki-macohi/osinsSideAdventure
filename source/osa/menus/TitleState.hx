@@ -1,5 +1,6 @@
 package osa.menus;
 
+import osa.visualnovel.VNState;
 import osa.objects.ClickableSprite;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxMath;
@@ -61,7 +62,7 @@ class TitleState extends OSAState
 		for (btn in [_playBtn, _optionsBtn, _creditsBtn])
 		{
 			btn.scale.set(0.5, 0.5);
-			
+
 			btn.updateHitbox();
 			btn.screenCenter();
 
@@ -132,7 +133,10 @@ class TitleState extends OSAState
 			FlxG.switchState(() -> new TitleState());
 	}
 
-	function onPlay() {}
+	function onPlay()
+	{
+		FlxG.switchState(() -> new VNState('intro'));
+	}
 
 	function onOptions() {}
 
