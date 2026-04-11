@@ -21,7 +21,7 @@ class TileScrollBG extends FlxBackdrop
 	override public function new(velocity:FlxPoint, debugMode:Bool = false)
 	{
 		super();
-		
+
 		this._tile = 'tile'.menuAsset();
 
 		this.velocity = velocity;

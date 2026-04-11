@@ -86,7 +86,7 @@ class VNState extends OSAState
 		add(_dialogueContinueHand);
 
 		changeLine(0);
-		
+
 		super.create();
 	}
 
