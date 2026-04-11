@@ -98,10 +98,7 @@ class VNState extends FlxState
 				FlxTween.tween(object, {alpha: 0}, getTextFadeTime());
 			}
 
-			_dialogueText.erase(VNState.FADEOUT_LETTER_SPEED, true, null, () ->
-			{
-				onEnd();
-			});
+			_dialogueText.erase(VNState.FADEOUT_LETTER_SPEED, true, null, onEnd);
 			return;
 		}
 
@@ -112,7 +109,14 @@ class VNState extends FlxState
 
 		_dialogueBox.visible = _dialogueLine._line != null;
 		_dialogueText.visible = _dialogueBox.visible;
-		
+
+		resetText();
+
+		buildBGAndCharacter();
+	}
+
+	function resetText()
+	{
 		_dialogueText.resetText(_dialogueLine?._line ?? '');
 		_dialogueText.start(0.03, false, false, null, onDialogueFinishTyping);
 
@@ -121,7 +125,10 @@ class VNState extends FlxState
 
 		if (_dialogueLine._line == null)
 			FlxTimer.wait(0.03 * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
+	}
 
+	function buildBGAndCharacter()
+	{
 		_dialogueBG.build(_dialogueLine._bg);
 		_dialogueCharacter.build(_dialogueLine._character);
 
