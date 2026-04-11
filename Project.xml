@@ -9,6 +9,8 @@
 	<app company="Maki" />
 	<app version="0.1.0" />
 
+	<icon path="dev/icon.png" />
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
