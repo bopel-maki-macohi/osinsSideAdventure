@@ -39,7 +39,7 @@ class VNState extends OSAState
 	{
 		super();
 
-		if (!scene.dialogueAsset().textFile().fileExists())
+		if (!'dialogues/$scene'.visualNovelAsset().textFile().fileExists())
 		{
 			trace('UNFOUND SCENE: $scene');
 			scene = 'lorem';
@@ -71,13 +71,13 @@ class VNState extends OSAState
 		_dialogueText.setTypingVariation(0.75, true);
 		_dialogueText.skipKeys = ['SPACE'];
 		_dialogueText.sounds = [
-			FlxG.sound.load('type1'.dialogueAsset().audioFile()),
-			FlxG.sound.load('type2'.dialogueAsset().audioFile()),
-			FlxG.sound.load('type3'.dialogueAsset().audioFile()),
+			FlxG.sound.load('type1'.visualNovelAsset().audioFile()),
+			FlxG.sound.load('type2'.visualNovelAsset().audioFile()),
+			FlxG.sound.load('type3'.visualNovelAsset().audioFile()),
 		];
 		_dialogueText.finishSounds = true;
 
-		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.dialogueAsset().imageFile());
+		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.visualNovelAsset().imageFile());
 		_dialogueContinueHand.scale.set(2, 2);
 		_dialogueContinueHand.updateHitbox();
 

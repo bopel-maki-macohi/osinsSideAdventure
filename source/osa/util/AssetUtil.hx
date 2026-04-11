@@ -16,8 +16,8 @@ class AssetUtil
 	public static inline function audioFile(file:String):String
 		return '$file.wav';
 
-	public static inline function dialogueAsset(file:String):String
-		return assetPath('dialogue/$file');
+	public static inline function visualNovelAsset(file:String):String
+		return assetPath('visualnovel/$file');
 
 	public static inline function backgroundAsset(file:String):String
 		return assetPath('backgrounds/$file');
@@ -57,6 +57,6 @@ class AssetUtil
 
 	public static function parseDialogueFile(scene:String):Array<String>
 	{
-		return textSplit(scene.dialogueAsset());
+		return textSplit(scene.visualNovelAsset());
 	}
 }
