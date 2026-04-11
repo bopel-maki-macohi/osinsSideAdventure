@@ -51,6 +51,14 @@ class TitleState extends OSAState
 		persistentUpdate = true;
 
 		super.create();
+
+		#if DISABLE_TITLE_WATERMARK_BLUR
+		var regCam = new FlxCamera();
+		FlxG.cameras.add(regCam, false);
+		regCam.bgColor.alpha = 0;
+
+		_watermark.camera = regCam;
+		#end
 	}
 
 	final _blurFocus:Float = 0;
