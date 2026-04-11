@@ -61,6 +61,7 @@ class InitState extends OSAState
 			'E-E-A-OO',
 			'I know what you are.',
 			'SO.--YOU COULDN\'T KEEP.--YOUR GOOFY,--LITTLE,--FUCKING MOUTH,--SHUT.',
+			'Am I...------Getting through?',
 		];
 
 		if (clearWatermark.contains(line.replace('\n', '--')))
