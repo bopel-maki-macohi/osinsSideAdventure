@@ -85,7 +85,7 @@ class TitleState extends OSAState
 		_optionsBtn._onClick.add(onOptions);
 		_creditsBtn._onClick.add(onCredits);
 
-		_creditsBtn.shader = _optionsBtn.shader = new GrayscaleShader(.75);
+		_optionsBtn.shader = new GrayscaleShader(.75);
 
 		persistentUpdate = true;
 
