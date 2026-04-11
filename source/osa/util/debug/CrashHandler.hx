@@ -6,8 +6,18 @@ import openfl.Lib;
 
 class CrashHandler
 {
+	public static final CRASH_DIRECTORY:String = 'crash';
+
 	public static function init()
 	{
+		#if sys
+		if (!sys.FileSystem.exists(CRASH_DIRECTORY))
+		{
+			log('Created CRASH_DIRECTORY: ${CRASH_DIRECTORY}');
+			sys.FileSystem.createDirectory(CRASH_DIRECTORY);
+		}
+		#end
+
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
 	}
 
@@ -23,7 +33,7 @@ class CrashHandler
 			switch (stackItem)
 			{
 				case FilePos(innerStackItem, file, line, column):
-                    // unhelpful files
+					// unhelpful files
 					if ([
 						'lime/_internal/macros/EventMacro.hx',
 						'openfl/display/Preloader.hx',
@@ -68,9 +78,22 @@ class CrashHandler
 				currentState = Type.getClassName(currentStateCls) ?? 'No state loaded';
 		}
 
+        final filename:String = '$CRASH_DIRECTORY/${getTimestamp()}.txt';
+
 		errorMessage += '\nFlixel Current State: ${currentState}';
 
+        errorMessage += '\n';
+        #if sys
+        errorMessage += '\nCrash log saved to: "$filename"';
+        #end
+        errorMessage += '\nPlease report the crash to the github: https://github.com/bopel-maki-macohi/osinsSideAdventure/issues';
+
 		log(errorMessage);
+
+		#if sys
+		sys.io.File.saveContent(filename, errorMessage);
+		#end
+
 		FlxG.stage.application.window.alert(errorMessage, baseErrorMessage);
 
 		#if sys
@@ -83,9 +106,19 @@ class CrashHandler
 	static function log(message:Dynamic)
 	{
 		#if sys
-		Sys.println(message);
+		Sys.println('[CRASHHANDLER] $message');
 		#else
-		trace(message);
+		trace('[CRASHHANDLER] $message');
 		#end
+	}
+
+	static function getTimestamp():String
+	{
+        final dateNow:Date = Date.now();
+
+        final seconds:Float = dateNow.getTime() / 1000;
+        final date:String = '${dateNow.getMonth()}-${dateNow.getDate()}-${dateNow.getFullYear()}';
+
+		return '${date}_${seconds}';
 	}
 }
