@@ -61,9 +61,14 @@ class TitleState extends OSAState
 		for (btn in [_playBtn, _optionsBtn, _creditsBtn])
 		{
 			btn.scale.set(0.5, 0.5);
+			
 			btn.updateHitbox();
 			btn.screenCenter();
+
 			btn.cameras = [_blurCamFG];
+
+			btn._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(btn, 0.6, 0.5));
+			btn._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
 		}
 
 		_playBtn.x = 128;
