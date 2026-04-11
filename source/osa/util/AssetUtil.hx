@@ -28,23 +28,32 @@ class AssetUtil
 	public static inline function menuAsset(file:String):String
 		return assetPath('menus/$file');
 
+	public static inline function miscAsset(file:String):String
+		return assetPath('misc/$file');
+
 	public static inline function fileExists(file:String):Bool
 		return Assets.exists(file);
 
 	public static inline function readText(file:String):String
 		return Assets.getText(file);
 
-	public static function parseDialogueFile(scene:String):Array<String>
+	public static function textSplit(text:String):Array<String>
 	{
-		if (!fileExists(scene.dialogueAsset().textFile()))
+		if (!fileExists(text.textFile()))
 			return [];
 
-		var file:String = scene.dialogueAsset().textFile().readText();
-		var dialogue:Array<String> = [];
+		var file:String = text.textFile().readText();
+		var lines:Array<String> = [];
 
-        for (line in file.split('\n'))
-            dialogue.push(line.trim());
+		for (line in file.split('\n'))
+			if (line.trim().length > 0)
+				lines.push(line.trim());
 
-		return dialogue;
+		return lines;
+	}
+
+	public static function parseDialogueFile(scene:String):Array<String>
+	{
+		return textSplit(scene.dialogueAsset());
 	}
 }

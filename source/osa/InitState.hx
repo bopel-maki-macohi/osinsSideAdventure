@@ -46,6 +46,17 @@ class InitState extends OSAState
 		_watermark.text = _watermark.text.replace('O.S.A.', 'Osin\'s Side Adventure');
 		FlxG.stage.application.window.title = _watermark.text;
 
+		var line:String = 'Have fun!';
+		var msgs:Array<String> = 'initStateMSGS'.miscAsset().textSplit();
+
+		if (msgs.length > 0)
+		{
+			line = msgs[FlxG.random.int(0, msgs.length - 1)].replace('--', '\n');
+			trace(line);
+		}
+
+		_watermark.text += '\n\n${line}';
+
 		_watermark.screenCenter();
 
 		FlxG.switchState(() -> new TitleState());
