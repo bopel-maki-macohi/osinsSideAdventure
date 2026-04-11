@@ -89,7 +89,7 @@ class CreditsSubState extends FlxSubState
 
 		for (xi => obj in [
 			makeCreditSprite('credits/maki', 'Maki : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
-			makeCreditSprite('credits/maki', 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)', 'https://www.youtube.com/watch?v=aDTAem9_Yws'),
+			makeCreditSprite('credits/pogo', 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)', 'https://www.youtube.com/watch?v=aDTAem9_Yws'),
 		])
 		{
 			obj.scale.set(.5, .5);
