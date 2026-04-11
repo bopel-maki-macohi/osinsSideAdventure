@@ -22,7 +22,7 @@ class StoryChapter
 			if (splitrawline == null)
 				continue;
 
-			Reflect.setProperty(this, field, splitrawline[i] ?? null);
+			Reflect.setProperty(this, field, splitrawline[i].trim() ?? null);
 		}
 
 		return rawline;
