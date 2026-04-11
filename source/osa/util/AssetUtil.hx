@@ -57,6 +57,6 @@ class AssetUtil
 
 	public static function parseDialogueFile(scene:String):Array<String>
 	{
-		return textSplit(scene.visualNovelAsset());
+		return textSplit('dialogues/$scene'.visualNovelAsset());
 	}
 }
