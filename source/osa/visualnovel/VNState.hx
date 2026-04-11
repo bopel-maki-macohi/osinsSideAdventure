@@ -73,6 +73,8 @@ class VNState extends FlxState
 
 		_dialogueBox.visible = _dialogueLine._line != null;
 		_dialogueText.visible = _dialogueBox.visible;
+
+		_dialogueText.text = _dialogueLine?._line ?? '';
 	}
 
 	public function onEnd() {}
