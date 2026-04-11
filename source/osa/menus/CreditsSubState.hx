@@ -116,10 +116,6 @@ class CreditsSubState extends FlxSubState
 
 		for (i => obj in [
 			makeCreditSprite('credits/maki', 'Maki : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
-			makeCreditSprite('credits/maki', 'NotMaki : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
-			makeCreditSprite('credits/maki', 'Maki45 : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
-			makeCreditSprite('credits/maki', 'Maki2 : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
-			makeCreditSprite('credits/maki', 'Maki69 : Artist, Programmer', 'https://x.com/Ms_Addison267/status/2038672185460412716'),
 			makeCreditSprite('credits/pogo', 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)',
 				'https://www.youtube.com/watch?v=aDTAem9_Yws'),
 		])
