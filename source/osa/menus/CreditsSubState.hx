@@ -62,24 +62,35 @@ class CreditsSubState extends FlxSubState
 
 	public var _creditText:FlxText;
 
-	public var _maki:ClickableSprite;
-
 	public function setCreditText(text:String)
 		_creditText.text = text;
+
+	public function makeCreditSprite(asset:String, creditText:String, ?url:String):ClickableSprite
+	{
+		var credSpr:ClickableSprite = new ClickableSprite(0, 0, asset.menuAsset().imageFile());
+		credSpr._overlapUpdate.add(() -> setCreditText(creditText));
+		if (url != null)
+			credSpr._onClick.add(() -> FlxG.openURL(url));
+		
+		return credSpr;
+	}
 
 	override function create()
 	{
 		super.create();
 
-		_maki = new ClickableSprite(0, 0, 'credits/maki'.menuAsset().imageFile());
-		_maki._overlapUpdate.add(() -> setCreditText('Maki : Artist, Programmer'));
+		// https://www.youtube.com/watch?v=aDTAem9_Yws
+		var pogo:ClickableSprite;
 
 		var x = 128.0;
 		var y = 128.0;
 
 		var yi = 0;
 
-		for (xi => obj in [_maki])
+		for (xi => obj in [
+			makeCreditSprite('credits/maki', 'Maki : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
+			makeCreditSprite('credits/maki', 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)', 'https://www.youtube.com/watch?v=aDTAem9_Yws'),
+		])
 		{
 			obj.scale.set(.5, .5);
 			obj.updateHitbox();
@@ -107,8 +118,6 @@ class CreditsSubState extends FlxSubState
 
 			add(obj);
 		}
-		_maki.screenCenter();
-		_maki._onClick.add(() -> FlxG.openURL('https://github.com/bopel-maki-macohi'));
 
 		_creditText = new FlxText(0, 0, 0, '', 16);
 		_creditText.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
