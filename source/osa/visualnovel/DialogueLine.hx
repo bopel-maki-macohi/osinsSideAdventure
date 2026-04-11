@@ -14,9 +14,9 @@ class DialogueLine
 	function set__rawline(rawline:String):String
 	{
 
-        this._line = rawline.split(DialogueLine.SPLIT_STRING)[0] ?? '';
-        this._character = rawline.split(DialogueLine.SPLIT_STRING)[1] ?? null;
-        this._scene = rawline.split(DialogueLine.SPLIT_STRING)[2] ?? null;
+        this._line = rawline?.split(DialogueLine.SPLIT_STRING)[0] ?? '';
+        this._character = rawline?.split(DialogueLine.SPLIT_STRING)[1] ?? null;
+        this._scene = rawline?.split(DialogueLine.SPLIT_STRING)[2] ?? null;
 
 		return rawline;
 	}
