@@ -12,7 +12,7 @@ import osa.visualnovel.VNState;
 import flixel.FlxG;
 import flixel.FlxState;
 
-class InitState extends FlxUIState
+class InitState extends OSAState
 {
 	override public function new()
 	{

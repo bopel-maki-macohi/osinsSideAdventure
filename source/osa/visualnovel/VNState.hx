@@ -11,7 +11,7 @@ import flixel.FlxSprite;
 import lime.utils.Assets;
 import flixel.FlxState;
 
-class VNState extends FlxUIState
+class VNState extends OSAState
 {
 	public static final FADEOUT_LETTER_SPEED:Float = 0.1;
 

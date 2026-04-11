@@ -10,7 +10,7 @@ import flixel.math.FlxPoint;
 import osa.objects.TileScrollBG;
 import flixel.FlxState;
 
-class TitleState extends FlxUIState
+class TitleState extends OSAState
 {
 	public var _tileScrollBG:TileScrollBG;
 
