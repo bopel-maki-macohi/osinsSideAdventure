@@ -65,7 +65,7 @@ class VNState extends FlxState
 		_dialogueText.skipKeys = ['SPACE'];
 
 		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.dialogueFile().imageFile());
-		
+
 		_dialogueContinueHand.scale.set(2, 2);
 		_dialogueContinueHand.updateHitbox();
 
