@@ -88,5 +88,8 @@ class VNState extends FlxState
 		_dialogueText.start(0.03);
 	}
 
-	public function onEnd() {}
+	public function onEnd()
+	{
+		trace('End');
+	}
 }
