@@ -21,7 +21,7 @@ class VNState extends FlxState
 			return _dialogueEntry;
 		}
 
-		_dialogueLine._rawline = _dialogueList[_dialogueEntry];
+		_dialogueLine._rawline = _dialogueList[value];
 		return value;
 	}
 
@@ -60,13 +60,13 @@ class VNState extends FlxState
 
 	public function changeLine(increment:Int)
 	{
-		if (_dialogueEntry + increment > _dialogueList.length - 1)
+		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
 			onEnd();
 			return;
 		}
 
-		if (_dialogueEntry + increment < 0)
+		if ((_dialogueEntry + increment) < 0)
 			return;
 
 		_dialogueEntry += increment;
