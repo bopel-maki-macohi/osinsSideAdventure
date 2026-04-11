@@ -1,5 +1,7 @@
 package osa.visualnovel;
 
+import flixel.util.FlxColor;
+import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import lime.utils.Assets;
@@ -35,6 +37,7 @@ class VNState extends FlxState
 	}
 
 	public var _dialogueBox:FlxSprite;
+	public var _dialogueText:FlxText;
 
 	override function create()
 	{
@@ -45,7 +48,12 @@ class VNState extends FlxState
 		_dialogueBox.screenCenter();
 		_dialogueBox.y = FlxG.height * 0.55;
 
+		_dialogueText = new FlxText(_dialogueBox.x, _dialogueBox.y, _dialogueBox.width, 'Lorem Ipsum Dolar Sit Amet', 16);
+		// _dialogueText.setBorderStyle(SHADOW, FlxColor.BLACK);
+		_dialogueText.color = FlxColor.BLACK;
+
 		add(_dialogueBox);
+		add(_dialogueText);
 
 		changeLine(0);
 	}
@@ -64,6 +72,7 @@ class VNState extends FlxState
 		_dialogueEntry += increment;
 
 		_dialogueBox.visible = _dialogueLine._line != null;
+		_dialogueText.visible = _dialogueBox.visible;
 	}
 
 	public function onEnd() {}
