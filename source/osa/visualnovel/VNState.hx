@@ -56,7 +56,7 @@ class VNState extends FlxState
 		_dialogueBox.screenCenter();
 		_dialogueBox.y = FlxG.height * 0.55;
 
-		_dialogueText = new FlxTypeText(_dialogueBox.x, _dialogueBox.y, Math.round(_dialogueBox.width), 'Lorem Ipsum Dolar Sit Amet', 16);
+		_dialogueText = new FlxTypeText(_dialogueBox.x, _dialogueBox.y, Math.round(_dialogueBox.width), LoremIpsum.piece, 16);
 		// _dialogueText.setBorderStyle(SHADOW, FlxColor.BLACK);
 		_dialogueText.color = FlxColor.BLACK;
 
@@ -101,6 +101,11 @@ class VNState extends FlxState
 
 		_dialogueTypingFinished = false;
 		_dialogueContinueHand.visible = false;
+
+		if (_dialogueLine._line == null)
+		{
+			FlxTimer.wait(0.03 * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
+		}
 	}
 
 	public var _dialogueTypingFinished:Bool = false;
