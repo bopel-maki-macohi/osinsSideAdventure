@@ -25,7 +25,7 @@ class TitleState extends FlxState
 	{
 		super.create();
 
-		_tileScrollBG = new TileScrollBG(FlxPoint.get(64, 64), true);
+		_tileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
 
 		_logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
 		_logo.screenCenter();
