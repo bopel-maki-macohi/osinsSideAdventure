@@ -1,5 +1,6 @@
 package osa;
 
+import osa.save.Save;
 import flixel.graphics.FlxGraphic;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
 import flixel.math.FlxPoint;
@@ -29,6 +30,23 @@ class InitState extends OSAState
 	{
 		super.create();
 
+		actualInit();
+
+		splashWatermark();
+	}
+
+	function actualInit()
+	{
+		Save.init();
+	}
+
+	function leave()
+	{
+		FlxG.switchState(() -> new TitleState());
+	}
+
+	function splashWatermark()
+	{
 		#if !debug
 		add(_watermark);
 		#end
@@ -71,6 +89,6 @@ class InitState extends OSAState
 
 		_watermark.screenCenter();
 
-		FlxG.switchState(() -> new TitleState());
+		leave();
 	}
 }
