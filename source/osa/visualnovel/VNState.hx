@@ -80,7 +80,9 @@ class VNState extends FlxState
 	{
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
-			FlxTween.tween(_dialogueBox, {alpha: 0}, _dialogueText.text.length * VNState.FADEOUT_LETTER_SPEED);
+			for (object in [_dialogueBox, _dialogueContinueHand])
+				FlxTween.tween(object, {alpha: 0}, _dialogueText.text.length * VNState.FADEOUT_LETTER_SPEED);
+			
 			_dialogueText.erase(VNState.FADEOUT_LETTER_SPEED, true, null, () ->
 			{
 				onEnd();
