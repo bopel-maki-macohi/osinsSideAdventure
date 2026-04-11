@@ -1,5 +1,6 @@
 package osa.menus;
 
+import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxMath;
 import flixel.FlxCamera;
 import openfl.filters.BlurFilter;
@@ -9,7 +10,7 @@ import flixel.math.FlxPoint;
 import osa.objects.TileScrollBG;
 import flixel.FlxState;
 
-class TitleState extends FlxState
+class TitleState extends FlxUIState
 {
 	public var _tileScrollBG:TileScrollBG;
 
@@ -23,8 +24,6 @@ class TitleState extends FlxState
 
 	override function create()
 	{
-		super.create();
-
 		_tileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
 
 		_logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
@@ -48,6 +47,10 @@ class TitleState extends FlxState
 
 		add(_tileScrollBG);
 		add(_logo);
+
+		persistentUpdate = true;
+
+		super.create();
 	}
 
 	final _blurFocus:Float = 0;
@@ -73,6 +76,8 @@ class TitleState extends FlxState
 
 			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurFocus, _blurFocusChangeSpeed);
 			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurFocus, _blurFocusChangeSpeed);
+
+			if (FlxG.keys.justPressed.SPACE) FlxG.switchState(() -> new TitleState());
 		}
 	}
 }

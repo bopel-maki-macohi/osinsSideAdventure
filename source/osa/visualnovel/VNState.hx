@@ -1,5 +1,6 @@
 package osa.visualnovel;
 
+import flixel.addons.ui.FlxUIState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.addons.text.FlxTypeText;
@@ -10,7 +11,7 @@ import flixel.FlxSprite;
 import lime.utils.Assets;
 import flixel.FlxState;
 
-class VNState extends FlxState
+class VNState extends FlxUIState
 {
 	public static final FADEOUT_LETTER_SPEED:Float = 0.1;
 
