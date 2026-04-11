@@ -126,5 +126,8 @@ class VNState extends FlxState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (_dialogueTypingFinished && FlxG.keys.justPressed.ENTER)
+			changeLine(1);
 	}
 }
