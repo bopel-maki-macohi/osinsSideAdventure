@@ -51,7 +51,17 @@ class InitState extends OSAState
 			this.transOut.duration = this.transOut.duration / 4;
 		}
 
-		_watermark.text += '\n\n${line}';
+		var clearWatermark:Array<String> = [
+			'Hello.\nDo you want to play with me?',
+			'Here I come!',
+			'April fools!\nI rearranged your guts.',
+			'Written before TADC Episode 9 : Alan we are so fucked.',
+		];
+
+		if (clearWatermark.contains(line))
+			_watermark.text = line;
+		else
+			_watermark.text += '\n\n${line}';
 
 		_watermark.screenCenter();
 
