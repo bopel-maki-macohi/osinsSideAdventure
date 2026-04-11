@@ -1,5 +1,6 @@
 package osa.menus;
 
+import osa.menus.storymenu.StoryMenuState;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import osa.shaders.GrayscaleShader;
