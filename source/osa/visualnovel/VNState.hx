@@ -111,8 +111,8 @@ class VNState extends FlxState
 		_dialogueEntry += increment;
 
 		_dialogueBox.visible = _dialogueLine._line != null;
-
 		_dialogueText.visible = _dialogueBox.visible;
+		
 		_dialogueText.resetText(_dialogueLine?._line ?? '');
 		_dialogueText.start(0.03, false, false, null, onDialogueFinishTyping);
 
