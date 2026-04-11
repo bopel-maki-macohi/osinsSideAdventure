@@ -42,6 +42,8 @@ class InitState extends OSAState
 
 	function leave()
 	{
+		throw 'Testing Crash';
+
 		FlxG.switchState(() -> new TitleState());
 	}
 
