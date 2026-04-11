@@ -125,12 +125,6 @@ class VNState extends FlxState
 		_dialogueBG.build(_dialogueLine._bg);
 		_dialogueCharacter.build(_dialogueLine._character);
 
-		_dialogueBG.alpha = (_dialogueBG._background == null) ? 0 : 1;
-		_dialogueCharacter.alpha = (_dialogueCharacter._character == null) ? 0 : 1;
-
-		_dialogueBG.screenCenter();
-		_dialogueCharacter.screenCenter();
-
 		_dialogueCharacter.y = _dialogueBox.y + (_dialogueBox.height * 0.5) - _dialogueCharacter.height;
 		if (!_dialogueBox.visible)
 			_dialogueCharacter.y = FlxG.height - _dialogueCharacter.height;

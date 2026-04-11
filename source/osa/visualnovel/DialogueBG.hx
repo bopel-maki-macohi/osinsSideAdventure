@@ -14,12 +14,15 @@ class DialogueBG extends FlxSprite
 	public function build(background:String)
 	{
 		this._background = background;
+		alpha = 1;
 
 		if (background == null)
 		{
+			alpha = 0;
 			return;
 		}
 
 		loadGraphic(background.backgroundFile().imageFile());
+		screenCenter();
 	}
 }

@@ -14,12 +14,15 @@ class DialogueCharacter extends FlxSprite
 	public function build(character:String)
 	{
 		this._character = character;
+		alpha = 1;
 
 		if (character == null)
 		{
+			alpha = 0;
 			return;
 		}
 
 		loadGraphic(character.characterFile().imageFile());
+		screenCenter();
 	}
 }
