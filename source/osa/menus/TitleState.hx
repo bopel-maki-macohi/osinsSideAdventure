@@ -43,6 +43,7 @@ class TitleState extends OSAState
 		_blurCamFG = new FlxCamera();
 		FlxG.cameras.add(_blurCamFG);
 		_blurCamFG.bgColor.alpha = 0;
+		_blurCamFG.y -= _blurCamFG.height / 10;
 
 		_blurCamBG.filters = [_blurFilterBG];
 		_blurCamFG.filters = [_blurFilterFG];
