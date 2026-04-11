@@ -34,9 +34,9 @@ class TileScrollBG extends FlxBackdrop
 			if (FlxG.keys.anyPressed([D, RIGHT]))
 				this.velocity.x += _debugVelocityChangeValue;
 
-			if (FlxG.keys.anyPressed([W, UP]))
-				this.velocity.y += _debugVelocityChangeValue;
 			if (FlxG.keys.anyPressed([S, DOWN]))
+				this.velocity.y += _debugVelocityChangeValue;
+			if (FlxG.keys.anyPressed([W, UP]))
 				this.velocity.y -= _debugVelocityChangeValue;
 		}
 	}
