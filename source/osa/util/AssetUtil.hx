@@ -11,7 +11,7 @@ class AssetUtil
 		return assetPath('$file.txt');
 
 	public static inline function dialogueFile(scene:String):String
-		return textFile('$scene/dialogue');
+		return textFile('dialogue/$scene');
 
 	public static inline function fileExists(file:String):Bool
 		return Assets.exists(file);
