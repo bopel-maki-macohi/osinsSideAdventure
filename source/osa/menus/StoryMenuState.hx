@@ -5,12 +5,12 @@ import flixel.sound.FlxSound;
 
 class StoryMenuState extends OSAState
 {
-	public var getYourAssUp:FlxSound;
+	public var _getYourAssUp:FlxSound;
 
 	override function create()
 	{
-		getYourAssUp = new FlxSound().loadEmbedded('updog/get-your-ass-up'.miscAsset().audioFile(), true);
-		getYourAssUp.fadeIn(this.transIn.duration);
+		_getYourAssUp = new FlxSound().loadEmbedded('updog/get-your-ass-up'.miscAsset().audioFile(), true);
+		_getYourAssUp.fadeIn(this.transIn.duration);
 
 		super.create();
 	}
@@ -19,7 +19,7 @@ class StoryMenuState extends OSAState
 	{
 		super.onExit();
 
-		getYourAssUp.fadeOut(this.transOut.duration);
+		_getYourAssUp.fadeOut(this.transOut.duration);
 	}
 
 	override function update(elapsed:Float)
