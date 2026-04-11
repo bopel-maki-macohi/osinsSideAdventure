@@ -29,4 +29,12 @@ class StoryChapterSprite extends FlxSprite
 			loadGraphic('story/titles/$id'.menuAsset().imageFile());
 		screenCenter();
 	}
+
+	override function toString():String
+	{
+		if (_isIcon)
+			return 'StoryChapterSprite(icon : $_id)';
+
+		return 'StoryChapterSprite(title : $_id)';
+	}
 }

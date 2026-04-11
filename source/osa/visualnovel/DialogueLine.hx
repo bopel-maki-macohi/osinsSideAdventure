@@ -36,5 +36,5 @@ class DialogueLine
 	public var _bg(default, null):String;
 
 	public function toString():String
-		return '$_line | $_character | $_bg';
+		return 'DialogueLine(line: $_line | character: $_character | bg: $_bg)';
 }

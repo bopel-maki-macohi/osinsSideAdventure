@@ -19,12 +19,6 @@ class AssetUtil
 	public static inline function visualNovelAsset(file:String):String
 		return assetPath('visualnovel/$file');
 
-	public static inline function backgroundAsset(file:String):String
-		return assetPath('backgrounds/$file');
-
-	public static inline function characterAsset(file:String):String
-		return assetPath('characters/$file');
-
 	public static inline function menuAsset(file:String):String
 		return assetPath('menus/$file');
 

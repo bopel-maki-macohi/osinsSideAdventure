@@ -55,8 +55,8 @@ class VNState extends OSAState
 
 	public var _dialogueContinueHand:FlxSprite;
 
-	public var _dialogueCharacter:DialogueCharacter;
-	public var _dialogueBG:DialogueBG;
+	public var _dialogueCharacter:DialogueSprite;
+	public var _dialogueBG:DialogueSprite;
 
 	override function create()
 	{
@@ -80,9 +80,8 @@ class VNState extends OSAState
 		_dialogueContinueHand.scale.set(2, 2);
 		_dialogueContinueHand.updateHitbox();
 
-		_dialogueCharacter = new DialogueCharacter();
-
-		_dialogueBG = new DialogueBG();
+		_dialogueCharacter = new DialogueSprite(true);
+		_dialogueBG = new DialogueSprite(false);
 
 		add(_dialogueBG);
 		add(_dialogueCharacter);

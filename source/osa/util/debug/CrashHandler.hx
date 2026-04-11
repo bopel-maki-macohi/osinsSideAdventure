@@ -86,7 +86,51 @@ class CrashHandler
 
 		final filename:String = '$CRASH_DIRECTORY/${getTimestamp()}.txt';
 
-		errorMessage += '\nFlixel Current State: ${currentState}';
+		errorMessage += '\nCurrent State: ${currentState}';
+
+		var stateFields:Array<String> = [];
+
+		switch (currentState)
+		{
+			case 'osa.menus.storymenu.StoryMenuState':
+				stateFields = [
+					'_currentSelection',
+
+					'_chapters',
+
+					'_chapterTitle',
+					'_chapterIcon',
+					'_chapterDialogueFile'
+				];
+
+			case 'osa.visualnovel.VNState':
+				stateFields = [
+					'_dialogueEntry',
+					'_dialogueLine',
+
+					'_dialogueCharacter',
+					'_dialogueBackground',
+
+					'_dialogueTypingFinished',
+				];
+		}
+
+		if (stateFields.length > 0)
+		{
+			for (field in stateFields)
+				try
+				{
+					errorMessage += '\n- $field : ${Std.string(Reflect?.field(FlxG.state, field)) ?? 'Unreceivable'}';
+				}
+				catch (e)
+				{
+					errorMessage += '\n- $field : Unreceivable($e)';
+				}
+		}
+		else
+		{
+			errorMessage += '\n- No Special Fields';
+		}
 
 		errorMessage += '\n';
 		#if sys

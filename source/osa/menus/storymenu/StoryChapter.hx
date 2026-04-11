@@ -33,5 +33,5 @@ class StoryChapter
 	public var _dialoguefile(default, null):String;
 
 	public function toString():String
-		return '$_title | $_icon | $_dialoguefile';
+		return 'StoryChapter(title : $_title | icon : $_icon | dialogueFile : $_dialoguefile)';
 }
