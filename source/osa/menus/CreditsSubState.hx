@@ -108,6 +108,7 @@ class CreditsSubState extends FlxSubState
 			add(obj);
 		}
 		_maki.screenCenter();
+		_maki._onClick.add(() -> FlxG.openURL('https://github.com/bopel-maki-macohi'));
 
 		_creditText = new FlxText(0, 0, 0, '', 16);
 		_creditText.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
