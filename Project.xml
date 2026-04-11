@@ -11,6 +11,8 @@
 
 	<icon path="dev/icon.png" />
 
+	<define name="DISABLE_TITLE_WATERMARK_BLUR" unless="ENABLE_TITLE_WATERMARK_BLUR"/>
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
