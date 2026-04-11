@@ -13,7 +13,7 @@ import flixel.FlxState;
 class VNState extends FlxState
 {
 	public static final FADEOUT_LETTER_SPEED:Float = 0.1;
-	
+
 	public var _dialogueList:Array<String> = [];
 
 	public var _dialogueEntry(default, set):Int = 0;
@@ -89,11 +89,25 @@ class VNState extends FlxState
 		_dialogueText.visible = _dialogueBox.visible;
 
 		_dialogueText.resetText(_dialogueLine?._line ?? '');
-		_dialogueText.start(0.03);
+		_dialogueText.start(0.03, null, null, null, onDialogueFinishTyping);
+
+		_dialogueTypingFinished = false;
+	}
+
+	public var _dialogueTypingFinished:Bool = false;
+
+	public function onDialogueFinishTyping()
+	{
+		_dialogueTypingFinished = true;
 	}
 
 	public function onEnd()
 	{
 		trace('End');
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
 	}
 }
