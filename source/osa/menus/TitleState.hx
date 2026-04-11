@@ -105,6 +105,7 @@ class TitleState extends OSAState
 
 			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurUnfocus, _blurFocusChangeSpeed);
 			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurUnfocus, _blurFocusChangeSpeed);
+			_blurCamFG.alpha = FlxMath.lerp(_blurCamFG.alpha, 0.3, _blurFocusChangeSpeed);
 		}
 		else
 		{
@@ -113,10 +114,16 @@ class TitleState extends OSAState
 
 			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurFocus, _blurFocusChangeSpeed);
 			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurFocus, _blurFocusChangeSpeed);
+			_blurCamFG.alpha = FlxMath.lerp(_blurCamFG.alpha, 1, _blurFocusChangeSpeed);
 
-			if (FlxG.keys.justPressed.SPACE)
-				FlxG.switchState(() -> new TitleState());
+			controls();
 		}
+	}
+
+	function controls()
+	{
+		if (FlxG.keys.justPressed.SPACE)
+			FlxG.switchState(() -> new TitleState());
 	}
 
 	function onPlay() {}
