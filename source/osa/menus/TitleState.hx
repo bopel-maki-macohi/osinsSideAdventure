@@ -45,7 +45,6 @@ class TitleState extends OSAState
 		_blurCamFG = new FlxCamera();
 		FlxG.cameras.add(_blurCamFG);
 		_blurCamFG.bgColor.alpha = 0;
-		_blurCamFG.y -= _blurCamFG.height / 10;
 
 		_blurCamBG.filters = [_blurFilterBG];
 		_blurCamFG.filters = [_blurFilterFG];
@@ -88,6 +87,15 @@ class TitleState extends OSAState
 		_optionsBtn.shader = new GrayscaleShader(.75);
 
 		persistentUpdate = true;
+
+		for (obj in this.members)
+		{
+			if (obj.cameras.contains(_blurCamFG))
+			{
+				if (Reflect.field(obj, 'y') != null)
+					Reflect.setProperty(obj, 'y', Reflect.field(obj, 'y') - _blurCamFG.height / 10);
+			}
+		}
 
 		super.create();
 	}
@@ -135,8 +143,5 @@ class TitleState extends OSAState
 
 	function onOptions() {}
 
-	function onCredits()
-	{
-		FlxG.switchState(() -> new CreditsState());
-	}
+	function onCredits() {}
 }
