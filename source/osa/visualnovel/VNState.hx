@@ -45,6 +45,8 @@ class VNState extends FlxState
 	public var _dialogueBox:FlxSprite;
 	public var _dialogueText:FlxTypeText;
 
+	public var _dialogueContinueHand:FlxSprite;
+
 	override function create()
 	{
 		super.create();
@@ -62,8 +64,14 @@ class VNState extends FlxState
 
 		_dialogueText.skipKeys = ['SPACE'];
 
+		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.dialogueFile().imageFile());
+		
+		_dialogueContinueHand.scale.set(2, 2);
+		_dialogueContinueHand.updateHitbox();
+
 		add(_dialogueBox);
 		add(_dialogueText);
+		add(_dialogueContinueHand);
 
 		changeLine(0);
 	}
@@ -86,12 +94,13 @@ class VNState extends FlxState
 		_dialogueEntry += increment;
 
 		_dialogueBox.visible = _dialogueLine._line != null;
-		_dialogueText.visible = _dialogueBox.visible;
 
+		_dialogueText.visible = _dialogueBox.visible;
 		_dialogueText.resetText(_dialogueLine?._line ?? '');
-		_dialogueText.start(0.03, null, null, null, onDialogueFinishTyping);
+		_dialogueText.start(0.03, false, false, null, onDialogueFinishTyping);
 
 		_dialogueTypingFinished = false;
+		_dialogueContinueHand.visible = false;
 	}
 
 	public var _dialogueTypingFinished:Bool = false;
@@ -99,6 +108,14 @@ class VNState extends FlxState
 	public function onDialogueFinishTyping()
 	{
 		_dialogueTypingFinished = true;
+
+		_dialogueContinueHand.visible = true;
+		_dialogueContinueHand.setPosition(_dialogueBox.x
+			+ _dialogueBox.width
+			- _dialogueContinueHand.width,
+			_dialogueBox.y
+			+ _dialogueBox.height
+			- _dialogueContinueHand.height);
 	}
 
 	public function onEnd()

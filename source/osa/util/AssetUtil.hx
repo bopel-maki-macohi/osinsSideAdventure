@@ -8,10 +8,13 @@ class AssetUtil
 		return 'assets/$path';
 
 	public static inline function textFile(file:String):String
-		return assetPath('$file.txt');
+		return '$file.txt';
 
-	public static inline function dialogueFile(scene:String):String
-		return textFile('dialogue/$scene');
+	public static inline function imageFile(file:String):String
+		return '$file.png';
+
+	public static inline function dialogueFile(file:String):String
+		return assetPath('dialogue/$file');
 
 	public static inline function fileExists(file:String):Bool
 		return Assets.exists(file);
@@ -21,10 +24,10 @@ class AssetUtil
 
 	public static function parseDialogueFile(scene:String):Array<String>
 	{
-		if (!fileExists(scene.dialogueFile()))
+		if (!fileExists(scene.dialogueFile().textFile()))
 			return [];
 
-		var file:String = scene.dialogueFile().readText();
+		var file:String = scene.dialogueFile().textFile().readText();
 		var dialogue:Array<String> = [];
 
         for (line in file.split('\n'))
