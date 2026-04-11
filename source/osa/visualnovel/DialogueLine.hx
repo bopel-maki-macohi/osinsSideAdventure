@@ -3,6 +3,7 @@ package osa.visualnovel;
 class DialogueLine
 {
 	public static final SPLIT_STRING:String = ';';
+	public static final SKIP_STRING:String = '_';
 
 	public var _rawline(default, set):String = null;
 
@@ -13,9 +14,19 @@ class DialogueLine
 
 	function set__rawline(rawline:String):String
 	{
-		this._line = rawline?.split(DialogueLine.SPLIT_STRING)[0] ?? '';
-		this._character = rawline?.split(DialogueLine.SPLIT_STRING)[1] ?? null;
-		this._scene = rawline?.split(DialogueLine.SPLIT_STRING)[2] ?? null;
+		final splitrawline:Array<String> = rawline?.split(DialogueLine.SPLIT_STRING) ?? null;
+
+		for (i => field in ['_line', '_character', '_scene'])
+		{
+			Reflect.setProperty(this, field, null);
+
+			if (splitrawline == null)
+				continue;
+			if (splitrawline[i] == DialogueLine.SKIP_STRING)
+				continue;
+
+			Reflect.setProperty(this, field, splitrawline[i] ?? null);
+		}
 
 		return rawline;
 	}

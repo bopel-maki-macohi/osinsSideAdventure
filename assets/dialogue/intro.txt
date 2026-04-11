@@ -1,3 +1,4 @@
 Lorem Ipsum;tirok;roots
-Dolar Sit;osin;roots
-Amet;thunderbolt;roots
+_;osin;roots
+Amet;thunderbolt;_
+F U C K;_;roots
