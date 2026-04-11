@@ -20,6 +20,7 @@
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
+	<haxelib name="flixel-addons" />
 
 	<!-- _________________________ Application Settings _________________________ -->
 
