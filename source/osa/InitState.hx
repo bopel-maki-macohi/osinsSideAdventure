@@ -52,15 +52,16 @@ class InitState extends OSAState
 		}
 
 		var clearWatermark:Array<String> = [
-			'Hello.\nDo you want to play with me?',
+			'Hello.--Do you want to play with me?',
 			'Here I come!',
-			'April fools!\nI rearranged your guts.',
+			'April fools!--I rearranged your guts.',
 			'Written before TADC Episode 9 : Alan we are so fucked.',
 			'E-E-A-OO',
 			'I know what you are.',
+			'SO.--YOU COULDN\'T KEEP.--YOUR GOOFY,--LITTLE,--FUCKING MOUTH,--SHUT.',
 		];
 
-		if (clearWatermark.contains(line))
+		if (clearWatermark.contains(line.replace('\n', '--')))
 			_watermark.text = line;
 		else
 			_watermark.text += '\n\n${line}';
