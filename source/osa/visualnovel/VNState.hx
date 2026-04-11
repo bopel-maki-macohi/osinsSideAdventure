@@ -24,7 +24,8 @@ class VNState extends FlxState
 		}
 
 		_dialogueLine._rawline = _dialogueList[value];
-		return value;
+		trace('Dialogue line at $value');
+		return _dialogueEntry = value;
 	}
 
 	public var _dialogueLine(default, null):DialogueLine = new DialogueLine(null);
