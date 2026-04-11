@@ -152,7 +152,7 @@ class TitleState extends OSAState
 
 	function onPlay()
 	{
-		FlxG.switchState(() -> new VNState('intro'));
+		FlxG.switchState(() -> new StoryMenuState());
 	}
 
 	function onOptions() {}
