@@ -43,7 +43,7 @@ class InitState extends OSAState
 		_watermark.alignment = CENTER;
 		_watermark.size = 32;
 
-		_watermark.text = _watermark.text.replace('O.S.A.', 'Osin\'s side Adventure');
+		_watermark.text = _watermark.text.replace('O.S.A.', 'Osin\'s Side Adventure');
 		FlxG.stage.application.window.title = _watermark.text;
 
 		_watermark.screenCenter();
