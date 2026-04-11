@@ -54,8 +54,6 @@ class VNState extends OSAState
 
 	override function create()
 	{
-		super.create();
-
 		_dialogueBox = new FlxSprite();
 		_dialogueBox.makeGraphic(Math.round(FlxG.width * 0.9), Math.round(FlxG.height * 0.4));
 		_dialogueBox.screenCenter();
@@ -88,6 +86,8 @@ class VNState extends OSAState
 		add(_dialogueContinueHand);
 
 		changeLine(0);
+		
+		super.create();
 	}
 
 	public function getTextFadeTime():Float
