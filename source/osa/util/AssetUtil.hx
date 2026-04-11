@@ -13,6 +13,9 @@ class AssetUtil
 	public static inline function imageFile(file:String):String
 		return '$file.png';
 
+	public static inline function audioFile(file:String):String
+		return '$file.wav';
+
 	public static inline function dialogueFile(file:String):String
 		return assetPath('dialogue/$file');
 
