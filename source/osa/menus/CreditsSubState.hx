@@ -1,5 +1,8 @@
 package osa.menus;
 
+import flixel.math.FlxMath;
+import flixel.FlxObject;
+import flixel.group.FlxSpriteContainer.FlxTypedSpriteContainer;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
@@ -27,6 +30,7 @@ class CreditsSubState extends FlxSubState
 
 		FlxTimer.wait(OSAState.DEFAULT_TRANSITION.duration, () ->
 		{
+			FlxG.mouse.visible = true;
 			if (_parentState != null && _parentState.subState == this)
 				_parentState.closeSubState();
 		});
@@ -47,17 +51,36 @@ class CreditsSubState extends FlxSubState
 		{
 			if (FlxG.keys.justPressed.ESCAPE)
 				close();
+
+			if (FlxG.keys.anyJustPressed([A, LEFT]))
+				_currentSelection--;
+			if (FlxG.keys.anyJustPressed([D, RIGHT]))
+				_currentSelection++;
 		}
 
-		_creditText.x = (FlxG.mouse.x + 20);
+		if (_currentSelection < 0)
+			_currentSelection = _creditSprites.length - 1;
+		if (_currentSelection > _creditSprites.length - 1)
+			_currentSelection = 0;
 
-		if (_creditText.x + _creditText.width > FlxG.width)
-			_creditText.x -= 40 + _creditText.width;
+		_creditSprites.x = FlxMath.lerp(_creditSprites.x, _currentSelection * -256, 0.04);
 
-		_creditText.y = (FlxG.mouse.y - 40);
+		for (credit in _creditSprites.members)
+		{
+			if (_currentSelection == credit.ID)
+			{
+				credit._overlapUpdate.dispatch();
 
-		if (_creditText.y + _creditText.height < (_creditText.height / 2))
-			_creditText.y += 60 + _creditText.height;
+				if (!TitleState.bgScrolling)
+					if (FlxG.keys.justPressed.ENTER)
+						credit._onClick.dispatch();
+			}
+			else
+				credit._unoverlapUpdate.dispatch();
+		}
+
+		_creditText.screenCenter();
+		_creditText.y = FlxG.height - _creditText.height - 32;
 	}
 
 	public var _creditText:FlxText;
@@ -71,58 +94,59 @@ class CreditsSubState extends FlxSubState
 		credSpr._overlapUpdate.add(() -> setCreditText(creditText));
 		if (url != null)
 			credSpr._onClick.add(() -> FlxG.openURL(url));
-		
+
 		return credSpr;
 	}
+
+	public var _creditSprites:FlxTypedSpriteContainer<ClickableSprite>;
+
+	public var _currentSelection:Int = 0;
 
 	override function create()
 	{
 		super.create();
 
-		// https://www.youtube.com/watch?v=aDTAem9_Yws
-		var pogo:ClickableSprite;
+		_creditSprites = new FlxTypedSpriteContainer<ClickableSprite>();
+		_creditSprites.camera = TitleState.blurCamFG;
+		_creditSprites.alpha = 0;
 
-		var x = 128.0;
-		var y = 128.0;
+		FlxTween.tween(_creditSprites, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
+			ease: FlxEase.sineInOut
+		});
 
-		var yi = 0;
-
-		for (xi => obj in [
+		for (i => obj in [
 			makeCreditSprite('credits/maki', 'Maki : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
-			makeCreditSprite('credits/pogo', 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)', 'https://www.youtube.com/watch?v=aDTAem9_Yws'),
+			makeCreditSprite('credits/maki', 'NotMaki : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
+			makeCreditSprite('credits/maki', 'Maki45 : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
+			makeCreditSprite('credits/maki', 'Maki2 : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
+			makeCreditSprite('credits/maki', 'Maki69 : Artist, Programmer', 'https://x.com/Ms_Addison267/status/2038672185460412716'),
+			makeCreditSprite('credits/pogo', 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)',
+				'https://www.youtube.com/watch?v=aDTAem9_Yws'),
 		])
 		{
+			obj._useMouse = false;
+
 			obj.scale.set(.5, .5);
 			obj.updateHitbox();
 
-			obj.x = x;
-			obj.y = y;
+			obj.screenCenter();
+			obj.x += i * 256;
 
-			x += obj.width + (xi * 256);
-			if (x > FlxG.width)
-			{
-				x = 128;
-				y += obj.height + (yi * 256);
-				yi++;
-			}
-
-			obj.alpha = 0;
-			obj.camera = TitleState.blurCamFG;
+			obj.ID = i;
 
 			obj._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
 			obj._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
 
-			FlxTween.tween(obj, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
-				ease: FlxEase.sineInOut
-			});
-
-			add(obj);
+			_creditSprites.add(obj);
 		}
 
 		_creditText = new FlxText(0, 0, 0, '', 16);
 		_creditText.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
 		_creditText.camera = TitleState.blurCamFG;
 
+		add(_creditSprites);
 		add(_creditText);
+
+		FlxG.mouse.visible = false;
 	}
 }

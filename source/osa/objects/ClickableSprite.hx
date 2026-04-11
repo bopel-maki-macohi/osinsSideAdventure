@@ -23,19 +23,22 @@ class ClickableSprite extends FlxSprite
 	public var _unoverlapUpdate:FlxSignal = new FlxSignal();
 	public var _onClick:FlxSignal = new FlxSignal();
 
+	public var _useMouse:Bool = true;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (FlxG.mouse.overlaps(this) && alpha > 0)
-		{
-			_overlapUpdate.dispatch();
-			if (FlxG.mouse.justPressed)
-				_onClick.dispatch();
-		}
-		else
-		{
-			_unoverlapUpdate.dispatch();
-		}
+		if (_useMouse)
+			if (FlxG.mouse.overlaps(this) && alpha > 0)
+			{
+				_overlapUpdate.dispatch();
+				if (FlxG.mouse.justPressed)
+					_onClick.dispatch();
+			}
+			else
+			{
+				_unoverlapUpdate.dispatch();
+			}
 	}
 }
