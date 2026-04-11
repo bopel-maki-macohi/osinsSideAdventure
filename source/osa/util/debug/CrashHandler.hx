@@ -19,6 +19,12 @@ class CrashHandler
 		#end
 
 		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
+
+		FlxG.signals.preUpdate.add(function()
+		{
+			if (FlxG.keys.pressed.F1)
+				throw 'F1 Crash';
+		});
 	}
 
 	static function onUncaughtError(event:UncaughtErrorEvent)
@@ -78,15 +84,15 @@ class CrashHandler
 				currentState = Type.getClassName(currentStateCls) ?? 'No state loaded';
 		}
 
-        final filename:String = '$CRASH_DIRECTORY/${getTimestamp()}.txt';
+		final filename:String = '$CRASH_DIRECTORY/${getTimestamp()}.txt';
 
 		errorMessage += '\nFlixel Current State: ${currentState}';
 
-        errorMessage += '\n';
-        #if sys
-        errorMessage += '\nCrash log saved to: "$filename"';
-        #end
-        errorMessage += '\nPlease report the crash to the github: https://github.com/bopel-maki-macohi/osinsSideAdventure/issues';
+		errorMessage += '\n';
+		#if sys
+		errorMessage += '\nCrash log saved to: "$filename"';
+		#end
+		errorMessage += '\nPlease report the crash to the github: https://github.com/bopel-maki-macohi/osinsSideAdventure/issues';
 
 		log(errorMessage);
 
@@ -114,10 +120,10 @@ class CrashHandler
 
 	static function getTimestamp():String
 	{
-        final dateNow:Date = Date.now();
+		final dateNow:Date = Date.now();
 
-        final seconds:Float = dateNow.getTime() / 1000;
-        final date:String = '${dateNow.getMonth()}-${dateNow.getDate()}-${dateNow.getFullYear()}';
+		final seconds:Float = dateNow.getTime() / 1000;
+		final date:String = '${dateNow.getMonth()}-${dateNow.getDate()}-${dateNow.getFullYear()}';
 
 		return '${date}_${seconds}';
 	}
