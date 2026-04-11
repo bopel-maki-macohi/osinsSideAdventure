@@ -9,5 +9,18 @@ class DialogueBG extends FlxSprite
 		super();
 	}
 
-	public function build(background:String) {}
+	public var background:String = null;
+
+	public function build(background:String)
+	{
+		this.background = background;
+
+		if (background == null)
+		{
+			alpha = 0;
+			return;
+		}
+
+		loadGraphic(background.backgroundFile().imageFile());
+	}
 }

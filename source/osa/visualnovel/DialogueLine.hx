@@ -16,7 +16,7 @@ class DialogueLine
 	{
 		final splitrawline:Array<String> = rawline?.split(DialogueLine.SPLIT_STRING) ?? null;
 
-		for (i => field in ['_line', '_character', '_scene'])
+		for (i => field in ['_line', '_character', '_bg'])
 		{
 			Reflect.setProperty(this, field, null);
 
@@ -31,10 +31,10 @@ class DialogueLine
 		return rawline;
 	}
 
-	public var _character(default, null):String;
-	public var _scene(default, null):String;
 	public var _line(default, null):String;
+	public var _character(default, null):String;
+	public var _bg(default, null):String;
 
 	public function toString():String
-		return '$_line | $_character | $_scene';
+		return '$_line | $_character | $_bg';
 }

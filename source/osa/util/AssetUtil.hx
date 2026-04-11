@@ -16,6 +16,12 @@ class AssetUtil
 	public static inline function dialogueFile(file:String):String
 		return assetPath('dialogue/$file');
 
+	public static inline function backgroundFile(file:String):String
+		return assetPath('backgrounds/$file');
+
+	public static inline function characterFile(file:String):String
+		return assetPath('characters/$file');
+
 	public static inline function fileExists(file:String):Bool
 		return Assets.exists(file);
 

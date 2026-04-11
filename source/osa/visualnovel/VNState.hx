@@ -27,7 +27,7 @@ class VNState extends FlxState
 		}
 
 		_dialogueLine._rawline = _dialogueList[value];
-		trace('Dialogue line at $value');
+		trace('Dialogue line at $value : $_dialogueLine');
 		return _dialogueEntry = value;
 	}
 
@@ -46,6 +46,9 @@ class VNState extends FlxState
 	public var _dialogueText:FlxTypeText;
 
 	public var _dialogueContinueHand:FlxSprite;
+
+	public var _dialogueCharacter:DialogueCharacter;
+	public var _dialogueBG:DialogueBG;
 
 	override function create()
 	{
@@ -69,6 +72,12 @@ class VNState extends FlxState
 		_dialogueContinueHand.scale.set(2, 2);
 		_dialogueContinueHand.updateHitbox();
 
+		_dialogueCharacter = new DialogueCharacter();
+
+		_dialogueBG = new DialogueBG();
+
+		add(_dialogueBG);
+		add(_dialogueCharacter);
 		add(_dialogueBox);
 		add(_dialogueText);
 		add(_dialogueContinueHand);
@@ -76,13 +85,19 @@ class VNState extends FlxState
 		changeLine(0);
 	}
 
+	public function getTextFadeTime():Float
+		return _dialogueText.text.length * VNState.FADEOUT_LETTER_SPEED;
+
 	public function changeLine(increment:Int)
 	{
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
-			for (object in [_dialogueBox, _dialogueContinueHand])
-				FlxTween.tween(object, {alpha: 0}, _dialogueText.text.length * VNState.FADEOUT_LETTER_SPEED);
-			
+			for (object in [_dialogueBox, _dialogueContinueHand, _dialogueCharacter, _dialogueBG])
+			{
+				FlxTween.cancelTweensOf(object);
+				FlxTween.tween(object, {alpha: 0}, getTextFadeTime());
+			}
+
 			_dialogueText.erase(VNState.FADEOUT_LETTER_SPEED, true, null, () ->
 			{
 				onEnd();
@@ -105,9 +120,27 @@ class VNState extends FlxState
 		_dialogueContinueHand.visible = false;
 
 		if (_dialogueLine._line == null)
-		{
 			FlxTimer.wait(0.03 * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
-		}
+
+		FlxTween.cancelTweensOf(_dialogueBG);
+		FlxTween.cancelTweensOf(_dialogueCharacter);
+
+		_dialogueBG.build(_dialogueLine._bg);
+		_dialogueCharacter.build(_dialogueLine._character);
+
+		if (_dialogueLine._bg != null)
+			FlxTween.tween(_dialogueBG, {alpha: 1}, (getTextFadeTime() / 5));
+
+		if (_dialogueLine._character != null)
+			FlxTween.tween(_dialogueCharacter, {alpha: 1}, (getTextFadeTime() / 5));
+
+		_dialogueBG.screenCenter();
+
+		_dialogueCharacter.screenCenter();
+
+		_dialogueCharacter.y = _dialogueBox.y + (_dialogueBox.height * 0.5) - _dialogueCharacter.height;
+		if (!_dialogueBox.visible)
+			_dialogueCharacter.y = FlxG.height - _dialogueCharacter.height;
 	}
 
 	public var _dialogueTypingFinished:Bool = false;
