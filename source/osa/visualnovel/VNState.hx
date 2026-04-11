@@ -65,13 +65,13 @@ class VNState extends FlxState
 		_dialogueText.setTypingVariation(0.75, true);
 		_dialogueText.skipKeys = ['SPACE'];
 		_dialogueText.sounds = [
-			FlxG.sound.load('type1'.dialogueFile().audioFile()),
-			FlxG.sound.load('type2'.dialogueFile().audioFile()),
-			FlxG.sound.load('type3'.dialogueFile().audioFile()),
+			FlxG.sound.load('type1'.dialogueAsset().audioFile()),
+			FlxG.sound.load('type2'.dialogueAsset().audioFile()),
+			FlxG.sound.load('type3'.dialogueAsset().audioFile()),
 		];
 		_dialogueText.finishSounds = true;
 
-		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.dialogueFile().imageFile());
+		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.dialogueAsset().imageFile());
 		_dialogueContinueHand.scale.set(2, 2);
 		_dialogueContinueHand.updateHitbox();
 

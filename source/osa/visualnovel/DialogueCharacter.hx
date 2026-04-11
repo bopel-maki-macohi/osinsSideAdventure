@@ -22,7 +22,7 @@ class DialogueCharacter extends FlxSprite
 			return;
 		}
 
-		loadGraphic(character.characterFile().imageFile());
+		loadGraphic(character.characterAsset().imageFile());
 		screenCenter();
 	}
 }

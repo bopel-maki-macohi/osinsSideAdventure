@@ -22,7 +22,7 @@ class DialogueBG extends FlxSprite
 			return;
 		}
 
-		loadGraphic(background.backgroundFile().imageFile());
+		loadGraphic(background.backgroundAsset().imageFile());
 		screenCenter();
 	}
 }

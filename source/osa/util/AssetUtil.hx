@@ -16,14 +16,17 @@ class AssetUtil
 	public static inline function audioFile(file:String):String
 		return '$file.wav';
 
-	public static inline function dialogueFile(file:String):String
+	public static inline function dialogueAsset(file:String):String
 		return assetPath('dialogue/$file');
 
-	public static inline function backgroundFile(file:String):String
+	public static inline function backgroundAsset(file:String):String
 		return assetPath('backgrounds/$file');
 
-	public static inline function characterFile(file:String):String
+	public static inline function characterAsset(file:String):String
 		return assetPath('characters/$file');
+
+	public static inline function menuAsset(file:String):String
+		return assetPath('menus/$file');
 
 	public static inline function fileExists(file:String):Bool
 		return Assets.exists(file);
@@ -33,10 +36,10 @@ class AssetUtil
 
 	public static function parseDialogueFile(scene:String):Array<String>
 	{
-		if (!fileExists(scene.dialogueFile().textFile()))
+		if (!fileExists(scene.dialogueAsset().textFile()))
 			return [];
 
-		var file:String = scene.dialogueFile().textFile().readText();
+		var file:String = scene.dialogueAsset().textFile().readText();
 		var dialogue:Array<String> = [];
 
         for (line in file.split('\n'))
