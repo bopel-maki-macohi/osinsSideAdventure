@@ -1,23 +1,15 @@
 package osa.menus;
 
-import osa.shaders.GrayscaleShader;
-import osa.visualnovel.VNState;
-import osa.objects.ClickableSprite;
-import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxMath;
+import flixel.FlxG;
 import flixel.FlxCamera;
 import openfl.filters.BlurFilter;
-import flixel.FlxSprite;
-import flixel.FlxG;
 import flixel.math.FlxPoint;
 import osa.objects.TileScrollBG;
-import flixel.FlxState;
 
-class TitleState extends OSAState
+class CreditsState extends OSAState
 {
 	public var _tileScrollBG:TileScrollBG;
-
-	public var _logo:FlxSprite;
 
 	public var _blurFilterBG:BlurFilter;
 	public var _blurFilterFG:BlurFilter;
@@ -25,16 +17,11 @@ class TitleState extends OSAState
 	public var _blurCamBG:FlxCamera;
 	public var _blurCamFG:FlxCamera;
 
-	public var _playBtn:ClickableSprite;
-	public var _optionsBtn:ClickableSprite;
-	public var _creditsBtn:ClickableSprite;
-
 	override function create()
 	{
-		_tileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
+		_tileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true, 'credits');
 
-		_logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
-		_logo.screenCenter();
+		add(_tileScrollBG);
 
 		_blurFilterBG = new BlurFilter(_blurUnfocus, _blurUnfocus, 1);
 		_blurFilterFG = new BlurFilter(_blurFocus, _blurFocus, 1);
@@ -50,44 +37,7 @@ class TitleState extends OSAState
 		_blurCamBG.filters = [_blurFilterBG];
 		_blurCamFG.filters = [_blurFilterFG];
 
-		_tileScrollBG.camera = _blurCamBG;
-		_logo.camera = _blurCamFG;
-
-		add(_tileScrollBG);
-		add(_logo);
-
-		_playBtn = new ClickableSprite(0, 0, 'title/play'.menuAsset().imageFile());
-		_optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
-		_creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
-
-		for (btn in [_playBtn, _optionsBtn, _creditsBtn])
-		{
-			btn.scale.set(0.5, 0.5);
-
-			btn.updateHitbox();
-			btn.screenCenter();
-
-			btn.cameras = [_blurCamFG];
-
-			btn._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(btn, 0.6, 0.5));
-			btn._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
-		}
-
-		_playBtn.x = 128;
-		_optionsBtn.y = FlxG.height - _optionsBtn.height - (_playBtn.x / 4);
-		_creditsBtn.x = FlxG.width - _creditsBtn.width - _playBtn.x;
-
-		add(_playBtn);
-		add(_optionsBtn);
-		add(_creditsBtn);
-
-		_playBtn._onClick.add(onPlay);
-		_optionsBtn._onClick.add(onOptions);
-		_creditsBtn._onClick.add(onCredits);
-
-		_optionsBtn.shader = new GrayscaleShader(.75);
-
-		persistentUpdate = true;
+        _tileScrollBG.camera = _blurCamBG;
 
 		super.create();
 	}
@@ -124,19 +74,7 @@ class TitleState extends OSAState
 
 	function controls()
 	{
-		if (FlxG.keys.justPressed.SPACE)
+		if (FlxG.keys.justPressed.ESCAPE)
 			FlxG.switchState(() -> new TitleState());
-	}
-
-	function onPlay()
-	{
-		FlxG.switchState(() -> new VNState('intro'));
-	}
-
-	function onOptions() {}
-
-	function onCredits()
-	{
-		FlxG.switchState(() -> new CreditsState());
 	}
 }

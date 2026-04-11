@@ -10,9 +10,9 @@ class TileScrollBG extends FlxBackdrop
 
 	public var _debugModeInUse(default, null):Bool = false;
 
-	override public function new(velocity:FlxPoint, debugMode:Bool = false)
+	override public function new(velocity:FlxPoint, debugMode:Bool = false, ?suffix:String = '')
 	{
-		super('tile'.imageFile().menuAsset());
+		super('tile${(suffix != null && suffix.trim() != '') ? '-$suffix' : ''}'.imageFile().menuAsset());
 
 		this.velocity = velocity;
 

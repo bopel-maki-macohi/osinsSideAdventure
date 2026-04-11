@@ -45,8 +45,16 @@ class OSAState extends FlxUIState
 		#if debug
 		add(_watermark);
 		#end
+
+		#if DISABLE_TITLE_WATERMARK_BLUR
+		var regCam = new FlxCamera();
+		FlxG.cameras.add(regCam, false);
+		regCam.bgColor.alpha = 0;
+
+		_watermark.camera = regCam;
+		#end
 	}
-	
+
 	public static var TRANSITION_CAMERA:FlxCamera;
 
 	override function createTransition(data:TransitionData):Transition
