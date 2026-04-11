@@ -1,5 +1,6 @@
 package osa.visualnovel;
 
+import osa.menus.TitleState;
 import flixel.addons.ui.FlxUIState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
@@ -159,6 +160,8 @@ class VNState extends OSAState
 	public function onEnd()
 	{
 		trace('End');
+
+		FlxG.switchState(() -> new TitleState());
 	}
 
 	override function update(elapsed:Float)
