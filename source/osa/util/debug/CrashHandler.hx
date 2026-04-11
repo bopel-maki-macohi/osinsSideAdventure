@@ -121,16 +121,16 @@ class CrashHandler
 			for (field in stateFields)
 				try
 				{
-					errorMessage += '\n- $field : ${Std.string(Reflect?.field(FlxG.state, field)) ?? 'Unreceivable'}';
+					errorMessage += '\n    $field : ${Std.string(Reflect?.field(FlxG.state, field)) ?? 'Unreceivable'}';
 				}
 				catch (e)
 				{
-					errorMessage += '\n- $field : Unreceivable($e)';
+					errorMessage += '\n    $field : Unreceivable($e)';
 				}
 		}
 		else
 		{
-			errorMessage += '\n- No Special Fields';
+			errorMessage += '\n    No Special Fields';
 		}
 
 		errorMessage += '\n';
