@@ -1,5 +1,7 @@
 package osa.visualnovel;
 
+import flixel.FlxG;
+import flixel.FlxSprite;
 import lime.utils.Assets;
 import flixel.FlxState;
 
@@ -11,10 +13,10 @@ class VNState extends FlxState
 
 	function set__dialogueEntry(value:Int):Int
 	{
-        if (_dialogueList[value] == null)
-            return _dialogueEntry;
+		if (_dialogueList[value] == null)
+			return _dialogueEntry;
 
-        _dialogueLine._rawline =  _dialogueList[_dialogueEntry];
+		_dialogueLine._rawline = _dialogueList[_dialogueEntry];
 		return value;
 	}
 
@@ -25,8 +27,30 @@ class VNState extends FlxState
 		super();
 
 		_dialogueList = scene.parseDialogueFile();
-        _dialogueEntry = 0;
 
-        trace('Dialogue List: ${_dialogueList}');
+		trace('Dialogue List: ${_dialogueList}');
+	}
+
+	public var _dialogueBox:FlxSprite;
+
+	override function create()
+	{
+		super.create();
+
+		_dialogueBox = new FlxSprite();
+		_dialogueBox.makeGraphic(Math.round(FlxG.width * 0.9), Math.round(FlxG.height * 0.4));
+		_dialogueBox.screenCenter();
+		_dialogueBox.y = FlxG.height * 0.55;
+
+		add(_dialogueBox);
+
+		changeLine(0);
+	}
+
+	public function changeLine(increment:Int)
+	{
+		_dialogueEntry += increment;
+
+		_dialogueBox.visible = _dialogueLine._line != null;
 	}
 }
