@@ -40,6 +40,8 @@ class CreditsState extends OSAState
         _tileScrollBG.camera = _blurCamBG;
 
 		super.create();
+
+        persistentUpdate = true;
 	}
 
 	final _blurFocus:Float = 0;
