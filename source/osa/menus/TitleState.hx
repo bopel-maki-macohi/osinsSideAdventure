@@ -1,5 +1,6 @@
 package osa.menus;
 
+import osa.objects.ClickableSprite;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxMath;
 import flixel.FlxCamera;
@@ -21,6 +22,10 @@ class TitleState extends OSAState
 
 	public var _blurCamBG:FlxCamera;
 	public var _blurCamFG:FlxCamera;
+
+	public var _playBtn:ClickableSprite;
+	public var _optionsBtn:ClickableSprite;
+	public var _creditsBtn:ClickableSprite;
 
 	override function create()
 	{
@@ -47,6 +52,30 @@ class TitleState extends OSAState
 
 		add(_tileScrollBG);
 		add(_logo);
+
+		_playBtn = new ClickableSprite(0, 0, 'title/play'.menuAsset().imageFile());
+		_optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
+		_creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
+
+		for (btn in [_playBtn, _optionsBtn, _creditsBtn])
+		{
+			btn.scale.set(0.5, 0.5);
+			btn.updateHitbox();
+			btn.screenCenter();
+			btn.cameras = [_blurCamFG];
+		}
+
+		_playBtn.x = 128;
+		_optionsBtn.y = FlxG.height - _optionsBtn.height - (_playBtn.x / 4);
+		_creditsBtn.x = FlxG.width - _creditsBtn.width - _playBtn.x;
+
+		add(_playBtn);
+		add(_optionsBtn);
+		add(_creditsBtn);
+
+		_playBtn._onClick.add(onPlay);
+		_optionsBtn._onClick.add(onOptions);
+		_creditsBtn._onClick.add(onCredits);
 
 		persistentUpdate = true;
 
@@ -85,7 +114,14 @@ class TitleState extends OSAState
 			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurFocus, _blurFocusChangeSpeed);
 			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurFocus, _blurFocusChangeSpeed);
 
-			if (FlxG.keys.justPressed.SPACE) FlxG.switchState(() -> new TitleState());
+			if (FlxG.keys.justPressed.SPACE)
+				FlxG.switchState(() -> new TitleState());
 		}
 	}
+
+	function onPlay() {}
+
+	function onOptions() {}
+
+	function onCredits() {}
 }
