@@ -74,24 +74,12 @@ class CreditsSubState extends FlxSubState
 		_maki = new ClickableSprite(0, 0, 'credits/maki'.menuAsset().imageFile());
 		_maki._overlapUpdate.add(() -> setCreditText('Maki : Artist, Programmer'));
 
-		_creditText = new FlxText(0, 0, 0, '', 16);
-		_creditText.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
-
-		var dum = new ClickableSprite(0, 0, 'credits/maki'.menuAsset().imageFile());
-		dum._overlapUpdate.add(() -> setCreditText('NotMaki : Artist, Programmer'));
-
-		add(_maki);
-		add(dum);
-
-		add(_creditText);
-		_creditText.camera = TitleState.blurCamFG;
-
 		var x = 128.0;
 		var y = 128.0;
 
 		var yi = 0;
 
-		for (xi => obj in [_maki, dum])
+		for (xi => obj in [_maki])
 		{
 			obj.scale.set(.5, .5);
 			obj.updateHitbox();
@@ -116,8 +104,15 @@ class CreditsSubState extends FlxSubState
 			FlxTween.tween(obj, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
 				ease: FlxEase.sineInOut
 			});
-		}
 
-		// _maki.screenCenter();
+			add(obj);
+		}
+		_maki.screenCenter();
+
+		_creditText = new FlxText(0, 0, 0, '', 16);
+		_creditText.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
+		_creditText.camera = TitleState.blurCamFG;
+
+		add(_creditText);
 	}
 }
