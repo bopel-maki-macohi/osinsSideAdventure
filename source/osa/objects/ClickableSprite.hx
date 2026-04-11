@@ -27,7 +27,7 @@ class ClickableSprite extends FlxSprite
 	{
 		super.update(elapsed);
 
-		if (FlxG.mouse.overlaps(this))
+		if (FlxG.mouse.overlaps(this) && alpha > 0)
 		{
 			_overlapUpdate.dispatch();
 			if (FlxG.mouse.justPressed)
