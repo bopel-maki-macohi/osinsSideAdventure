@@ -132,6 +132,7 @@ class CrashHandler
 			errorMessage += '\n- No Special Fields';
 		}
 
+		errorMessage += '\nGame Version: ${FlxG.stage.application.meta.get('version')}';
 		errorMessage += '\n';
 		#if sys
 		errorMessage += '\nCrash log saved to: "$filename"';
