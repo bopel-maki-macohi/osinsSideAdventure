@@ -65,4 +65,13 @@ class OSAState extends FlxUIState
 
 		return defaultTransition;
 	}
+
+	override public function new(?TransIn:TransitionData, ?TransOut:TransitionData)
+	{
+		super(TransIn, TransOut);
+
+		_onExit = onExit;
+	}
+
+	function onExit() {}
 }

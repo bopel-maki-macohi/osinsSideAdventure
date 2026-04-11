@@ -25,17 +25,19 @@ class TitleState extends OSAState
 	public var _blurFilterBG:BlurFilter;
 	public var _blurFilterFG:BlurFilter;
 
-	public var _blurCamBG:FlxCamera;
-	public var _blurCamFG:FlxCamera;
+	public static var blurCamBG:FlxCamera;
+	public static var blurCamFG:FlxCamera;
 
 	public var _playBtn:ClickableSprite;
 	public var _optionsBtn:ClickableSprite;
 	public var _creditsBtn:ClickableSprite;
 
+	public static var bgScrolling:Bool = false;
+
 	override function create()
 	{
 		_titleTileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
-		
+
 		_creditsTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
 		_creditsTileScrollBG._tile = 'tile-credits'.menuAsset();
 		_creditsTileScrollBG.alpha = 0;
@@ -46,19 +48,19 @@ class TitleState extends OSAState
 		_blurFilterBG = new BlurFilter(_blurUnfocus, _blurUnfocus, 1);
 		_blurFilterFG = new BlurFilter(_blurFocus, _blurFocus, 1);
 
-		_blurCamBG = new FlxCamera();
-		FlxG.cameras.add(_blurCamBG);
+		blurCamBG = new FlxCamera();
+		FlxG.cameras.add(blurCamBG);
 
-		_blurCamFG = new FlxCamera();
-		FlxG.cameras.add(_blurCamFG);
-		_blurCamFG.bgColor.alpha = 0;
+		blurCamFG = new FlxCamera();
+		FlxG.cameras.add(blurCamFG);
+		blurCamFG.bgColor.alpha = 0;
 
-		_blurCamBG.filters = [_blurFilterBG];
-		_blurCamFG.filters = [_blurFilterFG];
+		blurCamBG.filters = [_blurFilterBG];
+		blurCamFG.filters = [_blurFilterFG];
 
-		_titleTileScrollBG.camera = _blurCamBG;
-		_creditsTileScrollBG.camera = _blurCamBG;
-		_logo.camera = _blurCamFG;
+		_titleTileScrollBG.camera = blurCamBG;
+		_creditsTileScrollBG.camera = blurCamBG;
+		_logo.camera = blurCamFG;
 
 		add(_titleTileScrollBG);
 		add(_creditsTileScrollBG);
@@ -75,7 +77,7 @@ class TitleState extends OSAState
 			btn.updateHitbox();
 			btn.screenCenter();
 
-			btn.cameras = [_blurCamFG];
+			btn.cameras = [blurCamFG];
 
 			btn._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(btn, 0.6, 0.5));
 			btn._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
@@ -99,10 +101,10 @@ class TitleState extends OSAState
 
 		for (obj in this.members)
 		{
-			if (obj.cameras.contains(_blurCamFG))
+			if (obj.cameras.contains(blurCamFG))
 			{
 				if (Reflect.field(obj, 'y') != null)
-					Reflect.setProperty(obj, 'y', Reflect.field(obj, 'y') - _blurCamFG.height / 10);
+					Reflect.setProperty(obj, 'y', Reflect.field(obj, 'y') - blurCamFG.height / 10);
 			}
 		}
 
@@ -117,14 +119,15 @@ class TitleState extends OSAState
 	{
 		super.update(elapsed);
 
-		if (_titleTileScrollBG._debugModeInUse)
+		bgScrolling = _titleTileScrollBG._debugModeInUse;
+		if (bgScrolling)
 		{
 			_blurFilterBG.blurX = FlxMath.lerp(_blurFilterBG.blurX, _blurFocus, _blurFocusChangeSpeed);
 			_blurFilterBG.blurY = FlxMath.lerp(_blurFilterBG.blurY, _blurFocus, _blurFocusChangeSpeed);
 
 			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurUnfocus, _blurFocusChangeSpeed);
 			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurUnfocus, _blurFocusChangeSpeed);
-			_blurCamFG.alpha = FlxMath.lerp(_blurCamFG.alpha, 0.15, _blurFocusChangeSpeed);
+			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 0.15, _blurFocusChangeSpeed);
 		}
 		else
 		{
@@ -133,7 +136,7 @@ class TitleState extends OSAState
 
 			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurFocus, _blurFocusChangeSpeed);
 			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurFocus, _blurFocusChangeSpeed);
-			_blurCamFG.alpha = FlxMath.lerp(_blurCamFG.alpha, 1, _blurFocusChangeSpeed);
+			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 1, _blurFocusChangeSpeed);
 
 			controls();
 		}
@@ -178,5 +181,12 @@ class TitleState extends OSAState
 
 		FlxTween.cancelTweensOf(_creditsTileScrollBG);
 		FlxTween.tween(_creditsTileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
+	}
+
+	override function onExit()
+	{
+		super.onExit();
+
+		bgScrolling = false;
 	}
 }
