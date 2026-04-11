@@ -1,5 +1,7 @@
 package osa;
 
+import flixel.FlxCamera;
+import flixel.addons.transition.Transition;
 import flixel.math.FlxPoint;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
 import flixel.graphics.FlxGraphic;
@@ -30,6 +32,10 @@ class OSAState extends FlxUIState
 
 	override function create()
 	{
+		TRANSITION_CAMERA = new FlxCamera();
+		FlxG.cameras.add(TRANSITION_CAMERA, false);
+		TRANSITION_CAMERA.bgColor.alpha = 0;
+
 		super.create();
 
 		_watermark = new FlxText(10, 10, FlxG.width, 'O.S.A. ${FlxG.stage.application.meta.get('version')}', 16);
@@ -39,5 +45,16 @@ class OSAState extends FlxUIState
 		#if debug
 		add(_watermark);
 		#end
+	}
+	
+	public static var TRANSITION_CAMERA:FlxCamera;
+
+	override function createTransition(data:TransitionData):Transition
+	{
+		final defaultTransition:Transition = super.createTransition(data);
+
+		defaultTransition.camera = TRANSITION_CAMERA;
+
+		return defaultTransition;
 	}
 }
