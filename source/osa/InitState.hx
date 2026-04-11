@@ -1,5 +1,6 @@
 package osa;
 
+import osa.util.debug.CrashHandler;
 import osa.save.Save;
 import flixel.graphics.FlxGraphic;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
@@ -38,6 +39,8 @@ class InitState extends OSAState
 	function actualInit()
 	{
 		Save.init();
+
+		CrashHandler.init();
 	}
 
 	function leave()

@@ -1,3 +1,6 @@
 package osa.util.debug;
 
-class CrashHandler {}
+class CrashHandler
+{
+	public static function init() {}
+}
