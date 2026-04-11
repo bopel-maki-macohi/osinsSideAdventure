@@ -31,6 +31,9 @@ class AssetUtil
 	public static inline function miscAsset(file:String):String
 		return assetPath('misc/$file');
 
+	public static inline function shaderFile(file:String):String
+		return assetPath('shaders/$file.frag');
+
 	public static inline function fileExists(file:String):Bool
 		return Assets.exists(file);
 

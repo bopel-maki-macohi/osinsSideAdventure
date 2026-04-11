@@ -1,5 +1,6 @@
 package osa.menus;
 
+import osa.shaders.GrayscaleShader;
 import osa.visualnovel.VNState;
 import osa.objects.ClickableSprite;
 import flixel.addons.ui.FlxUIState;
@@ -83,6 +84,8 @@ class TitleState extends OSAState
 		_playBtn._onClick.add(onPlay);
 		_optionsBtn._onClick.add(onOptions);
 		_creditsBtn._onClick.add(onCredits);
+
+		_creditsBtn.shader = _optionsBtn.shader = new GrayscaleShader(.75);
 
 		persistentUpdate = true;
 
