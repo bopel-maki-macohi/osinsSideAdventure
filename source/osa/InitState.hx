@@ -43,8 +43,10 @@ class InitState extends OSAState
 
 		if (msgs.length > 0)
 		{
-			line = msgs[FlxG.random.int(0, msgs.length - 1)].replace('--', '\n');
-			trace(line);
+			final baseline:String = msgs[FlxG.random.int(0, msgs.length - 1)];
+
+			trace(baseline);
+			line = baseline.replace('--', '\n');
 		}
 		else
 		{
