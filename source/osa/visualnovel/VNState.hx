@@ -39,6 +39,8 @@ class VNState extends OSAState
 	{
 		super();
 
+		if (!scene.dialogueAsset().textFile().fileExists()) scene = 'lorem';
+
 		_dialogueList = scene.parseDialogueFile();
 
 		trace('Dialogue List: ${_dialogueList}');

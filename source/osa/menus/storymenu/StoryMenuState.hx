@@ -1,5 +1,6 @@
 package osa.menus.storymenu;
 
+import osa.visualnovel.VNState;
 import flixel.FlxSprite;
 import osa.save.Save;
 import flixel.FlxG;
@@ -51,6 +52,9 @@ class StoryMenuState extends OSAState
 
 		if (FlxG.keys.justPressed.ESCAPE)
 			FlxG.switchState(() -> new TitleState());
+
+		if (FlxG.keys.justPressed.ENTER)
+			FlxG.switchState(() -> new VNState(_chapterDialogueFile));
 
 		if (FlxG.keys.anyJustPressed([A, LEFT]))
 			changeSelection(-1);
