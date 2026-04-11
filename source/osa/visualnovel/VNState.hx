@@ -70,11 +70,9 @@ class VNState extends OSAState
 
 		_dialogueText.setTypingVariation(0.75, true);
 		_dialogueText.skipKeys = ['SPACE'];
-		_dialogueText.sounds = [
-			FlxG.sound.load('type1'.visualNovelAsset().audioFile()),
-			FlxG.sound.load('type2'.visualNovelAsset().audioFile()),
-			FlxG.sound.load('type3'.visualNovelAsset().audioFile()),
-		];
+
+		for (s in ['type1', 'type2', 'type3'])
+			_dialogueText.sounds.push(FlxG.sound.load(s.visualNovelAsset().audioFile()));
 		_dialogueText.finishSounds = true;
 
 		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.visualNovelAsset().imageFile());
