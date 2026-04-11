@@ -34,6 +34,11 @@ class InitState extends OSAState
 	{
 		super.create();
 
+		#if !debug
+		add(_watermark);
+		#end
+		_watermark.screenCenter();
+
 		FlxG.switchState(() -> new TitleState());
 	}
 }
