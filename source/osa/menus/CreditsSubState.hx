@@ -63,7 +63,7 @@ class CreditsSubState extends FlxSubState
 		if (_currentSelection > _creditSprites.length - 1)
 			_currentSelection = 0;
 
-		_creditSprites.x = FlxMath.lerp(_creditSprites.x, _currentSelection * -256, 0.04);
+		_creditSprites.x = FlxMath.lerp(_creditSprites.x, _currentSelection * -256, 0.1);
 
 		for (credit in _creditSprites.members)
 		{
