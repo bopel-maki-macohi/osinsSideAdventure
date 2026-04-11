@@ -12,6 +12,8 @@ import flixel.FlxState;
 
 class VNState extends FlxState
 {
+	public static final FADEOUT_LETTER_SPEED:Float = 0.1;
+	
 	public var _dialogueList:Array<String> = [];
 
 	public var _dialogueEntry(default, set):Int = 0;
@@ -70,10 +72,8 @@ class VNState extends FlxState
 	{
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
-			final delay = 0.05;
-
-			FlxTween.tween(_dialogueBox, {alpha: 0}, _dialogueText.text.length * delay);
-			_dialogueText.erase(delay, true, null, () ->
+			FlxTween.tween(_dialogueBox, {alpha: 0}, _dialogueText.text.length * VNState.FADEOUT_LETTER_SPEED);
+			_dialogueText.erase(VNState.FADEOUT_LETTER_SPEED, true, null, () ->
 			{
 				onEnd();
 			});
