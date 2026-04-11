@@ -16,21 +16,13 @@ class InitState extends OSAState
 {
 	override public function new()
 	{
-		var transGraphic = FlxGraphic.fromClass(cast GraphicTransTileDiamond);
-		transGraphic.persist = true;
-		transGraphic.destroyOnNoUse = false;
+		FlxTransitionableState.defaultTransIn = OSAState.DEFAULT_TRANSITION;
+		FlxTransitionableState.defaultTransOut = OSAState.DEFAULT_TRANSITION;
 
-		FlxTransitionableState.defaultTransIn = new TransitionData(TILES, FlxColor.WHITE, .5, FlxPoint.get(0, -1), {
-			asset: transGraphic,
-			width: 32,
-			height: 32
-		},);
-		FlxTransitionableState.defaultTransOut = FlxTransitionableState.defaultTransIn;
+		final thisOutro = OSAState.DEFAULT_TRANSITION;
+		thisOutro.duration = 8;
 
-		super();
-
-		this.transIn.duration = 1;
-		this.transOut.duration = 1;
+		super(null, thisOutro);
 	}
 
 	override public function create()
