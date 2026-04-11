@@ -46,6 +46,10 @@ class InitState extends OSAState
 			line = msgs[FlxG.random.int(0, msgs.length - 1)].replace('--', '\n');
 			trace(line);
 		}
+		else
+		{
+			this.transOut.duration = this.transOut.duration / 4;
+		}
 
 		_watermark.text += '\n\n${line}';
 
