@@ -51,7 +51,13 @@ class OSASubState extends FlxSubState
 	function onClose()
 	{
 		if (this._parentState != null)
+		{
+			@:privateAccess
+			if (this._parentState._requestedSubState == null)
+				return;
+
 			this._parentState.visible = false;
+		}
 
 		final screenshot:BitmapData = BitmapData.fromImage(FlxG.stage.window.readPixels());
 
