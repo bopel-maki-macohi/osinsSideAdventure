@@ -25,6 +25,7 @@ class OSACache
 			{
 				sound.volume = 1 / 100;
 				sound.play(true);
+				sound.stop();
 			}
 			for (key => texture in tempCachedTextures)
 			{
