@@ -22,12 +22,11 @@ class HoldToPerformGadge extends FlxRadialGauge
 	public var _onComplete:Void->Void;
 	public var _condition:Void->Bool;
 
-	override public function new(condition:Void->Bool, ?onComplete:Void->Void)
+	override public function new(primaryColor:FlxColor, condition:Void->Bool, ?onComplete:Void->Void)
 	{
 		super();
 
-		makeShapeGraphic(CIRCLE, 40, 20, FlxColor.WHITE);
-		replaceColor(FlxColor.BLACK, 0x8AC5C4C4);
+		makeShapeGraphic(CIRCLE, 40, 20, primaryColor ?? FlxColor.WHITE);
 		amount = 0;
 
 		this._onComplete = onComplete;

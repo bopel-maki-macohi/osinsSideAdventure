@@ -116,7 +116,7 @@ class VNState extends OSAState
 		_eventManager = new EventManager();
 		_eventManager.onCreate();
 
-		_holdToExit = new HoldToPerformGadge(function()
+		_holdToExit = new HoldToPerformGadge(FlxColor.RED, function()
 		{
 			return FlxG.keys.pressed.SPACE;
 		}, function()
