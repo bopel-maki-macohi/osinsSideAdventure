@@ -1,5 +1,6 @@
 package osa.menus.storymenu;
 
+import osa.menus.title.TitleState;
 import osa.util.Constants;
 import flixel.math.FlxMath;
 import osa.objects.RhythmManager;

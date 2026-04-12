@@ -1,4 +1,4 @@
-package osa.menus.title.options;
+package osa.menus.title;
 
 import flixel.FlxG;
 
