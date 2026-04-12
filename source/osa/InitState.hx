@@ -96,7 +96,8 @@ class InitState extends OSAState
 				i++;
 			}
 
-			line = msg.line.join('\n');
+			if (msg != null)
+				line = msg.line.join('\n');
 		}
 		else
 		{
