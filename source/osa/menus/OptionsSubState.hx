@@ -18,6 +18,13 @@ class OptionsSubState extends TitleSubStateBase
 			{
 				Save.options.get().pcname = !Save.options.get().pcname;
 			}),
+			makeSprite('options/fpsCounter', function()
+			{
+				return 'FPS Counter (${getEnabledString(Save.options.get().fpsCounter)}) : Toggles the FPS Counter at the top left';
+			}, function()
+			{
+				Save.options.get().fpsCounter = !Save.options.get().fpsCounter;
+			}),
 		];
 	}
 

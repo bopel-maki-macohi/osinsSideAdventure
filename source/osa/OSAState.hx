@@ -42,6 +42,7 @@ class OSAState extends FlxUIState
 		_watermark = new FlxText(10, 10, FlxG.width, 'O.S.A. ${FlxG.stage.application.meta.get('version')}', 16);
 		_watermark.alignment = LEFT;
 		_watermark.color = FlxColor.WHITE;
+		_watermark.y = FlxG.height - _watermark.height;
 
 		#if debug
 		add(_watermark);

@@ -13,9 +13,11 @@ class Save
 		issues = new SaveField<Array<String>>('issues', []);
 		options = new SaveField<SaveOptions>('options', {
 			pcname: true,
+			fpsCounter: true,
 		});
 
 		options.get().pcname ??= true;
+		options.get().fpsCounter ??= true;
 
 		addIssue('issue1');
 		addIssue('issue2');
