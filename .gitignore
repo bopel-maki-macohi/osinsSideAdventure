@@ -1,7 +1,5 @@
 export/
 .haxelib/
+dev/vids/
 
 .DS_Store
-
-*.kdenlive
-*.mp4
