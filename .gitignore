@@ -1,5 +1,7 @@
 export/
 .haxelib/
+dump/
+
 dev/vids/
 
 .DS_Store
