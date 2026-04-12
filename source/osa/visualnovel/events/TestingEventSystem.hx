@@ -13,12 +13,12 @@ class TestingEventSystem extends EventRunner
 		char.build('osin');
 		eventManager.add(char);
 
-		FlxTween.tween(char, {y: 10}, LoremIpsum.piece.split(',')[0].length * VNState.FADEOUT_LETTER_SPEED, {
+		FlxTween.tween(char, {y: 10}, LoremIpsum.piece.split(',')[0].length * VNState.OUT_LETTER_SPEED, {
 			ease: FlxEase.sineInOut,
 			onComplete: t ->
 			{
 				_game.changeLine(1);
-				FlxTween.tween(char, {alpha: 0}, _game._dialogueLine._line.length * VNState.FADEOUT_LETTER_SPEED, {
+				FlxTween.tween(char, {alpha: 0}, _game._dialogueLine._line.length * VNState.OUT_LETTER_SPEED, {
 					ease: FlxEase.sineInOut,
 					onComplete: t ->
 					{

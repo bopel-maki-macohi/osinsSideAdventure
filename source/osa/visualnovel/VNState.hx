@@ -15,7 +15,8 @@ import flixel.FlxState;
 
 class VNState extends OSAState
 {
-	public static final FADEOUT_LETTER_SPEED:Float = 0.1;
+	public static final OUT_LETTER_SPEED:Float = 0.1;
+	public static final IN_LETTER_SPEED:Float = 0.03;
 
 	public static var instance:VNState;
 
@@ -125,7 +126,7 @@ class VNState extends OSAState
 	}
 
 	public function getTextFadeTime():Float
-		return _dialogueText.text.length * VNState.FADEOUT_LETTER_SPEED;
+		return _dialogueText.text.length * VNState.OUT_LETTER_SPEED;
 
 	public function changeLine(increment:Int)
 	{
@@ -143,7 +144,7 @@ class VNState extends OSAState
 				FlxTween.tween(object, {alpha: 0}, getTextFadeTime());
 			}
 
-			_dialogueText.erase(VNState.FADEOUT_LETTER_SPEED, true, null, onEnd);
+			_dialogueText.erase(VNState.OUT_LETTER_SPEED, true, null, onEnd);
 			return;
 		}
 
@@ -166,13 +167,13 @@ class VNState extends OSAState
 	function resetText()
 	{
 		_dialogueText.resetText(_dialogueLine?._line ?? '');
-		_dialogueText.start(0.03, false, false, null, onDialogueFinishTyping);
+		_dialogueText.start(IN_LETTER_SPEED, false, false, null, onDialogueFinishTyping);
 
 		_dialogueTypingFinished = false;
 		_dialogueContinueHand.visible = false;
 
 		if (_dialogueLine._line == null && !_dialogueLine._isEvent)
-			FlxTimer.wait(0.03 * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
+			FlxTimer.wait(IN_LETTER_SPEED * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
 	}
 
 	function buildBGAndCharacter()

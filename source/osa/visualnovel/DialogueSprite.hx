@@ -23,11 +23,11 @@ class DialogueSprite extends FlxSprite
 			return;
 
 		this._id = id;
-		alpha = 1;
+		visible = true;
 
 		if (id == null)
 		{
-			alpha = 0;
+			visible = false;
 			return;
 		}
 

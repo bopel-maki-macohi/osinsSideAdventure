@@ -12,6 +12,11 @@ import flixel.FlxCamera;
 
 class Chapter1Intro extends EventRunner
 {
+	override public function new()
+	{
+		super(SCENE('chapter1'));
+	}
+
 	override function update(eventManager:EventManager, elapsed:Float)
 	{
 		super.update(eventManager, elapsed);
@@ -45,7 +50,7 @@ class Chapter1Intro extends EventRunner
 				_osinFocus = false;
 			case 3:
 				_osinFocus = true;
-				FlxTimer.wait(VNState.FADEOUT_LETTER_SPEED * (_game._dialogueLine._line.length / 2), () ->
+				FlxTimer.wait(VNState.OUT_LETTER_SPEED * (_game._dialogueLine._line.length / 2), () ->
 				{
 					_game.changeLine(1);
 				});
@@ -90,7 +95,6 @@ class Chapter1Intro extends EventRunner
 			onUpdate: (t) ->
 			{
 				_game._dialogueTypingFinished = false;
-				_game._dialogueContinueHand.visible = false;
 			}
 		});
 	}

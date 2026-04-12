@@ -14,7 +14,7 @@ class EventRunner
 	function get__game():VNState
 		return VNState.instance;
 
-	public var _dialogueFileType:EventRunnerDialogueFile;
+	public var _dialogueFileType(default, null):EventRunnerDialogueFile;
 
 	public function new(dialogueFileType:EventRunnerDialogueFile)
 	{
