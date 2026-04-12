@@ -52,10 +52,10 @@ class StoryMenuState extends OSAState
 		_getYourAssUp.fadeOut(this.transOut.duration);
 	}
 
-	override function finishTransOut()
+	override function destroy()
 	{
-		super.finishTransOut();
-
+		super.destroy();
+		
 		_rhythmManager.reset();
 	}
 
@@ -71,7 +71,7 @@ class StoryMenuState extends OSAState
 	{
 		super.update(elapsed);
 
-		_rhythmManager._time = _getYourAssUp.time;
+		_rhythmManager._time += elapsed * RhythmManager.MS_PER_SEC;
 
 		if (FlxG.keys.justPressed.ESCAPE)
 			FlxG.switchState(() -> new TitleState());

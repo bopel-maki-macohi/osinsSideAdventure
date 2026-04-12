@@ -96,6 +96,14 @@ class OSAState extends FlxUIState
 			_rhythmManager.update();
 	}
 
+	override public function destroy()
+	{
+		super.destroy();
+
+		_rhythmManager._beatHit.remove(onBeatHit);
+		_rhythmManager._stepHit.remove(onStepHit);
+	}
+
 	public function onBeatHit(curBeat:Int) {}
 
 	public function onStepHit(curStep:Int) {}
