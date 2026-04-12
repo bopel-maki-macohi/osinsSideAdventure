@@ -152,7 +152,7 @@ class InitState extends OSAState
 
 		_watermark.screenCenter();
 
-		FlxTween.tween(_watermark, {alpha: 1}, this.transIn.duration);
+		FlxTween.tween(_watermark, {alpha: 1}, this.transIn.duration * 0.25);
 
 		if (msg?.specialCase != null)
 		{
@@ -166,7 +166,7 @@ class InitState extends OSAState
 			}
 		}
 
-		FlxTimer.wait(this.transIn.duration * 0.2, leave);
+		FlxTimer.wait(this.transIn.duration * 0.25, leave);
 	}
 
 	function piracy()
