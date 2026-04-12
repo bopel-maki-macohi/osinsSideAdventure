@@ -50,6 +50,14 @@ class VNState extends OSAState
 		_dialogueList = scene.parseDialogueFile();
 
 		trace('Dialogue List: ${_dialogueList}');
+
+		if (instance != null)
+		{
+			trace('NON-NULL VNSTATE INSTANCE');
+			instance = null;
+		}
+
+		instance = this;
 	}
 
 	public var _dialogueBox:FlxSprite;
@@ -102,14 +110,6 @@ class VNState extends OSAState
 		changeLine(0);
 
 		super.create();
-
-		if (instance != null)
-		{
-			trace('NON-NULL VNSTATE INSTANCE');
-			instance = null;
-		}
-
-		instance = this;
 	}
 
 	public function getTextFadeTime():Float
@@ -166,9 +166,14 @@ class VNState extends OSAState
 		_dialogueBG.build(_dialogueLine._bg);
 		_dialogueCharacter.build(_dialogueLine._character);
 
-		_dialogueCharacter.y = _dialogueBox.y + (_dialogueBox.height * 0.5) - _dialogueCharacter.height;
+		positionDialogueCharacter(_dialogueCharacter);
+	}
+
+	public function positionDialogueCharacter(character:DialogueSprite, dialogueBoxHeightPadding:Float = 0.1)
+	{
+		character.y = _dialogueBox.y + (_dialogueBox.height * dialogueBoxHeightPadding) - character.height;
 		if (!_dialogueBox.visible)
-			_dialogueCharacter.y = FlxG.height - _dialogueCharacter.height;
+			character.y = FlxG.height - character.height;
 	}
 
 	public var _dialogueTypingFinished:Bool = false;
@@ -176,14 +181,6 @@ class VNState extends OSAState
 	public function onDialogueFinishTyping()
 	{
 		_dialogueTypingFinished = true;
-
-		_dialogueContinueHand.visible = true;
-		_dialogueContinueHand.setPosition(_dialogueBox.x
-			+ _dialogueBox.width
-			- _dialogueContinueHand.width,
-			_dialogueBox.y
-			+ _dialogueBox.height
-			- _dialogueContinueHand.height);
 	}
 
 	public function onEnd()
@@ -200,5 +197,13 @@ class VNState extends OSAState
 
 		if (_dialogueTypingFinished && FlxG.keys.justPressed.ENTER)
 			changeLine(1);
+
+		_dialogueContinueHand.visible = _dialogueTypingFinished;
+		_dialogueContinueHand.setPosition(_dialogueBox.x
+			+ _dialogueBox.width
+			- _dialogueContinueHand.width,
+			_dialogueBox.y
+			+ _dialogueBox.height
+			- _dialogueContinueHand.height);
 	}
 }

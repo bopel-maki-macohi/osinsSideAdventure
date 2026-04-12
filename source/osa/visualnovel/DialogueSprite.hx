@@ -34,8 +34,14 @@ class DialogueSprite extends FlxSprite
 		{
 			switch (id)
 			{
-				case 'void':
+				case 'grayvoid', 'greyvoid':
+					makeGraphic(FlxG.width, FlxG.height, FlxColor.GRAY);
+
+				case 'whitevoid':
 					makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+
+				case 'void', 'blackvoid':
+					makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 
 				default:
 					loadGraphic('backgrounds/$id'.visualNovelAsset().imageFile());
