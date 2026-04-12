@@ -23,7 +23,8 @@ class OSACache
 		{
 			for (key => sound in tempCachedSound)
 			{
-				sound.loadEmbedded(key);
+				sound.volume = 1 / 100;
+				sound.play(true);
 			}
 			for (key => texture in tempCachedTextures)
 			{
