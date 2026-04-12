@@ -64,6 +64,9 @@ class EventManager extends FlxSpriteGroup
 	public function onCreate()
 		runOnEvents(event -> event.onCreate(this));
 
+	public function onEnd()
+		runOnEvents(event -> event.onEnd(this));
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);

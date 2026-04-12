@@ -28,4 +28,6 @@ class EventRunner
 	public function update(eventManager:EventManager, elapsed:Float) {}
 
 	public function onCreate(eventManager:EventManager) {}
+
+	public function onEnd(eventManager:EventManager) {}
 }

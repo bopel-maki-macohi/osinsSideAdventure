@@ -215,6 +215,8 @@ class VNState extends OSAState
 	{
 		trace('End');
 
+		_eventManager.onEnd();
+
 		instance = null;
 		FlxG.switchState(() -> new TitleState());
 	}
