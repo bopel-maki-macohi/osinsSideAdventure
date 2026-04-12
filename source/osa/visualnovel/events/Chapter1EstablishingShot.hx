@@ -17,7 +17,8 @@ class Chapter1EstablishingShot extends EventRunner
 
 		FlxG.sound.play('prowler'.miscAsset().audioFile(), 1.0, false, null, true, function()
 		{
-			_game.changeLine(1);
+			if (_game != null)
+				_game.changeLine(1);
 		});
 
 		_game.changeLine(1);

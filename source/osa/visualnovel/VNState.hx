@@ -125,11 +125,18 @@ class VNState extends OSAState
 		super.create();
 	}
 
-	public function getTextFadeTime():Float
+	public function getTextFadeOutTime():Float
+	{
+		if (_dialogueLine._line == null)
+			return VNState.OUT_LETTER_SPEED * 'Lorem Ip'.length;
+
 		return _dialogueText.text.length * VNState.OUT_LETTER_SPEED;
+	}
 
 	public function changeLine(increment:Int)
 	{
+		trace('ChangeLine planned');
+
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
 			for (object in [
@@ -141,10 +148,14 @@ class VNState extends OSAState
 			])
 			{
 				FlxTween.cancelTweensOf(object);
-				FlxTween.tween(object, {alpha: 0}, getTextFadeTime());
+				FlxTween.tween(object, {alpha: 0}, getTextFadeOutTime());
 			}
 
-			_dialogueText.erase(VNState.OUT_LETTER_SPEED, true, null, onEnd);
+			if (_dialogueLine._line != null)
+				_dialogueText.erase(VNState.OUT_LETTER_SPEED, true, null, onEnd);
+			else
+				FlxTimer.wait(getTextFadeOutTime(), onEnd);
+
 			return;
 		}
 
