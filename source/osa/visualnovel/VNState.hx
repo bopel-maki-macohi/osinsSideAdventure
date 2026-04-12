@@ -52,7 +52,7 @@ class VNState extends OSAState
 
 		_dialogueList = scene.parseDialogueFile();
 
-		trace('Dialogue List: ${_dialogueList}');
+		// trace('Dialogue List: ${_dialogueList}');
 
 		this._scene = scene;
 
