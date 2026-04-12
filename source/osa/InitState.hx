@@ -42,9 +42,9 @@ class InitState extends OSAState
 
 	function actualInit()
 	{
-		Save.init();
-
 		CrashHandler.init();
+		
+		Save.init();
 
 		ScreenshotPlugin.init();
 
