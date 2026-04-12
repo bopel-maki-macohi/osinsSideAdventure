@@ -54,11 +54,7 @@ class InitState extends OSAState
 
 		InitState.INITALIZED = true;
 
-		OSACache.permCacheSound('updog/get-your-ass-up'.audioFile().miscAsset());
-
-		OSACache.permCacheSound('type1'.audioFile().visualNovelAsset());
-		OSACache.permCacheSound('type2'.audioFile().visualNovelAsset());
-		OSACache.permCacheSound('type3'.audioFile().visualNovelAsset());
+		OSACache.performCaches();
 	}
 
 	function leave()
