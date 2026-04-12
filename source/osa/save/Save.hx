@@ -21,6 +21,8 @@ class Save
 
 		addIssue('issue1');
 		addIssue('issue2');
+
+		Main.FPSCounter.visible = options.get().fpsCounter;
 	}
 
 	public static function addIssue(issuefile:String)

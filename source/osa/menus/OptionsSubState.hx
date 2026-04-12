@@ -24,6 +24,7 @@ class OptionsSubState extends TitleSubStateBase
 			}, function()
 			{
 				Save.options.get().fpsCounter = !Save.options.get().fpsCounter;
+				Main.FPSCounter.visible = Save.options.get().fpsCounter;
 			}),
 		];
 	}
