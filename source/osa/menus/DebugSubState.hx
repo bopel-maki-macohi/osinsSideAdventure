@@ -1,5 +1,7 @@
 package osa.menus;
 
+import osa.save.Save;
+
 class DebugSubState extends TitleSubStateBase
 {
 	override public function new(onExit:Void->Void)
@@ -7,7 +9,8 @@ class DebugSubState extends TitleSubStateBase
 		super(onExit);
 
 		_spriteList = [
-			makeSprite('options/pcname', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
+			makeSprite('debug/default', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
+			makeSprite('debug/default', () -> return 'Log Save', () -> Save.logSaveData()),
 		];
 	}
 

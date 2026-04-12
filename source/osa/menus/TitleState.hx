@@ -165,6 +165,9 @@ class TitleState extends OSAState
 			controls();
 		}
 
+		if (FlxG.keys.justReleased.SEVEN && subState == null)
+			onSelectionClicked(_debugTileScrollBG, new DebugSubState(() -> onSelectionExited(_debugTileScrollBG)));
+
 		_debugTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_storymenuTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_creditsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
@@ -175,11 +178,6 @@ class TitleState extends OSAState
 	{
 		if (FlxG.keys.justPressed.SPACE && subState == null)
 			FlxG.switchState(() -> new TitleState());
-
-		if (FlxG.keys.justReleased.SEVEN)
-		{
-			onSelectionClicked(_debugTileScrollBG, new DebugSubState(() -> onSelectionExited(_debugTileScrollBG)));
-		}
 	}
 
 	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:OSASubState)
