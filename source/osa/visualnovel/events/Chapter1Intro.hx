@@ -1,5 +1,6 @@
 package osa.visualnovel.events;
 
+import flixel.util.FlxTimer;
 import osa.shaders.GrayscaleShader;
 import osa.util.Constants;
 import flixel.math.FlxMath;
@@ -9,11 +10,14 @@ import openfl.filters.BlurFilter;
 import flixel.FlxG;
 import flixel.FlxCamera;
 
-class Chapter1Script extends EventRunner
+class Chapter1Intro extends EventRunner
 {
 	override function update(eventManager:EventManager, elapsed:Float)
 	{
 		super.update(eventManager, elapsed);
+
+		if (_game._dialogueEntry > 4)
+			return;
 
 		if (_osinFocus)
 		{
@@ -39,6 +43,15 @@ class Chapter1Script extends EventRunner
 				_osinFocus = true;
 			case 2:
 				_osinFocus = false;
+			case 3:
+				_osinFocus = true;
+				FlxTimer.wait(VNState.FADEOUT_LETTER_SPEED * (_game._dialogueLine._line.length / 2), () ->
+				{
+					_game.changeLine(1);
+				});
+			case 4:
+				_game._dialogueCharacter.alpha = 1;
+				_game._dialogueCharacterGroup.remove(_tirok);
 		}
 	}
 
@@ -57,8 +70,8 @@ class Chapter1Script extends EventRunner
 
 		_tirok.x = _game._dialogueBox.x + _game._dialogueBox.width;
 
-		_game.positionDialogueCharacter(_tirok, 0);
-		_game.positionDialogueCharacter(_game._dialogueCharacter, 0);
+		_game.positionDialogueCharacter(_tirok);
+		_game.positionDialogueCharacter(_game._dialogueCharacter);
 
 		_game._dialogueCharacterGroup.insert(0, _tirok);
 
@@ -66,9 +79,11 @@ class Chapter1Script extends EventRunner
 			ease: FlxEase.sineIn,
 			onComplete: (t) ->
 			{
-				_tirok.build('chapter1/tirok-OHSHIT');
-				_game.positionDialogueCharacter(_tirok, 0);
-				_tirok.x = _game._dialogueBox.x;
+				_tirok.build('chapter1/tirok-OHSHIT', () ->
+				{
+					_game.positionDialogueCharacter(_tirok);
+					_tirok.x = _game._dialogueBox.x;
+				});
 
 				_game.changeLine(1);
 			},

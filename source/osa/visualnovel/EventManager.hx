@@ -7,7 +7,7 @@ class EventManager extends FlxSpriteGroup
 {
 	public static var events:Map<String, EventRunner> = [
 		'testingEventSystem' => new TestingEventSystem(NONE),
-		'chapter1Script' => new Chapter1Script(SCENE('chapter1')),
+		'chapter1Intro' => new Chapter1Intro(SCENE('chapter1')),
 	];
 
 	public function new()
