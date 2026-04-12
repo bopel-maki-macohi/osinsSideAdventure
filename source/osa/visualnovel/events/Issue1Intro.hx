@@ -73,7 +73,7 @@ class Issue1Intro extends EventRunner
 
 		_tirok.build('issue1/tirok-confused');
 
-		_tirok.x = _game._dialogueBox.x + _game._dialogueBox.width;
+		_tirok.x = FlxG.width + _tirok.width;
 
 		_game.positionDialogueCharacter(_tirok);
 		_game.positionDialogueCharacter(_game._dialogueCharacter);
