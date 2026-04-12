@@ -27,8 +27,12 @@ class StoryIssueSprite extends FlxSprite
 			loadGraphic('story/icons/$id'.menuAsset().imageFile());
 		else
 			loadGraphic('story/titles/$id'.menuAsset().imageFile());
+
+		scale.set(_baseScale, _baseScale);
 		screenCenter();
 	}
+
+	public var _baseScale:Float = 1.0;
 
 	override function toString():String
 	{

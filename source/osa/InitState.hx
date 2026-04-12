@@ -1,5 +1,6 @@
 package osa;
 
+import osa.objects.RhythmManager;
 import osa.menus.storymenu.StoryMenuState;
 import osa.visualnovel.VNState;
 import osa.util.MacroUtil;
@@ -40,6 +41,8 @@ class InitState extends OSAState
 		CrashHandler.init();
 
 		ScreenshotPlugin.init();
+
+		RhythmManager.instance = new RhythmManager();
 	}
 
 	function leave()

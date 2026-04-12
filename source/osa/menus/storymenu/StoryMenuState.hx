@@ -1,5 +1,8 @@
 package osa.menus.storymenu;
 
+import osa.util.Constants;
+import flixel.math.FlxMath;
+import osa.objects.RhythmManager;
 import osa.visualnovel.VNState;
 import flixel.FlxSprite;
 import osa.save.Save;
@@ -22,6 +25,9 @@ class StoryMenuState extends OSAState
 	{
 		_getYourAssUp = new FlxSound().loadEmbedded('updog/get-your-ass-up'.miscAsset().audioFile(), true);
 		_getYourAssUp.fadeIn(this.transIn.duration);
+
+		_rhythmManager.reset();
+		_rhythmManager._bpm = 110;
 
 		for (issue in Save.issues.get())
 			_issues.push(new StoryIssue('story/$issue'.menuAsset().textFile().readText()));
@@ -46,9 +52,26 @@ class StoryMenuState extends OSAState
 		_getYourAssUp.fadeOut(this.transOut.duration);
 	}
 
+	override function finishTransOut()
+	{
+		super.finishTransOut();
+
+		_rhythmManager.reset();
+	}
+
+	override function onBeatHit(curBeat:Int)
+	{
+		super.onBeatHit(curBeat);
+
+		_issueIcon.scale.set(_issueIcon._baseScale * 1.1, _issueIcon._baseScale * 1.1);
+		_issueTitle.scale.set(_issueTitle._baseScale * 1.1, _issueTitle._baseScale * 1.1);
+	}
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		_rhythmManager._time = _getYourAssUp.time;
 
 		if (FlxG.keys.justPressed.ESCAPE)
 			FlxG.switchState(() -> new TitleState());
@@ -60,6 +83,12 @@ class StoryMenuState extends OSAState
 			changeSelection(-1);
 		if (FlxG.keys.anyJustPressed([D, RIGHT]))
 			changeSelection(1);
+
+		_issueIcon.scale.x = FlxMath.lerp(_issueIcon.scale.x, _issueIcon._baseScale, Constants.DEFAULT_LERP_SPEED);
+		_issueIcon.scale.y = FlxMath.lerp(_issueIcon.scale.y, _issueIcon._baseScale, Constants.DEFAULT_LERP_SPEED);
+
+		_issueTitle.scale.x = FlxMath.lerp(_issueTitle.scale.x, _issueTitle._baseScale, Constants.DEFAULT_LERP_SPEED);
+		_issueTitle.scale.y = FlxMath.lerp(_issueTitle.scale.y, _issueTitle._baseScale, Constants.DEFAULT_LERP_SPEED);
 	}
 
 	function changeSelection(increment:Int)
