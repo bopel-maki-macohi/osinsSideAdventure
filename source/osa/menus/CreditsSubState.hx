@@ -46,12 +46,11 @@ class CreditsSubState extends FlxSubState
 		setCreditText('');
 
 		super.update(elapsed);
+		if (FlxG.keys.justPressed.ESCAPE)
+			close();
 
 		if (!TitleState.bgScrolling)
 		{
-			if (FlxG.keys.justPressed.ESCAPE)
-				close();
-
 			if (FlxG.keys.anyJustPressed([A, LEFT]))
 				_currentSelection--;
 			if (FlxG.keys.anyJustPressed([D, RIGHT]))
