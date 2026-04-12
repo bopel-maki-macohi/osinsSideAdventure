@@ -126,15 +126,18 @@ class CreditsSubState extends FlxSubState
 			obj.scale.set(.5, .5);
 			obj.updateHitbox();
 
-			obj.screenCenter();
-			obj.x += i * 256;
-
 			obj.ID = i;
 
 			obj._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
 			obj._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
 
 			_creditSprites.add(obj);
+		}
+
+		for (sprite in _creditSprites.members)
+		{
+			sprite.screenCenter();
+			sprite.x += sprite.ID * 256;
 		}
 
 		_creditText = new FlxText(0, 0, 0, '', 16);
