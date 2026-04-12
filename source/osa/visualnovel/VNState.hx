@@ -1,5 +1,6 @@
 package osa.visualnovel;
 
+import osa.objects.HoldToPerformGadge;
 import flixel.group.FlxSpriteGroup;
 import osa.menus.TitleState;
 import flixel.addons.ui.FlxUIState;
@@ -82,6 +83,8 @@ class VNState extends OSAState
 	public var _dialogueFGGroup:FlxSpriteGroup;
 	public var _dialogueUIGroup:FlxSpriteGroup;
 
+	public var _holdToExit:HoldToPerformGadge;
+
 	override function create()
 	{
 		add(_dialogueBGGroup = new FlxSpriteGroup());
@@ -113,17 +116,26 @@ class VNState extends OSAState
 		_eventManager = new EventManager();
 		_eventManager.onCreate();
 
+		_holdToExit = new HoldToPerformGadge(function()
+		{
+			return FlxG.keys.pressed.SPACE;
+		}, function()
+		{
+			FlxG.switchState(() -> new TitleState());
+		});
+
 		_dialogueBGGroup.add(_dialogueBG = new DialogueSprite(false));
 		_dialogueCharacterGroup.add(_dialogueCharacter = new DialogueSprite(true));
 		_dialogueBoxGroup.add(_dialogueBox);
 		_dialogueBoxGroup.add(_dialogueText);
 		_dialogueFGGroup.add(_eventManager);
 		_dialogueUIGroup.add(_dialogueContinueHand);
+		_dialogueUIGroup.add(_holdToExit);
 
 		changeLine(0);
 
 		super.create();
-		
+
 		FlxG.mouse.visible = false;
 	}
 
