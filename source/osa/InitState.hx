@@ -1,5 +1,7 @@
 package osa;
 
+import osa.data.SplashTextsData;
+import haxe.Json;
 import osa.objects.RhythmManager;
 import osa.menus.storymenu.StoryMenuState;
 import osa.visualnovel.VNState;
@@ -69,33 +71,22 @@ class InitState extends OSAState
 		FlxG.stage.application.window.title = _watermark.text;
 
 		var line:String = 'Have fun!';
-		var msgs:Array<String> = 'splashTexts'.miscAsset().textSplit();
+		
+		var msgs:SplashTextsData = Json.parse('splashTexts'.miscAsset().jsonFile().readText());
+		var msg:SplashTextData = null;
 
-		if (msgs.length > 0)
+		if (msgs.lines.length > 0)
 		{
-			final baseline:String = msgs[FlxG.random.int(0, msgs.length - 1)];
+			msg = msgs.lines[FlxG.random.int(0, msgs.lines.length - 1)];
 
-			trace(baseline);
-			line = baseline.replace('--', '\n');
+			line = msg.line.join('\n');
 		}
 		else
 		{
-			this.transOut.duration = this.transOut.duration / 4;
+			this.transOut.duration = this.transIn.duration;
 		}
 
-		var clearWatermark:Array<String> = [
-			'Hello.--Do you want to play with me?',
-			'Here I come!',
-			'April fools!--I rearranged your guts.',
-			'Written before TADC Episode 9 : Alan we are so fucked.',
-			'E-E-A-OO',
-			'I know what you are.',
-			'SO.--YOU COULDN\'T KEEP.--YOUR GOOFY,--LITTLE,--FUCKING MOUTH,--SHUT.',
-			'Am I...------Getting through?',
-			'She was 17 Scott.',
-		];
-
-		if (clearWatermark.contains(line.replace('\n', '--')))
+		if (msg != null && msg.clearWatermark)
 			_watermark.text = line;
 		else
 			_watermark.text += '\n\n${line}';

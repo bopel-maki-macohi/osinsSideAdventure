@@ -16,6 +16,9 @@ class AssetUtil
 	public static inline function audioFile(file:String):String
 		return '$file.wav';
 
+	public static inline function jsonFile(file:String):String
+		return '$file.json';
+
 	public static inline function visualNovelAsset(file:String):String
 		return assetPath('visualnovel/$file');
 
