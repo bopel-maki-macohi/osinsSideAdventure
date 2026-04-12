@@ -54,7 +54,11 @@ class InitState extends OSAState
 
 		InitState.INITALIZED = true;
 
-		FlxG.sound.load('updog/get-your-ass-up'.audioFile().miscAsset());
+		OSACache.permCacheSound('updog/get-your-ass-up'.audioFile().miscAsset());
+
+		OSACache.permCacheSound('type1'.audioFile().visualNovelAsset());
+		OSACache.permCacheSound('type2'.audioFile().visualNovelAsset());
+		OSACache.permCacheSound('type3'.audioFile().visualNovelAsset());
 	}
 
 	function leave()
