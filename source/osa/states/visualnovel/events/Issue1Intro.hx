@@ -66,7 +66,7 @@ class Issue1Intro extends EventRunner
 	{
 		super.runDialogueEvent(eventManager, params);
 
-		if (_game._scene != 'issue1')
+		if (_game._issue != 'issue1')
 			return;
 
 		_game.changeLine(1);

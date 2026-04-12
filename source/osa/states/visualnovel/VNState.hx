@@ -1,5 +1,6 @@
 package osa.states.visualnovel;
 
+import osa.states.transition.VNCacher;
 import osa.objects.HoldToPerformGadge;
 import flixel.group.FlxSpriteGroup;
 import osa.states.menus.TitleState;
@@ -38,23 +39,23 @@ class VNState extends OSAState
 
 	public var _dialogueLine(default, null):DialogueLine = new DialogueLine(null);
 
-	public var _scene(default, null):String = null;
+	public var _issue(default, null):String = null;
 
-	public function new(scene:String)
+	public function new(issue:String)
 	{
 		super();
 
-		if (!'dialogues/$scene'.visualNovelAsset().textFile().fileExists())
+		if (!'dialogues/$issue'.visualNovelAsset().textFile().fileExists())
 		{
-			trace('UNFOUND SCENE: $scene');
-			scene = 'lorem';
+			trace('UNFOUND SCENE: $issue');
+			issue = 'lorem';
 		}
 
-		_dialogueList = scene.parseDialogueFile();
+		_dialogueList = issue.parseDialogueFile();
 
 		// trace('Dialogue List: ${_dialogueList}');
 
-		this._scene = scene;
+		this._issue = issue;
 
 		if (instance != null)
 		{
@@ -240,7 +241,7 @@ class VNState extends OSAState
 		_eventManager.onEnd();
 
 		instance = null;
-		FlxG.switchState(() -> new TitleState('STORYMENU'));
+		FlxG.switchState(() -> new VNCacher(new TitleState('STORYMENU'), true, _issue));
 	}
 
 	override function update(elapsed:Float)

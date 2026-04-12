@@ -1,5 +1,6 @@
 package osa;
 
+import osa.states.transition.VNCacher;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import osa.data.SplashTextsData;
@@ -13,6 +14,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import osa.states.menus.TitleState;
 import flixel.FlxG;
 import osa.util.plugins.ScreenshotPlugin;
+import osa.states.OSAState;
 
 class InitState extends OSAState
 {
@@ -62,7 +64,7 @@ class InitState extends OSAState
 		var ENTER_VN = MacroUtil.getDefine('ENTER_VN');
 
 		if (ENTER_VN != null)
-			FlxG.switchState(() -> new VNState(ENTER_VN));
+			FlxG.switchState(() -> new VNCacher(new VNState(ENTER_VN), false, ENTER_VN));
 		else if (MacroUtil.isDefined('STORYMENU'))
 			FlxG.switchState(() -> new TitleState('STORYMENU'));
 		else if (MacroUtil.isDefined('CREDITS'))

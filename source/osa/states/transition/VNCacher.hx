@@ -1,0 +1,69 @@
+package osa.states.transition;
+
+import osa.states.visualnovel.DialogueSprite;
+import osa.states.visualnovel.DialogueLine;
+import flixel.FlxState;
+
+class VNCacher extends OSAState
+{
+	public var _targetState:FlxState;
+
+	public var _leaving:Bool;
+
+	public var _issue:String;
+
+	override public function new(targetState:FlxState, leaving:Bool, issue:String)
+	{
+		super();
+
+		this._targetState = targetState;
+
+		this._leaving = leaving;
+
+		this._issue = issue;
+	}
+
+	public var _imagePaths:Array<String> = [];
+
+	override function create()
+	{
+		super.create();
+
+		if (_leaving)
+		{
+			OSACache.clearTempTextureCache();
+		}
+		else
+		{
+			getImagePaths();
+
+			trace(_imagePaths);
+
+			for (key in _imagePaths)
+				OSACache.tempCacheTexture(key);
+		}
+	}
+
+	function getImagePaths()
+	{
+		var char:DialogueSprite = new DialogueSprite(true);
+		var bg:DialogueSprite = new DialogueSprite(false);
+
+		for (rawline in _issue.parseDialogueFile())
+		{
+			var line:DialogueLine = new DialogueLine(rawline);
+
+			if (line._isEvent)
+				continue;
+
+			char.build(line._character);
+			bg.build(line._bg);
+
+			if (!_imagePaths.contains(char?.graphic?.assetsKey))
+				_imagePaths.push(char?.graphic.assetsKey);
+
+			if (!_imagePaths.contains(bg?.graphic?.assetsKey))
+				_imagePaths.push(bg?.graphic.assetsKey);
+		}
+	}
+}

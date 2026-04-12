@@ -1,4 +1,4 @@
-package osa;
+package osa.states;
 
 import flixel.FlxState;
 import flixel.FlxSprite;

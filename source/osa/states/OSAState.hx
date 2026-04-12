@@ -1,4 +1,4 @@
-package osa;
+package osa.states;
 
 import osa.objects.RhythmManager;
 import flixel.FlxCamera;

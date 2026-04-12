@@ -56,7 +56,7 @@ class EventManager extends FlxSpriteGroup
 
 				case SCENE(s):
 					if (s != null)
-						if (s == VNState.instance?._scene)
+						if (s == VNState.instance?._issue)
 							f(event);
 
 				default:
