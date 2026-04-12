@@ -1,5 +1,6 @@
 package osa.menus;
 
+import osa.menus.options.OptionsSubState;
 import osa.util.Constants;
 import osa.menus.storymenu.StoryMenuState;
 import flixel.tweens.FlxEase;
@@ -21,6 +22,7 @@ class TitleState extends OSAState
 {
 	public var _titleTileScrollBG:TileScrollBG;
 	public var _creditsTileScrollBG:TileScrollBG;
+	public var _optionsTileScrollBG:TileScrollBG;
 
 	public var _logo:FlxSprite;
 
@@ -41,8 +43,12 @@ class TitleState extends OSAState
 		_titleTileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
 
 		_creditsTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
-		_creditsTileScrollBG._tile = 'tile-credits'.menuAsset();
+		_creditsTileScrollBG._tile = 'tile-tirok'.menuAsset();
 		_creditsTileScrollBG.alpha = 0;
+
+		_optionsTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
+		_optionsTileScrollBG._tile = 'tile-loroc'.menuAsset();
+		_optionsTileScrollBG.alpha = 0;
 
 		_logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
 		_logo.screenCenter();
@@ -62,10 +68,14 @@ class TitleState extends OSAState
 
 		_titleTileScrollBG.camera = blurCamBG;
 		_creditsTileScrollBG.camera = blurCamBG;
+		_optionsTileScrollBG.camera = blurCamBG;
+
 		_logo.camera = blurCamFG;
 
 		add(_titleTileScrollBG);
 		add(_creditsTileScrollBG);
+		add(_optionsTileScrollBG);
+
 		add(_logo);
 
 		_playBtn = new ClickableSprite(0, 0, 'title/play'.menuAsset().imageFile());
@@ -97,7 +107,7 @@ class TitleState extends OSAState
 		_optionsBtn._onClick.add(onOptions);
 		_creditsBtn._onClick.add(onCredits);
 
-		_optionsBtn.shader = new GrayscaleShader(.75);
+		// _optionsBtn.shader = new GrayscaleShader(.75);
 
 		persistentUpdate = true;
 
@@ -140,6 +150,7 @@ class TitleState extends OSAState
 		}
 
 		_creditsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
+		_optionsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 	}
 
 	function controls()
@@ -153,15 +164,19 @@ class TitleState extends OSAState
 		FlxG.switchState(() -> new StoryMenuState());
 	}
 
-	function onOptions() {}
+	function onOptions()
+	{
+		onSubStateEnter();
+
+		FlxTween.cancelTweensOf(_optionsTileScrollBG);
+		FlxTween.tween(_optionsTileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
+
+		openSubState(new OptionsSubState(onOptionsExit));
+	}
 
 	function onCredits()
 	{
-		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
-		{
-			FlxTween.cancelTweensOf(spr);
-			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
-		}
+		onSubStateEnter();
 
 		FlxTween.cancelTweensOf(_creditsTileScrollBG);
 		FlxTween.tween(_creditsTileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
@@ -169,16 +184,38 @@ class TitleState extends OSAState
 		openSubState(new CreditsSubState(onCreditsExit));
 	}
 
-	public function onCreditsExit()
+	function onSubStateEnter()
+	{
+		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
+		{
+			FlxTween.cancelTweensOf(spr);
+			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
+		}
+	}
+
+	function onSubStateExit()
 	{
 		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
+	}
+
+	public function onCreditsExit()
+	{
+		onSubStateExit();
 
 		FlxTween.cancelTweensOf(_creditsTileScrollBG);
 		FlxTween.tween(_creditsTileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
+	}
+
+	public function onOptionsExit()
+	{
+		onSubStateExit();
+
+		FlxTween.cancelTweensOf(_optionsTileScrollBG);
+		FlxTween.tween(_optionsTileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
 	}
 
 	override function onExit()
