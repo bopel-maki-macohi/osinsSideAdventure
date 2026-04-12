@@ -1,7 +1,7 @@
 package osa.visualnovel;
 
 import flixel.group.FlxSpriteGroup;
-import osa.menus.title.TitleState;
+import osa.menus.TitleState;
 import flixel.addons.ui.FlxUIState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;

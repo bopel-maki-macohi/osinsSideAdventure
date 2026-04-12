@@ -1,4 +1,4 @@
-package osa.menus.title;
+package osa.menus;
 
 import flixel.math.FlxMath;
 import flixel.FlxObject;
@@ -13,7 +13,7 @@ import flixel.FlxG;
 import flixel.FlxSubState;
 import flixel.addons.ui.FlxUISubState;
 
-class TitleSubStateBase extends FlxSubState
+class TitleSubStateBase extends OSASubState
 {
 	public var _onExit:Void->Void;
 
@@ -55,15 +55,10 @@ class TitleSubStateBase extends FlxSubState
 		if (!TitleState.bgScrolling)
 		{
 			if (FlxG.keys.anyJustPressed([A, LEFT]))
-				_currentSelection--;
+				changeSelection(-1);
 			if (FlxG.keys.anyJustPressed([D, RIGHT]))
-				_currentSelection++;
+				changeSelection(1);
 		}
-
-		if (_currentSelection < 0)
-			_currentSelection = _sprites.length - 1;
-		if (_currentSelection > _sprites.length - 1)
-			_currentSelection = 0;
 
 		_sprites.x = FlxMath.lerp(_sprites.x, _currentSelection * -256, 0.1);
 
@@ -85,12 +80,22 @@ class TitleSubStateBase extends FlxSubState
 		_text.y = FlxG.height - _text.height - 32;
 	}
 
+	public function changeSelection(increment:Int)
+	{
+		_currentSelection += increment;
+
+		if (_currentSelection < 0)
+			_currentSelection = _sprites.length - 1;
+		if (_currentSelection > _sprites.length - 1)
+			_currentSelection = 0;
+	}
+
 	public var _text:FlxText;
 
 	public function setText(text:String)
 		_text.text = text;
 
-	public function makeSprite(asset:String, optionText:Void->String, onClick:Void->Void):ClickableSprite
+	public function makeSprite(asset:String, optionText:Void->String, ?onClick:Void->Void):ClickableSprite
 	{
 		var credSpr:ClickableSprite = new ClickableSprite(0, 0, asset.menuAsset().imageFile());
 		credSpr._overlapUpdate.add(() -> setText((optionText == null) ? 'Unknown' : optionText()));
@@ -146,5 +151,7 @@ class TitleSubStateBase extends FlxSubState
 		add(_text);
 
 		FlxG.mouse.visible = false;
+
+		changeSelection(0);
 	}
 }

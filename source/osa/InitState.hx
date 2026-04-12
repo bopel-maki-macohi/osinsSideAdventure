@@ -3,13 +3,12 @@ package osa;
 import osa.data.SplashTextsData;
 import haxe.Json;
 import osa.objects.RhythmManager;
-import osa.menus.storymenu.StoryMenuState;
 import osa.visualnovel.VNState;
 import osa.util.MacroUtil;
 import osa.util.debug.CrashHandler;
 import osa.save.Save;
 import flixel.addons.transition.FlxTransitionableState;
-import osa.menus.title.TitleState;
+import osa.menus.TitleState;
 import flixel.FlxG;
 import osa.util.plugins.ScreenshotPlugin;
 
@@ -53,8 +52,6 @@ class InitState extends OSAState
 
 		if (ENTER_VN != null)
 			FlxG.switchState(() -> new VNState(ENTER_VN));
-		else if (MacroUtil.isDefined('STORYMENU'))
-			FlxG.switchState(() -> new StoryMenuState());
 		else
 			FlxG.switchState(() -> new TitleState());
 	}

@@ -1,8 +1,7 @@
-package osa.menus.title;
+package osa.menus;
 
 import flixel.FlxSubState;
 import osa.util.Constants;
-import osa.menus.storymenu.StoryMenuState;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import osa.shaders.GrayscaleShader;
@@ -103,8 +102,7 @@ class TitleState extends OSAState
 		add(_optionsBtn);
 		add(_creditsBtn);
 
-		_playBtn._onClick.add(onPlay);
-
+		_playBtn._onClick.add(() -> onSelectionClicked(null, new StoryMenuSubState(() -> onSelectionExited(null))));
 		_optionsBtn._onClick.add(() -> onSelectionClicked(_optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(_optionsTileScrollBG))));
 		_creditsBtn._onClick.add(() -> onSelectionClicked(_creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(_creditsTileScrollBG))));
 
@@ -160,12 +158,7 @@ class TitleState extends OSAState
 			FlxG.switchState(() -> new TitleState());
 	}
 
-	function onPlay()
-	{
-		FlxG.switchState(() -> new StoryMenuState());
-	}
-
-	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:FlxSubState)
+	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:OSASubState)
 	{
 		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
 		{
@@ -173,8 +166,11 @@ class TitleState extends OSAState
 			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
 		}
 
-		FlxTween.cancelTweensOf(tileScrollBG);
-		FlxTween.tween(tileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
+		if (tileScrollBG != null)
+		{
+			FlxTween.cancelTweensOf(tileScrollBG);
+			FlxTween.tween(tileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
+		}
 
 		openSubState(substate);
 	}
@@ -187,8 +183,11 @@ class TitleState extends OSAState
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
 
-		FlxTween.cancelTweensOf(tileScrollBG);
-		FlxTween.tween(tileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
+		if (tileScrollBG != null)
+		{
+			FlxTween.cancelTweensOf(tileScrollBG);
+			FlxTween.tween(tileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
+		}
 	}
 
 	override function onExit()

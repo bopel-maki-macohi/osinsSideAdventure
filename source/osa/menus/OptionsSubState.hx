@@ -1,8 +1,8 @@
-package osa.menus.title;
+package osa.menus;
 
 import flixel.FlxG;
 
-class CreditsSubState extends TitleSubStateBase
+class OptionsSubState extends TitleSubStateBase
 {
 	override public function new(onExit:Void->Void)
 	{
