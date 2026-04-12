@@ -81,7 +81,7 @@ class OSACache
 		trace('Perm cached texture: $key');
 
 		forceRender(texture);
-		
+
 		permCachedTextures.set(key, texture);
 		tempCachedTextures.set(key, texture);
 	}
@@ -107,7 +107,7 @@ class OSACache
 	{
 		var sprite:FlxSprite = new FlxSprite();
 		sprite.loadGraphic(graphic);
-		
+
 		sprite.draw();
 		graphic.bitmap?.getTexture(FlxG.stage.context3D);
 
@@ -121,6 +121,7 @@ class OSACache
 			if (permCachedTextures.exists(key))
 				continue;
 
+			trace('Cleared temp cached texture: $key');
 			tempCachedTextures.remove(key);
 			FlxG.bitmap.remove(texture);
 		}
@@ -133,8 +134,15 @@ class OSACache
 			if (permCachedSounds.exists(key))
 				continue;
 
+			trace('Cleared temp cached sound: $key');
 			tempCachedTextures.remove(key);
 			sound.close();
 		}
+	}
+
+	public static function clearTempCaches()
+	{
+		clearTempTextureCache();
+		clearTempSoundCache();
 	}
 }

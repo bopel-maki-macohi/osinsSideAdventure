@@ -34,7 +34,7 @@ class VNCacher extends OSAState
 
 		if (_leaving)
 		{
-			OSACache.clearTempTextureCache();
+			OSACache.clearTempCaches();
 		}
 		else
 		{
