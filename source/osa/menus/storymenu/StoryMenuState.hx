@@ -55,7 +55,7 @@ class StoryMenuState extends OSAState
 	override function destroy()
 	{
 		super.destroy();
-		
+
 		_rhythmManager.reset();
 	}
 
@@ -103,8 +103,8 @@ class StoryMenuState extends OSAState
 		_issueTitle.build(_issues[_currentSelection]._title);
 		_issueIcon.build(_issues[_currentSelection]._icon);
 
-		_issueIcon.x = _issueIcon.width * 2;
-		_issueTitle.x = FlxG.width - (_issueTitle.width * 2);
+		_issueIcon.x -= _issueIcon.width;
+		_issueTitle.x += _issueTitle.width;
 
 		_issueDialogueFile = _issues[_currentSelection]._dialoguefile;
 	}
