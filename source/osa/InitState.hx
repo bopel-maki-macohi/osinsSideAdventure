@@ -166,7 +166,7 @@ class InitState extends OSAState
 			}
 		}
 
-		FlxTimer.wait(this.transIn.duration * 2, leave);
+		FlxTimer.wait(this.transIn.duration * 0.2, leave);
 	}
 
 	function piracy()
