@@ -85,6 +85,8 @@ class Issue1Intro extends EventRunner
 			ease: FlxEase.sineIn,
 			onComplete: (t) ->
 			{
+				if (_game == null) return;
+				
 				_tirok.build('issue1/tirok-OHSHIT', () ->
 				{
 					_game.positionDialogueCharacter(_tirok);
@@ -95,7 +97,8 @@ class Issue1Intro extends EventRunner
 			},
 			onUpdate: (t) ->
 			{
-				_game._dialogueTypingFinished = false;
+				if (_game != null)
+					_game._dialogueTypingFinished = false;
 			}
 		});
 	}
