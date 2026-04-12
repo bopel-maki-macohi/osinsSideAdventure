@@ -202,8 +202,13 @@ class VNState extends OSAState
 		_dialogueTypingFinished = false;
 		_dialogueContinueHand.visible = false;
 
-		if (_dialogueLine._line == null && (!_dialogueLine._isEvent && _ranEvent))
+		if (_dialogueLine._line == null)
+		{
+			if (_dialogueLine._isEvent && _ranEvent)
+				return;
+
 			FlxTimer.wait(IN_LETTER_SPEED * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
+		}
 	}
 
 	function buildBGAndCharacter()
@@ -218,7 +223,9 @@ class VNState extends OSAState
 
 	public function positionDialogueCharacter(character:DialogueSprite, ?dialogueBoxHeightPadding:Null<Float>)
 	{
-		character.y = _dialogueBox.y + (_dialogueBox.height * (dialogueBoxHeightPadding ?? _dialogueBoxHeightPadding ?? DEFAULT_DIALOGUEBOX_HEIGHT_PADDING)) - character.height;
+		character.y = _dialogueBox.y
+			+ (_dialogueBox.height * (dialogueBoxHeightPadding ?? _dialogueBoxHeightPadding ?? DEFAULT_DIALOGUEBOX_HEIGHT_PADDING))
+			- character.height;
 		if (!_dialogueBox.visible)
 			character.y = FlxG.height - character.height;
 	}
