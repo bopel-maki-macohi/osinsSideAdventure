@@ -1,5 +1,6 @@
 package osa.menus;
 
+import flixel.util.FlxTimer;
 import flixel.FlxSubState;
 import osa.util.Constants;
 import flixel.tweens.FlxEase;
@@ -149,30 +150,29 @@ class TitleState extends OSAState
 
 		super.create();
 
-		var executedTSFunc:Bool = false;
+		var TSFunc:Void->Void = null;
 
 		switch (_targetState?.toLowerCase())
 		{
 			case 'storymenu':
-				executedTSFunc = true;
-				_storymenuBtn._onClick.dispatch();
+				TSFunc = () -> _storymenuBtn._onClick.dispatch();
 			case 'credits':
-				executedTSFunc = true;
-				_creditsBtn._onClick.dispatch();
+				TSFunc = () -> _creditsBtn._onClick.dispatch();
 			case 'optionsmenu':
-				executedTSFunc = true;
-				_optionsBtn._onClick.dispatch();
+				TSFunc = () -> _optionsBtn._onClick.dispatch();
 			case 'debugmenu':
-				executedTSFunc = true;
-				debugSubState();
+				TSFunc = debugSubState;
 		}
 
-		if (executedTSFunc)
+		if (TSFunc != null)
 		{
 			for (obj in [_storymenuBtn, _optionsBtn, _creditsBtn, _logo, _titleTileScrollBG,])
-			{
 				obj.alpha = 0;
-			}
+
+			FlxTimer.wait(transIn.duration, () ->
+			{
+				TSFunc();
+			});
 		}
 	}
 
