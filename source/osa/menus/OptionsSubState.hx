@@ -1,5 +1,6 @@
 package osa.menus;
 
+import osa.save.Save;
 import flixel.FlxG;
 
 class OptionsSubState extends TitleSubStateBase
@@ -9,11 +10,17 @@ class OptionsSubState extends TitleSubStateBase
 		super(onExit);
 
 		_spriteList = [
-			makeSprite('credits/maki', () -> return 'Maki : Artist, Programmer', () -> FlxG.openURL('https://github.com/bopel-maki-macohi')),
-			makeSprite('credits/pogo', () -> return 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)',
-				() -> FlxG.openURL('https://www.youtube.com/watch?v=aDTAem9_Yws')),
-			makeSprite('credits/virtuguy', () -> return 'VirtuGuy : WTFEngine and it\'s conductor source code',
-				() -> FlxG.openURL('https://github.com/VirtuGuy'))
+			makeSprite('options/pcname', function()
+			{
+				return
+					'PC Name (${getEnabledString(Save.options.get().pcname)}) : Toggles if your pc name should / can be shown AT ALL.\n\nCurrently only used in the splash texts if you\'re curious as to why this is an option';
+			}, function()
+			{
+				Save.options.get().pcname = !Save.options.get().pcname;
+			}),
 		];
 	}
+
+	public static function getEnabledString(value:Bool):String
+		return value ? 'Enabled' : 'Disabled';
 }
