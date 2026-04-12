@@ -17,8 +17,8 @@ class TestingEventSystem extends EventRunner
 			ease: FlxEase.sineInOut,
 			onComplete: t ->
 			{
-				game.changeLine(1);
-				FlxTween.tween(char, {alpha: 0}, game._dialogueLine._line.length * VNState.FADEOUT_LETTER_SPEED, {
+				_game.changeLine(1);
+				FlxTween.tween(char, {alpha: 0}, _game._dialogueLine._line.length * VNState.FADEOUT_LETTER_SPEED, {
 					ease: FlxEase.sineInOut,
 					onComplete: t ->
 					{

@@ -11,26 +11,19 @@ import flixel.FlxCamera;
 
 class Chapter1Script extends EventRunner
 {
-	public var _tirokGrayscale:GrayscaleShader;
-	public var _osinGrayscale:GrayscaleShader;
-
-	override function onCreate(eventManager:EventManager)
-	{
-		super.onCreate(eventManager);
-
-		_tirokGrayscale = new GrayscaleShader(1);
-		_osinGrayscale = new GrayscaleShader(0);
-	}
-
 	override function update(eventManager:EventManager, elapsed:Float)
 	{
 		super.update(eventManager, elapsed);
 
 		if (_osinFocus)
 		{
+			_game._dialogueCharacter.alpha = FlxMath.lerp(_game._dialogueCharacter.alpha, 1, Constants.DEFAULT_LERP_SPEED);
+			_tirok.alpha = FlxMath.lerp(_tirok.alpha, 0.4, Constants.DEFAULT_LERP_SPEED);
 		}
 		else
 		{
+			_game._dialogueCharacter.alpha = FlxMath.lerp(_game._dialogueCharacter.alpha, 0.4, Constants.DEFAULT_LERP_SPEED);
+			_tirok.alpha = FlxMath.lerp(_tirok.alpha, 1, Constants.DEFAULT_LERP_SPEED);
 		}
 	}
 
@@ -40,7 +33,7 @@ class Chapter1Script extends EventRunner
 	{
 		super.continueLine(eventManager);
 
-		switch (game._dialogueEntry)
+		switch (_game._dialogueEntry)
 		{
 			case 0, 1:
 				_osinFocus = true;
@@ -49,39 +42,40 @@ class Chapter1Script extends EventRunner
 		}
 	}
 
+	public var _tirok:DialogueSprite = new DialogueSprite(true);
+
 	override public function runDialogueEvent(eventManager:EventManager)
 	{
 		super.runDialogueEvent(eventManager);
 
-		if (game._scene != 'chapter1')
+		if (_game._scene != 'chapter1')
 			return;
 
-		game.changeLine(1);
+		_game.changeLine(1);
 
-		var tirok:DialogueSprite = new DialogueSprite(true);
-		tirok.build('chapter1/tirok-confused');
+		_tirok.build('chapter1/tirok-confused');
 
-		tirok.x = game._dialogueBox.x + game._dialogueBox.width;
+		_tirok.x = _game._dialogueBox.x + _game._dialogueBox.width;
 
-		game.positionDialogueCharacter(tirok, 0);
-		game.positionDialogueCharacter(game._dialogueCharacter, 0);
+		_game.positionDialogueCharacter(_tirok, 0);
+		_game.positionDialogueCharacter(_game._dialogueCharacter, 0);
 
-		game._dialogueCharacterGroup.insert(0, tirok);
+		_game._dialogueCharacterGroup.insert(0, _tirok);
 
-		FlxTween.tween(tirok, {x: game._dialogueBox.x}, 10, {
+		FlxTween.tween(_tirok, {x: _game._dialogueBox.x}, 10, {
 			ease: FlxEase.sineIn,
 			onComplete: (t) ->
 			{
-				tirok.build('chapter1/tirok-OHSHIT');
-				game.positionDialogueCharacter(tirok, 0);
-				tirok.x = game._dialogueBox.x;
+				_tirok.build('chapter1/tirok-OHSHIT');
+				_game.positionDialogueCharacter(_tirok, 0);
+				_tirok.x = _game._dialogueBox.x;
 
-				game.changeLine(1);
+				_game.changeLine(1);
 			},
 			onUpdate: (t) ->
 			{
-				game._dialogueTypingFinished = false;
-				game._dialogueContinueHand.visible = false;
+				_game._dialogueTypingFinished = false;
+				_game._dialogueContinueHand.visible = false;
 			}
 		});
 	}

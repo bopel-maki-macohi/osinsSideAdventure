@@ -9,9 +9,9 @@ enum EventRunnerDialogueFile
 
 class EventRunner
 {
-	public var game(get, never):VNState;
+	public var _game(get, never):VNState;
 
-	function get_game():VNState
+	function get__game():VNState
 		return VNState.instance;
 
 	public var _dialogueFileType:EventRunnerDialogueFile;
