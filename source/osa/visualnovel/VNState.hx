@@ -123,6 +123,7 @@ class VNState extends OSAState
 		{
 			FlxG.switchState(() -> new TitleState());
 		});
+		_holdToExit.setPosition(FlxG.width - _holdToExit.width - 32, FlxG.height - _holdToExit.height - 32);
 
 		_dialogueBGGroup.add(_dialogueBG = new DialogueSprite(false));
 		_dialogueCharacterGroup.add(_dialogueCharacter = new DialogueSprite(true));
