@@ -2,4 +2,6 @@ export/
 .haxelib/
 
 .DS_Store
+
 *.kdenlive
+*.mp4
