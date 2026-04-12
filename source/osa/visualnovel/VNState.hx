@@ -121,7 +121,7 @@ class VNState extends OSAState
 			return FlxG.keys.pressed.SPACE;
 		}, function()
 		{
-			FlxG.switchState(() -> new TitleState());
+			onEnd();
 		});
 		_holdToExit.setPosition(FlxG.width - _holdToExit.width - 32, FlxG.height - _holdToExit.height - 32);
 
@@ -240,7 +240,7 @@ class VNState extends OSAState
 		_eventManager.onEnd();
 
 		instance = null;
-		FlxG.switchState(() -> new TitleState());
+		FlxG.switchState(() -> new TitleState('STORYMENU'));
 	}
 
 	override function update(elapsed:Float)
