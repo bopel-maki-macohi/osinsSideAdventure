@@ -1,4 +1,4 @@
-setDialogueBoxHeightPadding;0.1
+event_setDialogueBoxHeightPadding;0.1
 _;_;issue2-establishingshot
 
 event_setDialogueSpeed;0.1
