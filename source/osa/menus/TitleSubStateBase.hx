@@ -145,6 +145,11 @@ class TitleSubStateBase extends OSASubState
 		_text = new FlxText(0, 0, 0, '', 16);
 		_text.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		_text.camera = TitleState.blurCamFG;
+		_text.alpha = 0;
+
+		FlxTween.tween(_text, {alpha: 0}, OSAState.DEFAULT_TRANSITION.duration, {
+			ease: FlxEase.sineInOut
+		});
 
 		add(_sprites);
 		add(_text);
