@@ -1,5 +1,6 @@
 package osa.menus;
 
+import flixel.FlxG;
 import osa.save.Save;
 
 class DebugSubState extends TitleSubStateBase
@@ -11,6 +12,9 @@ class DebugSubState extends TitleSubStateBase
 		_spriteList = [
 			makeSprite('debug/default', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
 			makeSprite('debug/default', () -> return 'Log Save', () -> Save.logSaveData()),
+			makeSprite('debug/default', () -> return 'Reset Game', () -> FlxG.resetGame()),
+			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new InitState())),
+			makeSprite('debug/default', () -> return 'Go to Github Page', () -> FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure')),
 		];
 	}
 

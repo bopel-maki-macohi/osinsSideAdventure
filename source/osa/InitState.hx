@@ -14,6 +14,8 @@ import osa.util.plugins.ScreenshotPlugin;
 
 class InitState extends OSAState
 {
+	public static var INITALIZED:Bool = false;
+
 	override public function new()
 	{
 		FlxTransitionableState.defaultTransIn = OSAState.DEFAULT_TRANSITION;
@@ -30,7 +32,8 @@ class InitState extends OSAState
 	{
 		super.create();
 
-		actualInit();
+		if (!InitState.INITALIZED)
+			actualInit();
 
 		splashWatermark();
 	}
@@ -44,6 +47,8 @@ class InitState extends OSAState
 		ScreenshotPlugin.init();
 
 		RhythmManager.instance = new RhythmManager();
+
+		InitState.INITALIZED = true;
 	}
 
 	function leave()
