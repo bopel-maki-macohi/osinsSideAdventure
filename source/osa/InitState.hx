@@ -8,6 +8,7 @@ import osa.save.Save;
 import flixel.addons.transition.FlxTransitionableState;
 import osa.menus.TitleState;
 import flixel.FlxG;
+import osa.util.plugins.ScreenshotPlugin;
 
 class InitState extends OSAState
 {
@@ -37,6 +38,8 @@ class InitState extends OSAState
 		Save.init();
 
 		CrashHandler.init();
+
+		ScreenshotPlugin.init();
 	}
 
 	function leave()

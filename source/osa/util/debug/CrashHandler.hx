@@ -84,7 +84,7 @@ class CrashHandler
 				currentState = Type.getClassName(currentStateCls) ?? 'No state loaded';
 		}
 
-		final filename:String = '$CRASH_DIRECTORY/${getTimestamp()}.txt';
+		final filename:String = '$CRASH_DIRECTORY/${Constants.getTimestamp()}.txt';
 
 		errorMessage += '\nGame Version: ${FlxG.stage.application.meta.get('version')}';
 		errorMessage += '\nCurrent State: ${currentState}';
@@ -161,15 +161,5 @@ class CrashHandler
 		#else
 		trace('[CRASHHANDLER] $message');
 		#end
-	}
-
-	static function getTimestamp():String
-	{
-		final dateNow:Date = Date.now();
-
-		final seconds:Float = dateNow.getTime() / 1000;
-		final date:String = '${dateNow.getMonth()}-${dateNow.getDate()}-${dateNow.getFullYear()}';
-
-		return '${date}_${seconds}';
 	}
 }

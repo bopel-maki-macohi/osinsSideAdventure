@@ -25,6 +25,8 @@
 	-->
 	<haxedef name="lime_disable_assets_version"/>
 
+	<define name="SCREENSHOT_PLUGIN" if="debug" />
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
