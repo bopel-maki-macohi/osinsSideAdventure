@@ -25,15 +25,15 @@ class InitState extends OSAState
 		if (!MacroUtil.isDefined('SKIP_SPLASH'))
 			thisOutro.duration = 8;
 
-		super(null, thisOutro);
+		super(thisOutro, thisOutro);
 	}
 
 	override public function create()
 	{
-		super.create();
-
 		if (!InitState.INITALIZED)
 			actualInit();
+
+		super.create();
 
 		splashWatermark();
 	}
