@@ -76,7 +76,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		for (i => sprite in _sprites.members)
 		{
-			final scale = 0.6 + (i / 10);
+			final scale = 0.6 + (i / 100);
 
 			sprite.scale.set(scale, scale);
 		}
