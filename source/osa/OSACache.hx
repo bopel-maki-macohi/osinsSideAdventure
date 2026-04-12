@@ -1,5 +1,6 @@
 package osa;
 
+import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.graphics.FlxGraphic;
 import openfl.Assets;
@@ -78,6 +79,8 @@ class OSACache
 
 		texture.persist = true;
 		trace('Perm cached texture: $key');
+
+		forceRender(texture);
 		
 		permCachedTextures.set(key, texture);
 		tempCachedTextures.set(key, texture);
@@ -94,8 +97,21 @@ class OSACache
 
 		texture.destroyOnNoUse = true;
 		trace('Temp cached texture: $key');
-		
+
+		forceRender(texture);
+
 		tempCachedTextures.set(key, texture);
+	}
+
+	public static function forceRender(graphic:FlxGraphic)
+	{
+		var sprite:FlxSprite = new FlxSprite();
+		sprite.loadGraphic(graphic);
+		
+		sprite.draw();
+		graphic.bitmap?.getTexture(FlxG.stage.context3D);
+
+		sprite.destroy();
 	}
 
 	public static function clearTempTextureCache()
@@ -106,7 +122,7 @@ class OSACache
 				continue;
 
 			tempCachedTextures.remove(key);
-			texture.destroy();
+			FlxG.bitmap.remove(texture);
 		}
 	}
 
