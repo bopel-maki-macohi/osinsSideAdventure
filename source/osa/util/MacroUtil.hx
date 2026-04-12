@@ -21,5 +21,5 @@ class MacroUtil
 	}
 
 	public static macro function getUSR()
-		return macro $v{#if windows Sys.environment()["USERNAME"] #elseif (linux || macos) return Sys.environment()["USER"] #end};
+		return macro $v{#if windows Sys.environment()["USERNAME"] #elseif (linux || macos) return Sys.environment()["USER"] #else 'Browser' #end};
 }
