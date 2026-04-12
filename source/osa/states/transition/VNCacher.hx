@@ -1,5 +1,8 @@
 package osa.states.transition;
 
+import osa.states.menus.TitleState;
+import flixel.FlxG;
+import flixel.util.FlxTimer;
 import osa.states.visualnovel.DialogueSprite;
 import osa.states.visualnovel.DialogueLine;
 import flixel.FlxState;
@@ -42,6 +45,11 @@ class VNCacher extends OSAState
 			for (key in _imagePaths)
 				OSACache.tempCacheTexture(key);
 		}
+
+		if (_targetState == null)
+			FlxG.switchState(() -> new TitleState('STORYMENU'));
+		else
+			FlxG.switchState(() -> _targetState);
 	}
 
 	function getImagePaths()
