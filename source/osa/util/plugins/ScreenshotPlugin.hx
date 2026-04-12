@@ -32,7 +32,7 @@ class ScreenshotPlugin extends FlxBasic
 		#if SCREENSHOT_PLUGIN
 		#if sys
 		if (!sys.FileSystem.exists(ScreenshotPlugin.SCREENSHOT_FOLDER))
-			sys.FileSystem.createDirectory(Constants.SCREENSHOT_FOLDER);
+			sys.FileSystem.createDirectory(ScreenshotPlugin.SCREENSHOT_FOLDER);
 		#end
 
 		FlxG.plugins.addPlugin(new ScreenshotPlugin());
@@ -52,7 +52,7 @@ class ScreenshotPlugin extends FlxBasic
 			final screenshot:BitmapData = BitmapData.fromImage(FlxG.stage.window.readPixels());
 			final bytes:ByteArray = screenshot.encode(screenshot.rect, new PNGEncoderOptions());
 
-			final path = '${Constants.FOLDER_SCREENSHOTS}/screenshot_${Constants.getTimestamp()}.png';
+			final path = '${ScreenshotPlugin.FOLDER_SCREENSHOTS}/screenshot_${Constants.getTimestamp()}.png';
 
 			sys.io.File.saveBytes(path, bytes);
 			trace('Saved screenshot to $path');
