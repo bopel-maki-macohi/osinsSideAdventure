@@ -172,8 +172,10 @@ class VNState extends OSAState
 		buildBGAndCharacter();
 
 		_eventManager.continueLine();
-		_eventManager.runDialogueEvent(_dialogueLine._event);
+		_ranEvent = _eventManager.runDialogueEvent(_dialogueLine._event);
 	}
+
+	public var _ranEvent:Bool = false;
 
 	function resetText()
 	{
@@ -183,7 +185,7 @@ class VNState extends OSAState
 		_dialogueTypingFinished = false;
 		_dialogueContinueHand.visible = false;
 
-		if (_dialogueLine._line == null && !_dialogueLine._isEvent)
+		if (_dialogueLine._line == null && (!_dialogueLine._isEvent && _ranEvent))
 			FlxTimer.wait(IN_LETTER_SPEED * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
 	}
 

@@ -7,9 +7,8 @@ class EventManager extends FlxSpriteGroup
 {
 	public static var events:Map<String, EventRunner> = [
 		'testingEventSystem' => new TestingEventSystem(NONE),
-
-		'chapter1Intro' => new Chapter1Intro(),
-		'chapter1EstablishingShot' => new Chapter1EstablishingShot(),
+		'issue1Intro' => new Issue1Intro(),
+		'issue1EstablishingShot' => new Issue1EstablishingShot(),
 	];
 
 	public function new()
@@ -19,7 +18,7 @@ class EventManager extends FlxSpriteGroup
 
 	public var _currentEvent:String = null;
 
-	public function runDialogueEvent(event:String)
+	public function runDialogueEvent(event:String):Bool
 	{
 		this._currentEvent = event;
 
@@ -27,14 +26,17 @@ class EventManager extends FlxSpriteGroup
 		if (event == null)
 		{
 			visible = false;
-			return;
+			return false;
 		}
 
 		if (events.exists(event))
 		{
 			trace('Running dialogue event: $event');
 			events.get(event)?.runDialogueEvent(this);
+			return true;
 		}
+
+		return false;
 	}
 
 	function runOnEvents(f:EventRunner->Void)
