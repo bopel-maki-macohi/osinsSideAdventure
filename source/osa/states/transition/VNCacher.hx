@@ -1,5 +1,6 @@
 package osa.states.transition;
 
+import flixel.text.FlxText;
 import osa.states.menus.TitleState;
 import flixel.FlxG;
 import flixel.util.FlxTimer;
@@ -30,6 +31,8 @@ class VNCacher extends OSAState
 
 	override function create()
 	{
+		this.transIn = this.transOut = null;
+
 		super.create();
 
 		if (_leaving)
