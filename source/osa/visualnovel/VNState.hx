@@ -122,7 +122,11 @@ class VNState extends OSAState
 		resetText();
 
 		buildBGAndCharacter();
+
+		buildEvent();
 	}
+
+	function buildEvent() {}
 
 	function resetText()
 	{
