@@ -18,7 +18,7 @@ class DialogueLine
 		final splitrawline:Array<String> = rawline?.split(DialogueLine.SPLIT_STRING) ?? null;
 
 		_isEvent = false;
-		_event = '';
+		_event = null;
 		if (rawline != null)
 			if (splitrawline.length == 1 && rawline?.startsWith(EVENT_STRING_PREFIX))
 			{

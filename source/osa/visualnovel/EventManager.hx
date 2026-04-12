@@ -1,5 +1,6 @@
 package osa.visualnovel;
 
+import osa.visualnovel.events.TestingEventSystem;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 
@@ -21,6 +22,14 @@ class EventManager extends FlxSpriteGroup
 		{
 			visible = false;
 			return;
+		}
+
+		trace('Running event: $event');
+
+		switch (event)
+		{
+			case 'testingEventSystem':
+				TestingEventSystem.run(this);
 		}
 	}
 }
