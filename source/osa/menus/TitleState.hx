@@ -149,16 +149,36 @@ class TitleState extends OSAState
 
 		super.create();
 
+		var executedTSFunc:Bool = false;
+
 		switch (_targetState?.toLowerCase())
 		{
 			case 'storymenu':
+				executedTSFunc = true;
 				_storymenuBtn._onClick.dispatch();
 			case 'credits':
+				executedTSFunc = true;
 				_creditsBtn._onClick.dispatch();
 			case 'optionsmenu':
+				executedTSFunc = true;
 				_optionsBtn._onClick.dispatch();
 			case 'debugmenu':
+				executedTSFunc = true;
 				debugSubState();
+		}
+
+		if (executedTSFunc)
+		{
+			for (obj in [
+				_storymenuBtn,
+				_optionsBtn,
+				_creditsBtn,
+
+				_logo,
+			])
+			{
+				obj.alpha = 0;
+			}
 		}
 	}
 
