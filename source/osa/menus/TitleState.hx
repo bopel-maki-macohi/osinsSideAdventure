@@ -136,6 +136,8 @@ class TitleState extends OSAState
 			}
 		}
 
+		FlxG.mouse.visible = true;
+
 		super.create();
 	}
 
@@ -204,6 +206,8 @@ class TitleState extends OSAState
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
+
+		FlxG.mouse.visible = true;
 
 		if (tileScrollBG != null)
 		{

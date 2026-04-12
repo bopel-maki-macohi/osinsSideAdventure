@@ -34,6 +34,8 @@ class InitState extends OSAState
 			actualInit();
 
 		super.create();
+		
+		FlxG.mouse.visible = false;
 
 		splashWatermark();
 	}

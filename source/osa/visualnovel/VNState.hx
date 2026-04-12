@@ -123,6 +123,8 @@ class VNState extends OSAState
 		changeLine(0);
 
 		super.create();
+		
+		FlxG.mouse.visible = false;
 	}
 
 	public function getTextFadeOutTime():Float

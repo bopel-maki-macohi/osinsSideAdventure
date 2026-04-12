@@ -32,7 +32,6 @@ class TitleSubStateBase extends OSASubState
 
 		FlxTimer.wait(OSAState.DEFAULT_TRANSITION.duration, () ->
 		{
-			FlxG.mouse.visible = true;
 			if (_parentState != null && _parentState.subState == this)
 				_parentState.closeSubState();
 		});
