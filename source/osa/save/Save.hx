@@ -52,7 +52,7 @@ class Save
 
 	public static function saveDataLog()
 	{
-		var data:String = 'Save: ';
+		var data:String = 'Save:\n';
 
 		for (field in Reflect.fields(FlxG.save.data))
 			data += '$field : ${Reflect.field(FlxG.save.data, field)}\n';

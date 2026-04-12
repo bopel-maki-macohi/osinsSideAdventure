@@ -133,7 +133,7 @@ class CrashHandler
 		{
 			errorMessage += '\n    No Special Fields';
 		}
-		errorMessage += '\nSave Data: ${Save.saveDataLog()}';
+		errorMessage += '\n${Save.saveDataLog()}';
 
 		errorMessage += '\n';
 		#if sys
