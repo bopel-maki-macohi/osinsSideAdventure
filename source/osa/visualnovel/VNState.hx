@@ -33,7 +33,6 @@ class VNState extends OSAState
 		}
 
 		_dialogueLine._rawline = _dialogueList[value];
-		trace('Dialogue line at $value : $_dialogueLine');
 		return _dialogueEntry = value;
 	}
 
@@ -151,8 +150,6 @@ class VNState extends OSAState
 
 	public function changeLine(increment:Int)
 	{
-		trace('ChangeLine planned');
-
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
 			for (object in [
