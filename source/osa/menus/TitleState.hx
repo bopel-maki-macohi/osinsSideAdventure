@@ -40,6 +40,15 @@ class TitleState extends OSAState
 
 	public static var bgScrolling:Bool = false;
 
+	public var _targetState:String = null;
+
+	override public function new(?targetState:String)
+	{
+		super();
+
+		this._targetState = targetState;
+	}
+
 	override function create()
 	{
 		_titleTileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
@@ -139,6 +148,18 @@ class TitleState extends OSAState
 		FlxG.mouse.visible = true;
 
 		super.create();
+
+		switch (_targetState.toLowerCase())
+		{
+			case 'storymenu':
+				_storymenuBtn._onClick.dispatch();
+			case 'credits':
+				_creditsBtn._onClick.dispatch();
+			case 'optionsmenu':
+				_optionsBtn._onClick.dispatch();
+			case 'debugmenu':
+				debugSubState();
+		}
 	}
 
 	override function update(elapsed:Float)
@@ -168,12 +189,17 @@ class TitleState extends OSAState
 		}
 
 		if (FlxG.keys.justReleased.SEVEN && subState == null)
-			onSelectionClicked(_debugTileScrollBG, new DebugSubState(() -> onSelectionExited(_debugTileScrollBG)));
+			debugSubState();
 
 		_debugTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_storymenuTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_creditsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_optionsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
+	}
+
+	function debugSubState()
+	{
+		onSelectionClicked(_debugTileScrollBG, new DebugSubState(() -> onSelectionExited(_debugTileScrollBG)));
 	}
 
 	function controls()

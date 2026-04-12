@@ -34,7 +34,7 @@ class InitState extends OSAState
 			actualInit();
 
 		super.create();
-		
+
 		FlxG.mouse.visible = false;
 
 		splashWatermark();
@@ -61,6 +61,14 @@ class InitState extends OSAState
 
 		if (ENTER_VN != null)
 			FlxG.switchState(() -> new VNState(ENTER_VN));
+		else if (MacroUtil.isDefined('STORYMENU'))
+			FlxG.switchState(() -> new TitleState('STORYMENU'));
+		else if (MacroUtil.isDefined('CREDITS'))
+			FlxG.switchState(() -> new TitleState('CREDITS'));
+		else if (MacroUtil.isDefined('OPTIONSMENU'))
+			FlxG.switchState(() -> new TitleState('OPTIONSMENU'));
+		else if (MacroUtil.isDefined('DEBUGMENU'))
+			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		else
 			FlxG.switchState(() -> new TitleState());
 	}
