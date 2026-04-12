@@ -1,5 +1,8 @@
 package osa.util.plugins;
 
+import osa.shaders.GrayscaleShader;
+import flixel.math.FlxMath;
+import flixel.util.FlxColorTransformUtil;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -58,8 +61,6 @@ class ScreenshotPlugin extends FlxBasic
 			trace('Saved screenshot to $path');
 
 			fancyPreview(screenshot);
-
-			FlxG.camera.flash(FlxColor.WHITE, .5);
 			#else
 			trace('Cannot screenshot on this platform');
 			#end
@@ -79,21 +80,31 @@ class ScreenshotPlugin extends FlxBasic
 		FlxG.state.add(preview);
 		preview.screenCenter();
 
+		var grayscale:GrayscaleShader = new GrayscaleShader(1);
+		preview.shader = grayscale;
+
+		FlxTween.tween(grayscale, {amount: 0}, 1, {
+			ease: FlxEase.sineInOut,
+			onUpdate: t -> {
+				grayscale.setAmount(1 - t.percent);
+			}
+		});
+
 		FlxTween.tween(preview, {
 			'scale.x': 0.2,
 			'scale.y': 0.2,
 			x: 10,
-			y: 10
-		}, .5, {
-			ease: FlxEase.circInOut,
+			y: 10,
+			alpha: 0.75,
+		}, 1, {
+			ease: FlxEase.sineInOut,
 			onUpdate: t ->
 			{
 				preview.updateHitbox();
 			},
-			startDelay: .5
 		});
 
-		FlxTimer.wait(1, () ->
+		FlxTimer.wait(2, () ->
 		{
 			FlxTween.tween(preview, {y: -preview.height, alpha: 0}, 1, {
 				ease: FlxEase.sineInOut,
