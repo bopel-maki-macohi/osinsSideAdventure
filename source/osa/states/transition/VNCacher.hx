@@ -43,12 +43,12 @@ class VNCacher extends OSAState
 		{
 			getImagePaths();
 
-			trace(_imagePaths);
+			// trace(_imagePaths);
 
 			for (key in _imagePaths)
 				OSACache.tempCacheTexture(key);
 		}
-		
+
 		if (_targetState == null)
 			FlxG.switchState(() -> new TitleState('STORYMENU'));
 		else
