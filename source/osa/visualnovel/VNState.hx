@@ -58,6 +58,8 @@ class VNState extends OSAState
 	public var _dialogueCharacter:DialogueSprite;
 	public var _dialogueBG:DialogueSprite;
 
+	public var _eventManager:EventManager;
+
 	override function create()
 	{
 		_dialogueBox = new FlxSprite();
@@ -83,10 +85,16 @@ class VNState extends OSAState
 		_dialogueCharacter = new DialogueSprite(true);
 		_dialogueBG = new DialogueSprite(false);
 
+		_eventManager = new EventManager();
+
 		add(_dialogueBG);
 		add(_dialogueCharacter);
+
 		add(_dialogueBox);
 		add(_dialogueText);
+
+		add(_eventManager);
+
 		add(_dialogueContinueHand);
 
 		changeLine(0);
@@ -126,7 +134,10 @@ class VNState extends OSAState
 		buildEvent();
 	}
 
-	function buildEvent() {}
+	function buildEvent()
+	{
+		_eventManager.build(_dialogueLine._event);
+	}
 
 	function resetText()
 	{
