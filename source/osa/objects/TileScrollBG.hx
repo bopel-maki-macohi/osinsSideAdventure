@@ -22,7 +22,7 @@ class TileScrollBG extends FlxBackdrop
 	{
 		super();
 
-		this._tile = 'tile-osin'.menuAsset();
+		this._tile = 'tile'.menuAsset();
 
 		this.velocity = velocity;
 

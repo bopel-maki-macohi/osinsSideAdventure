@@ -20,6 +20,7 @@ import flixel.FlxState;
 class TitleState extends OSAState
 {
 	public var _titleTileScrollBG:TileScrollBG;
+	public var _storymenuTileScrollBG:TileScrollBG;
 	public var _creditsTileScrollBG:TileScrollBG;
 	public var _optionsTileScrollBG:TileScrollBG;
 
@@ -40,6 +41,10 @@ class TitleState extends OSAState
 	override function create()
 	{
 		_titleTileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
+
+		_storymenuTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
+		_storymenuTileScrollBG._tile = 'tile-osin'.menuAsset();
+		_storymenuTileScrollBG.alpha = 0;
 
 		_creditsTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
 		_creditsTileScrollBG._tile = 'tile-tirok'.menuAsset();
@@ -66,12 +71,14 @@ class TitleState extends OSAState
 		blurCamFG.filters = [_blurFilterFG];
 
 		_titleTileScrollBG.camera = blurCamBG;
+		_storymenuTileScrollBG.camera = blurCamBG;
 		_creditsTileScrollBG.camera = blurCamBG;
 		_optionsTileScrollBG.camera = blurCamBG;
 
 		_logo.camera = blurCamFG;
 
 		add(_titleTileScrollBG);
+		add(_storymenuTileScrollBG);
 		add(_creditsTileScrollBG);
 		add(_optionsTileScrollBG);
 
@@ -102,7 +109,7 @@ class TitleState extends OSAState
 		add(_optionsBtn);
 		add(_creditsBtn);
 
-		_playBtn._onClick.add(() -> onSelectionClicked(null, new StoryMenuSubState(() -> onSelectionExited(null))));
+		_playBtn._onClick.add(() -> onSelectionClicked(_storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(_storymenuTileScrollBG))));
 		_optionsBtn._onClick.add(() -> onSelectionClicked(_optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(_optionsTileScrollBG))));
 		_creditsBtn._onClick.add(() -> onSelectionClicked(_creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(_creditsTileScrollBG))));
 
@@ -148,6 +155,7 @@ class TitleState extends OSAState
 			controls();
 		}
 
+		_storymenuTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_creditsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_optionsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 	}
