@@ -18,7 +18,7 @@ class DialogueSprite extends FlxSprite
 		this._isCharacter = isCharacter;
 	}
 
-	public var _id:String = null;
+	public var _id:String = 'null';
 
 	public function build(id:String, ?onChange:Void->Void)
 	{
