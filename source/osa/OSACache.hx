@@ -28,9 +28,15 @@ class OSACache
 			for (key => texture in tempCachedTextures)
 			{
 				texture.refresh();
-				
+
 				forceRender(texture);
 			}
+		});
+
+		FlxG.signals.postUpdate.add(function()
+		{
+			for (key => texture in tempCachedTextures)
+				forceRender(texture);
 		});
 
 		/** Audio Caching **/
