@@ -1,5 +1,6 @@
 package osa;
 
+import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import openfl.display.BitmapData;
@@ -56,16 +57,7 @@ class OSASubState extends FlxSubState
 			if (this._parentState._requestedSubState == null)
 				return;
 
-			this._parentState.visible = false;
-		}
-
-		final screenshot:BitmapData = BitmapData.fromImage(FlxG.stage.window.readPixels());
-
-		if (this._parentState != null)
-		{
-			this._parentState.visible = true;
-
-			this._parentState.add(new FlxSprite(0, 0, screenshot));
+			FlxG.state.insert(FlxG.state.members.length - 2, this);
 		}
 	}
 }
