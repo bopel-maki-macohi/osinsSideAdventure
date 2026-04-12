@@ -23,3 +23,15 @@ There's gotta...;issue2/osin-upset-fight-tears;issue2-establishingshot
 
 event_setDialogueSpeed;0.2
 ...;issue2/tirok-sadglare;issue2-establishingshot
+
+event_setDialogueSpeed;0.1
+It...;issue2/tirok-sadglare;issue2-establishingshot
+
+event_resetDialogueSpeed;
+It'll be okay.;issue2/tirok-back;issue2-establishingshot
+
+event_setDialogueSpeed;0.1
+...;issue2/osin-glare;issue2-establishingshot
+
+event_setDialogueSpeed;0.2
+No it won't.;issue2/osin-deepglare;issue2-establishingshot
