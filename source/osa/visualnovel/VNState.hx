@@ -96,7 +96,7 @@ class VNState extends OSAState
 		_dialogueBox.screenCenter();
 		_dialogueBox.y = FlxG.height * 0.55;
 
-		_dialogueText = new FlxTypeText(_dialogueBox.x, _dialogueBox.y, Math.round(_dialogueBox.width), LoremIpsum.piece, 16);
+		_dialogueText = new FlxTypeText(_dialogueBox.x + 10, _dialogueBox.y + 10, Math.round(_dialogueBox.width) - 10, LoremIpsum.piece, 32);
 		_dialogueText.color = FlxColor.BLACK;
 
 		_dialogueText.setTypingVariation(0.75, true);
