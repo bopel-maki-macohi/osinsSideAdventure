@@ -17,7 +17,8 @@ class InitState extends OSAState
 		FlxTransitionableState.defaultTransOut = OSAState.DEFAULT_TRANSITION;
 
 		final thisOutro = OSAState.DEFAULT_TRANSITION;
-		thisOutro.duration = 8;
+		if (!MacroUtil.isDefined('SKIP_SPLASH'))
+			thisOutro.duration = 8;
 
 		super(null, thisOutro);
 	}

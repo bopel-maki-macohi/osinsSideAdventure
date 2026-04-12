@@ -1,5 +1,7 @@
 package osa.visualnovel;
 
+import flixel.util.FlxColor;
+import flixel.FlxG;
 import flixel.FlxSprite;
 
 class DialogueSprite extends FlxSprite
@@ -29,7 +31,16 @@ class DialogueSprite extends FlxSprite
 		if (_isCharacter)
 			loadGraphic('characters/$id'.visualNovelAsset().imageFile());
 		else
-			loadGraphic('backgrounds/$id'.visualNovelAsset().imageFile());
+		{
+			switch (id)
+			{
+				case 'void':
+					makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
+
+				default:
+					loadGraphic('backgrounds/$id'.visualNovelAsset().imageFile());
+			}
+		}
 		screenCenter();
 	}
 
