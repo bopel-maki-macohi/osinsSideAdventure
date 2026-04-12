@@ -74,8 +74,8 @@ class StoryMenuState extends OSAState
 		_issueTitle.build(_issues[_currentSelection]._title);
 		_issueIcon.build(_issues[_currentSelection]._icon);
 
-		_issueIcon.y = 10;
-		_issueTitle.y = FlxG.height - (_issueTitle.height * 1.1);
+		_issueIcon.x = 10;
+		_issueTitle.x = FlxG.width - (_issueTitle.width * 2);
 
 		_issueDialogueFile = _issues[_currentSelection]._dialoguefile;
 	}
