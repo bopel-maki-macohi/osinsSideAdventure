@@ -166,6 +166,8 @@ class TitleState extends OSAState
 
 		if (TSFunc != null)
 		{
+			FlxG.mouse.visible = false;
+
 			for (obj in [_storymenuBtn, _optionsBtn, _creditsBtn, _logo, _titleTileScrollBG,])
 				obj.alpha = 0;
 
