@@ -9,7 +9,7 @@ import osa.util.MacroUtil;
 import osa.util.debug.CrashHandler;
 import osa.save.Save;
 import flixel.addons.transition.FlxTransitionableState;
-import osa.menus.TitleState;
+import osa.menus.title.TitleState;
 import flixel.FlxG;
 import osa.util.plugins.ScreenshotPlugin;
 

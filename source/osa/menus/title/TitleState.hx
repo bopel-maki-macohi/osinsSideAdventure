@@ -1,6 +1,6 @@
-package osa.menus;
+package osa.menus.title;
 
-import osa.menus.options.OptionsSubState;
+import osa.menus.title.options.OptionsSubState;
 import osa.util.Constants;
 import osa.menus.storymenu.StoryMenuState;
 import flixel.tweens.FlxEase;

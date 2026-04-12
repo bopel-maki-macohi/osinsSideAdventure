@@ -1,4 +1,4 @@
-package osa.menus;
+package osa.menus.title;
 
 import flixel.math.FlxMath;
 import flixel.FlxObject;
@@ -13,9 +13,11 @@ import flixel.FlxG;
 import flixel.FlxSubState;
 import flixel.addons.ui.FlxUISubState;
 
-class CreditsSubState extends FlxSubState
+class TitleSubStateBase extends FlxSubState
 {
 	public var _onExit:Void->Void;
+
+	public var _spriteList:Array<ClickableSprite> = [];
 
 	override public function new(onExit:Void->Void)
 	{
@@ -43,9 +45,10 @@ class CreditsSubState extends FlxSubState
 
 	override function update(elapsed:Float)
 	{
-		setCreditText('');
+		setText('');
 
 		super.update(elapsed);
+
 		if (FlxG.keys.justPressed.ESCAPE)
 			close();
 
@@ -58,46 +61,47 @@ class CreditsSubState extends FlxSubState
 		}
 
 		if (_currentSelection < 0)
-			_currentSelection = _creditSprites.length - 1;
-		if (_currentSelection > _creditSprites.length - 1)
+			_currentSelection = _sprites.length - 1;
+		if (_currentSelection > _sprites.length - 1)
 			_currentSelection = 0;
 
-		_creditSprites.x = FlxMath.lerp(_creditSprites.x, _currentSelection * -256, 0.1);
+		_sprites.x = FlxMath.lerp(_sprites.x, _currentSelection * -256, 0.1);
 
-		for (credit in _creditSprites.members)
+		for (sprite in _sprites.members)
 		{
-			if (_currentSelection == credit.ID)
+			if (_currentSelection == sprite.ID)
 			{
-				credit._overlapUpdate.dispatch();
+				sprite._overlapUpdate.dispatch();
 
 				if (!TitleState.bgScrolling)
 					if (FlxG.keys.justPressed.ENTER)
-						credit._onClick.dispatch();
+						sprite._onClick.dispatch();
 			}
 			else
-				credit._unoverlapUpdate.dispatch();
+				sprite._unoverlapUpdate.dispatch();
 		}
 
-		_creditText.screenCenter();
-		_creditText.y = FlxG.height - _creditText.height - 32;
+		_text.screenCenter();
+		_text.y = FlxG.height - _text.height - 32;
 	}
 
-	public var _creditText:FlxText;
+	public var _text:FlxText;
 
-	public function setCreditText(text:String)
-		_creditText.text = text;
+	public function setText(text:String)
+		_text.text = text;
 
-	public function makeCreditSprite(asset:String, creditText:String, ?url:String):ClickableSprite
+	public function makeSprite(asset:String, optionText:Void->String, onClick:Void->Void):ClickableSprite
 	{
 		var credSpr:ClickableSprite = new ClickableSprite(0, 0, asset.menuAsset().imageFile());
-		credSpr._overlapUpdate.add(() -> setCreditText(creditText));
-		if (url != null)
-			credSpr._onClick.add(() -> FlxG.openURL(url));
+		credSpr._overlapUpdate.add(() -> setText((optionText == null) ? 'Unknown' : optionText()));
+
+		if (onClick != null)
+			credSpr._onClick.add(onClick);
 
 		return credSpr;
 	}
 
-	public var _creditSprites:FlxTypedSpriteContainer<ClickableSprite>;
+	public var _sprites:FlxTypedSpriteContainer<ClickableSprite>;
 
 	public var _currentSelection:Int = 0;
 
@@ -105,20 +109,15 @@ class CreditsSubState extends FlxSubState
 	{
 		super.create();
 
-		_creditSprites = new FlxTypedSpriteContainer<ClickableSprite>();
-		_creditSprites.camera = TitleState.blurCamFG;
-		_creditSprites.alpha = 0;
+		_sprites = new FlxTypedSpriteContainer<ClickableSprite>();
+		_sprites.camera = TitleState.blurCamFG;
+		_sprites.alpha = 0;
 
-		FlxTween.tween(_creditSprites, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
+		FlxTween.tween(_sprites, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
 			ease: FlxEase.sineInOut
 		});
 
-		for (i => obj in [
-			makeCreditSprite('credits/maki', 'Maki : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
-			makeCreditSprite('credits/pogo', 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)',
-				'https://www.youtube.com/watch?v=aDTAem9_Yws'),
-			makeCreditSprite('credits/virtuguy', 'VirtuGuy : WTFEngine and it\'s conductor source code', 'https://github.com/VirtuGuy')
-		])
+		for (i => obj in _spriteList)
 		{
 			obj._useMouse = false;
 
@@ -130,21 +129,21 @@ class CreditsSubState extends FlxSubState
 			obj._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
 			obj._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
 
-			_creditSprites.add(obj);
+			_sprites.add(obj);
 		}
 
-		for (sprite in _creditSprites.members)
+		for (sprite in _sprites.members)
 		{
 			sprite.screenCenter();
 			sprite.x += sprite.ID * 256;
 		}
 
-		_creditText = new FlxText(0, 0, 0, '', 16);
-		_creditText.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
-		_creditText.camera = TitleState.blurCamFG;
+		_text = new FlxText(0, 0, 0, '', 16);
+		_text.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
+		_text.camera = TitleState.blurCamFG;
 
-		add(_creditSprites);
-		add(_creditText);
+		add(_sprites);
+		add(_text);
 
 		FlxG.mouse.visible = false;
 	}
