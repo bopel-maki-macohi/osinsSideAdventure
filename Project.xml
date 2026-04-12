@@ -7,7 +7,7 @@
 	<app title="Osin's Side Adventure" file="OSA" />
 	<app main="Main" />
 	<app company="Maki" />
-	<app version="0.7.1" />
+	<app version="0.8.0" />
 
 	<icon path="dev/icon.png" />
 
