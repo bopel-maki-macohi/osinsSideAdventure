@@ -26,9 +26,17 @@ class Save
 			issues.get().push(issuefile);
 	}
 
+	public static function removeField(field:String)
+	{
+		if (Reflect.hasField(FlxG.save.data, field))
+			Reflect.deleteField(FlxG.save.data, field);
+	}
+
 	public static function init()
 	{
 		FlxG.save.bind('OSA', 'Maki');
+
+		removeField('chapters');
 
 		fieldInit();
 
