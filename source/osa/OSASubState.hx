@@ -57,7 +57,7 @@ class OSASubState extends FlxSubState
 			if (this._parentState._requestedSubState == null)
 				return;
 
-			FlxG.state.insert(FlxG.state.members.length - 2, this);
+			FlxG.state.add(this);
 		}
 	}
 }
