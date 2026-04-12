@@ -60,7 +60,7 @@ class Issue1Intro extends EventRunner
 		}
 	}
 
-	public var _tirok:DialogueSprite = new DialogueSprite(true);
+	public var _tirok:DialogueSprite;
 
 	override public function runDialogueEvent(eventManager:EventManager)
 	{
@@ -71,6 +71,7 @@ class Issue1Intro extends EventRunner
 
 		_game.changeLine(1);
 
+		_tirok = new DialogueSprite(true);
 		_tirok.build('issue1/tirok-confused');
 
 		_tirok.x = FlxG.width + _tirok.width;
