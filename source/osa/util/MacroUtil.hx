@@ -17,8 +17,6 @@ class MacroUtil
 
 	public static macro function isDefined(key:String):haxe.macro.Expr
 	{
-		var value:Null<String> = getDefine(key);
-		
-		return macro $v{(value != null)};
+		return macro $v{(haxe.macro.Context.definedValue(key) != null)};
 	}
 }
