@@ -1,4 +1,4 @@
-package osa.visualnovel;
+package osa.states.visualnovel;
 
 import osa.objects.HoldToPerformGadge;
 import flixel.group.FlxSpriteGroup;

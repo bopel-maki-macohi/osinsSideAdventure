@@ -1,4 +1,4 @@
-package osa.menus;
+package osa.states.menus;
 
 import osa.util.Constants;
 import flixel.math.FlxMath;

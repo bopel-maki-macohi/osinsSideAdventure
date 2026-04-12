@@ -1,4 +1,4 @@
-package osa.visualnovel;
+package osa.states.visualnovel;
 
 import flixel.util.FlxColor;
 import flixel.FlxG;

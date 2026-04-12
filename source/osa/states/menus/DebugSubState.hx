@@ -1,4 +1,4 @@
-package osa.menus;
+package osa.states.menus;
 
 import osa.states.visualnovel.DialogueSprite;
 import osa.states.visualnovel.DialogueLine;

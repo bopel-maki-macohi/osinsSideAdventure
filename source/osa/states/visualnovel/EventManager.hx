@@ -1,4 +1,4 @@
-package osa.visualnovel;
+package osa.states.visualnovel;
 
 import osa.states.visualnovel.events.*;
 import osa.states.visualnovel.events.DialogueTweaks;
