@@ -82,6 +82,9 @@ class OSACache
 
 		forceRender(texture);
 
+		@:privateAccess
+		FlxG.bitmap._cache.set(key, texture);
+
 		permCachedTextures.set(key, texture);
 		tempCachedTextures.set(key, texture);
 	}
@@ -99,6 +102,9 @@ class OSACache
 		trace('Temp cached texture: $key');
 
 		forceRender(texture);
+
+		@:privateAccess
+		FlxG.bitmap._cache.set(key, texture);
 
 		tempCachedTextures.set(key, texture);
 	}
@@ -122,6 +128,10 @@ class OSACache
 				continue;
 
 			trace('Cleared temp cached texture: $key');
+
+			@:privateAccess
+			FlxG.bitmap._cache.remove(key);
+
 			tempCachedTextures.remove(key);
 			FlxG.bitmap.remove(texture);
 		}
@@ -135,6 +145,7 @@ class OSACache
 				continue;
 
 			trace('Cleared temp cached sound: $key');
+			
 			tempCachedTextures.remove(key);
 			sound.close();
 		}
