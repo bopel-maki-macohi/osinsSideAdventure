@@ -149,7 +149,7 @@ class TitleState extends OSAState
 
 		super.create();
 
-		switch (_targetState.toLowerCase())
+		switch (_targetState?.toLowerCase())
 		{
 			case 'storymenu':
 				_storymenuBtn._onClick.dispatch();
