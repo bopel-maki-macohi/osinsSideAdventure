@@ -1,5 +1,6 @@
 package osa.menus.title;
 
+import flixel.FlxSubState;
 import osa.util.Constants;
 import osa.menus.storymenu.StoryMenuState;
 import flixel.tweens.FlxEase;
@@ -103,8 +104,9 @@ class TitleState extends OSAState
 		add(_creditsBtn);
 
 		_playBtn._onClick.add(onPlay);
-		_optionsBtn._onClick.add(onOptions);
-		_creditsBtn._onClick.add(onCredits);
+
+		_optionsBtn._onClick.add(() -> onSelectionClicked(_optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(_optionsTileScrollBG))));
+		_creditsBtn._onClick.add(() -> onSelectionClicked(_creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(_creditsTileScrollBG))));
 
 		// _optionsBtn.shader = new GrayscaleShader(.75);
 
@@ -163,24 +165,22 @@ class TitleState extends OSAState
 		FlxG.switchState(() -> new StoryMenuState());
 	}
 
-	function onOptions()
+	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:FlxSubState)
 	{
 		onSubStateEnter();
 
-		FlxTween.cancelTweensOf(_optionsTileScrollBG);
-		FlxTween.tween(_optionsTileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
+		FlxTween.cancelTweensOf(tileScrollBG);
+		FlxTween.tween(tileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 
-		openSubState(new OptionsSubState(onOptionsExit));
+		openSubState(substate);
 	}
 
-	function onCredits()
+	function onSelectionExited(tileScrollBG:TileScrollBG)
 	{
-		onSubStateEnter();
+		onSubStateExit();
 
-		FlxTween.cancelTweensOf(_creditsTileScrollBG);
-		FlxTween.tween(_creditsTileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
-
-		openSubState(new CreditsSubState(onCreditsExit));
+		FlxTween.cancelTweensOf(tileScrollBG);
+		FlxTween.tween(tileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
 	}
 
 	function onSubStateEnter()
@@ -199,22 +199,6 @@ class TitleState extends OSAState
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
-	}
-
-	public function onCreditsExit()
-	{
-		onSubStateExit();
-
-		FlxTween.cancelTweensOf(_creditsTileScrollBG);
-		FlxTween.tween(_creditsTileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
-	}
-
-	public function onOptionsExit()
-	{
-		onSubStateExit();
-
-		FlxTween.cancelTweensOf(_optionsTileScrollBG);
-		FlxTween.tween(_optionsTileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
 	}
 
 	override function onExit()
