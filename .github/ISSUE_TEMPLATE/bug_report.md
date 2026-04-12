@@ -1,16 +1,17 @@
 ---
 name: Bug report
 about: Create a report to help polish up the game
-title: 'Bug Report: '
+title: "Bug Report: "
 labels: bug
-assignees: ''
-
+assignees: ""
 ---
 
 ## Describe the bug
+
 <!-- A clear and concise description of what the bug is. -->
 
 ## Bug Reproduction
+
 <!--
 Steps to reproduce the behavior:
 1. Go to '...'
@@ -20,13 +21,16 @@ Steps to reproduce the behavior:
 -->
 
 ## Expected behavior
+
 <!-- What did you EXPECT to happen compared to what DID happen? -->
 
 ## Screenshots (Optional)
+
 <!-- If applicable, add screenshots to help explain your problem. -->
 
 ## Platform Information
- - Game Version: <!-- 0.5.0 -->
+
+- Game Version: <!-- 0.5.0 -->
 
 <!--
 Can be:
@@ -36,11 +40,14 @@ Can be:
 - Compiled Source Code (Desktop)
 - Compiled Source Code (Web)
 -->
+
 - Game Platform: Web / HTML5
 
 ### Web Information
+
 <!-- Only if you are on web -->
-- Browser: 
+
+- Browser:
 
 <!--
 Give any information you can,
@@ -48,8 +55,10 @@ especially here since I don't really know what kinda of things about browsers ca
 -->
 
 ### Desktop Information
+
 <!-- Only if you are on desktop -->
-- OS: 
+
+- OS:
 
 <!--
 Please just give any information about your OS that could potentially help at all.
