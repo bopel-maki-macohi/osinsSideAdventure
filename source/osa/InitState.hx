@@ -111,7 +111,7 @@ class InitState extends OSAState
 
 		line = line.replace('%user%', MacroUtil.getUSR());
 
-		trace(line);
+		trace(line.replace('\n', '--'));
 
 		if (msg != null && msg.clearWatermark)
 			_watermark.text = line;
