@@ -117,14 +117,14 @@ class TitleState extends OSAState
 
 		persistentUpdate = true;
 
-		for (obj in this.members)
-		{
-			if (obj.cameras.contains(blurCamFG))
-			{
-				if (Reflect.field(obj, 'y') != null)
-					Reflect.setProperty(obj, 'y', Reflect.field(obj, 'y') - blurCamFG.height / 10);
-			}
-		}
+		// for (obj in this.members)
+		// {
+		// 	if (obj.cameras.contains(blurCamFG))
+		// 	{
+		// 		if (Reflect.field(obj, 'y') != null)
+		// 			Reflect.setProperty(obj, 'y', Reflect.field(obj, 'y') - blurCamFG.height / 10);
+		// 	}
+		// }
 
 		super.create();
 	}
