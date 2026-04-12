@@ -4,27 +4,29 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
 
-class Chapter1Intro
+class Chapter1Intro extends EventRunner
 {
-	public static function run(eventManager:EventManager)
+	override public function run(eventManager:EventManager)
 	{
-		VNState.instance.changeLine(1);
+		super.run(eventManager);
 
-        var tirok:DialogueSprite = new DialogueSprite(true);
+		game.changeLine(1);
+
+		var tirok:DialogueSprite = new DialogueSprite(true);
 		tirok.build('chapter1/tirok-confused');
 
-		tirok.x = VNState.instance._dialogueBox.x + VNState.instance._dialogueBox.width;
+		tirok.x = game._dialogueBox.x + game._dialogueBox.width;
 
-		VNState.instance.positionDialogueCharacter(tirok, 0);
-		VNState.instance.positionDialogueCharacter(VNState.instance._dialogueCharacter, 0);
+		game.positionDialogueCharacter(tirok, 0);
+		game.positionDialogueCharacter(game._dialogueCharacter, 0);
 
-		VNState.instance.insert(VNState.instance.members.indexOf(VNState.instance._dialogueCharacter), tirok);
-		FlxTween.tween(tirok, {x: VNState.instance._dialogueBox.x}, 10, {
+		game.insert(game.members.indexOf(game._dialogueCharacter), tirok);
+		FlxTween.tween(tirok, {x: game._dialogueBox.x}, 10, {
 			ease: FlxEase.sineIn,
 			onUpdate: (t) ->
 			{
-				VNState.instance._dialogueTypingFinished = false;
-                VNState.instance._dialogueContinueHand.visible = false;
+				game._dialogueTypingFinished = false;
+				game._dialogueContinueHand.visible = false;
 			}
 		});
 	}

@@ -28,9 +28,9 @@ class EventManager extends FlxSpriteGroup
 		switch (event)
 		{
 			case 'testingEventSystem':
-				TestingEventSystem.run(this);
+				new TestingEventSystem().run(this);
 			case 'chapter1Intro':
-				Chapter1Intro.run(this);
+				new Chapter1Intro().run(this);
 		}
 	}
 }

@@ -3,10 +3,12 @@ package osa.visualnovel.events;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 
-class TestingEventSystem
+class TestingEventSystem extends EventRunner
 {
-	public static function run(eventManager:EventManager)
+	override public function run(eventManager:EventManager)
 	{
+		super.run(eventManager);
+
 		var char:DialogueSprite = new DialogueSprite(true);
 		char.build('osin');
 		eventManager.add(char);
@@ -15,8 +17,8 @@ class TestingEventSystem
 			ease: FlxEase.sineInOut,
 			onComplete: t ->
 			{
-				VNState.instance.changeLine(1);
-				FlxTween.tween(char, {alpha: 0}, VNState.instance._dialogueLine._line.length * VNState.FADEOUT_LETTER_SPEED, {
+				game.changeLine(1);
+				FlxTween.tween(char, {alpha: 0}, game._dialogueLine._line.length * VNState.FADEOUT_LETTER_SPEED, {
 					ease: FlxEase.sineInOut,
 					onComplete: t ->
 					{
