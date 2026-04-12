@@ -38,6 +38,8 @@ class StoryMenuSubState extends TitleSubStateBase
 		_rhythmManager._bpm = 110;
 
 		onBeatHit(0);
+
+		_text.visible = false;
 	}
 
 	override function makeSprite(asset:String, optionText:() -> String, ?onClick:() -> Void):ClickableSprite
