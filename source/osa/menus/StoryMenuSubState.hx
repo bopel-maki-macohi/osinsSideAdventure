@@ -44,7 +44,8 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		return super.makeSprite(asset, optionText, function()
 		{
-			onClick();
+			if (onClick != null)
+				onClick();
 			onEnter();
 		});
 	}
