@@ -17,7 +17,6 @@ import flixel.FlxState;
 class VNState extends OSAState
 {
 	public static final OUT_LETTER_SPEED:Float = 0.1;
-	public static final IN_LETTER_SPEED:Float = 0.03;
 
 	public static var instance:VNState;
 
@@ -197,7 +196,7 @@ class VNState extends OSAState
 	function resetText()
 	{
 		_dialogueText.resetText(_dialogueLine?._line ?? '');
-		_dialogueText.start(IN_LETTER_SPEED, false, false, null, onDialogueFinishTyping);
+		_dialogueText.start(_dialogueText.delay, false, false, null, onDialogueFinishTyping);
 
 		_dialogueTypingFinished = false;
 		_dialogueContinueHand.visible = false;
@@ -207,7 +206,7 @@ class VNState extends OSAState
 			if (_dialogueLine._isEvent && _ranEvent)
 				return;
 
-			FlxTimer.wait(IN_LETTER_SPEED * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
+			FlxTimer.wait(_dialogueText.delay * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
 		}
 	}
 

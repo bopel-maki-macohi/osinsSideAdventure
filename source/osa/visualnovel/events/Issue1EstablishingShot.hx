@@ -25,7 +25,7 @@ class Issue1EstablishingShot extends EventRunner
 
 		_game._dialogueBG.alpha = 0;
 
-		FlxTween.tween(_game._dialogueBG, {alpha: 1}, (VNState.IN_LETTER_SPEED * LoremIpsum.piece.split(',')[0].length), {
+		FlxTween.tween(_game._dialogueBG, {alpha: 1}, (0.03 * LoremIpsum.piece.split(',')[0].length), {
 			ease: FlxEase.sineInOut,
 		});
 	}
