@@ -1,5 +1,7 @@
 package osa;
 
+import flixel.util.FlxTimer;
+import flixel.tweens.FlxTween;
 import osa.data.SplashTextsData;
 import haxe.Json;
 import osa.objects.RhythmManager;
@@ -80,6 +82,7 @@ class InitState extends OSAState
 		#end
 		_watermark.alignment = CENTER;
 		_watermark.size = 32;
+		_watermark.alpha = 0;
 
 		_watermark.text = _watermark.text.replace('O.S.A.', 'Osin\'s Side Adventure');
 		FlxG.stage.application.window.title = _watermark.text;
@@ -149,6 +152,8 @@ class InitState extends OSAState
 
 		_watermark.screenCenter();
 
+		FlxTween.tween(_watermark, {alpha: 1}, this.transIn.duration);
+
 		if (msg?.specialCase != null)
 		{
 			trace(msg.specialCase);
@@ -156,12 +161,12 @@ class InitState extends OSAState
 
 			if (specialCase != null)
 			{
-				specialCase();
+				FlxTimer.wait(this.transIn.duration * 1, specialCase);
 				return;
 			}
 		}
 
-		leave();
+		FlxTimer.wait(this.transIn.duration * 2, leave);
 	}
 
 	function piracy()
