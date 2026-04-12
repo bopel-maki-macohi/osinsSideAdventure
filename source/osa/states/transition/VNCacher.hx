@@ -48,12 +48,7 @@ class VNCacher extends OSAState
 			for (key in _imagePaths)
 				OSACache.tempCacheTexture(key);
 		}
-	}
-
-	override function finishTransIn()
-	{
-		super.finishTransIn();
-
+		
 		if (_targetState == null)
 			FlxG.switchState(() -> new TitleState('STORYMENU'));
 		else
