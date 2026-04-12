@@ -118,6 +118,7 @@ class CreditsSubState extends FlxSubState
 			makeCreditSprite('credits/maki', 'Maki : Artist, Programmer', 'https://github.com/bopel-maki-macohi'),
 			makeCreditSprite('credits/pogo', 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)',
 				'https://www.youtube.com/watch?v=aDTAem9_Yws'),
+			makeCreditSprite('credits/virtuguy', 'VirtuGuy : WTFEngine and it\'s conductor source code', 'https://github.com/VirtuGuy')
 		])
 		{
 			obj._useMouse = false;
