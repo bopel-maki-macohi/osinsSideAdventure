@@ -214,9 +214,11 @@ class VNState extends OSAState
 
 	public static final DEFAULT_DIALOGUEBOX_HEIGHT_PADDING:Float = 0;
 
+	public var _dialogueBoxHeightPadding:Null<Float> = null;
+
 	public function positionDialogueCharacter(character:DialogueSprite, ?dialogueBoxHeightPadding:Null<Float>)
 	{
-		character.y = _dialogueBox.y + (_dialogueBox.height * (dialogueBoxHeightPadding ?? DEFAULT_DIALOGUEBOX_HEIGHT_PADDING)) - character.height;
+		character.y = _dialogueBox.y + (_dialogueBox.height * (dialogueBoxHeightPadding ?? _dialogueBoxHeightPadding ?? DEFAULT_DIALOGUEBOX_HEIGHT_PADDING)) - character.height;
 		if (!_dialogueBox.visible)
 			character.y = FlxG.height - character.height;
 	}

@@ -1,7 +1,7 @@
 package osa.visualnovel;
 
 import osa.visualnovel.events.*;
-import osa.visualnovel.events.DialogueSpeed;
+import osa.visualnovel.events.DialogueTweaks;
 import flixel.group.FlxSpriteGroup;
 
 class EventManager extends FlxSpriteGroup
@@ -11,6 +11,7 @@ class EventManager extends FlxSpriteGroup
 
 		'setDialogueSpeed' => new SetDialogueSpeed(),
 		'resetDialogueSpeed' => new ResetDialogueSpeed(),
+		'setDialogueBoxHeightPadding' => new SetDialogueBoxHeightPadding(),
 
 		'issue1Intro' => new Issue1Intro(),
 		'issue1EstablishingShot' => new Issue1EstablishingShot(),

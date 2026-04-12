@@ -21,3 +21,14 @@ class ResetDialogueSpeed extends EventRunner
 		_game.changeLine(1);
 	}
 }
+
+class SetDialogueBoxHeightPadding extends EventRunner
+{
+	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)
+	{
+		super.runDialogueEvent(eventManager, params);
+
+        _game._dialogueBoxHeightPadding = Std.parseFloat(params[0] ?? '0');
+		_game.changeLine(1);
+	}
+}

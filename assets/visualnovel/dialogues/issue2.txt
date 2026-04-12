@@ -1,3 +1,4 @@
+setDialogueBoxHeightPadding;0.1
 _;_;issue2-establishingshot
 
 event_setDialogueSpeed;0.1
@@ -12,14 +13,14 @@ We've been gone for years.;issue2/tirok-back;issue2-establishingshot
 For all we know this could be just...;issue2/tirok-backtilt;issue2-establishingshot
 Them in another damn war.;issue2/tirok-backtilt;issue2-establishingshot
 
-It can't just be that...;issue2/osin-upset-fight;issue2-establishingshot
-It can't be...;issue2/osin-upset-fight;issue2-establishingshot
+It can't just be that...;issue2/osin-upset-fists;issue2-establishingshot
+It can't be...;issue2/osin-upset-fists;issue2-establishingshot
 
 event_setDialogueSpeed;0.075
-There's gotta be something more to it...;issue2/osin-upset-fight;issue2-establishingshot
+There's gotta be something more to it...;issue2/osin-upset-fists;issue2-establishingshot
 
 event_setDialogueSpeed;0.1
-There's gotta...;issue2/osin-upset-fight-tears;issue2-establishingshot
+There's gotta...;issue2/osin-upset-fists-tears;issue2-establishingshot
 
 event_setDialogueSpeed;0.2
 ...;issue2/tirok-sadglare;issue2-establishingshot
@@ -34,4 +35,4 @@ event_setDialogueSpeed;0.1
 ...;issue2/osin-glare;issue2-establishingshot
 
 event_setDialogueSpeed;0.2
-No it won't.;issue2/osin-deepglare;issue2-establishingshot
+No it won't.;issue2/osin-glare;issue2-establishingshot
