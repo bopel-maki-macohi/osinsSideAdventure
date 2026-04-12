@@ -49,6 +49,8 @@ class InitState extends OSAState
 		RhythmManager.instance = new RhythmManager();
 
 		InitState.INITALIZED = true;
+
+		FlxG.sound.load('updog/get-your-ass-up'.audioFile().miscAsset());
 	}
 
 	function leave()
