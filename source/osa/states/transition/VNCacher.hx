@@ -64,8 +64,10 @@ class VNCacher extends OSAState
 			if (line._isEvent)
 				continue;
 
-			char.build(line._character);
-			bg.build(line._bg);
+			if (line._character != null)
+				char.build(line._character);
+			if (line._bg != null)
+				bg.build(line._bg);
 
 			if (!_imagePaths.contains(char?.graphic?.assetsKey))
 				_imagePaths.push(char?.graphic.assetsKey);
