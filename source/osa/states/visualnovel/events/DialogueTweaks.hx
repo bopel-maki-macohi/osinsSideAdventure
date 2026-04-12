@@ -1,4 +1,4 @@
-package osa.visualnovel.events;
+package osa.states.visualnovel.events;
 
 class SetDialogueSpeed extends EventRunner
 {

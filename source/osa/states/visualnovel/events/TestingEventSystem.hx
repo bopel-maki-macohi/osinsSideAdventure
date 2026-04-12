@@ -1,4 +1,4 @@
-package osa.visualnovel.events;
+package osa.states.visualnovel.events;
 
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;

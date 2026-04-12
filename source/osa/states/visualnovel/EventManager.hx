@@ -1,7 +1,7 @@
 package osa.visualnovel;
 
-import osa.visualnovel.events.*;
-import osa.visualnovel.events.DialogueTweaks;
+import osa.states.visualnovel.events.*;
+import osa.states.visualnovel.events.DialogueTweaks;
 import flixel.group.FlxSpriteGroup;
 
 class EventManager extends FlxSpriteGroup

@@ -1,4 +1,4 @@
-package osa.visualnovel.events;
+package osa.states.visualnovel.events;
 
 import flixel.util.FlxTimer;
 import osa.shaders.GrayscaleShader;

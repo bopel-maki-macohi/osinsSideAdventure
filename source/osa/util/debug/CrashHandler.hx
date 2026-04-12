@@ -94,7 +94,7 @@ class CrashHandler
 
 		switch (currentState)
 		{
-			case 'osa.menus.storymenu.StoryMenuState':
+			case 'osa.states.menus.storymenu.StoryMenuState':
 				stateFields = [
 					'_currentSelection',
 
@@ -105,7 +105,7 @@ class CrashHandler
 					'_chapterDialogueFile'
 				];
 
-			case 'osa.visualnovel.VNState':
+			case 'osa.states.visualnovel.VNState':
 				stateFields = [
 					'_dialogueEntry',
 					'_dialogueLine',

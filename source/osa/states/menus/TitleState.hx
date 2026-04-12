@@ -6,7 +6,7 @@ import osa.util.Constants;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import osa.shaders.GrayscaleShader;
-import osa.visualnovel.VNState;
+import osa.states.visualnovel.VNState;
 import osa.objects.ClickableSprite;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxMath;

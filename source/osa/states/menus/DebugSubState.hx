@@ -1,8 +1,8 @@
 package osa.menus;
 
-import osa.visualnovel.DialogueSprite;
-import osa.visualnovel.DialogueLine;
-import osa.visualnovel.VNState;
+import osa.states.visualnovel.DialogueSprite;
+import osa.states.visualnovel.DialogueLine;
+import osa.states.visualnovel.VNState;
 import flixel.FlxG;
 import osa.save.Save;
 

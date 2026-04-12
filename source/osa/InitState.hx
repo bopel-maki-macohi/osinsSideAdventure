@@ -5,12 +5,12 @@ import flixel.tweens.FlxTween;
 import osa.data.SplashTextsData;
 import haxe.Json;
 import osa.objects.RhythmManager;
-import osa.visualnovel.VNState;
+import osa.states.visualnovel.VNState;
 import osa.util.MacroUtil;
 import osa.util.debug.CrashHandler;
 import osa.save.Save;
 import flixel.addons.transition.FlxTransitionableState;
-import osa.menus.TitleState;
+import osa.states.menus.TitleState;
 import flixel.FlxG;
 import osa.util.plugins.ScreenshotPlugin;
 

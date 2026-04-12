@@ -3,7 +3,7 @@ package osa.menus;
 import osa.util.Constants;
 import flixel.math.FlxMath;
 import osa.save.Save;
-import osa.visualnovel.VNState;
+import osa.states.visualnovel.VNState;
 import osa.objects.ClickableSprite;
 import osa.objects.RhythmManager;
 import flixel.FlxG;
