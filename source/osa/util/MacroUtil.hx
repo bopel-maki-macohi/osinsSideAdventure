@@ -8,8 +8,8 @@ class MacroUtil
 	public static macro function getDefine(key:String, ?defaultValue:String):haxe.macro.Expr
 	{
 		var value:Null<String> = haxe.macro.Context.definedValue(key);
-		
-        if (value == null)
+
+		if (value == null)
 			value = defaultValue;
 
 		return macro $v{value};
@@ -19,4 +19,7 @@ class MacroUtil
 	{
 		return macro $v{(haxe.macro.Context.definedValue(key) != null)};
 	}
+
+	public static macro function getUSR()
+		return macro $v{#if windows Sys.environment()["USERNAME"] #elseif (linux || macos) return Sys.environment()["USER"] #end};
 }

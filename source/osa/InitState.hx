@@ -106,6 +106,10 @@ class InitState extends OSAState
 			this.transOut.duration = this.transIn.duration;
 		}
 
+		line.replace('%user%', MacroUtil.getUSR());
+
+		trace(line);
+		
 		if (msg != null && msg.clearWatermark)
 			_watermark.text = line;
 		else
