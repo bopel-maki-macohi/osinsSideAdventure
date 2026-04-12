@@ -66,12 +66,12 @@ class Issue1Intro extends EventRunner
 	{
 		super.runDialogueEvent(eventManager);
 
-		if (_game._scene != 'chapter1')
+		if (_game._scene != 'issue1')
 			return;
 
 		_game.changeLine(1);
 
-		_tirok.build('chapter1/tirok-confused');
+		_tirok.build('issue1/tirok-confused');
 
 		_tirok.x = _game._dialogueBox.x + _game._dialogueBox.width;
 
@@ -84,7 +84,7 @@ class Issue1Intro extends EventRunner
 			ease: FlxEase.sineIn,
 			onComplete: (t) ->
 			{
-				_tirok.build('chapter1/tirok-OHSHIT', () ->
+				_tirok.build('issue1/tirok-OHSHIT', () ->
 				{
 					_game.positionDialogueCharacter(_tirok);
 					_tirok.x = _game._dialogueBox.x;
