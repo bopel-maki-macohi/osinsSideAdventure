@@ -8,8 +8,10 @@ import openfl.media.Sound;
 class OSACache
 {
 	static var permCachedSounds:Map<String, Sound> = [];
+	static var tempCachedSound:Map<String, Sound> = [];
 
 	static var permCachedTextures:Map<String, FlxGraphic> = [];
+	static var tempCachedTextures:Map<String, FlxGraphic> = [];
 
 	public static function performCaches()
 	{
@@ -49,6 +51,19 @@ class OSACache
 		permCachedSounds.set(key, sound);
 	}
 
+	public static function tempCacheSound(key:String)
+	{
+		if (tempCachedSound.exists(key))
+			return;
+
+		var sound:Null<Sound> = Assets.getSound(key);
+		if (sound == null)
+			return;
+
+		trace('Temp cached sound: $key');
+		tempCachedSound.set(key, sound);
+	}
+
 	public static function permCacheTexture(key:String)
 	{
 		if (permCachedTextures.exists(key))
@@ -58,7 +73,40 @@ class OSACache
 		if (texture == null)
 			return;
 
+		texture.persist = true;
 		trace('Perm cached texture: $key');
 		permCachedTextures.set(key, texture);
+	}
+
+	public static function tempCacheTexture(key:String)
+	{
+		if (tempCachedTextures.exists(key))
+			return;
+
+		var texture:Null<FlxGraphic> = FlxG.bitmap.add(key);
+		if (texture == null)
+			return;
+
+		texture.destroyOnNoUse = true;
+		trace('Temp cached texture: $key');
+		tempCachedTextures.set(key, texture);
+	}
+
+	public static function clearTempTextureCache()
+	{
+		for (key => texture in tempCachedTextures)
+		{
+			tempCachedTextures.remove(key);
+			texture.destroy();
+		}
+	}
+
+	public static function clearTempSoundCache()
+	{
+		for (key => sound in tempCachedSound)
+		{
+			tempCachedTextures.remove(key);
+			sound.close();
+		}
 	}
 }
