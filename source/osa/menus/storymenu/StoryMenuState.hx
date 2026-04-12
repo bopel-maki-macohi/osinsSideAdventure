@@ -43,6 +43,8 @@ class StoryMenuState extends OSAState
 		super.create();
 
 		changeSelection(0);
+
+		onBeatHit(0);
 	}
 
 	override function onExit()
