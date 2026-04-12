@@ -141,7 +141,7 @@ class CreditsSubState extends FlxSubState
 		}
 
 		_creditText = new FlxText(0, 0, 0, '', 16);
-		_creditText.setBorderStyle(OUTLINE, FlxColor.BLACK, 4);
+		_creditText.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
 		_creditText.camera = TitleState.blurCamFG;
 
 		add(_creditSprites);
