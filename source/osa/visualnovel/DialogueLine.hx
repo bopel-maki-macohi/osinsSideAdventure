@@ -19,11 +19,12 @@ class DialogueLine
 
 		_isEvent = false;
 		_event = '';
-		if (splitrawline.length == 1 && rawline?.startsWith(EVENT_STRING_PREFIX))
-		{
-			_isEvent = true;
-			_event = rawline.substr(EVENT_STRING_PREFIX.length);
-		}
+		if (rawline != null)
+			if (splitrawline.length == 1 && rawline?.startsWith(EVENT_STRING_PREFIX))
+			{
+				_isEvent = true;
+				_event = rawline.substr(EVENT_STRING_PREFIX.length);
+			}
 
 		for (i => field in ['_line', '_character', '_bg'])
 		{
