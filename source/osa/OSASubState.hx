@@ -1,5 +1,8 @@
 package osa;
 
+import flixel.FlxSprite;
+import flixel.FlxG;
+import openfl.display.BitmapData;
 import osa.objects.RhythmManager;
 import flixel.FlxSubState;
 
@@ -21,6 +24,8 @@ class OSASubState extends FlxSubState
 			_rhythmManager._beatHit.add(onBeatHit);
 			_rhythmManager._stepHit.add(onStepHit);
 		}
+
+		closeCallback = onClose;
 	}
 
 	override function update(elapsed:Float)
@@ -42,4 +47,19 @@ class OSASubState extends FlxSubState
 	public function onBeatHit(curBeat:Int) {}
 
 	public function onStepHit(curStep:Int) {}
+
+	function onClose()
+	{
+		if (this._parentState != null)
+			this._parentState.visible = false;
+
+		final screenshot:BitmapData = BitmapData.fromImage(FlxG.stage.window.readPixels());
+
+		if (this._parentState != null)
+		{
+			this._parentState.visible = true;
+
+			this._parentState.add(new FlxSprite(0, 0, screenshot));
+		}
+	}
 }
