@@ -34,7 +34,7 @@ class TitleState extends OSAState
 	public static var blurCamBG:FlxCamera;
 	public static var blurCamFG:FlxCamera;
 
-	public var _playBtn:ClickableSprite;
+	public var _storymenuBtn:ClickableSprite;
 	public var _optionsBtn:ClickableSprite;
 	public var _creditsBtn:ClickableSprite;
 
@@ -94,11 +94,11 @@ class TitleState extends OSAState
 
 		add(_logo);
 
-		_playBtn = new ClickableSprite(0, 0, 'title/play'.menuAsset().imageFile());
+		_storymenuBtn = new ClickableSprite(0, 0, 'title/play'.menuAsset().imageFile());
 		_optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
 		_creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
 
-		for (btn in [_playBtn, _optionsBtn, _creditsBtn])
+		for (btn in [_storymenuBtn, _optionsBtn, _creditsBtn])
 		{
 			btn.scale.set(0.5, 0.5);
 
@@ -111,15 +111,15 @@ class TitleState extends OSAState
 			btn._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
 		}
 
-		_playBtn.x = 128;
-		_optionsBtn.y = FlxG.height - _optionsBtn.height - (_playBtn.x / 4);
-		_creditsBtn.x = FlxG.width - _creditsBtn.width - _playBtn.x;
+		_storymenuBtn.x = 128;
+		_optionsBtn.y = FlxG.height - _optionsBtn.height - (_storymenuBtn.x / 4);
+		_creditsBtn.x = FlxG.width - _creditsBtn.width - _storymenuBtn.x;
 
-		add(_playBtn);
+		add(_storymenuBtn);
 		add(_optionsBtn);
 		add(_creditsBtn);
 
-		_playBtn._onClick.add(() -> onSelectionClicked(_storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(_storymenuTileScrollBG))));
+		_storymenuBtn._onClick.add(() -> onSelectionClicked(_storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(_storymenuTileScrollBG))));
 		_optionsBtn._onClick.add(() -> onSelectionClicked(_optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(_optionsTileScrollBG))));
 		_creditsBtn._onClick.add(() -> onSelectionClicked(_creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(_creditsTileScrollBG))));
 
@@ -179,7 +179,7 @@ class TitleState extends OSAState
 
 	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:OSASubState)
 	{
-		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
+		for (spr in [_logo, _storymenuBtn, _creditsBtn, _optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
@@ -196,7 +196,7 @@ class TitleState extends OSAState
 
 	function onSelectionExited(tileScrollBG:TileScrollBG)
 	{
-		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
+		for (spr in [_logo, _storymenuBtn, _creditsBtn, _optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
