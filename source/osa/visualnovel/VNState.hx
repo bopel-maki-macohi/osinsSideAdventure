@@ -102,7 +102,7 @@ class VNState extends OSAState
 		_dialogueText.color = FlxColor.BLACK;
 
 		_dialogueText.setTypingVariation(0.75, true);
-		_dialogueText.skipKeys = ['SPACE'];
+		// _dialogueText.skipKeys = ['SPACE'];
 
 		_dialogueText.sounds = [];
 		for (s in ['type1', 'type2', 'type3'])
