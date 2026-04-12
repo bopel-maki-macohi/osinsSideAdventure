@@ -18,6 +18,7 @@ class Save
 		options.get().pcname ??= true;
 
 		addIssue('issue1');
+		addIssue('issue2');
 	}
 
 	public static function addIssue(issuefile:String)
