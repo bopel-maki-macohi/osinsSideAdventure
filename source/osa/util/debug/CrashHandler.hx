@@ -1,5 +1,6 @@
 package osa.util.debug;
 
+import osa.save.Save;
 import flixel.FlxG;
 import openfl.events.UncaughtErrorEvent;
 import openfl.Lib;
@@ -132,7 +133,7 @@ class CrashHandler
 		{
 			errorMessage += '\n    No Special Fields';
 		}
-		errorMessage += '\nSave Data: ${FlxG.save.data}';
+		errorMessage += '\nSave Data: ${Save.saveDataLog()}';
 
 		errorMessage += '\n';
 		#if sys

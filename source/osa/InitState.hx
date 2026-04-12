@@ -78,11 +78,16 @@ class InitState extends OSAState
 			{
 				var target = msgs.lines[FlxG.random.int(0, msgs.lines.length - 1)];
 
-				switch (target.filter)
+				function filterOut()
+				{
+					trace('Filtered out ${target.line} because of ${target.filter}');
+				}
+
+				switch (target?.filter?.toLowerCase())
 				{
 					case 'pcname':
 						if (!Save.options.get().pcname)
-							return;
+							return filterOut();
 				}
 
 				msg = target;

@@ -34,16 +34,25 @@ class Save
 
 		FlxG.stage.application.onExit.add(function(l)
 		{
-			trace(saveDataLog());
+			logSaveData();
 			FlxG.save.flush();
 		});
 
+		logSaveData();
+	}
+
+	public static function logSaveData()
+	{
+		#if sys
+		Sys.println(saveDataLog());
+		#else
 		trace(saveDataLog());
+		#end
 	}
 
 	public static function saveDataLog()
 	{
-		var data:String = 'Save:\n';
+		var data:String = 'Save: ';
 
 		for (field in Reflect.fields(FlxG.save.data))
 			data += '$field : ${Reflect.field(FlxG.save.data, field)}\n';
