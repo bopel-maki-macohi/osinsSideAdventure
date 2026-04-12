@@ -100,7 +100,7 @@ class InitState extends OSAState
 			{
 				var target:SplashTextData = null;
 
-				if (debugMsgs.length > 0 && #if debug true #else false #end)
+				if (debugMsgs.length > 0 && #if debug true #else false #end && FlxG.random.bool(75))
 					target = debugMsgs[FlxG.random.int(0, debugMsgs.length - 1)];
 				else
 					target = msgs.lines[FlxG.random.int(0, msgs.lines.length - 1)];
