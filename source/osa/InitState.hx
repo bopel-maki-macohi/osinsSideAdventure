@@ -27,7 +27,7 @@ class InitState extends OSAState
 		if (!MacroUtil.isDefined('SKIP_SPLASH'))
 			thisOutro.duration = 8;
 
-		super(thisOutro, thisOutro);
+		super(OSAState.DEFAULT_TRANSITION, thisOutro);
 	}
 
 	override public function create()
@@ -165,12 +165,12 @@ class InitState extends OSAState
 
 			if (specialCase != null)
 			{
-				FlxTimer.wait(this.transIn.duration * 0.25, specialCase);
+				FlxTimer.wait(this.transIn.duration * 2, specialCase);
 				return;
 			}
 		}
 
-		FlxTimer.wait(this.transIn.duration * 0.3, leave);
+		FlxTimer.wait(this.transIn.duration * 2, leave);
 	}
 
 	function piracy()
