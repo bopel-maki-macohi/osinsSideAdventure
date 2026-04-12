@@ -10,7 +10,7 @@ class Save
 
 	static function fieldInit()
 	{
-		issues = new SaveField<Array<String>>('issues', ['issue1']);
+		issues = new SaveField<Array<String>>('issues', []);
 		options = new SaveField<SaveOptions>('options', {
 			pcname: true,
 		});
