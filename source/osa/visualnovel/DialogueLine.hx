@@ -19,7 +19,7 @@ class DialogueLine
 
 		_isEvent = false;
 		_event = '';
-		if (splitrawline.length == 1 && rawline.startsWith(EVENT_STRING_PREFIX))
+		if (splitrawline.length == 1 && rawline?.startsWith(EVENT_STRING_PREFIX))
 		{
 			_isEvent = true;
 			_event = rawline.substr(EVENT_STRING_PREFIX.length);
