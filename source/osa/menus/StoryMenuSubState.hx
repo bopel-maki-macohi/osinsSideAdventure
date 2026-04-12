@@ -23,7 +23,7 @@ class StoryMenuSubState extends TitleSubStateBase
 		for (issue in Save.issues.get())
 		{
 			_issues.push(issue);
-			_spriteList.push(makeSprite('story/$issue', () -> return issue));
+			_spriteList.push(makeSprite('story/$issue', () -> return ''));
 		}
 	}
 
