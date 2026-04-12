@@ -19,9 +19,10 @@ class HoldToPerformGadge extends FlxRadialGauge
 
 	var _holdDelta:Float = 0;
 
-	public var onComplete:Void->Void;
+	public var _onComplete:Void->Void;
+	public var _condition:Void->Bool;
 
-	override public function new(?onComplete:Void->Void)
+	override public function new(condition:Void->Bool, ?onComplete:Void->Void)
 	{
 		super();
 
@@ -29,14 +30,15 @@ class HoldToPerformGadge extends FlxRadialGauge
 		replaceColor(FlxColor.BLACK, 0x8AC5C4C4);
 		amount = 0;
 
-		this.onComplete = onComplete;
+		this._onComplete = onComplete;
+		this._condition = condition;
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.pressed.ANY)
+		if ((_condition != null && _condition()))
 			_holdDelta += elapsed;
 		else
 			_holdDelta = FlxMath.lerp(_holdDelta, -0.1, (elapsed * 3).clamp(0, 1));
@@ -47,7 +49,7 @@ class HoldToPerformGadge extends FlxRadialGauge
 		alpha = FlxMath.lerp(0, 1, amount).clamp(0, 1);
 
 		// If the dial is full, skip the video.
-		if (amount >= 1 && onComplete != null)
-			onComplete();
+		if (amount >= 1 && _onComplete != null)
+			_onComplete();
 	}
 }
