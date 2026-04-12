@@ -6,6 +6,9 @@ import flixel.FlxSprite;
 
 class DialogueSprite extends FlxSprite
 {
+	public static final BACKGROUNDS_FOLDER:String = 'backgrounds';
+	public static final CHARACTERS_FOLDER:String = 'characters';
+
 	public var _isCharacter:Bool = false;
 
 	override public function new(isCharacter)
@@ -32,7 +35,7 @@ class DialogueSprite extends FlxSprite
 		}
 
 		if (_isCharacter)
-			loadGraphic('characters/$id'.visualNovelAsset().imageFile());
+			loadGraphic('$CHARACTERS_FOLDER/$id'.visualNovelAsset().imageFile());
 		else
 		{
 			switch (id)
@@ -53,7 +56,7 @@ class DialogueSprite extends FlxSprite
 					makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 
 				default:
-					loadGraphic('backgrounds/$id'.visualNovelAsset().imageFile());
+					loadGraphic('$BACKGROUNDS_FOLDER/$id'.visualNovelAsset().imageFile());
 			}
 		}
 		screenCenter();

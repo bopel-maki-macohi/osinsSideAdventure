@@ -1,5 +1,7 @@
 package osa.menus;
 
+import osa.visualnovel.DialogueSprite;
+import osa.visualnovel.DialogueLine;
 import osa.visualnovel.VNState;
 import flixel.FlxG;
 import osa.save.Save;
@@ -11,17 +13,55 @@ class DebugSubState extends TitleSubStateBase
 		super(onExit);
 
 		_spriteList = [
+			makeSprite('debug/default', () -> return 'Get missing assets', getMissingAssets),
+
 			makeSprite('debug/default', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
+
 			makeSprite('debug/default', () -> return 'Log Save', () -> Save.logSaveData()),
 			makeSprite('debug/default', () -> return 'Reset Game', () -> FlxG.resetGame()),
+
 			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new InitState())),
 			makeSprite('debug/default', () -> return 'Go to Github Page', () -> FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure')),
 			makeSprite('debug/default', () -> return 'Go to Lorem Ipsum VN', () -> FlxG.switchState(() -> new VNState('lorem'))),
 		];
 	}
 
-	override function update(elapsed:Float)
+	function getMissingAssets()
 	{
-		super.update(elapsed);
+		var chars:Array<String> = [];
+		var bgs:Array<String> = [];
+
+		for (issue in Save.issues.get())
+		{
+			trace(issue);
+
+			for (rawline in issue.parseDialogueFile())
+			{
+				var dialogueLine:DialogueLine = new DialogueLine(rawline);
+
+				if (dialogueLine._isEvent)
+					continue;
+
+				final char = dialogueLine._character;
+				final bg = dialogueLine._bg;
+
+				final charPath = '${DialogueSprite.CHARACTERS_FOLDER}/$char'.visualNovelAsset().imageFile();
+				final bgPath = '${DialogueSprite.BACKGROUNDS_FOLDER}/$bg'.visualNovelAsset().imageFile();
+
+				if (char != null)
+					if (!charPath.fileExists() && !chars.contains(charPath))
+					{
+						trace(' - $charPath');
+						chars.push(charPath);
+					}
+
+				if (bg != null)
+					if (!bgPath.fileExists() && !bgs.contains(bgPath))
+					{
+						trace(' - $bgPath');
+						bgs.push(bgPath);
+					}
+			}
+		}
 	}
 }
