@@ -152,9 +152,11 @@ class InitState extends OSAState
 		if (msg?.specialCase != null)
 		{
 			trace(msg.specialCase);
-			if (Reflect.hasField(this, msg.specialCase) && Reflect.isFunction(Reflect.field(this, msg.specialCase)))
+			var specialCase:Dynamic = Reflect.field(this, msg.specialCase);
+
+			if (specialCase != null)
 			{
-				Reflect.field(this, msg.specialCase)();
+				specialCase();
 				return;
 			}
 		}
