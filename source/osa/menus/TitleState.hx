@@ -20,7 +20,9 @@ import flixel.FlxState;
 class TitleState extends OSAState
 {
 	public var _titleTileScrollBG:TileScrollBG;
+
 	public var _storymenuTileScrollBG:TileScrollBG;
+	public var _randomTileScrollBG:TileScrollBG;
 	public var _creditsTileScrollBG:TileScrollBG;
 	public var _optionsTileScrollBG:TileScrollBG;
 
@@ -41,6 +43,10 @@ class TitleState extends OSAState
 	override function create()
 	{
 		_titleTileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
+
+		_randomTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
+		_randomTileScrollBG._tile = 'tile-sinco'.menuAsset();
+		_randomTileScrollBG.alpha = 0;
 
 		_storymenuTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
 		_storymenuTileScrollBG._tile = 'tile-osin'.menuAsset();
@@ -71,6 +77,8 @@ class TitleState extends OSAState
 		blurCamFG.filters = [_blurFilterFG];
 
 		_titleTileScrollBG.camera = blurCamBG;
+
+		_randomTileScrollBG.camera = blurCamBG;
 		_storymenuTileScrollBG.camera = blurCamBG;
 		_creditsTileScrollBG.camera = blurCamBG;
 		_optionsTileScrollBG.camera = blurCamBG;
@@ -78,6 +86,8 @@ class TitleState extends OSAState
 		_logo.camera = blurCamFG;
 
 		add(_titleTileScrollBG);
+
+		add(_randomTileScrollBG);
 		add(_storymenuTileScrollBG);
 		add(_creditsTileScrollBG);
 		add(_optionsTileScrollBG);
@@ -155,6 +165,7 @@ class TitleState extends OSAState
 			controls();
 		}
 
+		_randomTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_storymenuTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_creditsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 		_optionsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
