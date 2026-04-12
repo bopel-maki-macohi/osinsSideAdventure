@@ -169,13 +169,7 @@ class TitleState extends OSAState
 
 		if (executedTSFunc)
 		{
-			for (obj in [
-				_storymenuBtn,
-				_optionsBtn,
-				_creditsBtn,
-
-				_logo,
-			])
+			for (obj in [_storymenuBtn, _optionsBtn, _creditsBtn, _logo, _titleTileScrollBG,])
 			{
 				obj.alpha = 0;
 			}
@@ -251,6 +245,12 @@ class TitleState extends OSAState
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
+		}
+
+		if (_titleTileScrollBG.alpha < 1)
+		{
+			FlxTween.cancelTweensOf(_titleTileScrollBG);
+			FlxTween.tween(_titleTileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
 
 		FlxG.mouse.visible = true;
