@@ -76,7 +76,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		for (i => sprite in _sprites.members)
 		{
-			final scale = 1.1 + (i / 10);
+			final scale = 0.6 + (i / 10);
 
 			sprite.scale.set(scale, scale);
 		}
@@ -90,7 +90,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		for (i => sprite in _sprites.members)
 		{
-			final scale = FlxMath.lerp(sprite.scale.x, 1, Constants.DEFAULT_LERP_SPEED);
+			final scale = FlxMath.lerp(sprite.scale.x, 0.5, Constants.DEFAULT_LERP_SPEED);
 
 			sprite.scale.set(scale, scale);
 		}
