@@ -350,7 +350,14 @@
         },
         {
             "line": [
-                "Hello %user%"
+                "Hello, %user%"
+            ],
+            "filter": "pcname",
+            "clearWatermark": true
+        },
+        {
+            "line": [
+                "%user%, it's pissing me off."
             ],
             "filter": "pcname",
             "clearWatermark": true
