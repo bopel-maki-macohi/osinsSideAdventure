@@ -161,7 +161,7 @@ class InitState extends OSAState
 
 			if (specialCase != null)
 			{
-				FlxTimer.wait(this.transIn.duration * 1, specialCase);
+				FlxTimer.wait(this.transIn.duration * 0.5, specialCase);
 				return;
 			}
 		}
