@@ -167,7 +167,11 @@ class TitleState extends OSAState
 
 	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:FlxSubState)
 	{
-		onSubStateEnter();
+		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
+		{
+			FlxTween.cancelTweensOf(spr);
+			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
+		}
 
 		FlxTween.cancelTweensOf(tileScrollBG);
 		FlxTween.tween(tileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
@@ -177,28 +181,14 @@ class TitleState extends OSAState
 
 	function onSelectionExited(tileScrollBG:TileScrollBG)
 	{
-		onSubStateExit();
-
-		FlxTween.cancelTweensOf(tileScrollBG);
-		FlxTween.tween(tileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
-	}
-
-	function onSubStateEnter()
-	{
-		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
-		{
-			FlxTween.cancelTweensOf(spr);
-			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
-		}
-	}
-
-	function onSubStateExit()
-	{
 		for (spr in [_logo, _playBtn, _creditsBtn, _optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
+
+		FlxTween.cancelTweensOf(tileScrollBG);
+		FlxTween.tween(tileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
 	}
 
 	override function onExit()
