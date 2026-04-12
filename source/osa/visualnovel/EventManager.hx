@@ -1,12 +1,17 @@
 package osa.visualnovel;
 
 import osa.visualnovel.events.*;
+import osa.visualnovel.events.DialogueSpeed;
 import flixel.group.FlxSpriteGroup;
 
 class EventManager extends FlxSpriteGroup
 {
 	public static var events:Map<String, EventRunner> = [
 		'testingEventSystem' => new TestingEventSystem(NONE),
+
+		'setDialogueSpeed' => new SetDialogueSpeed(),
+		'resetDialogueSpeed' => new ResetDialogueSpeed(),
+
 		'issue1Intro' => new Issue1Intro(),
 		'issue1EstablishingShot' => new Issue1EstablishingShot(),
 	];
@@ -18,7 +23,7 @@ class EventManager extends FlxSpriteGroup
 
 	public var _currentEvent:String = null;
 
-	public function runDialogueEvent(event:String):Bool
+	public function runDialogueEvent(event:String, ?params:Array<String>):Bool
 	{
 		this._currentEvent = event;
 
@@ -32,7 +37,7 @@ class EventManager extends FlxSpriteGroup
 		if (events.exists(event))
 		{
 			trace('Running dialogue event: $event');
-			events.get(event)?.runDialogueEvent(this);
+			events.get(event)?.runDialogueEvent(this, params);
 			return true;
 		}
 

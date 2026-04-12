@@ -16,12 +16,12 @@ class EventRunner
 
 	public var _dialogueFileType(default, null):EventRunnerDialogueFile;
 
-	public function new(dialogueFileType:EventRunnerDialogueFile)
+	public function new(dialogueFileType:EventRunnerDialogueFile = ANY)
 	{
 		this._dialogueFileType = dialogueFileType;
 	}
 
-	public function runDialogueEvent(eventManager:EventManager) {}
+	public function runDialogueEvent(eventManager:EventManager, ?params:Array<String>) {}
 
 	public function continueLine(eventManager:EventManager) {}
 

@@ -11,9 +11,9 @@ class Issue1EstablishingShot extends EventRunner
 		super(NONE);
 	}
 
-	override function runDialogueEvent(eventManager:EventManager)
+	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)
 	{
-		super.runDialogueEvent(eventManager);
+		super.runDialogueEvent(eventManager, params);
 
 		FlxG.sound.play('prowler'.miscAsset().audioFile(), 1.0, false, null, true, function()
 		{

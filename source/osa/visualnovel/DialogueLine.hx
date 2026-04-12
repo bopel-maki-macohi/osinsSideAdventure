@@ -19,11 +19,16 @@ class DialogueLine
 
 		_isEvent = false;
 		_event = null;
+		_eventParams = null;
+
 		if (rawline != null)
-			if (splitrawline.length == 1 && rawline?.startsWith(EVENT_STRING_PREFIX))
+			if (rawline?.startsWith(EVENT_STRING_PREFIX))
 			{
 				_isEvent = true;
-				_event = rawline.substr(EVENT_STRING_PREFIX.length);
+				_event = splitrawline[0].substr(EVENT_STRING_PREFIX.length);
+				
+				splitrawline.remove(splitrawline[0]);
+				_eventParams = splitrawline;
 			}
 
 		for (i => field in ['_line', '_character', '_bg'])
@@ -49,11 +54,12 @@ class DialogueLine
 
 	public var _isEvent(default, null):Bool;
 	public var _event(default, null):String;
+	public var _eventParams(default, null):Array<String>;
 
 	public function toString():String
 	{
 		if (_isEvent)
-			return 'DialogueLine(event: $_event)';
+			return 'DialogueLine(event: $_event | eventParams: $_eventParams)';
 		else
 			return 'DialogueLine(line: $_line | character: $_character | bg: $_bg)';
 	}

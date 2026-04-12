@@ -62,9 +62,9 @@ class Issue1Intro extends EventRunner
 
 	public var _tirok:DialogueSprite;
 
-	override public function runDialogueEvent(eventManager:EventManager)
+	override public function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)
 	{
-		super.runDialogueEvent(eventManager);
+		super.runDialogueEvent(eventManager, params);
 
 		if (_game._scene != 'issue1')
 			return;

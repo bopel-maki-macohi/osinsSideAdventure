@@ -109,6 +109,8 @@ class VNState extends OSAState
 			_dialogueText.sounds.push(FlxG.sound.load(s.visualNovelAsset().audioFile()));
 		_dialogueText.finishSounds = true;
 
+		_dialogueText.delay = 0.05;
+
 		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.visualNovelAsset().imageFile());
 		_dialogueContinueHand.scale.set(2, 2);
 		_dialogueContinueHand.updateHitbox();
@@ -187,7 +189,7 @@ class VNState extends OSAState
 		buildBGAndCharacter();
 
 		_eventManager.continueLine();
-		_ranEvent = _eventManager.runDialogueEvent(_dialogueLine._event);
+		_ranEvent = _eventManager.runDialogueEvent(_dialogueLine._event, _dialogueLine._eventParams);
 	}
 
 	public var _ranEvent:Bool = false;
