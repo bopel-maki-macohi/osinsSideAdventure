@@ -12,6 +12,7 @@ typedef SplashTextData =
 	?clearWatermark:Bool,
 	
 	?filter:String,
+	?specialCase:String,
 
 	line:Array<String>
 }

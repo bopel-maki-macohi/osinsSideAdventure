@@ -361,6 +361,14 @@
             ],
             "filter": "pcname",
             "clearWatermark": true
+        },
+        {
+            "line": [
+                "PIRACY. IS A CRIME."
+            ],
+            "filter": "debug",
+            "specialCase": "piracy",
+            "clearWatermark": true
         }
     ]
 }

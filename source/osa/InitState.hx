@@ -43,7 +43,7 @@ class InitState extends OSAState
 	function actualInit()
 	{
 		CrashHandler.init();
-		
+
 		Save.init();
 
 		ScreenshotPlugin.init();
@@ -87,13 +87,20 @@ class InitState extends OSAState
 		var line:String = 'Have fun!';
 
 		var msgs:SplashTextsData = Json.parse('splashTexts'.miscAsset().jsonFile().readText());
+		var debugMsgs:Array<SplashTextData> = msgs.lines.filter(l -> return l?.filter == 'debug');
+
 		var msg:SplashTextData = null;
 
 		if (msgs.lines.length > 0)
 		{
 			function randomMsg()
 			{
-				var target = msgs.lines[FlxG.random.int(0, msgs.lines.length - 1)];
+				var target:SplashTextData = null;
+
+				if (debugMsgs.length > 0 && #if debug true #else false #end)
+					target = debugMsgs[FlxG.random.int(0, debugMsgs.length - 1)];
+				else
+					target = msgs.lines[FlxG.random.int(0, msgs.lines.length - 1)];
 
 				function filterOut()
 				{
@@ -105,6 +112,11 @@ class InitState extends OSAState
 					case 'pcname':
 						if (!Save.options.get().pcname)
 							return filterOut();
+
+					case 'debug':
+						#if !debug
+						return filterOut();
+						#end
 				}
 
 				msg = target;
@@ -137,6 +149,21 @@ class InitState extends OSAState
 
 		_watermark.screenCenter();
 
+		if (msg?.specialCase != null)
+		{
+			trace(msg.specialCase);
+			if (Reflect.hasField(this, msg.specialCase) && Reflect.isFunction(Reflect.field(this, msg.specialCase)))
+			{
+				Reflect.field(this, msg.specialCase)();
+				return;
+			}
+		}
+
 		leave();
+	}
+
+	function piracy()
+	{
+		FlxG.sound.play('prowler'.miscAsset().audioFile(), 1.0, false, null, true, leave);
 	}
 }
