@@ -27,6 +27,8 @@
 
 	<define name="SCREENSHOT_PLUGIN" if="desktop" />
 
+	<haxeflag name="--dce full" />
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
