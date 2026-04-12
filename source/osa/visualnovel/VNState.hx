@@ -16,6 +16,8 @@ class VNState extends OSAState
 {
 	public static final FADEOUT_LETTER_SPEED:Float = 0.1;
 
+	public static var instance:VNState;
+
 	public var _dialogueList:Array<String> = [];
 
 	public var _dialogueEntry(default, set):Int = 0;
@@ -100,6 +102,14 @@ class VNState extends OSAState
 		changeLine(0);
 
 		super.create();
+
+		if (instance != null)
+		{
+			trace('NON-NULL VNSTATE INSTANCE');
+			instance = null;
+		}
+
+		instance = this;
 	}
 
 	public function getTextFadeTime():Float
@@ -147,7 +157,7 @@ class VNState extends OSAState
 		_dialogueTypingFinished = false;
 		_dialogueContinueHand.visible = false;
 
-		if (_dialogueLine._line == null)
+		if (_dialogueLine._line == null && !_dialogueLine._isEvent)
 			FlxTimer.wait(0.03 * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
 	}
 
@@ -180,6 +190,7 @@ class VNState extends OSAState
 	{
 		trace('End');
 
+		instance = null;
 		FlxG.switchState(() -> new TitleState());
 	}
 
