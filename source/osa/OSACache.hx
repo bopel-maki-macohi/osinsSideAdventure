@@ -48,7 +48,9 @@ class OSACache
 			return;
 
 		trace('Perm cached sound: $key');
+
 		permCachedSounds.set(key, sound);
+		tempCachedSound.set(key, sound);
 	}
 
 	public static function tempCacheSound(key:String)
@@ -61,6 +63,7 @@ class OSACache
 			return;
 
 		trace('Temp cached sound: $key');
+
 		tempCachedSound.set(key, sound);
 	}
 
@@ -75,7 +78,9 @@ class OSACache
 
 		texture.persist = true;
 		trace('Perm cached texture: $key');
+		
 		permCachedTextures.set(key, texture);
+		tempCachedTextures.set(key, texture);
 	}
 
 	public static function tempCacheTexture(key:String)
@@ -89,6 +94,7 @@ class OSACache
 
 		texture.destroyOnNoUse = true;
 		trace('Temp cached texture: $key');
+		
 		tempCachedTextures.set(key, texture);
 	}
 
@@ -96,6 +102,9 @@ class OSACache
 	{
 		for (key => texture in tempCachedTextures)
 		{
+			if (permCachedTextures.exists(key))
+				continue;
+
 			tempCachedTextures.remove(key);
 			texture.destroy();
 		}
@@ -105,6 +114,9 @@ class OSACache
 	{
 		for (key => sound in tempCachedSound)
 		{
+			if (permCachedSounds.exists(key))
+				continue;
+
 			tempCachedTextures.remove(key);
 			sound.close();
 		}
