@@ -147,7 +147,7 @@ class TitleSubStateBase extends OSASubState
 		_text.camera = TitleState.blurCamFG;
 		_text.alpha = 0;
 
-		FlxTween.tween(_text, {alpha: 0}, OSAState.DEFAULT_TRANSITION.duration, {
+		FlxTween.tween(_text, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
 			ease: FlxEase.sineInOut
 		});
 
