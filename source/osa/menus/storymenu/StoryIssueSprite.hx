@@ -2,7 +2,7 @@ package osa.menus.storymenu;
 
 import flixel.FlxSprite;
 
-class StoryChapterSprite extends FlxSprite
+class StoryIssueSprite extends FlxSprite
 {
 	public var _isIcon:Bool = false;
 
@@ -33,8 +33,8 @@ class StoryChapterSprite extends FlxSprite
 	override function toString():String
 	{
 		if (_isIcon)
-			return 'StoryChapterSprite(icon : $_id)';
+			return 'StoryIssueSprite(icon : $_id)';
 
-		return 'StoryChapterSprite(title : $_id)';
+		return 'StoryIssueSprite(title : $_id)';
 	}
 }

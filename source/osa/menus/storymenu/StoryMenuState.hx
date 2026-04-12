@@ -12,27 +12,27 @@ class StoryMenuState extends OSAState
 
 	public var _currentSelection:Int = 0;
 
-	public var _chapters:Array<StoryChapter> = [];
+	public var _issues:Array<StoryIssue> = [];
 
-	public var _chapterTitle:StoryChapterSprite;
-	public var _chapterIcon:StoryChapterSprite;
-	public var _chapterDialogueFile:String;
+	public var _issueTitle:StoryIssueSprite;
+	public var _issueIcon:StoryIssueSprite;
+	public var _issueDialogueFile:String;
 
 	override function create()
 	{
 		_getYourAssUp = new FlxSound().loadEmbedded('updog/get-your-ass-up'.miscAsset().audioFile(), true);
 		_getYourAssUp.fadeIn(this.transIn.duration);
 
-		for (chapter in Save.chapters.get())
-			_chapters.push(new StoryChapter('story/$chapter'.menuAsset().textFile().readText()));
+		for (issue in Save.issues.get())
+			_issues.push(new StoryIssue('story/$issue'.menuAsset().textFile().readText()));
 
-		_chapterTitle = new StoryChapterSprite(false);
-		_chapterIcon = new StoryChapterSprite(true);
+		_issueTitle = new StoryIssueSprite(false);
+		_issueIcon = new StoryIssueSprite(true);
 
-		add(_chapterTitle);
-		add(_chapterIcon);
+		add(_issueTitle);
+		add(_issueIcon);
 
-		_chapterDialogueFile = '';
+		_issueDialogueFile = '';
 
 		super.create();
 
@@ -54,7 +54,7 @@ class StoryMenuState extends OSAState
 			FlxG.switchState(() -> new TitleState());
 
 		if (FlxG.keys.justPressed.ENTER)
-			FlxG.switchState(() -> new VNState(_chapterDialogueFile));
+			FlxG.switchState(() -> new VNState(_issueDialogueFile));
 
 		if (FlxG.keys.anyJustPressed([A, LEFT]))
 			changeSelection(-1);
@@ -67,16 +67,16 @@ class StoryMenuState extends OSAState
 		_currentSelection += increment;
 
 		if (_currentSelection < 0)
-			_currentSelection = _chapters.length - 1;
-		if (_currentSelection > _chapters.length - 1)
+			_currentSelection = _issues.length - 1;
+		if (_currentSelection > _issues.length - 1)
 			_currentSelection = 0;
 
-		_chapterTitle.build(_chapters[_currentSelection]._title);
-		_chapterIcon.build(_chapters[_currentSelection]._icon);
+		_issueTitle.build(_issues[_currentSelection]._title);
+		_issueIcon.build(_issues[_currentSelection]._icon);
 
-		_chapterIcon.y = 10;
-		_chapterTitle.y = FlxG.height - (_chapterTitle.height * 1.1);
+		_issueIcon.y = 10;
+		_issueTitle.y = FlxG.height - (_issueTitle.height * 1.1);
 
-		_chapterDialogueFile = _chapters[_currentSelection]._dialoguefile;
+		_issueDialogueFile = _issues[_currentSelection]._dialoguefile;
 	}
 }

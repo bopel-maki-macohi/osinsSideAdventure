@@ -1,6 +1,6 @@
 package osa.menus.storymenu;
 
-class StoryChapter
+class StoryIssue
 {
 	public static final SPLIT_STRING:String = '\n';
 
@@ -13,7 +13,7 @@ class StoryChapter
 
 	function set__rawline(rawline:String):String
 	{
-		final splitrawline:Array<String> = rawline?.split(StoryChapter.SPLIT_STRING) ?? null;
+		final splitrawline:Array<String> = rawline?.split(StoryIssue.SPLIT_STRING) ?? null;
 
 		for (i => field in ['_title', '_icon', '_dialoguefile'])
 		{
@@ -33,5 +33,5 @@ class StoryChapter
 	public var _dialoguefile(default, null):String;
 
 	public function toString():String
-		return 'StoryChapter(title : $_title | icon : $_icon | dialogueFile : $_dialoguefile)';
+		return 'StoryIssue(title : $_title | icon : $_icon | dialogueFile : $_dialoguefile)';
 }

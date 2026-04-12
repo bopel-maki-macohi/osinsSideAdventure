@@ -4,14 +4,14 @@ import flixel.FlxG;
 
 class Save
 {
-	public static var chapters:SaveField<Array<String>>;
+	public static var issues:SaveField<Array<String>>;
 
 	static function fieldInit()
 	{
-		chapters = new SaveField<Array<String>>('chapters', ['chapter1']);
+		issues = new SaveField<Array<String>>('issues', ['issue1']);
 
-		if (!chapters.get().contains('chapter1'))
-			chapters.get().push('chapter1');
+		if (!issues.get().contains('issue1'))
+			issues.get().push('issue1');
 	}
 
 	public static function init()
