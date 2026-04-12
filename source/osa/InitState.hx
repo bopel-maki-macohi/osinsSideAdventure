@@ -71,13 +71,33 @@ class InitState extends OSAState
 		FlxG.stage.application.window.title = _watermark.text;
 
 		var line:String = 'Have fun!';
-		
+
 		var msgs:SplashTextsData = Json.parse('splashTexts'.miscAsset().jsonFile().readText());
 		var msg:SplashTextData = null;
 
 		if (msgs.lines.length > 0)
 		{
-			msg = msgs.lines[FlxG.random.int(0, msgs.lines.length - 1)];
+			function randomMsg()
+			{
+				var target = msgs.lines[FlxG.random.int(0, msgs.lines.length - 1)];
+
+				switch (target.filter)
+				{
+					case 'pcname':
+						if (!Save.options.get().pcname)
+							return;
+				}
+
+				msg = target;
+			}
+
+			var i = 0;
+
+			while (msg == null && i < 10)
+			{
+				randomMsg();
+				i++;
+			}
 
 			line = msg.line.join('\n');
 		}

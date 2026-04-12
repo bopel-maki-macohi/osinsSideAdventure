@@ -347,6 +347,13 @@
             "line": [
                 "Stand ready for my arrival worm."
             ]
+        },
+        {
+            "line": [
+                "Hello %user%"
+            ],
+            "filter": "pcname",
+            "clearWatermark": true
         }
     ]
 }

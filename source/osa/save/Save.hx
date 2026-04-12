@@ -6,9 +6,16 @@ class Save
 {
 	public static var issues:SaveField<Array<String>>;
 
+	public static var options:SaveField<SaveOptions>;
+
 	static function fieldInit()
 	{
 		issues = new SaveField<Array<String>>('issues', ['issue1']);
+		options = new SaveField<SaveOptions>('options', {
+			pcname: true,
+		});
+
+		options.get().pcname ??= true;
 
 		addIssue('issue1');
 	}
