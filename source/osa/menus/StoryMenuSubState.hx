@@ -52,6 +52,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	function onEnter()
 	{
+		_getYourAssUp.fadeOut(OSAState.DEFAULT_TRANSITION.duration);
 		FlxG.switchState(() -> new VNState(_issueDialogueFile));
 	}
 
