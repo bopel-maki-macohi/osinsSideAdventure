@@ -1,5 +1,6 @@
 package osa;
 
+import flixel.sound.FlxSound;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.graphics.FlxGraphic;
@@ -8,14 +9,30 @@ import openfl.media.Sound;
 
 class OSACache
 {
-	static var permCachedSounds:Map<String, Sound> = [];
-	static var tempCachedSound:Map<String, Sound> = [];
+	static var permCachedSounds:Map<String, FlxSound> = [];
+	static var tempCachedSound:Map<String, FlxSound> = [];
 
 	static var permCachedTextures:Map<String, FlxGraphic> = [];
 	static var tempCachedTextures:Map<String, FlxGraphic> = [];
 
-	public static function performCaches()
+	public static function init()
 	{
+		/** Signals **/
+
+		FlxG.signals.postStateSwitch.add(function()
+		{
+			for (key => sound in tempCachedSound)
+			{
+				sound.loadEmbedded(key);
+			}
+			for (key => texture in tempCachedTextures)
+			{
+				texture.refresh();
+				
+				forceRender(texture);
+			}
+		});
+
 		/** Audio Caching **/
 
 		permCacheSound('updog/get-your-ass-up'.audioFile().miscAsset());
@@ -44,12 +61,15 @@ class OSACache
 		if (permCachedSounds.exists(key))
 			return;
 
-		var sound:Null<Sound> = Assets.getSound(key);
+		var sound:Null<FlxSound> = FlxG.sound.load(key);
 		if (sound == null)
 			return;
 
 		trace('Perm cached sound: $key');
 
+		sound.persist = true;
+
+		FlxG.sound.cache(key);
 		permCachedSounds.set(key, sound);
 		tempCachedSound.set(key, sound);
 	}
@@ -59,12 +79,13 @@ class OSACache
 		if (tempCachedSound.exists(key))
 			return;
 
-		var sound:Null<Sound> = Assets.getSound(key);
+		var sound:Null<FlxSound> = FlxG.sound.load(key);
 		if (sound == null)
 			return;
 
 		trace('Temp cached sound: $key');
 
+		FlxG.sound.cache(key);
 		tempCachedSound.set(key, sound);
 	}
 
@@ -145,9 +166,9 @@ class OSACache
 				continue;
 
 			trace('Cleared temp cached sound: $key');
-			
+
 			tempCachedTextures.remove(key);
-			sound.close();
+			sound.destroy();
 		}
 	}
 

@@ -56,7 +56,7 @@ class InitState extends OSAState
 
 		InitState.INITALIZED = true;
 
-		OSACache.performCaches();
+		OSACache.init();
 	}
 
 	function leave()
