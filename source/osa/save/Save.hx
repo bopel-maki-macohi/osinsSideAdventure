@@ -10,8 +10,13 @@ class Save
 	{
 		issues = new SaveField<Array<String>>('issues', ['issue1']);
 
-		if (!issues.get().contains('issue1'))
-			issues.get().push('issue1');
+		addIssue('issue1');
+	}
+
+	public static function addIssue(issuefile:String)
+	{
+		if (!issues.get().contains(issuefile))
+			issues.get().push(issuefile);
 	}
 
 	public static function init()
