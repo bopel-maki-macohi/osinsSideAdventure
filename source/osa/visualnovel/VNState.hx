@@ -1,5 +1,6 @@
 package osa.visualnovel;
 
+import flixel.group.FlxSpriteGroup;
 import osa.menus.TitleState;
 import flixel.addons.ui.FlxUIState;
 import flixel.tweens.FlxTween;
@@ -37,6 +38,8 @@ class VNState extends OSAState
 
 	public var _dialogueLine(default, null):DialogueLine = new DialogueLine(null);
 
+	public var _scene(default, null):String = null;
+
 	public function new(scene:String)
 	{
 		super();
@@ -50,6 +53,8 @@ class VNState extends OSAState
 		_dialogueList = scene.parseDialogueFile();
 
 		trace('Dialogue List: ${_dialogueList}');
+
+		this._scene = scene;
 
 		if (instance != null)
 		{
@@ -70,8 +75,20 @@ class VNState extends OSAState
 
 	public var _eventManager:EventManager;
 
+	public var _dialogueBGGroup:FlxSpriteGroup;
+	public var _dialogueCharacterGroup:FlxSpriteGroup;
+	public var _dialogueBoxGroup:FlxSpriteGroup;
+	public var _dialogueFGGroup:FlxSpriteGroup;
+	public var _dialogueUIGroup:FlxSpriteGroup;
+
 	override function create()
 	{
+		add(_dialogueBGGroup = new FlxSpriteGroup());
+		add(_dialogueCharacterGroup = new FlxSpriteGroup());
+		add(_dialogueBoxGroup = new FlxSpriteGroup());
+		add(_dialogueFGGroup = new FlxSpriteGroup());
+		add(_dialogueUIGroup = new FlxSpriteGroup());
+
 		_dialogueBox = new FlxSprite();
 		_dialogueBox.makeGraphic(Math.round(FlxG.width * 0.9), Math.round(FlxG.height * 0.4));
 		_dialogueBox.screenCenter();
@@ -92,20 +109,15 @@ class VNState extends OSAState
 		_dialogueContinueHand.scale.set(2, 2);
 		_dialogueContinueHand.updateHitbox();
 
-		_dialogueCharacter = new DialogueSprite(true);
-		_dialogueBG = new DialogueSprite(false);
-
 		_eventManager = new EventManager();
+		_eventManager.onCreate();
 
-		add(_dialogueBG);
-		add(_dialogueCharacter);
-
-		add(_dialogueBox);
-		add(_dialogueText);
-
-		add(_eventManager);
-
-		add(_dialogueContinueHand);
+		_dialogueBGGroup.add(_dialogueBG = new DialogueSprite(false));
+		_dialogueCharacterGroup.add(_dialogueCharacter = new DialogueSprite(true));
+		_dialogueBoxGroup.add(_dialogueBox);
+		_dialogueBoxGroup.add(_dialogueText);
+		_dialogueFGGroup.add(_eventManager);
+		_dialogueUIGroup.add(_dialogueContinueHand);
 
 		changeLine(0);
 
@@ -119,7 +131,13 @@ class VNState extends OSAState
 	{
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
-			for (object in [_dialogueBox, _dialogueContinueHand, _dialogueCharacter, _dialogueBG])
+			for (object in [
+				_dialogueBGGroup,
+				_dialogueCharacterGroup,
+				_dialogueBoxGroup,
+				_dialogueFGGroup,
+				_dialogueUIGroup,
+			])
 			{
 				FlxTween.cancelTweensOf(object);
 				FlxTween.tween(object, {alpha: 0}, getTextFadeTime());
@@ -141,12 +159,8 @@ class VNState extends OSAState
 
 		buildBGAndCharacter();
 
-		buildEvent();
-	}
-
-	function buildEvent()
-	{
-		_eventManager.build(_dialogueLine._event);
+		_eventManager.continueLine();
+		_eventManager.runDialogueEvent(_dialogueLine._event);
 	}
 
 	function resetText()
@@ -164,9 +178,7 @@ class VNState extends OSAState
 	function buildBGAndCharacter()
 	{
 		_dialogueBG.build(_dialogueLine._bg);
-		_dialogueCharacter.build(_dialogueLine._character);
-
-		positionDialogueCharacter(_dialogueCharacter);
+		_dialogueCharacter.build(_dialogueLine._character, () -> positionDialogueCharacter(_dialogueCharacter));
 	}
 
 	public function positionDialogueCharacter(character:DialogueSprite, dialogueBoxHeightPadding:Float = 0.1)

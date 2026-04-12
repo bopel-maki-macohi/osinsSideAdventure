@@ -5,9 +5,9 @@ import flixel.tweens.FlxTween;
 
 class TestingEventSystem extends EventRunner
 {
-	override public function run(eventManager:EventManager)
+	override function runDialogueEvent(eventManager:EventManager)
 	{
-		super.run(eventManager);
+		super.runDialogueEvent(eventManager);
 
 		var char:DialogueSprite = new DialogueSprite(true);
 		char.build('osin');

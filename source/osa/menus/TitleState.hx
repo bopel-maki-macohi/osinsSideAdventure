@@ -1,5 +1,6 @@
 package osa.menus;
 
+import osa.util.Constants;
 import osa.menus.storymenu.StoryMenuState;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -46,8 +47,8 @@ class TitleState extends OSAState
 		_logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
 		_logo.screenCenter();
 
-		_blurFilterBG = new BlurFilter(_blurUnfocus, _blurUnfocus, 1);
-		_blurFilterFG = new BlurFilter(_blurFocus, _blurFocus, 1);
+		_blurFilterBG = new BlurFilter(Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_BLUR_UNFOCUS, 1);
+		_blurFilterFG = new BlurFilter(Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_BLUR_FOCUS, 1);
 
 		blurCamBG = new FlxCamera();
 		FlxG.cameras.add(blurCamBG);
@@ -112,10 +113,6 @@ class TitleState extends OSAState
 		super.create();
 	}
 
-	final _blurFocus:Float = 0;
-	final _blurUnfocus:Float = 4;
-	final _blurFocusChangeSpeed:Float = 0.04;
-
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -123,21 +120,21 @@ class TitleState extends OSAState
 		bgScrolling = _titleTileScrollBG._debugModeInUse;
 		if (bgScrolling)
 		{
-			_blurFilterBG.blurX = FlxMath.lerp(_blurFilterBG.blurX, _blurFocus, _blurFocusChangeSpeed);
-			_blurFilterBG.blurY = FlxMath.lerp(_blurFilterBG.blurY, _blurFocus, _blurFocusChangeSpeed);
+			_blurFilterBG.blurX = FlxMath.lerp(_blurFilterBG.blurX, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
+			_blurFilterBG.blurY = FlxMath.lerp(_blurFilterBG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
 
-			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurUnfocus, _blurFocusChangeSpeed);
-			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurUnfocus, _blurFocusChangeSpeed);
-			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 0.15, _blurFocusChangeSpeed);
+			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
+			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
+			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 0.15, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
 		}
 		else
 		{
-			_blurFilterBG.blurX = FlxMath.lerp(_blurFilterBG.blurX, _blurUnfocus, _blurFocusChangeSpeed);
-			_blurFilterBG.blurY = FlxMath.lerp(_blurFilterBG.blurY, _blurUnfocus, _blurFocusChangeSpeed);
+			_blurFilterBG.blurX = FlxMath.lerp(_blurFilterBG.blurX, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
+			_blurFilterBG.blurY = FlxMath.lerp(_blurFilterBG.blurY, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
 
-			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, _blurFocus, _blurFocusChangeSpeed);
-			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, _blurFocus, _blurFocusChangeSpeed);
-			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 1, _blurFocusChangeSpeed);
+			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
+			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
+			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 1, Constants.DEFAULT_BLUR_FOCUSCHANGE_SPEED);
 
 			controls();
 		}

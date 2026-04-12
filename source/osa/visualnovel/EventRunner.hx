@@ -1,5 +1,12 @@
 package osa.visualnovel;
 
+enum EventRunnerDialogueFile
+{
+	ANY;
+	NONE;
+	SCENE(scene:String);
+}
+
 class EventRunner
 {
 	public var game(get, never):VNState;
@@ -7,7 +14,18 @@ class EventRunner
 	function get_game():VNState
 		return VNState.instance;
 
-	public function new() {}
+	public var _dialogueFileType:EventRunnerDialogueFile;
 
-	public function run(eventManager:EventManager) {}
+	public function new(dialogueFileType:EventRunnerDialogueFile)
+	{
+		this._dialogueFileType = dialogueFileType;
+	}
+
+	public function runDialogueEvent(eventManager:EventManager) {}
+
+	public function continueLine(eventManager:EventManager) {}
+
+	public function update(eventManager:EventManager, elapsed:Float) {}
+
+	public function onCreate(eventManager:EventManager) {}
 }

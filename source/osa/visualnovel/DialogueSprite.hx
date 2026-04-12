@@ -17,8 +17,11 @@ class DialogueSprite extends FlxSprite
 
 	public var _id:String = null;
 
-	public function build(id:String)
+	public function build(id:String, ?onChange:Void->Void)
 	{
+		if (id == this._id)
+			return;
+
 		this._id = id;
 		alpha = 1;
 
@@ -34,6 +37,12 @@ class DialogueSprite extends FlxSprite
 		{
 			switch (id)
 			{
+				case 'lightgrayvoid', 'lightgreyvoid':
+					makeGraphic(FlxG.width, FlxG.height, 0xFFC0C0C0);
+
+				case 'darkgrayvoid', 'darkgreyvoid':
+					makeGraphic(FlxG.width, FlxG.height, 0xFF404040);
+
 				case 'grayvoid', 'greyvoid':
 					makeGraphic(FlxG.width, FlxG.height, FlxColor.GRAY);
 
@@ -48,6 +57,9 @@ class DialogueSprite extends FlxSprite
 			}
 		}
 		screenCenter();
+
+		if (onChange != null)
+			onChange();
 	}
 
 	override function toString():String
