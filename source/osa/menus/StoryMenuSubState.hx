@@ -1,6 +1,5 @@
 package osa.menus;
 
-import osa.visualnovel.VNPreloaderState;
 import osa.util.Constants;
 import flixel.math.FlxMath;
 import osa.save.Save;
@@ -54,7 +53,7 @@ class StoryMenuSubState extends TitleSubStateBase
 	function onEnter()
 	{
 		_getYourAssUp.fadeOut(OSAState.DEFAULT_TRANSITION.duration);
-		FlxG.switchState(() -> new VNPreloaderState(new VNState(_issueDialogueFile), _issueDialogueFile));
+		FlxG.switchState(() -> new VNState(_issueDialogueFile));
 	}
 
 	override function close()
