@@ -1,18 +1,13 @@
 package osa;
 
+import osa.menus.storymenu.StoryMenuState;
+import osa.visualnovel.VNState;
+import osa.util.MacroUtil;
 import osa.util.debug.CrashHandler;
 import osa.save.Save;
-import flixel.graphics.FlxGraphic;
-import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
-import flixel.math.FlxPoint;
-import flixel.util.FlxColor;
-import flixel.addons.transition.TransitionData;
 import flixel.addons.transition.FlxTransitionableState;
-import flixel.addons.ui.FlxUIState;
 import osa.menus.TitleState;
-import osa.visualnovel.VNState;
 import flixel.FlxG;
-import flixel.FlxState;
 
 class InitState extends OSAState
 {
@@ -45,7 +40,14 @@ class InitState extends OSAState
 
 	function leave()
 	{
-		FlxG.switchState(() -> new TitleState());
+		var ENTER_VN = MacroUtil.getDefine('ENTER_VN');
+
+		if (ENTER_VN != null)
+			FlxG.switchState(() -> new VNState(ENTER_VN));
+		else if (MacroUtil.isDefined('STORYMENU'))
+			FlxG.switchState(() -> new StoryMenuState());
+		else
+			FlxG.switchState(() -> new TitleState());
 	}
 
 	function splashWatermark()
