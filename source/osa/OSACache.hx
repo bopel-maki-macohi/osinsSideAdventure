@@ -23,6 +23,8 @@ class OSACache
 
 	public static function postStateSwitch()
 	{
+		clearTempCaches();
+
 		for (key => sound in tempCachedSound)
 		{
 			if (sound == null)
@@ -263,6 +265,9 @@ class OSACache
 
 	public static function clearTempCaches()
 	{
+		FlxG.bitmap.clearCache();
+		FlxG.bitmap.clearUnused();
+
 		clearTempTextureCache();
 		clearTempSoundCache();
 	}
