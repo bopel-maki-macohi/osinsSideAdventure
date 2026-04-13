@@ -1,4 +1,6 @@
 # 0.9.0 : Issue Pack 1 (4/13/2026)
+- Added Issue 3 (Unlocked through playing level 2)
+- Added Bonus Issue 1 (Unlocked through level 2)
 - You now unlock issues by playing the ones before, starting from issue 2
   - Issue2 => Issue3
   - Issue3 => Issue4

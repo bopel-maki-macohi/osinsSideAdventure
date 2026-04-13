@@ -1,5 +1,6 @@
 package osa.states.visualnovel;
 
+import osa.states.visualnovel.events.BonusIssue1EndSequence;
 import osa.states.visualnovel.events.*;
 import osa.states.visualnovel.events.DialogueTweaks;
 import flixel.group.FlxSpriteGroup;
@@ -17,6 +18,8 @@ class EventManager extends FlxSpriteGroup
 		'issue1EstablishingShot' => new Issue1EstablishingShot(),
 
 		'issue2EndSequence' => new Issue2EndSequence(),
+
+		'bonusissue1EndSequence' => new BonusIssue1EndSequence(),
 	];
 
 	public function new()
