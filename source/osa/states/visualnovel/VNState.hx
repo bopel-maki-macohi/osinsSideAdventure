@@ -248,8 +248,6 @@ class VNState extends OSAState
 	{
 		super.update(elapsed);
 
-		_eventManager.update(elapsed);
-
 		if (_dialogueTypingFinished && FlxG.keys.justPressed.ENTER)
 			changeLine(1);
 
