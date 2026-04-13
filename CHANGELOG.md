@@ -1,3 +1,7 @@
+# 0.9.0 : Issue Pack 1 (4/13/2026)
+- Changelog file now included in the game build
+  - And there's also changelogs for 0.1 - 0.8 now
+
 # 0.8.0 : Asset Cache System Update (4/12/2026)
 
 - Storymode _text is invisible now
