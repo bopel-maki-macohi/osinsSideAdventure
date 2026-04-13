@@ -1,5 +1,6 @@
 package osa.save;
 
+import osa.util.SortUtil;
 import flixel.FlxG;
 
 class Save
@@ -27,10 +28,19 @@ class Save
 		Main.FPSCounter.visible = options.get().fpsCounter;
 	}
 
+	public static final ISSUE_ORDER_PREFERENCE:Array<String> = ['issue1', 'issue2', 'bonusissue1', 'issue3', 'issue4',];
+
 	public static function addIssue(issuefile:String)
 	{
 		if (!issues.get().contains(issuefile))
 			issues.get().push(issuefile);
+
+		sortIssues();
+	}
+
+	public static function sortIssues()
+	{
+		issues.get().sort((a, b) -> SortUtil.defaultsAlphabetically(ISSUE_ORDER_PREFERENCE, a, b));
 	}
 
 	public static function removeField(field:String)

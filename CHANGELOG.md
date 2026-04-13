@@ -1,4 +1,9 @@
 # 0.9.0 : Issue Pack 1 (4/13/2026)
+- You now unlock issues by playing the ones before, starting from issue 2
+  - Issue2 => Issue3
+  - Issue3 => Issue4
+  - Etc...
+
 - Changelog file now included in the game build
   - And there's also changelogs for 0.1 - 0.8 now
 

@@ -19,6 +19,7 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		super(onExit);
 
+		Save.sortIssues();
 		for (issue in Save.issues.get())
 		{
 			_issues.push(issue);
