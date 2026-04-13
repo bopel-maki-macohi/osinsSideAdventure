@@ -37,11 +37,7 @@ class VNCacher extends OSAState
 
 		super.create();
 
-		if (_leaving)
-		{
-			OSACache.clearTempCaches();
-		}
-		else
+		if (!_leaving)
 		{
 			getImagePaths();
 
