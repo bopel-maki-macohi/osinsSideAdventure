@@ -74,12 +74,14 @@ class OSACache
 	{
 		var issueImgPaths:Map<String, Array<String>> = [];
 
-		var char:DialogueSprite = new DialogueSprite(true);
-		var bg:DialogueSprite = new DialogueSprite(false);
-
 		for (issue in Save.issues.get())
 		{
 			var issueArr = [];
+
+			var char:DialogueSprite = new DialogueSprite(true);
+			var bg:DialogueSprite = new DialogueSprite(false);
+
+			// trace(issue);
 
 			for (rawline in issue.parseDialogueFile())
 			{
@@ -87,6 +89,8 @@ class OSACache
 
 				if (line._isEvent)
 					continue;
+
+				// trace(line);
 
 				if (line._character != null)
 					char.build(line._character);
@@ -109,8 +113,12 @@ class OSACache
 		var permCacheImgPaths:Array<String> = [];
 
 		for (issue => imgs in issueImgPaths)
+		{
+			// trace('$issue : $imgs');
+
 			for (img in imgs)
 				allImgPaths.push(img);
+		}
 
 		for (img in allImgPaths)
 		{
