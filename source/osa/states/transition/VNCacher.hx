@@ -31,6 +31,8 @@ class VNCacher extends OSAState
 
 	override function create()
 	{
+		FlxG.camera.bgColor = this.transOut.color;
+
 		this.transIn = this.transOut = null;
 
 		super.create();
