@@ -41,7 +41,7 @@ class DebugSubState extends TitleSubStateBase
 		var chars:Array<String> = [];
 		var bgs:Array<String> = [];
 
-		for (issue in Save.issues.get())
+		for (issue in Save.ISSUE_ORDER_PREFERENCE)
 		{
 			trace(issue);
 
