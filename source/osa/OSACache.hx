@@ -53,30 +53,11 @@ class OSACache
 
 		permCacheTexture('logo'.imageFile().menuAsset());
 
-		/** Other kinds of Caching  **/
-
-		for (tile in [
-			'tile'.menuAsset(),
-			'tile-osin'.menuAsset(),
-			'tile-sinco'.menuAsset(),
-			'tile-tirok'.menuAsset(),
-			'tile-loroc'.menuAsset(),
-		])
-		{
-			var tsb = new TileScrollBG(FlxPoint.get(), false);
-			tsb._tile = tile;
-
-			tsb.graphic.persist = true;
-
-			FlxG.state.add(tsb);
-			tsb.alpha = 1 / 10000;
-
-			permCacheTexture(tile.imageFile());
-			forceRender(tsb.graphic);
-
-			FlxG.state.remove(tsb);
-			tsb.destroy();
-		}
+		permCacheTexture('tile'.imageFile().menuAsset());
+		permCacheTexture('tile-osin'.imageFile().menuAsset());
+		permCacheTexture('tile-sinco'.imageFile().menuAsset());
+		permCacheTexture('tile-tirok'.imageFile().menuAsset());
+		permCacheTexture('tile-loroc'.imageFile().menuAsset());
 	}
 
 	public static function permCacheSound(key:String)
