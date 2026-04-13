@@ -27,6 +27,8 @@ class Issue2EndSequence extends EventRunner
 					_game._dialogueCharacter.setColorTransform(1.0, 1.0, 1.0);
 					_game._dialogueCharacter.build('issue2/osin-glare-data', () -> _game.positionDialogueCharacter(_game._dialogueCharacter));
 
+					_game._dialogueBG.build(null);
+
 					_game._dialogueText.resetText('ACCESS GRANTED.');
 					_game._dialogueText.start(0.01);
 				}
