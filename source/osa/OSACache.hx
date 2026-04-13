@@ -1,5 +1,6 @@
 package osa;
 
+import flixel.util.FlxTimer;
 import flixel.math.FlxPoint;
 import osa.objects.TileScrollBG;
 import flixel.sound.FlxSound;
@@ -25,9 +26,13 @@ class OSACache
 		{
 			for (key => sound in tempCachedSound)
 			{
-				sound.volume = 1 / 100;
+				sound.volume = 1 / 1000;
 				sound.play(true);
-				sound.stop();
+
+				FlxTimer.wait((sound.length / 1000) / 1000, () ->
+				{
+					sound.stop();
+				});
 			}
 		});
 
