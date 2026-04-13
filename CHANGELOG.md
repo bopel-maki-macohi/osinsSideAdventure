@@ -14,6 +14,9 @@
 
 - Changelog file now included in the game build
   - And there's also changelogs for 0.1 - 0.8 now
+# 0.8.1 (4/13/2026)
+
+- Fixed the Story Menu including non-existant issues
 
 # 0.8.0 : Asset Cache System Update (4/12/2026)
 

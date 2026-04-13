@@ -22,6 +22,10 @@ class StoryMenuSubState extends TitleSubStateBase
 		Save.sortIssues();
 		for (issue in Save.issues.get())
 		{
+			var parsed:Array<String> = issue.parseDialogueFile();
+
+			if (parsed.length < 1) continue;
+
 			_issues.push(issue);
 			_spriteList.push(makeSprite('story/$issue', () -> return ''));
 		}
