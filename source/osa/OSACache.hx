@@ -42,6 +42,8 @@ class OSACache
 
 		permCachedSounds.clear();
 		permCachedTextures.clear();
+		
+		Assets.cache.clear();
 	}
 
 	public static function postStateSwitch()
