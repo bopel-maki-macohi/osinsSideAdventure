@@ -29,6 +29,9 @@ class OSACache
 		{
 			for (key => sound in tempCachedSound)
 			{
+				if (sound == null)
+					tempCachedSound.remove(key);
+
 				sound.volume = 1 / 1000;
 				sound.play(true);
 
@@ -42,7 +45,12 @@ class OSACache
 		FlxG.signals.postUpdate.add(function()
 		{
 			for (key => texture in tempCachedTextures)
+			{
+				if (texture == null)
+					tempCachedTextures.remove(key);
+
 				forceRender(texture);
+			}
 		});
 
 		/** Audio Caching **/
