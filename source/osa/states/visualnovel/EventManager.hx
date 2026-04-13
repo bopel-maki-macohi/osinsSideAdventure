@@ -9,16 +9,12 @@ class EventManager extends FlxSpriteGroup
 {
 	public static var events:Map<String, EventRunner> = [
 		'testingEventSystem' => new TestingEventSystem(NONE),
-
 		'setDialogueSpeed' => new SetDialogueSpeed(),
 		'resetDialogueSpeed' => new ResetDialogueSpeed(),
 		'setDialogueBoxHeightPadding' => new SetDialogueBoxHeightPadding(),
-
 		'issue1Intro' => new Issue1Intro(),
 		'issue1EstablishingShot' => new Issue1EstablishingShot(),
-
 		'issue2EndSequence' => new Issue2EndSequence(),
-
 		'bonusissue1EndSequence' => new BonusIssue1EndSequence(),
 	];
 
@@ -62,6 +58,11 @@ class EventManager extends FlxSpriteGroup
 				case SCENE(s):
 					if (s != null)
 						if (s == VNState.instance?._issue)
+							f(event);
+
+				case SCENES(s):
+					if (s != null)
+						if (s.contains(VNState.instance?._issue))
 							f(event);
 
 				default:

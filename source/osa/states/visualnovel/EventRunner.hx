@@ -5,6 +5,7 @@ enum EventRunnerDialogueFile
 	ANY;
 	NONE;
 	SCENE(scene:String);
+	SCENES(scenes:Array<String>);
 }
 
 class EventRunner

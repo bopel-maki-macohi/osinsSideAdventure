@@ -7,7 +7,7 @@ class Issue2EndSequence extends EventRunner
 {
 	override public function new()
 	{
-		super(SCENE('issue2'));
+		super(SCENES(['issue2', 'issue2-']));
 	}
 
 	override function update(eventManager:EventManager, elapsed:Float)
