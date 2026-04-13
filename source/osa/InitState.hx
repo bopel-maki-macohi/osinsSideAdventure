@@ -18,7 +18,7 @@ import osa.states.OSAState;
 
 class InitState extends OSAState
 {
-	public static var INITALIZED:Bool = false;
+	public static var IMPORTANT_INITALIZED:Bool = false;
 
 	override public function new()
 	{
@@ -34,8 +34,9 @@ class InitState extends OSAState
 
 	override public function create()
 	{
-		if (!InitState.INITALIZED)
-			actualInit();
+		if (!InitState.IMPORTANT_INITALIZED)
+			importantInit();
+		unimportantInit();
 
 		super.create();
 
@@ -44,7 +45,7 @@ class InitState extends OSAState
 		splashWatermark();
 	}
 
-	function actualInit()
+	function importantInit()
 	{
 		CrashHandler.init();
 
@@ -52,9 +53,12 @@ class InitState extends OSAState
 
 		ScreenshotPlugin.init();
 
-		RhythmManager.instance = new RhythmManager();
+		InitState.IMPORTANT_INITALIZED = true;
+	}
 
-		InitState.INITALIZED = true;
+	function unimportantInit()
+	{
+		RhythmManager.instance = new RhythmManager();
 
 		OSACache.init();
 	}
