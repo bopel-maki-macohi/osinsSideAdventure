@@ -1,4 +1,5 @@
 # 0.9.0 : Issue Pack 1 (4/13/2026)
+- Fixed Visual Novel temp cached textures being cleared from the cache as soon as you leave the caching state
 - Holding SPACE to leave no longer counts as a valid exit and thus event runners can use that information now to prevent things such as unlockables
 - Added Issue 3 (Unlocked through playing level 2)
 - Added Bonus Issue 1 (Unlocked through level 2)

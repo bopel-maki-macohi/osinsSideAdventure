@@ -48,8 +48,6 @@ class OSACache
 
 	public static function postStateSwitch()
 	{
-		clearTempCaches();
-
 		for (key => sound in tempCachedSound)
 		{
 			if (sound == null)
