@@ -14,6 +14,8 @@ class Issue2EndSequence extends EventRunner
 	{
 		super.update(eventManager, elapsed);
 
+		trace('hi');
+
 		if (FlxG.mouse.visible && _game._dialogueCharacter._id == 'osin-glare')
 		{
 			_game._dialogueCharacter.setColorTransform(1.0, 1.0, 1.0);
