@@ -79,7 +79,7 @@ class OSACache
 
 		for (issue in Save.issues.get())
 		{
-			issueImgPaths.set(issue, []);
+			var issueArr = [];
 
 			for (rawline in issue.parseDialogueFile())
 			{
@@ -94,13 +94,15 @@ class OSACache
 					bg.build(line._bg);
 
 				if (char?.graphic?.assetsKey != null)
-					if (!issueImgPaths.get(issue).contains(char?.graphic?.assetsKey))
-						issueImgPaths.get(issue).push(char?.graphic?.assetsKey);
+					if (!issueArr.contains(char?.graphic?.assetsKey))
+						issueArr.push(char?.graphic?.assetsKey);
 
 				if (bg?.graphic?.assetsKey != null)
-					if (!issueImgPaths.get(issue).contains(bg?.graphic?.assetsKey))
-						issueImgPaths.get(issue).push(bg?.graphic?.assetsKey);
+					if (!issueArr.contains(bg?.graphic?.assetsKey))
+						issueArr.push(bg?.graphic?.assetsKey);
 			}
+
+			issueImgPaths.set(issue, issueArr);
 		}
 
 		var allImgPaths:Array<String> = [];
@@ -112,7 +114,11 @@ class OSACache
 
 		for (img in allImgPaths)
 		{
-			if (allImgPaths.filter(f -> return f == img).length > 1)
+			final filteredallImgPaths = allImgPaths.filter(f -> return f == img);
+
+			// trace('$img : ${filteredallImgPaths.length}');
+
+			if (filteredallImgPaths.length > 1)
 				permCacheImgPaths.push(img);
 		}
 
