@@ -28,7 +28,7 @@ class OptionsSubState extends TitleSubStateBase
 			}),
 			makeSprite('options/cache', function()
 			{
-				return 'Cache (${getEnabledString(Save.options.get().cache)}) : Toggles the Asset Caching System\n\n(Resets the game)';
+				return 'Asset Caching System (${getEnabledString(Save.options.get().cache)}) : Toggles the Asset Caching System\n\n(Resets the game)';
 			}, function()
 			{
 				Save.options.get().cache = !Save.options.get().cache;
