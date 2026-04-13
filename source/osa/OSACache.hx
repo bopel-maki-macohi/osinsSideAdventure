@@ -1,5 +1,8 @@
 package osa;
 
+import osa.states.visualnovel.DialogueSprite;
+import osa.states.visualnovel.DialogueLine;
+import osa.save.Save;
 import flixel.util.FlxTimer;
 import flixel.math.FlxPoint;
 import osa.objects.TileScrollBG;
@@ -63,6 +66,58 @@ class OSACache
 		permCacheTexture('tile-sinco'.imageFile().menuAsset());
 		permCacheTexture('tile-tirok'.imageFile().menuAsset());
 		permCacheTexture('tile-loroc'.imageFile().menuAsset());
+
+		permCacheIssueTextures();
+	}
+
+	public static function permCacheIssueTextures()
+	{
+		var issueImgPaths:Map<String, Array<String>> = [];
+
+		var char:DialogueSprite = new DialogueSprite(true);
+		var bg:DialogueSprite = new DialogueSprite(false);
+
+		for (issue in Save.issues.get())
+		{
+			issueImgPaths.set(issue, []);
+
+			for (rawline in issue.parseDialogueFile())
+			{
+				var line:DialogueLine = new DialogueLine(rawline);
+
+				if (line._isEvent)
+					continue;
+
+				if (line._character != null)
+					char.build(line._character);
+				if (line._bg != null)
+					bg.build(line._bg);
+
+				if (char?.graphic?.assetsKey != null)
+					if (!issueImgPaths.get(issue).contains(char?.graphic?.assetsKey))
+						issueImgPaths.get(issue).push(char?.graphic?.assetsKey);
+
+				if (bg?.graphic?.assetsKey != null)
+					if (!issueImgPaths.get(issue).contains(bg?.graphic?.assetsKey))
+						issueImgPaths.get(issue).push(bg?.graphic?.assetsKey);
+			}
+		}
+
+		var allImgPaths:Array<String> = [];
+		var permCacheImgPaths:Array<String> = [];
+
+		for (issue => imgs in issueImgPaths)
+			for (img in imgs)
+				allImgPaths.push(img);
+
+		for (img in allImgPaths)
+		{
+			if (allImgPaths.filter(f -> return f == img).length > 1)
+				permCacheImgPaths.push(img);
+		}
+
+		for (img in permCacheImgPaths)
+			permCacheTexture(img);
 	}
 
 	public static function permCacheSound(key:String)
