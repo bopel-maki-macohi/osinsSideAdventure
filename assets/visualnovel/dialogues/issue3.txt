@@ -1,0 +1,6 @@
+event_setDialogueSpeed;0.2
+...;issue3/tirok-looting;_
+
+event_resetDialogueSpeed
+So what're you working on?;issue1/osin-what;_
+JESUS CHRIST!;bonusissue1/tirok-WHATTHEFUCK;_
