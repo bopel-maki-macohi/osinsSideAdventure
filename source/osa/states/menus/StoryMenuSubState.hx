@@ -12,8 +12,6 @@ import flixel.sound.FlxSound;
 
 class StoryMenuSubState extends TitleSubStateBase
 {
-	public var _getYourAssUp:FlxSound;
-
 	public var _issues:Array<String> = [];
 	public var _issueDialogueFile:String;
 
@@ -32,8 +30,8 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		super.create();
 
-		_getYourAssUp = new FlxSound().loadEmbedded('updog/get-your-ass-up'.miscAsset().audioFile(), true);
-		_getYourAssUp.fadeIn(OSAState.DEFAULT_TRANSITION.duration);
+		FlxG.sound.playMusic('updog/get-your-ass-up'.miscAsset().audioFile());
+		FlxG.sound.music.fadeIn(OSAState.DEFAULT_TRANSITION.duration);
 
 		_rhythmManager.reset();
 		_rhythmManager._bpm = 110;
@@ -55,13 +53,13 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	function onEnter()
 	{
-		_getYourAssUp.fadeOut(OSAState.DEFAULT_TRANSITION.duration);
+		FlxG.sound.music.fadeOut(OSAState.DEFAULT_TRANSITION.duration);
 		FlxG.switchState(() -> new VNCacher(new VNState(_issueDialogueFile), false, _issueDialogueFile));
 	}
 
 	override function close()
 	{
-		_getYourAssUp.fadeOut(OSAState.DEFAULT_TRANSITION.duration);
+		FlxG.sound.music.fadeOut(OSAState.DEFAULT_TRANSITION.duration);
 
 		super.close();
 	}
