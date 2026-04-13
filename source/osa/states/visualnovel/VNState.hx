@@ -149,10 +149,14 @@ class VNState extends OSAState
 		return _dialogueText.text.length * VNState.OUT_LETTER_SPEED;
 	}
 
+	public var _leaving:Bool = false;
+
 	public function changeLine(increment:Int)
 	{
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
+			_leaving = true;
+			
 			for (object in [
 				_dialogueBGGroup,
 				_dialogueCharacterGroup,
