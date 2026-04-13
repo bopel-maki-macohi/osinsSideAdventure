@@ -1,9 +1,12 @@
 # 0.9.0 : Issue Pack 1 (4/13/2026)
+<!-- - **Added Issue 4 (Unlocked through playing issue 3)** -->
+- **Added Issue 3 (Unlocked through playing issue 2)**
+- **Added Bonus Issue 1 (Unlocked through issue 2)**
+
+- Removed *slightly* different bop size depending on what index the story menu title is
 - Fixed Event Manager not running `update`
 - Fixed Visual Novel temp cached textures being cleared from the cache as soon as you leave the caching state
 - Holding SPACE to leave no longer counts as a valid exit and thus event runners can use that information now to prevent things such as unlockables
-- Added Issue 3 (Unlocked through playing level 2)
-- Added Bonus Issue 1 (Unlocked through level 2)
 - You now unlock issues by playing the ones before, starting from issue 2
   - Issue2 => Issue3
   - Issue3 => Issue4

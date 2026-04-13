@@ -76,9 +76,9 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		super.onBeatHit(curBeat);
 
-		for (i => sprite in _sprites.members)
+		for (sprite in _sprites.members)
 		{
-			final scale = 0.6 + (i / 100);
+			final scale = 0.6;
 
 			sprite.scale.set(scale, scale);
 		}
@@ -90,7 +90,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		_rhythmManager._time += elapsed * RhythmManager.MS_PER_SEC;
 
-		for (i => sprite in _sprites.members)
+		for (sprite in _sprites.members)
 		{
 			final scale = FlxMath.lerp(sprite.scale.x, 0.5, Constants.DEFAULT_LERP_SPEED);
 
