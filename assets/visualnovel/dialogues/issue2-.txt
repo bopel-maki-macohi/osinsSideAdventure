@@ -1,6 +1,0 @@
-event_setDialogueSpeed;0.1
-...;issue2/osin-glare;issue2-establishingshot
-
-event_setDialogueSpeed;0.2
-event_issue2EndSequence
-No it won't.;issue2/osin-glare;issue2-establishingshot
