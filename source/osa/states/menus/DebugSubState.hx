@@ -18,7 +18,13 @@ class DebugSubState extends TitleSubStateBase
 			makeSprite('debug/default', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
 
 			makeSprite('debug/default', () -> return 'Log Save', () -> Save.logSaveData()),
-			makeSprite('debug/default', () -> return 'Reset Game', () -> FlxG.resetGame()),
+			makeSprite('debug/default', () -> return 'Reset Game',
+				() ->
+				{
+					FlxG.signals.postStateSwitch.remove(OSACache.postStateSwitch);
+					FlxG.signals.postUpdate.remove(OSACache.postUpdate);
+					FlxG.resetGame();
+				}),
 
 			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new InitState())),
 			makeSprite('debug/default', () -> return 'Go to Github Page', () -> FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure')),

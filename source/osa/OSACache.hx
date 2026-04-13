@@ -21,37 +21,40 @@ class OSACache
 	static var permCachedTextures:Map<String, FlxGraphic> = [];
 	static var tempCachedTextures:Map<String, FlxGraphic> = [];
 
+	public static function postStateSwitch()
+	{
+		for (key => sound in tempCachedSound)
+		{
+			if (sound == null)
+				tempCachedSound.remove(key);
+
+			sound.volume = 1 / 1000;
+			sound.play(true);
+
+			FlxTimer.wait((sound.length / 1000) / 1000, () ->
+			{
+				sound.stop();
+			});
+		}
+	}
+
+	public static function postUpdate()
+	{
+		for (key => texture in tempCachedTextures)
+		{
+			if (texture == null)
+				tempCachedTextures.remove(key);
+
+			forceRender(texture);
+		}
+	}
+
 	public static function init()
 	{
 		/** Signals **/
 
-		FlxG.signals.postStateSwitch.add(function()
-		{
-			for (key => sound in tempCachedSound)
-			{
-				if (sound == null)
-					tempCachedSound.remove(key);
-
-				sound.volume = 1 / 1000;
-				sound.play(true);
-
-				FlxTimer.wait((sound.length / 1000) / 1000, () ->
-				{
-					sound.stop();
-				});
-			}
-		});
-
-		FlxG.signals.postUpdate.add(function()
-		{
-			for (key => texture in tempCachedTextures)
-			{
-				if (texture == null)
-					tempCachedTextures.remove(key);
-
-				forceRender(texture);
-			}
-		});
+		FlxG.signals.postStateSwitch.add(postStateSwitch);
+		FlxG.signals.postUpdate.add(postUpdate);
 
 		/** Audio Caching **/
 
