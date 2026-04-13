@@ -1,1 +1,122 @@
-The changelog will only come into effect in non-0.x.y versions, or once a public release has happened
+# 0.8.0 : Asset Cache System Update (4/12/2026)
+
+- Storymode _text is invisible now
+- Fixed "Get your ass up" not abiding by the volume when you change it while the song plays
+- The Init State transition in is now the default transition in and is faster
+- Added Visual Novel Cacher state
+- Added Asset Cache System
+    - Added option to toggle it
+
+# 0.7.1 (4/12/2026)
+
+- Fixed Crash in issue1 when you leave during tirok's walk
+- Fixed substate contents disappearing during transitions on web (solution works for desktop too!)
+
+# 0.7.0 : Issue 2 Update (4/12/2026)
+
+- The Visual Novel now sends you to the Story mode menu
+- Fixed timer when a dialogue line is missing
+- Added padding to Visual Novel Text
+- The Visual Novel Text has doubled in size
+- Story Menu Titles are scaled down now
+- Added "Get missing assets" debug menu option
+- The Init State now has a transition in
+- Splash Texts now fade in
+- Splash Texts now have a "specialCase" field which runs an InitState function
+- Splash Texts now have a "debug" filter, debug build only splash texts (list will be replaced with debug list if there is atleas) at a 25% chance
+- Added Target States to TitleSteate
+- Added Defines
+    - `STORYMENU`
+    - `CREDITS`
+    - `OPTIONSMENU`
+    - `DEBUGMENU`
+- Added FPS Counter
+    - Added OPtion to toggle
+- The new default dialogue speed is 0.05
+- Added 3 General use events you can use
+    - `event_setDialogueBoxHeightPadding;X`
+        - `X` (Float) : How much of the dialogue box's height will be added to the portrait position (dialogueBox.height * X)
+            - Default: 0
+    - `event_setDialogueSpeed;X`
+        - `X` (Float) : New dialogue speed
+            - Default: 0.05
+    - `event_resetDialogueSpeed`
+- Added Support for event parameters
+- Added new splash text
+- ADDED ISSUE 2!
+- Redrew Story Menu Issue 1 title
+
+# 0.6.1 (4/12/2026)
+
+- Another Web Macro Fix (This time with PCName)
+
+# 0.6.0 : Options Menu Update ( + Overhauled Story Menu) (4/12/2026)
+
+- Fixed substate contents disappearing during transitions
+- Removed STORYMODE define
+- Fixed Tirok not starting offscreen in Issue 1's Intro
+- Added "onEnd" function for Visual Novel events to run
+- Added Savedata log to crash messages
+- "chapters" savefield is now removed completely
+- Removed SPACE to skip visual novel keybind
+- Added the ability to hold SPACE to leave the visual novel state
+  - Does not run the onEnd function of VNState
+- Story Menu v4 (It's a substate now and is like the credits and options menu!)
+- Requazar is now apart of the team
+- "Get your ass up" is now loaded on startup
+- Splash Texts are JSON now
+  - More Splash Texts
+- Added Debug Menu (SEVEN on the Title State)
+- TitleState "Play" button has been redrawn and says "Story"
+- Added seperate tile scrolling BG's for options, credits, debug, and story (story is the red from previous versions)
+- The tile scrolling BG for the title state is gray now
+- Added Options Menu
+  - PC Name Option
+
+# 0.5.1 (4/12/2026)
+
+- Credits Text outline doesn't look weird anymore
+- Added Dead Code Elimination (I'm pretty should it lowers the filesize but I dont remember, BTS reason is that it makes compiling faster)
+- Added VirtuGuy credit
+
+# 0.5.0 : Rhythm Manager Update (+ Chapters renamed to Issues) (4/12/2026)
+
+- Chapters renamed to Issues (including savedata with no backwards compatability)
+- Added Rhythm Manager (Yoinked from WTFEngine)
+  - Story mode icon and title bop on beat now
+- Story Menu v3
+- Github Issue Templates
+
+# 0.4.2 (4/12/2026)
+
+- Fixed HTML5 Build (dumb macro thing)
+
+# 0.4.1 (4/12/2026)
+
+- Fixed Screenshots (Were debug only)
+
+# 0.4.0 : Chapter 1 Update (4/12/2026)
+
+- Added Visual Novel event system
+- Added Chapter 1
+- More splash texts
+- Adding the ability to take Screenshots (F3)
+- Crash Handler
+
+# 0.3.0 (4/11/2026) : Story Menu Update
+
+- Removed Extra Maki credits
+- Added checks for missing scenes
+- Visual Novel assets are now all in `assets/visualnovel`
+- Added Save
+- Story Menu v2
+- More splash texts
+
+# 0.2.0 (4/11/2026) : Credits Menu Update
+
+- Prototype Story Menu
+- Credits Menu Functionality Changes
+
+# 0.1.0 (4/11/2026)
+
+- Inital Prototype
