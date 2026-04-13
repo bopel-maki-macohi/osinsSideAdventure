@@ -9,33 +9,34 @@ class OptionsSubState extends TitleSubStateBase
 	{
 		super(onExit);
 
-		addOption('pcname', function()
+		addOption('pcname', () ->
 		{
-			return
-				'PC Name (${getEnabledString(Save.options.get().pcname)}) : Toggles if your pc name should / can be shown AT ALL.\n\nCurrently only used in the splash texts if you\'re curious as to why this is an option';
-		}, function()
-		{
-			Save.options.get().pcname = !Save.options.get().pcname;
-		});
+			return 'PC Name (${getEnabledString(Save.options.get().pcname)})'
+				+ ' : Toggles if your pc name should / can be shown AT ALL.'
+				+ '\n\nCurrently only used in the splash texts if you\'re curious as to why this is an option';
+		}, () ->
+			{
+				Save.options.get().pcname = !Save.options.get().pcname;
+			});
 
-		addOption('fpsCounter', function()
+		addOption('fpsCounter', () ->
 		{
-			return 'FPS Counter (${getEnabledString(Save.options.get().fpsCounter)}) : Toggles the FPS Counter at the top left';
-		}, function()
-		{
-			Save.options.get().fpsCounter = !Save.options.get().fpsCounter;
-			Main.FPSCounter.visible = Save.options.get().fpsCounter;
-		});
+			return 'FPS Counter (${getEnabledString(Save.options.get().fpsCounter)})' + ' : Toggles the FPS Counter at the top left';
+		}, () ->
+			{
+				Save.options.get().fpsCounter = !Save.options.get().fpsCounter;
+				Main.FPSCounter.visible = Save.options.get().fpsCounter;
+			});
 
-		addOption('cache', function()
+		addOption('cache', () ->
 		{
-			return 'Asset Caching System (${getEnabledString(Save.options.get().cache)}) : Toggles the Asset Caching System\n\n(Resets the game)';
-		}, function()
-		{
-			Save.options.get().cache = !Save.options.get().cache;
+			return 'Asset Caching System (${getEnabledString(Save.options.get().cache)})' + ' : Toggles the Asset Caching System' + '\n\n(Resets the game)';
+		}, () ->
+			{
+				Save.options.get().cache = !Save.options.get().cache;
 
-			DebugSubState.resetGame();
-		});
+				DebugSubState.resetGame();
+			});
 	}
 
 	function addOption(assetName:String, gimmeStr:Void->String, gimmeAction:Void->Void)
