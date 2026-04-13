@@ -122,7 +122,7 @@ class VNState extends OSAState
 			return FlxG.keys.pressed.SPACE;
 		}, function()
 		{
-			onEnd();
+			onEnd(false);
 		});
 		_holdToExit.setPosition(FlxG.width - _holdToExit.width - 32, FlxG.height - _holdToExit.height - 32);
 
@@ -166,9 +166,9 @@ class VNState extends OSAState
 			}
 
 			if (_dialogueLine._line != null)
-				_dialogueText.erase(VNState.OUT_LETTER_SPEED, true, null, onEnd);
+				_dialogueText.erase(VNState.OUT_LETTER_SPEED, true, null, () -> onEnd(true));
 			else
-				FlxTimer.wait(getTextFadeOutTime(), onEnd);
+				FlxTimer.wait(getTextFadeOutTime(), () -> onEnd(true));
 
 			return;
 		}
@@ -234,11 +234,11 @@ class VNState extends OSAState
 		_dialogueTypingFinished = true;
 	}
 
-	public function onEnd()
+	public function onEnd(validEnd:Bool)
 	{
 		trace('End');
 
-		_eventManager.onEnd();
+		_eventManager.onEnd(validEnd);
 
 		instance = null;
 		FlxG.switchState(() -> new VNCacher(new TitleState('STORYMENU'), true, _issue));

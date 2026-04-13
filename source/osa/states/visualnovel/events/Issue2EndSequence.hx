@@ -33,14 +33,17 @@ class Issue2EndSequence extends EventRunner
 		}
 	}
 
-	override function onEnd(eventManager:EventManager)
+	override function onEnd(eventManager:EventManager, validEnd:Bool)
 	{
-		super.onEnd(eventManager);
+		super.onEnd(eventManager, validEnd);
 
-		if (_game._dialogueCharacter._id == 'osin-glare-data')
-			Save.addIssue('bonusissue1');
+		if (validEnd)
+		{
+			if (_game._dialogueCharacter._id == 'osin-glare-data')
+				Save.addIssue('bonusissue1');
 
-		Save.addIssue('issue3');
+			Save.addIssue('issue3');
+		}
 	}
 
 	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)

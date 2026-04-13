@@ -29,5 +29,5 @@ class EventRunner
 
 	public function onCreate(eventManager:EventManager) {}
 
-	public function onEnd(eventManager:EventManager) {}
+	public function onEnd(eventManager:EventManager, validEnd:Bool) {}
 }
