@@ -14,10 +14,12 @@ class Save
 		options = new SaveField<SaveOptions>('options', {
 			pcname: true,
 			fpsCounter: true,
+			cache: true,
 		});
 
 		options.get().pcname ??= true;
 		options.get().fpsCounter ??= true;
+		options.get().cache ??= true;
 
 		addIssue('issue1');
 		addIssue('issue2');

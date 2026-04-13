@@ -15,11 +15,34 @@ import openfl.media.Sound;
 
 class OSACache
 {
-	static var permCachedSounds:Map<String, FlxSound> = [];
-	static var tempCachedSound:Map<String, FlxSound> = [];
+	public static var permCachedSounds:Map<String, FlxSound> = [];
+	public static var tempCachedSound:Map<String, FlxSound> = [];
 
-	static var permCachedTextures:Map<String, FlxGraphic> = [];
-	static var tempCachedTextures:Map<String, FlxGraphic> = [];
+	public static var permCachedTextures:Map<String, FlxGraphic> = [];
+	public static var tempCachedTextures:Map<String, FlxGraphic> = [];
+
+	public static function wipeCaches()
+	{
+		clearTempCaches();
+
+		for (key => sound in tempCachedSound)
+		{
+			tempCachedSound.remove(key);
+			sound.destroy();
+		}
+
+		for (key => texture in tempCachedTextures)
+		{
+			tempCachedTextures.remove(key);
+			texture.destroy();
+		}
+
+		tempCachedSound.clear();
+		tempCachedTextures.clear();
+
+		permCachedSounds.clear();
+		permCachedTextures.clear();
+	}
 
 	public static function postStateSwitch()
 	{
@@ -53,6 +76,9 @@ class OSACache
 
 	public static function init()
 	{
+		if (!Save.options.get().cache)
+			return;
+
 		/** Signals **/
 
 		FlxG.signals.postStateSwitch.add(postStateSwitch);
@@ -85,6 +111,9 @@ class OSACache
 
 	public static function permCacheIssueTextures()
 	{
+		if (!Save.options.get().cache)
+			return;
+
 		var issueImgPaths:Map<String, Array<String>> = [];
 
 		for (issue in Save.issues.get())
@@ -149,6 +178,9 @@ class OSACache
 
 	public static function permCacheSound(key:String)
 	{
+		if (!Save.options.get().cache)
+			return;
+
 		if (permCachedSounds.exists(key))
 			return;
 
@@ -167,6 +199,9 @@ class OSACache
 
 	public static function tempCacheSound(key:String)
 	{
+		if (!Save.options.get().cache)
+			return;
+
 		if (tempCachedSound.exists(key))
 			return;
 
@@ -182,6 +217,9 @@ class OSACache
 
 	public static function permCacheTexture(key:String)
 	{
+		if (!Save.options.get().cache)
+			return;
+
 		if (permCachedTextures.exists(key))
 			return;
 
@@ -203,6 +241,9 @@ class OSACache
 
 	public static function tempCacheTexture(key:String)
 	{
+		if (!Save.options.get().cache)
+			return;
+
 		if (tempCachedTextures.exists(key))
 			return;
 
@@ -223,6 +264,9 @@ class OSACache
 
 	public static function forceRender(graphic:FlxGraphic)
 	{
+		if (!Save.options.get().cache)
+			return;
+
 		var sprite:FlxSprite = new FlxSprite();
 		sprite.loadGraphic(graphic);
 
@@ -236,8 +280,9 @@ class OSACache
 	{
 		for (key => texture in tempCachedTextures)
 		{
-			if (permCachedTextures.exists(key))
-				continue;
+			if (Save.options.get().cache)
+				if (permCachedTextures.exists(key))
+					continue;
 
 			trace('Cleared temp cached texture: $key');
 
@@ -253,8 +298,9 @@ class OSACache
 	{
 		for (key => sound in tempCachedSound)
 		{
-			if (permCachedSounds.exists(key))
-				continue;
+			if (Save.options.get().cache)
+				if (permCachedSounds.exists(key))
+					continue;
 
 			trace('Cleared temp cached sound: $key');
 

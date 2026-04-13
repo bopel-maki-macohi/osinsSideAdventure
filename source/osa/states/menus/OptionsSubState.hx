@@ -26,6 +26,15 @@ class OptionsSubState extends TitleSubStateBase
 				Save.options.get().fpsCounter = !Save.options.get().fpsCounter;
 				Main.FPSCounter.visible = Save.options.get().fpsCounter;
 			}),
+			makeSprite('options/cache', function()
+			{
+				return 'Cache (${getEnabledString(Save.options.get().cache)}) : Toggles the Asset Caching System';
+			}, function()
+			{
+				Save.options.get().cache = !Save.options.get().cache;
+
+				DebugSubState.resetGame();
+			}),
 		];
 	}
 
