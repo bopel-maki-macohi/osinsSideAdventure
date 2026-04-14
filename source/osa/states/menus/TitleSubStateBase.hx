@@ -175,13 +175,17 @@ class TitleSubStateBase extends OSASubState
 			obj.updateHitbox();
 
 			obj.ID = i;
-
-			obj._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
-			obj._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
+			if (_addDefaultScaleThingies)
+			{
+				obj._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
+				obj._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
+			}
 
 			_sprites.add(obj);
 		}
 
 		positionSprites();
 	}
+
+	public var _addDefaultScaleThingies:Bool = false;
 }

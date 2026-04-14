@@ -96,13 +96,8 @@ class StoryMenuSubState extends TitleSubStateBase
 			_spriteList.push(makeIssueSprite(issue));
 		}
 
+		_addDefaultScaleThingies = false;
 		createSprites();
-
-		for (sprite in _sprites.members)
-		{
-			sprite._overlapUpdate.remove(() -> ClickableSprite.overlapUpdateScale(sprite, .6, .1));
-			sprite._unoverlapUpdate.remove(() -> ClickableSprite.unoverlapUpdateScale(sprite, .5, .1));
-		}
 	}
 
 	override function nonScrollingControls()
