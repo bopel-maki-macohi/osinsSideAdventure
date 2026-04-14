@@ -86,10 +86,13 @@ class TitleSubStateBase extends OSASubState
 
 	public function nonScrollingControls()
 	{
-		if (FlxG.keys.anyJustPressed([A, LEFT]))
-			changeSelection(-1);
-		if (FlxG.keys.anyJustPressed([D, RIGHT]))
-			changeSelection(1);
+		if (FlxG.keys.anyJustPressed([A, D, LEFT, RIGHT]))
+		{
+			if (FlxG.keys.anyJustPressed([A, LEFT]))
+				changeSelection(-1);
+			if (FlxG.keys.anyJustPressed([D, RIGHT]))
+				changeSelection(1);
+		}
 	}
 
 	public function changeSelection(increment:Int)
@@ -178,7 +181,7 @@ class TitleSubStateBase extends OSASubState
 
 			_sprites.add(obj);
 		}
-		
+
 		positionSprites();
 	}
 }

@@ -101,15 +101,17 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	override function nonScrollingControls()
 	{
-		if (FlxG.keys.anyJustPressed([A, LEFT]))
-			changeSelection(-1);
-		if (FlxG.keys.anyJustPressed([D, RIGHT]))
-			changeSelection(1);
+		super.nonScrollingControls();
 
-		if (FlxG.keys.anyJustPressed([W, UP]))
-			reload(_filters[_filters.indexOf(_currentFilter) - 1] ?? _filters[_filters.length - 1]);
-		if (FlxG.keys.anyJustPressed([S, DOWN]))
-			reload(_filters[_filters.indexOf(_currentFilter) + 1] ?? _filters[0]);
+		if (FlxG.keys.anyJustPressed([W, S, UP, DOWN]))
+		{
+			var filters = _filters;
+
+			if (FlxG.keys.anyJustPressed([W, UP]))
+				reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[filters.length - 1]);
+			if (FlxG.keys.anyJustPressed([S, DOWN]))
+				reload(filters[filters.indexOf(_currentFilter) - 1] ?? filters[0]);
+		}
 	}
 
 	override function create()
