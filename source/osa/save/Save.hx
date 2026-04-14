@@ -1,11 +1,13 @@
 package osa.save;
 
+import osa.states.visualnovel.EventManager;
 import osa.util.SortUtil;
 import flixel.FlxG;
 
 class Save
 {
 	public static var issues:SaveField<Array<String>>;
+	public static var beatissues:SaveField<Array<String>>;
 
 	public static var options:SaveField<SaveOptions>;
 
@@ -17,6 +19,7 @@ class Save
 			fpsCounter: true,
 			cache: true,
 		});
+		beatissues = new SaveField<Array<String>>('beatissues', []);
 
 		options.get().pcname ??= true;
 		options.get().fpsCounter ??= true;
@@ -24,6 +27,9 @@ class Save
 
 		addIssue('issue1');
 		addIssue('issue2');
+
+		for (issue in beatissues.get())
+			EventManager.onBeatIssue(issue);
 
 		Main.FPSCounter.visible = options.get().fpsCounter;
 	}
@@ -36,6 +42,12 @@ class Save
 			issues.get().push(issuefile);
 
 		sortIssues();
+	}
+
+	public static function beatIssue(id:String)
+	{
+		if (!beatissues.get().contains(id))
+			beatissues.get().push(id);
 	}
 
 	public static function sortIssues()

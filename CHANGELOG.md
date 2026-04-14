@@ -5,12 +5,14 @@
 
 - The debug substate "Get missing assets" option has had changes
 - Updated Story Menu! (Again)
+  - Issue titles now are pink if you haven't played them
   - Selection and non-selection scaling has been removed from the issue titles (they still bop)
   - Issue titles bop to the music depending on the volume now hehe
   - The story mode text is back (at he top of the screen) and now displays the following:
     - Current Filter
     - Selected Issue Chapter
   - The issue titles now turn yellow when selected
+    - red if you haven't beat them
   - Added Filters
 - Removed *slightly* different bop size depending on what index the story menu title is
 - Fixed Event Manager not running `update`

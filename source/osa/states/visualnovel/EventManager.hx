@@ -48,7 +48,7 @@ class EventManager extends FlxSpriteGroup
 		return false;
 	}
 
-	function runOnEvents(f:EventRunner->Void)
+	public static function runOnEvents(f:EventRunner->Void)
 	{
 		for (event in events)
 		{
@@ -86,5 +86,10 @@ class EventManager extends FlxSpriteGroup
 		super.update(elapsed);
 
 		runOnEvents(event -> event.update(this, elapsed));
+	}
+
+	public static function onBeatIssue(issue:String)
+	{
+		runOnEvents(event -> event.onBeatIssue(issue));
 	}
 }

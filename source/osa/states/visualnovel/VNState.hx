@@ -1,5 +1,6 @@
 package osa.states.visualnovel;
 
+import osa.save.Save;
 import osa.states.transition.VNCacher;
 import osa.objects.HoldToPerformGadge;
 import flixel.group.FlxSpriteGroup;
@@ -243,6 +244,11 @@ class VNState extends OSAState
 		trace('End');
 
 		_eventManager.onEnd(validEnd);
+
+		if (validEnd)
+		{
+			Save.beatIssue(_issue);
+		}
 
 		instance = null;
 		FlxG.switchState(() -> new VNCacher(new TitleState('STORYMENU'), true, _issue));

@@ -1,5 +1,7 @@
 package osa.states.visualnovel;
 
+import osa.save.Save;
+
 enum EventRunnerDialogueFile
 {
 	ANY;
@@ -31,4 +33,6 @@ class EventRunner
 	public function onCreate(eventManager:EventManager) {}
 
 	public function onEnd(eventManager:EventManager, validEnd:Bool) {}
+
+	public function onBeatIssue(issue:String) {}
 }

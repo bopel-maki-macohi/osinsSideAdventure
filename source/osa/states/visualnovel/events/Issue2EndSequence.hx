@@ -43,10 +43,24 @@ class Issue2EndSequence extends EventRunner
 		if (validEnd)
 		{
 			if (_game._dialogueCharacter._id == 'issue2/osin-glare-data')
+			{
 				Save.addIssue('bonusissue1');
+				Save.beatIssue('issue2-bonus');
+			}
 
 			Save.addIssue('issue3');
 		}
+	}
+
+	override function onBeatIssue(issue:String)
+	{
+		super.onBeatIssue(issue);
+
+		if (issue == 'issue2')
+			Save.addIssue('issue3');
+
+		if (issue == 'issue2-bonus')
+			Save.addIssue('bonusissue1');
 	}
 
 	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)

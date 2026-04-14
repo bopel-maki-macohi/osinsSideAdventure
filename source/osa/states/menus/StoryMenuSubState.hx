@@ -145,11 +145,17 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		spr._overlapUpdate.add(function()
 		{
-			spr.color = FlxColor.YELLOW;
+			if (Save.beatissues.get().contains(issue))
+				spr.color = FlxColor.YELLOW;
+			else
+				spr.color = FlxColor.RED;
 		});
 		spr._unoverlapUpdate.add(function()
 		{
-			spr.color = FlxColor.WHITE;
+			if (Save.beatissues.get().contains(issue))
+				spr.color = FlxColor.WHITE;
+			else
+				spr.color = FlxColor.PINK;
 		});
 
 		return spr;
@@ -160,7 +166,7 @@ class StoryMenuSubState extends TitleSubStateBase
 		var msg:String = '';
 
 		msg += 'Filter: ${_currentFilter.toUpperCase()}\n';
-		msg += 'Issue Chapter: ${ChapterUtil.getChapter(issue)}';
+		msg += 'Issue Chapter: ${ChapterUtil.getChapter(issue)}\n';
 
 		return msg;
 	}

@@ -1,5 +1,7 @@
 package osa.util;
 
+import osa.states.visualnovel.EventManager;
+
 class ChapterUtil
 {
 	public static final CHAPTER_ONE:Array<String> = [
