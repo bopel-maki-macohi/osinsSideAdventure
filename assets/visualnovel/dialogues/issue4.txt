@@ -1,0 +1,25 @@
+event_issue4
+
+_;_;issue4/fight/duo-punch
+_;_;issue4/fight/duo-kick
+_;_;issue4/fight/thunderbolt-swing
+
+Fuck Fuck Fuck Fuck...;issue4/tirok-looting;issue4/backdrop
+
+_;_;issue4/fight/thunderbolt-rapid
+_;_;issue4/fight/thunderbolt-punch
+_;_;issue4/fight/thunderbolt-kick
+
+_;_;issue4/fight/osin-hitWall
+HURRY UP!;issue4/osin-irritated;issue4/fight/osin-hitWall
+
+Shut up!;_;issue4/looting/tirok-turnaround
+_;_;issue4/looting/tirok-running
+_;_;issue4/looting/tirok-armor
+
+?;issue4/tirok-lookup;issue4/backdrop
+
+_;_;issue4/larocSave/lab
+
+_;_;issue4/larocSave/sky
+Are you two okay?;_;issue4/larocSave/sky
