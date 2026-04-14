@@ -2,5 +2,12 @@ event_setDialogueSpeed;0.2
 ...;issue3/tirok-looting;_
 
 event_resetDialogueSpeed
-So what're you working on?;issue1/osin-what;_
-JESUS CHRIST!;bonusissue1/tirok-WHATTHEFUCK;_
+How long are you gonna take?;issue3/osin-turnt;_
+Shut up!;issue3/tirok-pissed;_
+
+It's not my fault this place is a fucking mess.;issue3/tirok-pissed;issue3-establishingshot
+Gone for what like 4 damn years and everything's gone to SHIT.;issue3/tirok-pissed;issue3-establishingshot
+CALL SINCO GOD DAMMIT. WE CAN GO BACK AND NOT HAVE TO WORRY ABOUT THIS SHIT.;issue3/osin-yell;issue3-establishingshot
+OR EVEN BETTER. HE CAN FUCKING FIX THIS SHIT.;issue3/osin-yell-attitude;issue3-establishingshot
+I TOLD YOU THE FUCKING INTERNET'S DEAD YOU DAMN IDIOT.;issue3/tirok-yelling;issue3-establishingshot
+And last I checked, we both want to live.;issue3/tirok-looting;issue3-establishingshot
