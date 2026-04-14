@@ -100,8 +100,8 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		onBeatHit(0);
 
-		_text.size *= 2;
-		_text.borderSize *= 2;
+		_text.size = 24;
+		_text.borderSize = 3;
 
 		reload('all');
 	}
@@ -179,6 +179,8 @@ class StoryMenuSubState extends TitleSubStateBase
 
 			sprite.scale.set(scale, scale);
 		}
+
+		_text.y = 32;
 	}
 
 	override function changeSelection(increment:Int)
