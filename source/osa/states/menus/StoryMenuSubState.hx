@@ -17,7 +17,33 @@ class StoryMenuSubState extends TitleSubStateBase
 	public var _issues:Array<String> = [];
 	public var _issueDialogueFile:String;
 
-	public static var filters:Array<String> = ['all', 'issues', 'bonus', 'chapter1',];
+	public var _filters(get, never):Array<String>;
+
+	function get__filters():Array<String>
+	{
+		var filters:Array<String> = ['all'];
+
+		if (Save.issues.get().filter(f -> return f.startsWith('issue')).length > 0)
+			filters.push('issues');
+
+		if (Save.issues.get().filter(f -> return f.startsWith('bonusissue')).length > 0)
+			filters.push('bonus');
+
+		for (chapterFilter => chapterList in ['chapter1' => ChapterUtil.CHAPTER_ONE])
+		{
+			/**
+			 * A chapter1 filtered
+			 * [issue10,issue9,issue1,issue2]
+			 * 
+			 * would end up
+			 * [issue1,issue2,issue10,issue9]
+			 */
+			if (ChapterUtil.chapterFilter(chapterList, Save.issues.get()) != Save.issues.get())
+				filters.push(chapterFilter);
+		}
+
+		return filters;
+	}
 
 	public var _currentFilter:String = null;
 
@@ -80,12 +106,10 @@ class StoryMenuSubState extends TitleSubStateBase
 		if (FlxG.keys.anyJustPressed([D, RIGHT]))
 			changeSelection(1);
 
-		final filters = StoryMenuSubState.filters;
-
 		if (FlxG.keys.anyJustPressed([W, UP]))
-			reload(filters[filters.indexOf(_currentFilter) - 1] ?? filters[filters.length - 1]);
+			reload(_filters[_filters.indexOf(_currentFilter) - 1] ?? _filters[_filters.length - 1]);
 		if (FlxG.keys.anyJustPressed([S, DOWN]))
-			reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[0]);
+			reload(_filters[_filters.indexOf(_currentFilter) + 1] ?? _filters[0]);
 	}
 
 	override function create()
