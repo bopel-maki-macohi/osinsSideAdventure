@@ -56,7 +56,10 @@ class DebugSubState extends TitleSubStateBase
 					if (!EventManager.events.exists(dialogueLine._event))
 					{
 						if (!events.contains(dialogueLine._event))
+						{
+							trace(' - event: ${dialogueLine._event}}');
 							events.push(dialogueLine._event);
+						}
 					}
 
 					continue;
@@ -71,14 +74,14 @@ class DebugSubState extends TitleSubStateBase
 				if (char != null)
 					if (!charPath.fileExists() && !chars.contains(charPath))
 					{
-						trace(' - $charPath');
+						trace(' - char: ${charPath.replace('characters/'.visualNovelAsset(), '')}}');
 						chars.push(charPath);
 					}
 
 				if (bg != null)
 					if (!bgPath.fileExists() && !bgs.contains(bgPath))
 					{
-						trace(' - $bgPath');
+						trace(' - bg: ${bgPath.replace('backgrounds/'.visualNovelAsset(), '')}');
 						bgs.push(bgPath);
 					}
 			}

@@ -3,7 +3,7 @@
 - **Added Issue 3 (Unlocked through playing issue 2)**
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
 
-- The debug substate "Get missing assets" option now also includes events
+- The debug substate "Get missing assets" option has had changes
 - Updated Story Menu! (Again)
   - Selection and non-selection scaling has been removed from the issue titles (they still bop)
   - Issue titles bop to the music depending on the volume now hehe
