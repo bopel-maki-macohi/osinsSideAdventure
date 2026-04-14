@@ -4,6 +4,9 @@
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
 
 - Updated Story Menu! (Again)
+  - The story mode text is back (at he top of the screen) and now displays the following:
+    - Current Filter
+    - Selected Issue Chapter
   - The issue titles now turn yellow when selected
   - Added Filters
 - Removed *slightly* different bop size depending on what index the story menu title is

@@ -103,6 +103,9 @@ class StoryMenuSubState extends TitleSubStateBase
 		_text.size = 24;
 		_text.borderSize = 3;
 
+		_text.fieldWidth = FlxG.width;
+		_text.alignment = CENTER;
+
 		reload('all');
 	}
 
@@ -129,8 +132,8 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		var msg:String = '';
 
-		msg += 'Filter: ${_currentFilter.toUpperCase()} | ';
-		msg += 'Chapter: ${ChapterUtil.getChapter(issue)}';
+		msg += 'Filter: ${_currentFilter.toUpperCase()}\n';
+		msg += 'Issue Chapter: ${ChapterUtil.getChapter(issue)}';
 
 		return msg;
 	}
