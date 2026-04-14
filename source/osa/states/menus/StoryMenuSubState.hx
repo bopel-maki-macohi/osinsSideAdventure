@@ -127,7 +127,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	function makeIssueSprite(issue:String):ClickableSprite
 	{
-		return makeSprite(issue, () -> return 'Filter: ${_currentFilter.toUpperCase()}', function()
+		return makeSprite('story/$issue', () -> return 'Filter: ${_currentFilter.toUpperCase()}', function()
 		{
 			onEnter();
 		});
