@@ -4,5 +4,5 @@
 - [ ] Issue 3 Assets
 - [ ] Issue 4 Assets
 
-- [ ] Story Menu "new" issues
+- [x] Story Menu "new" issues
 - [ ] Code Ideas
