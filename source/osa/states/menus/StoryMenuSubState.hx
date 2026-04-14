@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import flixel.util.FlxColor;
 import osa.util.ChapterUtil;
 import osa.states.transition.VNCacher;
 import osa.util.Constants;
@@ -25,7 +26,7 @@ class StoryMenuSubState extends TitleSubStateBase
 		if (_currentFilter == filter)
 			return;
 		_currentFilter = filter;
-		
+
 		_currentSelection = 0;
 		_sprites.setPosition();
 
@@ -87,23 +88,6 @@ class StoryMenuSubState extends TitleSubStateBase
 			reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[0]);
 	}
 
-	override function positionSpritesGroup()
-	{
-		_sprites.x = FlxMath.lerp(_sprites.x, _currentSelection * -10, 0.1);
-		_sprites.y = FlxMath.lerp(_sprites.y, _currentSelection * -128, 0.1);
-	}
-
-	override function positionSprites()
-	{
-		for (sprite in _sprites.members)
-		{
-			sprite.screenCenter();
-
-			sprite.x = 50 + (sprite.ID * 10);
-			sprite.y += sprite.ID * 128;
-		}
-	}
-
 	override function create()
 	{
 		super.create();
@@ -124,10 +108,21 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	function makeIssueSprite(issue:String):ClickableSprite
 	{
-		return makeSprite('story/$issue', () -> return 'Filter: ${_currentFilter.toUpperCase()}', function()
+		var spr:ClickableSprite = makeSprite('story/$issue', () -> return 'Filter: ${_currentFilter.toUpperCase()}', function()
 		{
 			onEnter();
 		});
+
+		spr._overlapUpdate.add(function()
+		{
+			spr.color = FlxColor.YELLOW;
+		});
+		spr._unoverlapUpdate.add(function()
+		{
+			spr.color = FlxColor.WHITE;
+		});
+
+		return spr;
 	}
 
 	function onEnter()

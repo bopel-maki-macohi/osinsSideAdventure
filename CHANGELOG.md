@@ -4,6 +4,7 @@
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
 
 - Updated Story Menu! (Again)
+  - The issue titles now turn yellow when selected
   - Added Filters
 - Removed *slightly* different bop size depending on what index the story menu title is
 - Fixed Event Manager not running `update`
