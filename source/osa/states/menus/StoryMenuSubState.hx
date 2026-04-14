@@ -120,7 +120,8 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		onBeatHit(0);
 
-		_text.size *= 4;
+		_text.size *= 2;
+		_text.borderSize *= 2;
 
 		reload('all');
 	}
