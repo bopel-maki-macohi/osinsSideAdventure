@@ -108,7 +108,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	function makeIssueSprite(issue:String):ClickableSprite
 	{
-		var spr:ClickableSprite = makeSprite('story/$issue', () -> return 'Filter: ${_currentFilter.toUpperCase()}', function()
+		var spr:ClickableSprite = makeSprite('story/$issue', issueMsg, function()
 		{
 			onEnter();
 		});
@@ -123,6 +123,15 @@ class StoryMenuSubState extends TitleSubStateBase
 		});
 
 		return spr;
+	}
+
+	function issueMsg()
+	{
+		var msg:String = '';
+
+		msg += 'Filter: ${_currentFilter.toUpperCase()} : ';
+
+		return msg;
 	}
 
 	function onEnter()
