@@ -4,7 +4,7 @@ _;_;issue4/fight/duo-punch
 _;_;issue4/fight/duo-kick
 _;_;issue4/fight/thunderbolt-swing
 
-Fuck Fuck Fuck Fuck...;issue4/tirok-looting;issue4/backdrop
+Fuck Fuck Fuck Fuck...;issue3/tirok-looting;issue4/backdrop
 
 _;_;issue4/fight/thunderbolt-rapid
 _;_;issue4/fight/thunderbolt-punch
