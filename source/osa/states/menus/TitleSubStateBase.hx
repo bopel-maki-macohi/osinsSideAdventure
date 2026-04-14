@@ -53,16 +53,15 @@ class TitleSubStateBase extends OSASubState
 
 		if (!TitleState.bgScrolling)
 		{
-			if (FlxG.keys.anyJustPressed([A, LEFT]))
-				changeSelection(-1);
-			if (FlxG.keys.anyJustPressed([D, RIGHT]))
-				changeSelection(1);
+			nonScrollingControls();
 		}
 
-		_sprites.x = FlxMath.lerp(_sprites.x, _currentSelection * -256, 0.1);
+		positionSpritesGroup();
 
 		for (sprite in _sprites.members)
 		{
+			if (sprite == null) continue;
+
 			if (_currentSelection == sprite.ID)
 			{
 				sprite._overlapUpdate.dispatch();
@@ -77,6 +76,19 @@ class TitleSubStateBase extends OSASubState
 
 		_text.screenCenter();
 		_text.y = FlxG.height - _text.height - 32;
+	}
+
+	public function positionSpritesGroup()
+	{
+		_sprites.x = FlxMath.lerp(_sprites.x, _currentSelection * -256, 0.1);
+	}
+
+	public function nonScrollingControls()
+	{
+		if (FlxG.keys.anyJustPressed([A, LEFT]))
+			changeSelection(-1);
+		if (FlxG.keys.anyJustPressed([D, RIGHT]))
+			changeSelection(1);
 	}
 
 	public function changeSelection(increment:Int)
@@ -136,11 +148,7 @@ class TitleSubStateBase extends OSASubState
 			_sprites.add(obj);
 		}
 
-		for (sprite in _sprites.members)
-		{
-			sprite.screenCenter();
-			sprite.x += sprite.ID * 256;
-		}
+		positionSprites();
 
 		_text = new FlxText(0, 0, 0, '', 16);
 		_text.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
@@ -157,5 +165,14 @@ class TitleSubStateBase extends OSASubState
 		FlxG.mouse.visible = false;
 
 		changeSelection(0);
+	}
+
+	public function positionSprites()
+	{
+		for (sprite in _sprites.members)
+		{
+			sprite.screenCenter();
+			sprite.x += sprite.ID * 256;
+		}
 	}
 }

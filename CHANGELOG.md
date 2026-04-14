@@ -3,6 +3,8 @@
 - **Added Issue 3 (Unlocked through playing issue 2)**
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
 
+- Updated Story Menu! (Again)
+  - Added Filters
 - Removed *slightly* different bop size depending on what index the story menu title is
 - Fixed Event Manager not running `update`
 - Fixed Visual Novel temp cached textures being cleared from the cache as soon as you leave the caching state
