@@ -1,4 +1,4 @@
-# 0.9.0 : Issue Pack 1 (4/13/2026)
+# 0.9.0 : Issue Pack 1 (4/14/2026)
 <!-- - **Added Issue 4 (Unlocked through playing issue 3)** -->
 - **Added Issue 3 (Unlocked through playing issue 2)**
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
