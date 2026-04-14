@@ -13,12 +13,20 @@ class ChapterUtil
 		'bonusissue2',
 	];
 
-	public static function chapterFilter(chapterList:Array<String>, list:Array<String>):Array<String>
+	public static inline function chapterFilter(chapterList:Array<String>, list:Array<String>):Array<String>
 		return list.filter(f -> return chapterList.contains(f));
 
-	public static function issueFilter(list:Array<String>):Array<String>
+	public static inline function issueFilter(list:Array<String>):Array<String>
 		return list.filter(f -> return f.startsWith('issue'));
 
-	public static function bonusIssueFilter(list:Array<String>):Array<String>
+	public static inline function bonusIssueFilter(list:Array<String>):Array<String>
 		return list.filter(f -> return f.startsWith('bonusissue'));
+
+	public static inline function getChapter(issue:String):String
+	{
+		if (CHAPTER_ONE.contains(issue))
+			return 'Chapter 1';
+
+		return 'Unknown';
+	}
 }
