@@ -190,7 +190,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		for (sprite in _sprites.members)
 		{
-			final scale = 0.6;
+			final scale = 0.6 * (FlxG.sound.volume / 1);
 
 			sprite.scale.set(scale, scale);
 		}
