@@ -5,16 +5,16 @@ event_resetDialogueSpeed
 How long are you gonna take?;issue3/osin-turnt;_
 Shut up!;issue3/tirok-pissed;_
 
-It's not my fault this place is a fucking mess.;issue3/tirok-pissed;issue3-establishingshot
-Gone for what like four damn years and everything's gone to SHIT.;issue3/tirok-pissed;issue3-establishingshot
-CALL SINCO GOD DAMMIT. WE CAN GO BACK AND NOT HAVE TO WORRY ABOUT THIS SHIT.;issue3/osin-yell;issue3-establishingshot
-OR EVEN BETTER. HE CAN FUCKING FIX THIS SHIT.;issue3/osin-yell-attitude;issue3-establishingshot
-I TOLD YOU THE FUCKING INTERNET'S DEAD YOU DAMN IDIOT.;issue3/tirok-yelling;issue3-establishingshot
-And last I checked, we both want to live.;issue3/tirok-looting;issue3-establishingshot
+It's not my fault this place is a fucking mess.;issue3/tirok-pissed;issue3-establishingShot
+Gone for what like four damn years and everything's gone to SHIT.;issue3/tirok-pissed;issue3-establishingShot
+CALL SINCO GOD DAMMIT. WE CAN GO BACK AND NOT HAVE TO WORRY ABOUT THIS SHIT.;issue3/osin-yell;issue3-establishingShot
+OR EVEN BETTER. HE CAN FUCKING FIX THIS SHIT.;issue3/osin-yell-attitude;issue3-establishingShot
+I TOLD YOU THE FUCKING INTERNET'S DEAD YOU DAMN IDIOT.;issue3/tirok-yelling;issue3-establishingShot
+And last I checked, we both want to live.;issue3/tirok-looting;issue3-establishingShot
 
-Ugh.;issue3/osin-turnt;issue3-establishingshot
-Just hurry up already.;issue3/osin-turnt;issue3-establishingshot
-Yeah yeah.;issue3/tirok-looting;issue3-establishingshot
+Ugh.;issue3/osin-turnt;issue3-establishingShot
+Just hurry up already.;issue3/osin-turnt;issue3-establishingShot
+Yeah yeah.;issue3/tirok-looting;issue3-establishingShot
 
 event_issue3EndingSequence
-_;_;issue3-endingshot
+_;_;issue3-endingShot
