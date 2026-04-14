@@ -78,12 +78,23 @@ class DebugSubState extends TitleSubStateBase
 						chars.push(charPath);
 					}
 
-				if (bg != null)
-					if (!bgPath.fileExists() && !bgs.contains(bgPath))
-					{
-						trace(' - bg: ${bgPath.replace('backgrounds/'.visualNovelAsset(), '')}');
-						bgs.push(bgPath);
-					}
+				if (![
+					'lightgrayvoid',
+					'whitevoid',
+					'blackvoid',
+					'void',
+					'grayvoid',
+					'grryvoid',
+					'lightgreyvoid',
+					'darkgrayvoid',
+					'darkgreyvoid',
+				].contains(bg))
+					if (bg != null)
+						if (!bgPath.fileExists() && !bgs.contains(bgPath))
+						{
+							trace(' - bg: ${bgPath.replace('backgrounds/'.visualNovelAsset(), '')}');
+							bgs.push(bgPath);
+						}
 			}
 		}
 	}
