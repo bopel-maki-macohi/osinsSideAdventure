@@ -25,8 +25,9 @@ class StoryMenuSubState extends TitleSubStateBase
 		if (_currentFilter == filter)
 			return;
 		_currentFilter = filter;
-
+		
 		_currentSelection = 0;
+		_sprites.setPosition();
 
 		Save.sortIssues();
 
@@ -34,12 +35,7 @@ class StoryMenuSubState extends TitleSubStateBase
 		_spriteList = [];
 
 		if (_sprites != null)
-			for (sprite in _sprites)
-			{
-				_sprites.members.remove(sprite);
-				sprite.destroy();
-			}
-		_sprites.clear();
+			_sprites.clear();
 
 		var filterList:Array<String> = Save.issues.get();
 
