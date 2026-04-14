@@ -11,3 +11,10 @@ CALL SINCO GOD DAMMIT. WE CAN GO BACK AND NOT HAVE TO WORRY ABOUT THIS SHIT.;iss
 OR EVEN BETTER. HE CAN FUCKING FIX THIS SHIT.;issue3/osin-yell-attitude;issue3-establishingshot
 I TOLD YOU THE FUCKING INTERNET'S DEAD YOU DAMN IDIOT.;issue3/tirok-yelling;issue3-establishingshot
 And last I checked, we both want to live.;issue3/tirok-looting;issue3-establishingshot
+
+Ugh.;issue3/osin-turnt;issue3-establishingshot
+Just hurry up already.;issue3/osin-turnt;issue3-establishingshot
+Yeah yeah.;issue3/tirok-looting;issue3-establishingshot
+
+event_issue3EndingSequence
+_;_;issue3-endingshot
