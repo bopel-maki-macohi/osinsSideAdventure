@@ -25,7 +25,7 @@ class StoryMenuSubState extends TitleSubStateBase
 		if (_currentFilter == filter)
 			return;
 		_currentFilter = filter;
-		
+
 		_currentSelection = 0;
 
 		Save.sortIssues();
@@ -70,7 +70,7 @@ class StoryMenuSubState extends TitleSubStateBase
 				continue;
 
 			_issues.push(issue);
-			_spriteList.push(makeSprite('story/$issue', () -> return ''));
+			_spriteList.push(makeIssueSprite(issue));
 		}
 
 		createSprites();
@@ -120,17 +120,15 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		onBeatHit(0);
 
-		_text.visible = false;
+		_text.size *= 4;
 
 		reload('all');
 	}
 
-	override function makeSprite(asset:String, optionText:() -> String, ?onClick:() -> Void):ClickableSprite
+	function makeIssueSprite(issue:String):ClickableSprite
 	{
-		return super.makeSprite(asset, optionText, function()
+		return makeSprite(issue, () -> return 'Filter: ${_currentFilter.toUpperCase()}', function()
 		{
-			if (onClick != null)
-				onClick();
 			onEnter();
 		});
 	}
