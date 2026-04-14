@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.states.visualnovel.EventManager;
 import osa.states.visualnovel.DialogueSprite;
 import osa.states.visualnovel.DialogueLine;
 import osa.states.visualnovel.VNState;
@@ -40,6 +41,7 @@ class DebugSubState extends TitleSubStateBase
 	{
 		var chars:Array<String> = [];
 		var bgs:Array<String> = [];
+		var events:Array<String> = [];
 
 		for (issue in Save.ISSUE_ORDER_PREFERENCE)
 		{
@@ -50,7 +52,15 @@ class DebugSubState extends TitleSubStateBase
 				var dialogueLine:DialogueLine = new DialogueLine(rawline);
 
 				if (dialogueLine._isEvent)
+				{
+					if (!EventManager.events.exists(dialogueLine._event))
+					{
+						if (!events.contains(dialogueLine._event))
+							events.push(dialogueLine._event);
+					}
+
 					continue;
+				}
 
 				final char = dialogueLine._character;
 				final bg = dialogueLine._bg;

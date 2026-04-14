@@ -1,8 +1,9 @@
 # 0.9.0 : Issue Pack 1 (4/14/2026)
-- **/Added Issue 4 (Unlocked through playing issue 3)**
+- **Added Issue 4 (Unlocked through playing issue 3)**
 - **Added Issue 3 (Unlocked through playing issue 2)**
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
 
+- The debug substate "Get missing assets" option now also includes events
 - Updated Story Menu! (Again)
   - Selection and non-selection scaling has been removed from the issue titles (they still bop)
   - Issue titles bop to the music depending on the volume now hehe
