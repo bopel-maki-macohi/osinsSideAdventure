@@ -18,13 +18,6 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	public static var filters:Array<String> = ['all', 'issues', 'bonus', 'chapter1',];
 
-	override public function new(onExit:Void->Void)
-	{
-		super(onExit);
-
-		reload('all');
-	}
-
 	public var _currentFilter:String = null;
 
 	function reload(?filter:String)
@@ -32,17 +25,20 @@ class StoryMenuSubState extends TitleSubStateBase
 		if (_currentFilter == filter)
 			return;
 		_currentFilter = filter;
+		
+		_currentSelection = 0;
 
 		Save.sortIssues();
 
 		_issues = [];
 		_spriteList = [];
 
-		for (sprite in _sprites)
-		{
-			_sprites.members.remove(sprite);
-			sprite.destroy();
-		}
+		if (_sprites != null)
+			for (sprite in _sprites)
+			{
+				_sprites.members.remove(sprite);
+				sprite.destroy();
+			}
 		_sprites.clear();
 
 		var filterList:Array<String> = Save.issues.get();
@@ -76,6 +72,8 @@ class StoryMenuSubState extends TitleSubStateBase
 			_issues.push(issue);
 			_spriteList.push(makeSprite('story/$issue', () -> return ''));
 		}
+
+		createSprites();
 	}
 
 	override function nonScrollingControls()
@@ -123,6 +121,8 @@ class StoryMenuSubState extends TitleSubStateBase
 		onBeatHit(0);
 
 		_text.visible = false;
+
+		reload('all');
 	}
 
 	override function makeSprite(asset:String, optionText:() -> String, ?onClick:() -> Void):ClickableSprite

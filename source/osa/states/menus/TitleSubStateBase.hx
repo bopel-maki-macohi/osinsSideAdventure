@@ -60,7 +60,8 @@ class TitleSubStateBase extends OSASubState
 
 		for (sprite in _sprites.members)
 		{
-			if (sprite == null) continue;
+			if (sprite == null)
+				continue;
 
 			if (_currentSelection == sprite.ID)
 			{
@@ -133,22 +134,7 @@ class TitleSubStateBase extends OSASubState
 			ease: FlxEase.sineInOut
 		});
 
-		for (i => obj in _spriteList)
-		{
-			obj._useMouse = false;
-
-			obj.scale.set(.5, .5);
-			obj.updateHitbox();
-
-			obj.ID = i;
-
-			obj._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
-			obj._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
-
-			_sprites.add(obj);
-		}
-
-		positionSprites();
+		createSprites();
 
 		_text = new FlxText(0, 0, 0, '', 16);
 		_text.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
@@ -174,5 +160,25 @@ class TitleSubStateBase extends OSASubState
 			sprite.screenCenter();
 			sprite.x += sprite.ID * 256;
 		}
+	}
+
+	public function createSprites()
+	{
+		for (i => obj in _spriteList)
+		{
+			obj._useMouse = false;
+
+			obj.scale.set(.5, .5);
+			obj.updateHitbox();
+
+			obj.ID = i;
+
+			obj._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
+			obj._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
+
+			_sprites.add(obj);
+		}
+		
+		positionSprites();
 	}
 }
