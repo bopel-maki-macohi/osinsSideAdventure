@@ -75,16 +75,16 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	override function nonScrollingControls()
 	{
-		if (FlxG.keys.anyJustPressed([W, UP]))
+		if (FlxG.keys.anyJustPressed([A, LEFT]))
 			changeSelection(-1);
-		if (FlxG.keys.anyJustPressed([S, DOWN]))
+		if (FlxG.keys.anyJustPressed([D, RIGHT]))
 			changeSelection(1);
 
 		final filters = StoryMenuSubState.filters;
 
-		if (FlxG.keys.anyJustPressed([A, LEFT]))
+		if (FlxG.keys.anyJustPressed([W, UP]))
 			reload(filters[filters.indexOf(_currentFilter) - 1] ?? filters[filters.length - 1]);
-		if (FlxG.keys.anyJustPressed([D, RIGHT]))
+		if (FlxG.keys.anyJustPressed([S, DOWN]))
 			reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[0]);
 	}
 
