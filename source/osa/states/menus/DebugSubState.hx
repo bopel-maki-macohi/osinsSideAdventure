@@ -57,7 +57,7 @@ class DebugSubState extends TitleSubStateBase
 					{
 						if (!events.contains(dialogueLine._event))
 						{
-							trace(' - event: ${dialogueLine._event}}');
+							trace(' - event: ${dialogueLine._event}');
 							events.push(dialogueLine._event);
 						}
 					}
@@ -74,7 +74,7 @@ class DebugSubState extends TitleSubStateBase
 				if (char != null)
 					if (!charPath.fileExists() && !chars.contains(charPath))
 					{
-						trace(' - char: ${charPath.replace('characters/'.visualNovelAsset(), '')}}');
+						trace(' - char: ${charPath.replace('characters/'.visualNovelAsset(), '')}');
 						chars.push(charPath);
 					}
 
