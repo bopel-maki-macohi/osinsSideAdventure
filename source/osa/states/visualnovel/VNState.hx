@@ -157,7 +157,7 @@ class VNState extends OSAState
 		if ((_dialogueEntry + increment) > (_dialogueList.length - 1))
 		{
 			_leaving = true;
-			
+
 			for (object in [
 				_dialogueBGGroup,
 				_dialogueCharacterGroup,
@@ -251,7 +251,7 @@ class VNState extends OSAState
 		}
 
 		instance = null;
-		FlxG.switchState(() -> new VNCacher(new TitleState('STORYMENU'), true, _issue));
+		FlxG.switchState(() -> new TitleState('STORYMENU'));
 	}
 
 	override function update(elapsed:Float)
@@ -268,5 +268,10 @@ class VNState extends OSAState
 			_dialogueBox.y
 			+ _dialogueBox.height
 			- _dialogueContinueHand.height);
+	}
+
+	public static function build(issue:String):VNCacher
+	{
+		return new VNCacher(new VNState(issue), issue);
 	}
 }

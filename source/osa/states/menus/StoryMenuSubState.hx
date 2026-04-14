@@ -177,7 +177,7 @@ class StoryMenuSubState extends TitleSubStateBase
 	function onEnter()
 	{
 		FlxG.sound.music.fadeOut(OSAState.DEFAULT_TRANSITION.duration);
-		FlxG.switchState(() -> new VNCacher(new VNState(_issueDialogueFile), false, _issueDialogueFile));
+		FlxG.switchState(() -> VNState.build(_issueDialogueFile));
 	}
 
 	override function close()

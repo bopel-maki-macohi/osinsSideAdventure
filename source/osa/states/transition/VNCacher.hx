@@ -12,17 +12,13 @@ class VNCacher extends OSAState
 {
 	public var _targetState:FlxState;
 
-	public var _leaving:Bool;
-
 	public var _issue:String;
 
-	override public function new(targetState:FlxState, leaving:Bool, issue:String)
+	override public function new(targetState:FlxState, issue:String)
 	{
 		super();
 
 		this._targetState = targetState;
-
-		this._leaving = leaving;
 
 		this._issue = issue;
 	}
@@ -37,15 +33,12 @@ class VNCacher extends OSAState
 
 		super.create();
 
-		if (!_leaving)
-		{
-			getImagePaths();
+		getImagePaths();
 
-			// trace(_imagePaths);
+		// trace(_imagePaths);
 
-			for (key in _imagePaths)
-				OSACache.tempCacheTexture(key);
-		}
+		for (key in _imagePaths)
+			OSACache.tempCacheTexture(key);
 
 		if (_targetState == null)
 			FlxG.switchState(() -> new TitleState('STORYMENU'));

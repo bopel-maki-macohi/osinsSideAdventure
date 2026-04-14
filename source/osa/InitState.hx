@@ -68,7 +68,7 @@ class InitState extends OSAState
 		var ENTER_VN = MacroUtil.getDefine('ENTER_VN');
 
 		if (ENTER_VN != null)
-			FlxG.switchState(() -> new VNCacher(new VNState(ENTER_VN), false, ENTER_VN));
+			FlxG.switchState(() -> VNState.build(ENTER_VN));
 		else if (MacroUtil.isDefined('STORYMENU'))
 			FlxG.switchState(() -> new TitleState('STORYMENU'));
 		else if (MacroUtil.isDefined('CREDITS'))
