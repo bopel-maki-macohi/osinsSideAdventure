@@ -54,22 +54,6 @@ class TitleState extends OSAState
 	{
 		_titleTileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
 
-		_debugTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
-		_debugTileScrollBG._tile = 'tile-sinco'.menuAsset();
-		_debugTileScrollBG.alpha = 0;
-
-		_storymenuTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
-		_storymenuTileScrollBG._tile = 'tile-osin'.menuAsset();
-		_storymenuTileScrollBG.alpha = 0;
-
-		_creditsTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
-		_creditsTileScrollBG._tile = 'tile-tirok'.menuAsset();
-		_creditsTileScrollBG.alpha = 0;
-
-		_optionsTileScrollBG = new TileScrollBG(FlxPoint.get(), false,);
-		_optionsTileScrollBG._tile = 'tile-loroc'.menuAsset();
-		_optionsTileScrollBG.alpha = 0;
-
 		_logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
 		_logo.screenCenter();
 
@@ -88,14 +72,21 @@ class TitleState extends OSAState
 
 		_titleTileScrollBG.camera = blurCamBG;
 
-		_debugTileScrollBG.camera = blurCamBG;
-		_storymenuTileScrollBG.camera = blurCamBG;
-		_creditsTileScrollBG.camera = blurCamBG;
-		_optionsTileScrollBG.camera = blurCamBG;
-
 		_logo.camera = blurCamFG;
 
 		add(_titleTileScrollBG);
+		
+		_debugTileScrollBG = TileScrollBG.build(null, 'tile-sinco'.menuAsset(), _titleTileScrollBG);
+		_debugTileScrollBG.alpha = 0;
+
+		_storymenuTileScrollBG = TileScrollBG.build(null, 'tile-osin'.menuAsset(), _titleTileScrollBG);
+		_storymenuTileScrollBG.alpha = 0;
+
+		_creditsTileScrollBG = TileScrollBG.build(null, 'tile-tirok'.menuAsset(), _titleTileScrollBG);
+		_creditsTileScrollBG.alpha = 0;
+
+		_optionsTileScrollBG = TileScrollBG.build(null, 'tile-loroc'.menuAsset(), _titleTileScrollBG);
+		_optionsTileScrollBG.alpha = 0;
 
 		add(_debugTileScrollBG);
 		add(_storymenuTileScrollBG);
@@ -206,11 +197,6 @@ class TitleState extends OSAState
 
 		if (FlxG.keys.justReleased.SEVEN && subState == null)
 			debugSubState();
-
-		_debugTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
-		_storymenuTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
-		_creditsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
-		_optionsTileScrollBG.velocity.set(_titleTileScrollBG.velocity.x, _titleTileScrollBG.velocity.y);
 	}
 
 	function debugSubState()

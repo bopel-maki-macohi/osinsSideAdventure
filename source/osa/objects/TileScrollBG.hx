@@ -29,13 +29,37 @@ class TileScrollBG extends FlxBackdrop
 		this._debugMode = debugMode;
 	}
 
+	public var _parent:TileScrollBG;
+
+	public static function build(velocity:FlxPoint, ?tile:String, ?parent:TileScrollBG, ?debugMode:Bool = false):TileScrollBG
+	{
+		var tsb:TileScrollBG = new TileScrollBG(velocity ?? FlxPoint.get(), debugMode && parent == null);
+
+		if (tile != null)
+			tsb._tile = tile;
+		if (parent != null)
+		{
+			tsb._parent = parent;
+
+			tsb.cameras = parent.cameras;
+		}
+
+		return tsb;
+	}
+
 	public var _debugVelocityChangeValue:Float = 5;
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (_debugMode)
+		if (_parent != null)
+		{
+			this.velocity.x = _parent.velocity.x;
+			this.velocity.y = _parent.velocity.y;
+		}
+
+		if (_debugMode && _parent == null)
 		{
 			_debugModeInUse = FlxG.keys.pressed.SHIFT;
 

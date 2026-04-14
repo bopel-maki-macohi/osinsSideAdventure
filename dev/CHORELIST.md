@@ -5,4 +5,4 @@
 - [ ] Issue 4 Assets
 
 - [x] Story Menu "new" issues
-- [ ] Code Ideas
+- [x] Code Ideas
