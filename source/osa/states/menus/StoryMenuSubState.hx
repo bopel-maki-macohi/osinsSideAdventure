@@ -108,9 +108,9 @@ class StoryMenuSubState extends TitleSubStateBase
 			var filters = _filters;
 
 			if (FlxG.keys.anyJustPressed([W, UP]))
-				reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[filters.length - 1]);
+				reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[0]);
 			if (FlxG.keys.anyJustPressed([S, DOWN]))
-				reload(filters[filters.indexOf(_currentFilter) - 1] ?? filters[0]);
+				reload(filters[filters.indexOf(_currentFilter) - 1] ?? filters[filters.length - 1]);
 		}
 	}
 
