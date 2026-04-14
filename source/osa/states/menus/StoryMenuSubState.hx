@@ -166,7 +166,10 @@ class StoryMenuSubState extends TitleSubStateBase
 		var msg:String = '';
 
 		msg += 'Filter: ${_currentFilter.toUpperCase()}\n';
-		msg += 'Issue Chapter: ${ChapterUtil.getChapter(issue)}\n';
+		msg += 'Issue Chapter: ${ChapterUtil.getChapter(issue)}';
+
+		if (!Save.beatissues.get().contains(issue))
+			msg += '\n(NEW / HAVEN\'t BEAT IT)';
 
 		return msg;
 	}
