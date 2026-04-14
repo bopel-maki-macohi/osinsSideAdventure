@@ -4,6 +4,7 @@
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
 
 - Updated Story Menu! (Again)
+  - Selection and non-selection scaling has been removed from the issue titles (they still bop)
   - Issue titles bop to the music depending on the volume now hehe
   - The story mode text is back (at he top of the screen) and now displays the following:
     - Current Filter
