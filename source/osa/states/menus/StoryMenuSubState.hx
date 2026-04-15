@@ -170,7 +170,7 @@ class StoryMenuSubState extends TitleSubStateBase
 		msg += 'Issue Chapter: ${ChapterUtil.getChapter(issue)}';
 
 		if (!Save.beatissues.get().contains(issue))
-			msg += '\n(NEW / HAVEN\'t BEAT IT)';
+			msg += '\n(NEW / HAVEN\'T PLAYED IT)';
 
 		return msg;
 	}
