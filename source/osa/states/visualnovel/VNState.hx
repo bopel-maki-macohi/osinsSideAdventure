@@ -268,6 +268,13 @@ class VNState extends OSAState
 			_dialogueBox.y
 			+ _dialogueBox.height
 			- _dialogueContinueHand.height);
+
+		_holdToExit.setPosition(_dialogueBox.x
+			+ _dialogueBox.width
+			- (_holdToExit.width / 1.5),
+			_dialogueBox.y
+			+ _dialogueBox.height
+			- (_holdToExit.height / 1.5));
 	}
 
 	public static function build(issue:String):VNCacher
