@@ -27,6 +27,11 @@ class Issue1EstablishingShot extends EventRunner
 
 		FlxTween.tween(_game._dialogueBG, {alpha: 1}, (0.03 * LoremIpsum.piece.split(',')[0].length), {
 			ease: FlxEase.sineInOut,
+			onUpdate: t ->
+			{
+				if (_game == null)
+					t.cancel();
+			}
 		});
 	}
 }

@@ -21,6 +21,9 @@ class Issue1Intro extends EventRunner
 	{
 		super.update(eventManager, elapsed);
 
+		if (_game == null)
+			return;
+
 		if (_game._dialogueEntry > 4)
 			return;
 
@@ -52,7 +55,8 @@ class Issue1Intro extends EventRunner
 				_osinFocus = true;
 				FlxTimer.wait(VNState.OUT_LETTER_SPEED * (_game._dialogueLine._line.length / 2), () ->
 				{
-					_game.changeLine(1);
+					if (_game != null)
+						_game.changeLine(1);
 				});
 			case 4:
 				_game._dialogueCharacter.alpha = 1;
@@ -65,6 +69,9 @@ class Issue1Intro extends EventRunner
 	override public function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)
 	{
 		super.runDialogueEvent(eventManager, params);
+
+		if (_game == null)
+			return;
 
 		if (_game._issue != 'issue1')
 			return;
@@ -85,10 +92,14 @@ class Issue1Intro extends EventRunner
 			ease: FlxEase.sineIn,
 			onComplete: (t) ->
 			{
-				if (_game == null) return;
-				
+				if (_game == null)
+					return;
+
 				_tirok.build('issue1/tirok-OHSHIT', () ->
 				{
+					if (_game == null)
+						return;
+
 					_game.positionDialogueCharacter(_tirok);
 					_tirok.x = _game._dialogueBox.x;
 				});

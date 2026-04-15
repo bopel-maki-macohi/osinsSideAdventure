@@ -17,15 +17,23 @@ class TestingEventSystem extends EventRunner
 			ease: FlxEase.sineInOut,
 			onComplete: t ->
 			{
-				_game.changeLine(1);
-				FlxTween.tween(char, {alpha: 0}, _game._dialogueLine._line.length * VNState.OUT_LETTER_SPEED, {
-					ease: FlxEase.sineInOut,
-					onComplete: t ->
-					{
-						eventManager.remove(char);
-						char.destroy();
-					}
-				});
+				if (_game != null)
+				{
+					_game.changeLine(1);
+					FlxTween.tween(char, {alpha: 0}, _game._dialogueLine._line.length * VNState.OUT_LETTER_SPEED, {
+						ease: FlxEase.sineInOut,
+						onComplete: t ->
+						{
+							eventManager.remove(char);
+							char.destroy();
+						}
+					});
+				}
+			},
+			onUpdate: t ->
+			{
+				if (_game == null)
+					t.cancel();
 			}
 		});
 	}

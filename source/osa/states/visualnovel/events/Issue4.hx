@@ -16,7 +16,8 @@ class Issue4 extends EventRunner
 
 		function contLine()
 		{
-			_game.changeLine(1);
+			if (_game != null)
+				_game.changeLine(1);
 		}
 
 		switch (_game._dialogueEntry)
@@ -51,7 +52,8 @@ class Issue4 extends EventRunner
 	{
 		super.update(eventManager, elapsed);
 
-		if (_game._dialogueEntry != 16)
-			_game._dialogueTypingFinished = false;
+		if (_game != null)
+			if (_game._dialogueEntry != 16)
+				_game._dialogueTypingFinished = false;
 	}
 }

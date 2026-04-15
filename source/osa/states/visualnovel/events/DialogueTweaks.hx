@@ -6,6 +6,8 @@ class SetDialogueSpeed extends EventRunner
 	{
 		super.runDialogueEvent(eventManager, params);
 
+		if (_game == null) return;
+
         _game._dialogueText.delay = Std.parseFloat(params[0] ?? '0.05');
 		_game.changeLine(1);
 	}
@@ -17,6 +19,8 @@ class ResetDialogueSpeed extends EventRunner
 	{
 		super.runDialogueEvent(eventManager, params);
 
+		if (_game == null) return;
+
         _game._dialogueText.delay = 0.05;
 		_game.changeLine(1);
 	}
@@ -27,6 +31,8 @@ class SetDialogueBoxHeightPadding extends EventRunner
 	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)
 	{
 		super.runDialogueEvent(eventManager, params);
+		
+		if (_game == null) return;
 
         _game._dialogueBoxHeightPadding = Std.parseFloat(params[0] ?? '0');
 		_game.changeLine(1);
