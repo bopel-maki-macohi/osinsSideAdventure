@@ -1,4 +1,5 @@
 # 0.9.0 : Issue Pack 1 (4/14/2026)
+
 - **Added Issue 4 (Unlocked through playing issue 3)**
 - **Added Issue 3 (Unlocked through playing issue 2)**
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
@@ -18,7 +19,7 @@
   - The issue titles now turn yellow when selected
     - red if you haven't beat them
   - Added Filters
-- Removed *slightly* different bop size depending on what index the story menu title is
+- Removed _slightly_ different bop size depending on what index the story menu title is
 - Fixed Event Manager not running `update`
 - Fixed Visual Novel temp cached textures being cleared from the cache as soon as you leave the caching state
 - Holding SPACE to leave no longer counts as a valid exit and thus event runners can use that information now to prevent things such as unlockables
@@ -26,21 +27,21 @@
   - Issue2 => Issue3
   - Issue3 => Issue4
   - Etc...
-
 - Changelog file now included in the game build
   - And there's also changelogs for 0.1 - 0.8 now
+
 # 0.8.1 (4/13/2026)
 
 - Fixed the Story Menu including non-existant issues
 
 # 0.8.0 : Asset Cache System Update (4/12/2026)
 
-- Storymode _text is invisible now
+- Storymode \_text is invisible now
 - Fixed "Get your ass up" not abiding by the volume when you change it while the song plays
 - The Init State transition in is now the default transition in and is faster
 - Added Visual Novel Cacher state
 - Added Asset Cache System
-    - Added option to toggle it
+  - Added option to toggle it
 
 # 0.7.1 (4/12/2026)
 
@@ -61,21 +62,21 @@
 - Splash Texts now have a "debug" filter, debug build only splash texts (list will be replaced with debug list if there is atleas) at a 25% chance
 - Added Target States to TitleSteate
 - Added Defines
-    - `STORYMENU`
-    - `CREDITS`
-    - `OPTIONSMENU`
-    - `DEBUGMENU`
+  - `STORYMENU`
+  - `CREDITS`
+  - `OPTIONSMENU`
+  - `DEBUGMENU`
 - Added FPS Counter
-    - Added OPtion to toggle
+  - Added OPtion to toggle
 - The new default dialogue speed is 0.05
 - Added 3 General use events you can use
-    - `event_setDialogueBoxHeightPadding;X`
-        - `X` (Float) : How much of the dialogue box's height will be added to the portrait position (dialogueBox.height * X)
-            - Default: 0
-    - `event_setDialogueSpeed;X`
-        - `X` (Float) : New dialogue speed
-            - Default: 0.05
-    - `event_resetDialogueSpeed`
+  - `event_setDialogueBoxHeightPadding;X`
+    - `X` (Float) : How much of the dialogue box's height will be added to the portrait position (dialogueBox.height \* X)
+      - Default: 0
+  - `event_setDialogueSpeed;X`
+    - `X` (Float) : New dialogue speed
+      - Default: 0.05
+  - `event_resetDialogueSpeed`
 - Added Support for event parameters
 - Added new splash text
 - ADDED ISSUE 2!
