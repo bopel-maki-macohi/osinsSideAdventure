@@ -17,7 +17,7 @@ Shut up!;issue3/tirok-looting;issue4/backdrop
 _;_;issue4/looting/tirok-digging
 _;_;issue4/looting/tirok-armor
 
-?;issue4/tirok-lookup;issue4/backdrop-looting
+????;issue4/tirok-lookup;issue4/backdrop-looting
 
 _;_;issue4/lorocSave/lab
 
