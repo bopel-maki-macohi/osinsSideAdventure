@@ -29,6 +29,9 @@ class StoryMenuSubState extends TitleSubStateBase
 		if (Save.issues.get().filter(f -> return f.startsWith('bonusissue')).length > 0)
 			filters.push('bonus');
 
+		if (Save.issues.get().filter(f -> return !Save.beatissues.get().contains(f)).length > 0)
+			filters.push('unplayed');
+
 		for (chapterFilter => chapterList in ['chapter1' => ChapterUtil.CHAPTER_ONE])
 		{
 			/**
@@ -41,9 +44,6 @@ class StoryMenuSubState extends TitleSubStateBase
 			if (ChapterUtil.chapterFilter(chapterList, Save.issues.get()) != Save.issues.get())
 				filters.push(chapterFilter);
 		}
-
-		if (Save.issues.get().filter(f -> return !Save.beatissues.get().contains(f)).length > 0)
-			filters.push('unplayed');
 
 		return filters;
 	}

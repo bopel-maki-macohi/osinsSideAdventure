@@ -20,7 +20,12 @@
     - Selected Issue Chapter
   - The issue titles now turn yellow when selected
     - red if you haven't beat them
-  - Added Filters
+  - Added Filters ((UP / W) / (DOWN / S) to toggle the filter)
+    - ALL : Everything
+    - ISSUES : Issues only
+    - BONUS : Bonus Issues only
+    - UNPLAYED : Unplayed issues and bonus issues only
+    - CHAPTER 1 : Chapter 1 issues and bonus issues only
 - Removed _slightly_ different bop size depending on what index the story menu title is
 - Fixed Event Manager not running `update`
 - Fixed Visual Novel temp cached textures being cleared from the cache as soon as you leave the caching state
