@@ -28,7 +28,7 @@ class OptionsSubState extends TitleSubStateBase
 				#end
 		}, spr -> {
 				#if html5
-				spr.shader = new GrayscaleShader(0.5);
+				spr.shader = new GrayscaleShader(0.75);
 				#end
 		});
 
