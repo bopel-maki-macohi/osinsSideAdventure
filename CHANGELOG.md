@@ -1,5 +1,8 @@
 # Unreleased (4/15/2026)
 
+- Changed "PC Name" Option / Save to always be disabled on web
+  - Added grayscale shader to the options menu option to display this
+  - The options menu option text also changes to display this
 - Added package name (com.maki.osa)
 
 # 0.9.3 (4/15/2026)
