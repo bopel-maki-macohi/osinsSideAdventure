@@ -1,5 +1,8 @@
 # 0.9.3 (4/15/2026)
 
+- Added "Clear Save" debug menu option
+- The Story menu now displays the percent complete of the issue
+
 # 0.9.2 (4/15/2026)
 
 - Fixed crashes (and potention) related to the game instance being null
