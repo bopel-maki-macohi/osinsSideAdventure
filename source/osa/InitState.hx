@@ -1,5 +1,6 @@
 package osa;
 
+import osa.util.Controls;
 import osa.states.transition.SplashState;
 import osa.objects.RhythmManager;
 import osa.states.visualnovel.VNState;
@@ -51,6 +52,8 @@ class InitState extends OSAState
 	function unimportantInit()
 	{
 		RhythmManager.instance = new RhythmManager();
+
+		Controls.instance = new Controls('Main');
 
 		OSACache.init();
 	}

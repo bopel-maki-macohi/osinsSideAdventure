@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project xmlns="http://lime.openfl.org/project/1.0.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://lime.openfl.org/project/1.0.4"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<app title="Osin's Side Adventure" file="OSA" packageName="com.maki.osa"/>
+	<app title="Osin's Side Adventure" file="OSA" packageName="com.maki.osa" />
 	<app main="Main" />
 	<app company="Maki" />
 	<app version="0.9.3" />
 
 	<icon path="dev/icon.png" />
 
-	<define name="DISABLE_TITLE_WATERMARK_BLUR" unless="ENABLE_TITLE_WATERMARK_BLUR"/>
-	
-	<haxedef name="openfl-enable-handle-error"/>
+	<define name="DISABLE_TITLE_WATERMARK_BLUR" unless="ENABLE_TITLE_WATERMARK_BLUR" />
+
+	<haxedef name="openfl-enable-handle-error" />
 
 	<define name="HXCPP_CHECK_POINTER" />
 	<define name="HXCPP_STACK_LINE" />
@@ -21,9 +22,8 @@
 
 	<!--
 		Disable a macro in Lime that generates a random number for Assets.cache.version every build.
-		This doesn't seem to be of any use and it causes lime.utils.AssetCache to be re-compiled on every build.
 	-->
-	<haxedef name="lime_disable_assets_version"/>
+	<haxedef name="lime_disable_assets_version" />
 
 	<define name="SCREENSHOT_PLUGIN" if="desktop" />
 
@@ -32,7 +32,7 @@
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
-	<set name="BUILD_DIR" value="export/debug" if="debug"/>
+	<set name="BUILD_DIR" value="export/debug" if="debug" />
 
 	<source path="source" />
 	<assets path="assets" />
@@ -43,6 +43,7 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
+	<haxelib name="flixel-controls" />
 
 	<!-- _________________________ Application Settings _________________________ -->
 
@@ -60,11 +61,11 @@
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
 	<haxedef name="FLX_NO_HEALTH" />
-	
+
 	<haxedef name="FLX_NO_MOUSE" if="mobile" />
 	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
-	<!--<haxedef name="FLX_NO_GAMEPAD" />-->
+	<haxedef name="FLX_NO_GAMEPAD" />
 
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />

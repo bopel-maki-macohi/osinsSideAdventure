@@ -185,10 +185,10 @@ class TitleState extends OSAState
 			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
 			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 1, Constants.DEFAULT_LERP_SPEED);
 
-			controls();
+			nonScrollingControls();
 		}
 
-		if (FlxG.keys.justReleased.SEVEN && subState == null)
+		if (controls.justPressed.TITLE_DEBUG && subState == null)
 			debugSubState();
 	}
 
@@ -197,9 +197,9 @@ class TitleState extends OSAState
 		onSelectionClicked(_debugTileScrollBG, new DebugSubState(() -> onSelectionExited(_debugTileScrollBG)));
 	}
 
-	function controls()
+	function nonScrollingControls()
 	{
-		if (FlxG.keys.justPressed.SPACE && subState == null)
+		if (controls.justPressed.TITLE_DEBUG_TRANSITION && subState == null)
 			FlxG.switchState(() -> new TitleState());
 	}
 
@@ -207,7 +207,8 @@ class TitleState extends OSAState
 
 	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:OSASubState)
 	{
-		if (transitioning) return;
+		if (transitioning)
+			return;
 
 		transitioning = true;
 

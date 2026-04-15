@@ -44,7 +44,7 @@ class ScreenshotPlugin extends FlxBasic
 		super.update(elapsed);
 
 		#if SCREENSHOT_PLUGIN
-		if (FlxG.keys.justPressed.F3 && !_tookScreenshot)
+		if (Controls.instance.justPressed.SCREENSHOT && !_tookScreenshot)
 		{
 			_tookScreenshot = true;
 

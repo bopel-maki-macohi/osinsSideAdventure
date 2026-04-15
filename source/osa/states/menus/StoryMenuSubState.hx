@@ -106,13 +106,13 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		super.nonScrollingControls();
 
-		if (FlxG.keys.anyJustPressed([W, S, UP, DOWN]))
+		if (controls.justPressed.UP || controls.justPressed.DOWN)
 		{
 			var filters = _filters;
 
-			if (FlxG.keys.anyJustPressed([W, UP]))
+		if (controls.justPressed.UP)
 				reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[0]);
-			if (FlxG.keys.anyJustPressed([S, DOWN]))
+		if (controls.justPressed.DOWN)
 				reload(filters[filters.indexOf(_currentFilter) - 1] ?? filters[filters.length - 1]);
 
 			Constants.selectSfx();

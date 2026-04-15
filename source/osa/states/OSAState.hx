@@ -1,5 +1,6 @@
 package osa.states;
 
+import osa.util.Controls;
 import osa.objects.RhythmManager;
 import flixel.FlxCamera;
 import flixel.addons.transition.Transition;
@@ -61,6 +62,8 @@ class OSAState extends FlxUIState
 			_rhythmManager._beatHit.add(onBeatHit);
 			_rhythmManager._stepHit.add(onStepHit);
 		}
+
+		FlxG.inputs.addInput(controls);
 	}
 
 	public static var TRANSITION_CAMERA:FlxCamera;
@@ -108,4 +111,11 @@ class OSAState extends FlxUIState
 	public function onBeatHit(curBeat:Int) {}
 
 	public function onStepHit(curStep:Int) {}
+
+	public var controls(get, null):Controls;
+
+	function get_controls():Controls
+	{
+		return Controls.instance;
+	}
 }

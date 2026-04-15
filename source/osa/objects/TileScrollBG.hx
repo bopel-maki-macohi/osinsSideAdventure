@@ -1,5 +1,6 @@
 package osa.objects;
 
+import osa.util.Controls;
 import flixel.FlxG;
 import flixel.math.FlxPoint;
 import flixel.addons.display.FlxBackdrop;
@@ -61,18 +62,18 @@ class TileScrollBG extends FlxBackdrop
 
 		if (_debugMode && _parent == null)
 		{
-			_debugModeInUse = FlxG.keys.pressed.SHIFT;
+			_debugModeInUse = Controls.instance.pressed.TILE_SCROLLING_BG_DEBUGMODE;
 
-			if (FlxG.keys.pressed.SHIFT)
+			if (_debugModeInUse)
 			{
-				if (FlxG.keys.anyPressed([A, LEFT]))
+				if (Controls.instance.pressed.LEFT)
 					this.velocity.x -= _debugVelocityChangeValue;
-				if (FlxG.keys.anyPressed([D, RIGHT]))
+				if (Controls.instance.pressed.RIGHT)
 					this.velocity.x += _debugVelocityChangeValue;
 
-				if (FlxG.keys.anyPressed([S, DOWN]))
+				if (Controls.instance.pressed.DOWN)
 					this.velocity.y += _debugVelocityChangeValue;
-				if (FlxG.keys.anyPressed([W, UP]))
+				if (Controls.instance.pressed.UP)
 					this.velocity.y -= _debugVelocityChangeValue;
 			}
 		}

@@ -1,5 +1,6 @@
 package osa.states;
 
+import osa.util.Controls;
 import flixel.FlxG;
 import osa.objects.RhythmManager;
 import flixel.FlxSubState;
@@ -24,6 +25,8 @@ class OSASubState extends FlxSubState
 		}
 
 		closeCallback = onClose;
+
+		FlxG.inputs.addInput(controls);
 	}
 
 	override function update(elapsed:Float)
@@ -59,5 +62,12 @@ class OSASubState extends FlxSubState
 				FlxG.state.add(basic);
 			}
 		}
+	}
+
+	public var controls(get, null):Controls;
+
+	function get_controls():Controls
+	{
+		return Controls.instance;
 	}
 }

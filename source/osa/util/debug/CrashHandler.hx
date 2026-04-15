@@ -23,7 +23,7 @@ class CrashHandler
 
 		FlxG.signals.preUpdate.add(function()
 		{
-			if (FlxG.keys.pressed.F1)
+			if (Controls.instance.justPressed.DEBUG_CRASH)
 				throw 'F1 Crash';
 		});
 	}

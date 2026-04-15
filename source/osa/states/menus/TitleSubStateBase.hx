@@ -53,7 +53,7 @@ class TitleSubStateBase extends OSASubState
 
 		super.update(elapsed);
 
-		if (FlxG.keys.justPressed.ESCAPE)
+		if (controls.justPressed.LEAVE)
 			close();
 
 		if (!TitleState.bgScrolling)
@@ -73,7 +73,7 @@ class TitleSubStateBase extends OSASubState
 				sprite._overlapUpdate.dispatch();
 
 				if (!TitleState.bgScrolling)
-					if (FlxG.keys.justPressed.ENTER)
+					if (controls.justPressed.ACCEPT)
 						sprite._onClick.dispatch();
 			}
 			else
@@ -91,11 +91,11 @@ class TitleSubStateBase extends OSASubState
 
 	public function nonScrollingControls()
 	{
-		if (FlxG.keys.anyJustPressed([A, D, LEFT, RIGHT]))
+		if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
 		{
-			if (FlxG.keys.anyJustPressed([A, LEFT]))
+			if (controls.justPressed.LEFT)
 				changeSelection(-1);
-			if (FlxG.keys.anyJustPressed([D, RIGHT]))
+			if (controls.justPressed.RIGHT)
 				changeSelection(1);
 		}
 	}

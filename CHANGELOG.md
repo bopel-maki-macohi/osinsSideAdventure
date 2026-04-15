@@ -1,5 +1,6 @@
 # Unreleased (4/15/2026)
 
+- Using [`flixel-controls`](https://github.com/Geokureli/FlxControls/tree/master)
 - The Window title is changed at startup now
 - The Splash State is now actually it's own state instead of being mixed with InitState
 - Changed "PC Name" Option / Save to always be disabled on web

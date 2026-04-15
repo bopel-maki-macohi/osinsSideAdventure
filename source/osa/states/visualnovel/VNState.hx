@@ -117,7 +117,7 @@ class VNState extends OSAState
 
 		_holdToExit = new HoldToPerformGadge(FlxColor.RED, function()
 		{
-			return FlxG.keys.pressed.SPACE;
+			return controls.pressed.HOLD_SKIP;
 		}, function()
 		{
 			onEnd(false);
@@ -255,7 +255,7 @@ class VNState extends OSAState
 	{
 		super.update(elapsed);
 
-		if (_dialogueTypingFinished && FlxG.keys.justPressed.ENTER)
+		if (_dialogueTypingFinished && controls.justPressed.ACCEPT)
 			changeLine(1);
 
 		_dialogueContinueHand.visible = _dialogueTypingFinished;
