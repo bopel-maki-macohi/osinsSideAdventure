@@ -1,7 +1,5 @@
 package osa.util.macros;
 
-import osa.util.Constants;
-
 #if !display
 class OutdatedMacro
 {
@@ -19,7 +17,7 @@ class OutdatedMacro
 		{
 			haxe.macro.Context.info('Outdated Check HTTP onData: ${data}', pos);
 
-			outdated = Constants.VERSION != data;
+			outdated = sys.io.File.getContent('version.txt') != data;
 		}
 
 		http.onError = function(error:Dynamic)
