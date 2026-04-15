@@ -174,6 +174,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		msg += 'Filter: ${_currentFilter.toUpperCase()}\n';
 		msg += 'Issue Chapter: ${ChapterUtil.getChapter(issue)}';
+		msg += 'Percent Complete: ${ChapterUtil.getChapterPercentComplete(issue)}';
 
 		if (!Save.beatissues.get().contains(issue))
 			msg += '\n(NEW / HAVEN\'T PLAYED IT)';
