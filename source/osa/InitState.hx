@@ -31,8 +31,10 @@ class InitState extends OSAState
 		unimportantInit();
 
 		this.transIn = null;
-		
+
 		super.create();
+		
+		FlxG.stage.application.window.title = _watermark.text.replace('O.S.A.', 'Osin\'s Side Adventure');
 	}
 
 	function importantInit()
@@ -51,8 +53,6 @@ class InitState extends OSAState
 		RhythmManager.instance = new RhythmManager();
 
 		OSACache.init();
-
-		FlxG.stage.application.window.title = _watermark.text.replace('O.S.A.', 'Osin\'s Side Adventure');
 	}
 
 	function leave()
