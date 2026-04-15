@@ -1,5 +1,6 @@
 package osa.states.transition;
 
+import osa.util.Constants;
 import osa.states.menus.TitleState;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
@@ -134,7 +135,10 @@ class SplashState extends OSAState
 
 	function leave()
 	{
-		FlxG.switchState(() -> new TitleState());
+		if (Constants.OUTDATED)
+			FlxG.switchState(() -> new TitleState());
+		else
+			FlxG.switchState(() -> new TitleState());
 	}
 
 	function piracy()
