@@ -8,7 +8,7 @@ typedef SplashTextsData =
 typedef SplashTextData =
 {
 	?clearWatermark:Bool,
-	
+
 	?filter:String,
 	?specialCase:String,
 

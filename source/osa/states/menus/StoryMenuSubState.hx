@@ -110,9 +110,9 @@ class StoryMenuSubState extends TitleSubStateBase
 		{
 			var filters = _filters;
 
-		if (controls.justPressed.UP)
+			if (controls.justPressed.UP)
 				reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[0]);
-		if (controls.justPressed.DOWN)
+			if (controls.justPressed.DOWN)
 				reload(filters[filters.indexOf(_currentFilter) - 1] ?? filters[filters.length - 1]);
 
 			Constants.selectSfx();

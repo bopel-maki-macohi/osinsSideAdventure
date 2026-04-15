@@ -30,7 +30,7 @@ class HoldToPerformGadge extends FlxRadialGauge
 
 		this._onComplete = onComplete;
 		this._condition = condition;
-		
+
 		this.antialiasing = true;
 	}
 

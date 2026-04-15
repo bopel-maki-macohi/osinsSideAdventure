@@ -12,7 +12,7 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
-		
+
 		FPSCounter = new FPS(5, 5, FlxColor.WHITE);
 
 		FlxG.stage.application.window.title = '${Application.current.meta.get('name')} ${Application.current.meta.get('version')}';

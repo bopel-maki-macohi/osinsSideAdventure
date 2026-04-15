@@ -38,7 +38,7 @@ class SplashState extends OSAState
 
 		initWatermark();
 		initMsg();
-        displayMsg();
+		displayMsg();
 	}
 
 	function initWatermark()

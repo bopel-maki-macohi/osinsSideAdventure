@@ -26,7 +26,7 @@ class DialogueLine
 			{
 				_isEvent = true;
 				_event = splitrawline[0].substr(EVENT_STRING_PREFIX.length);
-				
+
 				splitrawline.remove(splitrawline[0]);
 				_eventParams = splitrawline;
 			}

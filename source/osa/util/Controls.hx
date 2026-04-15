@@ -1,7 +1,6 @@
 package osa.util;
 
 import flixel.addons.input.FlxControls;
-
 import flixel.addons.input.FlxControlInputType.FlxMouseInputType.Motion as MouseMove;
 import flixel.addons.input.FlxControlInputType.FlxMouseInputType.Drag as MouseDrag;
 import flixel.addons.input.FlxControlInputType.FlxKeyInputType.Multi as MultiKey;
@@ -48,7 +47,7 @@ class Controls extends FlxControls<Inputs>
 
 			ACCEPT => [Key.ENTER],
 			LEAVE => [Key.ESCAPE],
-			
+
 			TITLE_DEBUG => [Key.SEVEN],
 			TITLE_DEBUG_TRANSITION => [Key.SPACE],
 			TILE_SCROLLING_BG_DEBUGMODE => [Key.SHIFT],
