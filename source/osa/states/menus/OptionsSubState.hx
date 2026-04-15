@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.objects.ClickableSprite;
 import osa.save.Save;
 import flixel.FlxG;
 
@@ -14,10 +15,11 @@ class OptionsSubState extends TitleSubStateBase
 			return 'PC Name (${getEnabledString(Save.options.get().pcname)})'
 				+ ' : Toggles if your pc name should / can be shown AT ALL.'
 				+ '\n\nCurrently only used in the splash texts if you\'re curious as to why this is an option';
-		}, () ->
-			{
+		}, () -> {
+				#if !html5
 				Save.options.get().pcname = !Save.options.get().pcname;
-			});
+				#end
+		});
 
 		addOption('fpsCounter', () ->
 		{
@@ -39,9 +41,14 @@ class OptionsSubState extends TitleSubStateBase
 			});
 	}
 
-	function addOption(assetName:String, gimmeStr:Void->String, gimmeAction:Void->Void)
+	function addOption(assetName:String, gimmeStr:Void->String, gimmeAction:Void->Void, ?specialThing:ClickableSprite->Void)
 	{
-		_spriteList.push(makeSprite('options/$assetName', gimmeStr, gimmeAction));
+		var spr:ClickableSprite = makeSprite('options/$assetName', gimmeStr, gimmeAction);
+
+		if (specialThing != null)
+			specialThing(spr);
+
+		_spriteList.push(spr);
 	}
 
 	public static function getEnabledString(value:Bool):String
