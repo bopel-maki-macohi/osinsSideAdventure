@@ -14,7 +14,7 @@ _;_;issue4/fight/osin-hitWall
 HURRY UP!;issue4/osin-irritated;issue4/backdrop-osinHitWall
 
 Shut up!;issue3/tirok-looting;issue4/backdrop
-_;_;issue4/looting/tirok-diggin
+_;_;issue4/looting/tirok-digging
 _;_;issue4/looting/tirok-armor
 
 ?;issue4/tirok-lookup;issue4/backdrop-looting
