@@ -58,7 +58,7 @@ class InitState extends OSAState
 
 		OSACache.init();
 
-		#if html5
+		#if DISABLE_OUTDATEDSTATE
 		OutdatedState.SEEN = true;
 		#end
 	}

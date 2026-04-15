@@ -31,6 +31,8 @@
 
 	<define name="WINDOWTITLE_GIT" unless="DISABLE_WINDOWTITLE_GIT"/>
 
+	<define name="DISABLE_OUTDATEDSTATE" if="html5"/>
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
