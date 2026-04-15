@@ -4,8 +4,8 @@ enum EventRunnerDialogueFile
 {
 	ANY;
 	NONE;
-	SCENE(scene:String);
-	SCENES(scenes:Array<String>);
+	ISSUE(issue:String);
+	ISSUES(issues:Array<String>);
 }
 
 class EventRunner

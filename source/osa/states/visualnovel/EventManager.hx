@@ -57,12 +57,12 @@ class EventManager extends FlxSpriteGroup
 				case ANY:
 					f(event);
 
-				case SCENE(s):
+				case ISSUE(s):
 					if (s != null)
 						if (s == issue)
 							f(event);
 
-				case SCENES(s):
+				case ISSUES(s):
 					if (s != null)
 						if (s.contains(issue))
 							f(event);

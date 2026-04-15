@@ -11,7 +11,7 @@ class Issue1Intro extends EventRunner
 {
 	override public function new()
 	{
-		super(SCENE('issue1'));
+		super(ISSUE('issue1'));
 	}
 
 	override function update(eventManager:EventManager, elapsed:Float)

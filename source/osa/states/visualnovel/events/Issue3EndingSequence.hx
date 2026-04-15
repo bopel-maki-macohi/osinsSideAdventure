@@ -7,7 +7,7 @@ class Issue3EndingSequence extends EventRunner
 {
 	override public function new()
 	{
-		super(SCENES(['issue3']));
+		super(ISSUES(['issue3']));
 	}
 
 	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)
