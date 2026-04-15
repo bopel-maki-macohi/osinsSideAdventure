@@ -17,13 +17,16 @@ class OutdatedMacro
 		var pos = haxe.macro.Context.currentPos();
 		var http = new haxe.Http(HTTP_PATH);
 
+		var curVer = sys.io.File.getContent('version.txt').trim();
+
 		http.onData = function(data:String)
 		{
 			LATEST_VERSION = data.trim();
 			
-			haxe.macro.Context.info('Outdated Check HTTP onData: ${LATEST_VERSION}', pos);
+			haxe.macro.Context.info('Outdated Check LATEST_VERSION: ${LATEST_VERSION}', pos);
+			haxe.macro.Context.info('Outdated Check curVer: ${curVer}', pos);
 
-			outdated = sys.io.File.getContent('version.txt').trim() != LATEST_VERSION;
+			outdated = curVer != LATEST_VERSION;
 		}
 
 		http.onError = function(error:Dynamic)
