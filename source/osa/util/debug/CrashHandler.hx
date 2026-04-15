@@ -88,6 +88,7 @@ class CrashHandler
 		final filename:String = '$CRASH_DIRECTORY/${Constants.getTimestamp()}.txt';
 
 		errorMessage += '\nGame Version: ${FlxG.stage.application.meta.get('version')}';
+		errorMessage += '\nGit info: ${Constants.GIT_STRING}';
 		errorMessage += '\nCurrent State: ${currentState}';
 
 		var stateFields:Array<String> = [];

@@ -1,5 +1,6 @@
 # Unreleased (4/15/2026)
 
+- The crash handler now includes the git commit of the build
 - Fixed Tirok / Credits Tile BG having a fliped tile asset
 - Issue 3 dialogue tweaks
 - A lesser bop scale then the bop scale the issue title in the story menu is about to have no longer forces the scale
