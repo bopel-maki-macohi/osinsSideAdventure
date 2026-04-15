@@ -133,7 +133,6 @@ class StoryMenuSubState extends TitleSubStateBase
 		_text.borderSize = 3;
 
 		_text.fieldWidth = FlxG.width;
-		_text.alignment = CENTER;
 
 		reload('all');
 	}

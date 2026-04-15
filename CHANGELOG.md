@@ -4,6 +4,7 @@
 - **Added Issue 3 (Unlocked through playing issue 2)**
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
 
+- The texts of all title submenus is now center aligned
 - Requazar credit has been changed
 - Fixed spamming select on a title option and select to leave causing the menu objects to stick around
 - Fixed being able to click title options multiple times via spamming select on the object
