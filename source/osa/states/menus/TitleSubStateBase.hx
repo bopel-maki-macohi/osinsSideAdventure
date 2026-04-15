@@ -34,12 +34,19 @@ class TitleSubStateBase extends OSASubState
 		FlxTimer.wait(OSAState.DEFAULT_TRANSITION.duration, () ->
 		{
 			if (_parentState != null && _parentState.subState == this)
+			{
 				_parentState.closeSubState();
+			}
 		});
 
 		for (obj in members)
 			FlxTween.tween(obj, {alpha: 0}, OSAState.DEFAULT_TRANSITION.duration, {
-				ease: FlxEase.sineInOut
+				ease: FlxEase.sineInOut,
+				onComplete: t ->
+				{
+					remove(obj);
+					obj.destroy();
+				}
 			});
 	}
 

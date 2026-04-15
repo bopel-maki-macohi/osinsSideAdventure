@@ -3,7 +3,8 @@
 - **Added Issue 3 (Unlocked through playing issue 2)**
 - **Added Bonus Issue 1 (Unlocked through issue 2)**
 
-- Fixed being able to click title options multiple times
+- Fixed spamming select on a title option and select to leave causing the menu objects to stick around
+- Fixed being able to click title options multiple times via spamming select on the object
 - Menus now have sound effects
 - The Hold (Space) To Skip Gadge is now centered around the dialogue continue hand
 - The debug substate "Get missing assets" option has had changes
