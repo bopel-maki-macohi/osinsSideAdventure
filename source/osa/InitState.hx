@@ -34,8 +34,6 @@ class InitState extends OSAState
 
 		super.create();
 
-		FlxG.stage.application.window.title = _watermark.text.replace('O.S.A.', 'Osin\'s Side Adventure');
-
 		leave();
 	}
 

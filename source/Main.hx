@@ -1,3 +1,5 @@
+import lime.app.Application;
+import flixel.FlxG;
 import flixel.util.FlxColor;
 import openfl.display.FPS;
 import flixel.FlxGame;
@@ -13,6 +15,8 @@ class Main extends Sprite
 		
 		FPSCounter = new FPS(5, 5, FlxColor.WHITE);
 
+		FlxG.stage.application.window.title = '${Application.current.meta.get('title')} ${Application.current.meta.get('version')}';
+		
 		addChild(new FlxGame(1280, 720, osa.InitState));
 		addChild(FPSCounter);
 	}
