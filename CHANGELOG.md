@@ -1,4 +1,4 @@
-# Unreleased (4/15/2026)
+# 0.9.4 (4/15/2026)
 
 - Git info is now in the game window title
 - The crash handler now includes git info of the build
