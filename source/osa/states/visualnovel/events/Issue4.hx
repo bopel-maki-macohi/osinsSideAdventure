@@ -6,4 +6,11 @@ class Issue4 extends EventRunner
 	{
 		super(SCENES(['issue 4']));
 	}
+
+	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)
+	{
+		super.runDialogueEvent(eventManager, params);
+
+		_game.changeLine(1);
+	}
 }
