@@ -206,7 +206,8 @@ class StoryMenuSubState extends TitleSubStateBase
 		{
 			final scale = 0.5 + ((1 * (((FlxG.sound.muted) ? 0 : FlxG.sound.volume) / 1)) / 10);
 
-			sprite.scale.set(scale, scale);
+			if (sprite.scale.x < scale)
+				sprite.scale.set(scale, scale);
 		}
 	}
 
