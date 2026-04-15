@@ -1,5 +1,7 @@
 # 0.9.4 (4/15/2026)
 
+- Added an OUTDATED SCREEN! (Desktop only)
+  - Displays when there's an update out (on the github) so yeah, you'll be bothered about that when you open the game
 - Git info is now in the game window title
 - The crash handler now includes git info of the build
 - Fixed Tirok / Credits Tile BG having a fliped tile asset
