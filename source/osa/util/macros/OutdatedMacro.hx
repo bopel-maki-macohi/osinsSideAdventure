@@ -10,8 +10,23 @@ class OutdatedMacro
 		var outdated:Bool = false;
 
 		#if !display
-		haxe.macro.Context.info('Outdated: ${outdated}', haxe.macro.Context.currentPos());
-        #end
+		var pos = haxe.macro.Context.currentPos();
+		var http = new haxe.Http(HTTP_PATH);
+
+		http.onData = function(data:String)
+		{
+			haxe.macro.Context.info('Outdated Check HTTP onData: ${data}', pos);
+		}
+
+		http.onError = function(error:Dynamic)
+		{
+			haxe.macro.Context.warning('Outdated Check HTTP Error: ${error}', pos);
+		}
+
+		http.request();
+
+		haxe.macro.Context.info('Outdated: ${outdated}', pos);
+		#end
 
 		return macro $v{outdated};
 	}
