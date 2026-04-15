@@ -1,3 +1,5 @@
+# 0.9.3 (4/15/2026)
+
 # 0.9.2 (4/15/2026)
 
 - Fixed crashes (and potention) related to the game instance being null
