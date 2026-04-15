@@ -19,7 +19,7 @@ class Save
 			fpsCounter: true,
 			cache: true,
 		});
-		beatissues = new SaveField<Array<String>>('beatissues', ['issue1']);
+		beatissues = new SaveField<Array<String>>('beatissues', []);
 
 		options.get().pcname ??= true;
 		#if html5
@@ -31,6 +31,7 @@ class Save
 
 		#if LOSE_EVERYTHING
 		issues.set([]);
+		beatissues.set([]);
 		#end
 
 		addIssue('issue1');
