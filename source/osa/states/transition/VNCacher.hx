@@ -1,9 +1,7 @@
 package osa.states.transition;
 
-import flixel.text.FlxText;
 import osa.states.menus.TitleState;
 import flixel.FlxG;
-import flixel.util.FlxTimer;
 import osa.states.visualnovel.DialogueSprite;
 import osa.states.visualnovel.DialogueLine;
 import flixel.FlxState;

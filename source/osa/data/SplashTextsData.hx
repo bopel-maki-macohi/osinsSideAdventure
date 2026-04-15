@@ -1,7 +1,5 @@
 package osa.data;
 
-import haxe.macro.Expr;
-
 typedef SplashTextsData =
 {
 	lines:Array<SplashTextData>

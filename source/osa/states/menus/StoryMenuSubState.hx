@@ -2,7 +2,6 @@ package osa.states.menus;
 
 import flixel.util.FlxColor;
 import osa.util.ChapterUtil;
-import osa.states.transition.VNCacher;
 import osa.util.Constants;
 import flixel.math.FlxMath;
 import osa.save.Save;
@@ -10,7 +9,6 @@ import osa.states.visualnovel.VNState;
 import osa.objects.ClickableSprite;
 import osa.objects.RhythmManager;
 import flixel.FlxG;
-import flixel.sound.FlxSound;
 
 class StoryMenuSubState extends TitleSubStateBase
 {

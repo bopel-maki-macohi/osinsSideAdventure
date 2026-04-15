@@ -1,9 +1,7 @@
 package osa.states.menus;
 
-import osa.shaders.GrayscaleShader;
 import osa.objects.ClickableSprite;
 import osa.save.Save;
-import flixel.FlxG;
 
 class OptionsSubState extends TitleSubStateBase
 {
@@ -28,7 +26,7 @@ class OptionsSubState extends TitleSubStateBase
 				#end
 		}, spr -> {
 				#if html5
-				spr.shader = new GrayscaleShader(0.75);
+				spr.shader = new osa.shaders.GrayscaleShader(0.75);
 				#end
 		});
 

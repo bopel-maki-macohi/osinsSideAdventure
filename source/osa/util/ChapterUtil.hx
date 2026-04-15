@@ -2,7 +2,6 @@ package osa.util;
 
 import flixel.math.FlxMath;
 import osa.save.Save;
-import osa.states.visualnovel.EventManager;
 
 class ChapterUtil
 {

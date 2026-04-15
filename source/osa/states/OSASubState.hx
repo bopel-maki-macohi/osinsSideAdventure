@@ -1,9 +1,6 @@
 package osa.states;
 
-import flixel.FlxState;
-import flixel.FlxSprite;
 import flixel.FlxG;
-import openfl.display.BitmapData;
 import osa.objects.RhythmManager;
 import flixel.FlxSubState;
 

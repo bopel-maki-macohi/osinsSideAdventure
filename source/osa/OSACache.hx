@@ -4,14 +4,11 @@ import osa.states.visualnovel.DialogueSprite;
 import osa.states.visualnovel.DialogueLine;
 import osa.save.Save;
 import flixel.util.FlxTimer;
-import flixel.math.FlxPoint;
-import osa.objects.TileScrollBG;
 import flixel.sound.FlxSound;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.graphics.FlxGraphic;
 import openfl.Assets;
-import openfl.media.Sound;
 
 class OSACache
 {

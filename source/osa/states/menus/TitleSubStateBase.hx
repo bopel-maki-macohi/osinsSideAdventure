@@ -2,7 +2,6 @@ package osa.states.menus;
 
 import osa.util.Constants;
 import flixel.math.FlxMath;
-import flixel.FlxObject;
 import flixel.group.FlxSpriteContainer.FlxTypedSpriteContainer;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
@@ -11,8 +10,6 @@ import flixel.util.FlxColor;
 import flixel.text.FlxText;
 import osa.objects.ClickableSprite;
 import flixel.FlxG;
-import flixel.FlxSubState;
-import flixel.addons.ui.FlxUISubState;
 
 class TitleSubStateBase extends OSASubState
 {

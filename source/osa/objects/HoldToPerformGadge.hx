@@ -1,7 +1,6 @@
 package osa.objects;
 
 import flixel.math.FlxMath;
-import flixel.FlxG;
 import flixel.util.FlxColor;
 import flixel.addons.display.FlxRadialGauge;
 

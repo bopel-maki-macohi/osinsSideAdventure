@@ -1,14 +1,10 @@
 package osa.states.menus;
 
 import flixel.util.FlxTimer;
-import flixel.FlxSubState;
 import osa.util.Constants;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import osa.shaders.GrayscaleShader;
-import osa.states.visualnovel.VNState;
 import osa.objects.ClickableSprite;
-import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxMath;
 import flixel.FlxCamera;
 import openfl.filters.BlurFilter;
@@ -16,7 +12,6 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.math.FlxPoint;
 import osa.objects.TileScrollBG;
-import flixel.FlxState;
 
 class TitleState extends OSAState
 {
@@ -123,8 +118,6 @@ class TitleState extends OSAState
 		_storymenuBtn._onClick.add(() -> onSelectionClicked(_storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(_storymenuTileScrollBG))));
 		_optionsBtn._onClick.add(() -> onSelectionClicked(_optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(_optionsTileScrollBG))));
 		_creditsBtn._onClick.add(() -> onSelectionClicked(_creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(_creditsTileScrollBG))));
-
-		// _optionsBtn.shader = new GrayscaleShader(.75);
 
 		persistentUpdate = true;
 

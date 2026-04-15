@@ -1,17 +1,11 @@
 package osa.util.plugins;
 
 import osa.shaders.GrayscaleShader;
-import flixel.math.FlxMath;
-import flixel.util.FlxColorTransformUtil;
-import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import flixel.FlxG;
 import flixel.FlxSprite;
-import openfl.display.BitmapData;
 import flixel.FlxBasic;
 #if SCREENSHOT_PLUGIN
-import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.util.FlxTimer;
 import openfl.display.BitmapData;

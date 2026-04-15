@@ -1,14 +1,11 @@
 package osa.states.visualnovel.events;
 
 import flixel.util.FlxTimer;
-import osa.shaders.GrayscaleShader;
 import osa.util.Constants;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import openfl.filters.BlurFilter;
 import flixel.FlxG;
-import flixel.FlxCamera;
 
 class Issue1Intro extends EventRunner
 {

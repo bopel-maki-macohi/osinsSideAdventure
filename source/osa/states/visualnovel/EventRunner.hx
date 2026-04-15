@@ -1,7 +1,5 @@
 package osa.states.visualnovel;
 
-import osa.save.Save;
-
 enum EventRunnerDialogueFile
 {
 	ANY;

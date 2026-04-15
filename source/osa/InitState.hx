@@ -1,6 +1,5 @@
 package osa;
 
-import osa.states.transition.VNCacher;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import osa.data.SplashTextsData;

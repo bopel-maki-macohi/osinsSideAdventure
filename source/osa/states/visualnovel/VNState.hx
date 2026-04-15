@@ -6,16 +6,12 @@ import osa.states.transition.VNCacher;
 import osa.objects.HoldToPerformGadge;
 import flixel.group.FlxSpriteGroup;
 import osa.states.menus.TitleState;
-import flixel.addons.ui.FlxUIState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.addons.text.FlxTypeText;
 import flixel.util.FlxColor;
-import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import lime.utils.Assets;
-import flixel.FlxState;
 
 class VNState extends OSAState
 {
