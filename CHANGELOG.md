@@ -1,5 +1,8 @@
 # 0.9.2 (4/15/2026)
 
+- Fixed crashes (and potention) related to the game instance being null
+  - More specifically a timer or smth similar was running and th game instance was turnt null right before it ended (for most of them)
+
 # 0.9.1 (4/14/2026)
 
 - Just fixes to the changelog
