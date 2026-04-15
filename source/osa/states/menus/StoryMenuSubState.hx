@@ -42,6 +42,9 @@ class StoryMenuSubState extends TitleSubStateBase
 				filters.push(chapterFilter);
 		}
 
+		if (Save.issues.get().filter(f -> return !Save.beatissues.get().contains(f)).length > 0)
+			filters.push('unplayed');
+
 		return filters;
 	}
 
@@ -76,6 +79,9 @@ class StoryMenuSubState extends TitleSubStateBase
 
 			case 'issues':
 				filterList = ChapterUtil.issueFilter(filterList);
+
+			case 'unplayed':
+				filterList = filterList.filter(f -> return !Save.beatissues.get().contains(f));
 
 			case 'all':
 
