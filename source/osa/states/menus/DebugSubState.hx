@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.states.transition.SplashState;
 import osa.states.visualnovel.EventManager;
 import osa.states.visualnovel.DialogueSprite;
 import osa.states.visualnovel.DialogueLine;
@@ -28,7 +29,7 @@ class DebugSubState extends TitleSubStateBase
 			makeSprite('debug/default', () -> return 'Log Save', () -> Save.logSaveData()),
 			makeSprite('debug/default', () -> return 'Reset Game', resetGame),
 
-			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new InitState())),
+			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new SplashState())),
 			makeSprite('debug/default', () -> return 'Go to Github Page', () -> FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure')),
 			makeSprite('debug/default', () -> return 'Go to Lorem Ipsum VN', () -> FlxG.switchState(() -> VNState.build('lorem'))),
 		];

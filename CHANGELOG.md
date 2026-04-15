@@ -1,5 +1,6 @@
 # Unreleased (4/15/2026)
 
+- The Splash State is now actually it's own state instead of being mixed with InitState
 - Changed "PC Name" Option / Save to always be disabled on web
   - Added grayscale shader to the options menu option to display this
   - The options menu option text also changes to display this
