@@ -1,11 +1,10 @@
 package osa;
 
-import osa.states.menus.OutdatedState;
-import osa.util.Controls;
+import osa.util.*;
 import osa.states.transition.SplashState;
 import osa.objects.RhythmManager;
 import osa.states.visualnovel.VNState;
-import osa.util.macros.MacroUtil;
+import osa.util.macros.*;
 import osa.util.debug.CrashHandler;
 import osa.save.Save;
 import flixel.addons.transition.FlxTransitionableState;
@@ -46,6 +45,10 @@ class InitState extends OSAState
 		Save.init();
 
 		ScreenshotPlugin.init();
+
+		FlxG.console.registerClass(Constants);
+		FlxG.console.registerClass(MacroUtil);
+		FlxG.console.registerClass(OutdatedMacro);
 
 		InitState.IMPORTANT_INITALIZED = true;
 	}
