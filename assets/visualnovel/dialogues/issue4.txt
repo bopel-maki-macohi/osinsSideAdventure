@@ -19,7 +19,7 @@ _;_;issue4/looting/tirok-armor
 
 ?;issue4/tirok-lookup;issue4/backdrop-looting
 
-_;_;issue4/larocSave/lab
+_;_;issue4/lorocSave/lab
 
-_;_;issue4/larocSave/sky
-Are you two okay?;_;issue4/larocSave/sky
+_;_;issue4/lorocSave/sky
+Are you two okay?;_;issue4/lorocSave/sky
