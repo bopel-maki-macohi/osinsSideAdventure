@@ -27,7 +27,7 @@ class Issue4 extends EventRunner
 			case 1, 2, 3:
 				FlxG.sound.play('sounds/punch_${_game._dialogueEntry}'.visualNovelAsset().audioFile(), 1, false, null, true, contLine);
 
-			case 4:
+			case 4, 9, 10:
 				FlxTimer.wait(_game._dialogueLine._line.length * _game._dialogueText.delay + .25, contLine);
 
 			case 5, 6, 7:
@@ -36,10 +36,14 @@ class Issue4 extends EventRunner
 			case 8:
 				FlxG.sound.play('sounds/Body_wall1'.visualNovelAsset().audioFile(), 1, false, null, true, contLine);
 
+			case 11, 12:
+				FlxTimer.wait('????'.length * _game._dialogueText.delay, contLine);
+
 			case 13:
 				FlxG.sound.play('sounds/whoosh type4 05'.visualNovelAsset().audioFile(), 1, false, null, true, contLine);
 
-				// case 11, 12:
+			case 14, 15:
+				FlxG.sound.play('sounds/loorc-flyingSfx'.visualNovelAsset().audioFile(), 1, false, null, true, contLine);
 		}
 	}
 
@@ -47,7 +51,7 @@ class Issue4 extends EventRunner
 	{
 		super.update(eventManager, elapsed);
 
-		if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 13].contains(_game._dialogueEntry))
+		if (_game._dialogueEntry != 16)
 			_game._dialogueTypingFinished = false;
 	}
 }
