@@ -1,4 +1,4 @@
-package osa.util;
+package osa.util.macros;
 
 class MacroUtil
 {

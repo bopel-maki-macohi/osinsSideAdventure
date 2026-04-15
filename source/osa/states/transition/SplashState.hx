@@ -3,7 +3,7 @@ package osa.states.transition;
 import osa.states.menus.TitleState;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
-import osa.util.MacroUtil;
+import osa.util.macros.MacroUtil;
 import osa.save.Save;
 import haxe.Json;
 import osa.data.SplashTextsData;

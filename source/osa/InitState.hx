@@ -4,7 +4,7 @@ import osa.util.Controls;
 import osa.states.transition.SplashState;
 import osa.objects.RhythmManager;
 import osa.states.visualnovel.VNState;
-import osa.util.MacroUtil;
+import osa.util.macros.MacroUtil;
 import osa.util.debug.CrashHandler;
 import osa.save.Save;
 import flixel.addons.transition.FlxTransitionableState;
