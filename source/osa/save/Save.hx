@@ -29,10 +29,23 @@ class Save
 		options.get().fpsCounter ??= true;
 		options.get().cache ??= true;
 
+		#if LOSE_EVERYTHING
+		issues.set([]);
+		#end
+
 		addIssue('issue1');
 		addIssue('issue2');
 
 		beatIssue('issue1');
+
+		#if UNLOCK_EVERYTHING
+		for (issue in ISSUE_ORDER_PREFERENCE)
+		{
+			addIssue(issue);
+			beatIssue(issue);
+		}
+		beatIssue('issue2-bonus');
+		#end
 
 		for (issue in beatissues.get())
 			EventManager.onBeatIssue(issue);
