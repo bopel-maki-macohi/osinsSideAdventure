@@ -11,13 +11,13 @@ _;_;issue4/fight/thunderbolt-punch
 _;_;issue4/fight/thunderbolt-kick
 
 _;_;issue4/fight/osin-hitWall
-HURRY UP!;issue4/osin-irritated;issue4/fight/osin-hitWall
+HURRY UP!;issue4/osin-irritated;issue4/backdrop-osinHitWall
 
-Shut up!;_;issue4/looting/tirok-turnaround
-_;_;issue4/looting/tirok-running
+Shut up!;issue3/tirok-looting;issue4/backdrop
+_;_;issue4/looting/tirok-diggin
 _;_;issue4/looting/tirok-armor
 
-?;issue4/tirok-lookup;issue4/backdrop
+?;issue4/tirok-lookup;issue4/backdrop-looting
 
 _;_;issue4/larocSave/lab
 
