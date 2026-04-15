@@ -1,5 +1,7 @@
 package osa.util.macros;
 
+using StringTools;
+
 #if !display
 class OutdatedMacro
 {
@@ -17,11 +19,11 @@ class OutdatedMacro
 
 		http.onData = function(data:String)
 		{
-			LATEST_VERSION = data;
+			LATEST_VERSION = data.trim();
 			
 			haxe.macro.Context.info('Outdated Check HTTP onData: ${LATEST_VERSION}', pos);
 
-			outdated = sys.io.File.getContent('version.txt') != LATEST_VERSION;
+			outdated = sys.io.File.getContent('version.txt').trim() != LATEST_VERSION;
 		}
 
 		http.onError = function(error:Dynamic)
