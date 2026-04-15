@@ -17,6 +17,8 @@ class ChapterUtil
 		'bonusissue2',
 	];
 
+	public static final CHAPTER_MAP:Map<String, Array<String>> = ['Chapter 1' => CHAPTER_ONE,];
+
 	public static inline function chapterFilter(chapterList:Array<String>, list:Array<String>):Array<String>
 		return list.filter(f -> return chapterList.contains(f));
 
@@ -26,10 +28,11 @@ class ChapterUtil
 	public static inline function bonusIssueFilter(list:Array<String>):Array<String>
 		return list.filter(f -> return f.startsWith('bonusissue'));
 
-	public static inline function getChapter(issue:String):String
+	public static function getChapter(issue:String):String
 	{
-		if (CHAPTER_ONE.contains(issue))
-			return 'Chapter 1';
+		for (name => chapter in CHAPTER_MAP)
+			if (chapter.contains(issue))
+				return name;
 
 		return 'Unknown';
 	}
