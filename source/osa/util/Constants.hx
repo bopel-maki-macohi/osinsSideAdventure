@@ -36,6 +36,6 @@ class Constants
 
 	static function get_GIT_STRING():String
 	{
-		return '${GitMacro.getGitBranch()}:${GitMacro.getGitCommit()}' + ((GitMacro.getHasLocalChanges()) ? ' (local)' : ' (global)');
+		return ((GitMacro.getHasLocalChanges()) ? 'local_' : '') + '${GitMacro.getGitBranch()}:${GitMacro.getGitCommit()}';
 	}
 }
