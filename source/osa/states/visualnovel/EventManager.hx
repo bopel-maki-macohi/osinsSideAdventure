@@ -48,7 +48,7 @@ class EventManager extends FlxSpriteGroup
 		return false;
 	}
 
-	public static function runOnEvents(f:EventRunner->Void)
+	public static function runOnEvents(issue:String, f:EventRunner->Void)
 	{
 		for (event in events)
 		{
@@ -59,12 +59,12 @@ class EventManager extends FlxSpriteGroup
 
 				case SCENE(s):
 					if (s != null)
-						if (s == VNState.instance?._issue)
+						if (s == issue)
 							f(event);
 
 				case SCENES(s):
 					if (s != null)
-						if (s.contains(VNState.instance?._issue))
+						if (s.contains(issue))
 							f(event);
 
 				default:
@@ -73,23 +73,23 @@ class EventManager extends FlxSpriteGroup
 	}
 
 	public function continueLine()
-		runOnEvents(event -> event.continueLine(this));
+		runOnEvents(VNState.instance?._issue, event -> event.continueLine(this));
 
 	public function onCreate()
-		runOnEvents(event -> event.onCreate(this));
+		runOnEvents(VNState.instance?._issue, event -> event.onCreate(this));
 
 	public function onEnd(validEnd:Bool)
-		runOnEvents(event -> event.onEnd(this, validEnd));
+		runOnEvents(VNState.instance?._issue, event -> event.onEnd(this, validEnd));
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		runOnEvents(event -> event.update(this, elapsed));
+		runOnEvents(VNState.instance?._issue, event -> event.update(this, elapsed));
 	}
 
 	public static function onBeatIssue(issue:String)
 	{
-		runOnEvents(event -> event.onBeatIssue(issue));
+		runOnEvents(issue, event -> event.onBeatIssue(issue));
 	}
 }

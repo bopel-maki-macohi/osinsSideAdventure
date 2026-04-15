@@ -1,5 +1,7 @@
 # 0.9.3 (4/15/2026)
 
+- Fixed on startup where you're supposed to get issues when you have beat them not happening
+  - Example: If you beat issue 4 in 0.9.x and then in 0.10 there's a new issue unlocked via issue 4, before this patch you wouldn't get that issue, now you would.
 - Issue 1 is now always considered beat
 - Added "Clear Save" debug menu option
 - The Story menu now displays the percent complete of the issue
