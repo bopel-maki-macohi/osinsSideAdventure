@@ -1,5 +1,6 @@
 package osa.util;
 
+import flixel.addons.input.FlxControlInputType;
 import flixel.addons.input.FlxControls;
 import flixel.addons.input.FlxControlInputType.FlxMouseInputType.Motion as MouseMove;
 import flixel.addons.input.FlxControlInputType.FlxMouseInputType.Drag as MouseDrag;
@@ -35,7 +36,9 @@ class Controls extends FlxControls<Inputs>
 {
 	public static var instance:Controls;
 
-	function getDefaultMappings():ActionMap<Inputs>
+	public var keys(get, never):Map<Inputs, Array<Key>>;
+
+	function get_keys():Map<Inputs, Array<Key>>
 	{
 		return [
 			LEFT => [Key.LEFT, Key.A],
@@ -56,14 +59,30 @@ class Controls extends FlxControls<Inputs>
 		];
 	}
 
-	public function getKeyStrings():Array<String>
+	function getDefaultMappings():ActionMap<Inputs>
+	{
+		var k:ActionMap<Inputs> = [];
+
+		for (input => key in keys)
+		{
+			var newKeys:Array<FlxControlInputType> = [];
+
+			for (ks in key)
+				newKeys.push(FlxControlInputType.fromKey(ks));
+
+			k.set(input, newKeys);
+		}
+
+		return k;
+	}
+
+	public function getKeyStrings(input:Inputs):Array<String>
 	{
 		var keyStrings:Array<String> = [];
 
-		for (action => input in digitalSets)
+		for (key in keys.get(input))
 		{
-			trace(action);
-			trace(input);
+			keyStrings.push(key.toString());
 		}
 
 		return keyStrings;

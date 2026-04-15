@@ -28,9 +28,9 @@ class OutdatedState extends OSAState
 
 		_text.text = 'HEY THERE BUD!\n\n'
 			+ 'Looks like you ain\'t runnin\' the latest version: ${OutdatedMacro.LATEST_VERSION}!\n\n'
-			+ 'You can press any of the following: ${controls.listInputsFor(ACCEPT)} to go to the github and update.\n'
-			+ 'Or you can additionally do it with any of the following: ${controls.listInputsFor(SHIFT)} to go to the itch.io and update.\n\n'
-			+ 'Or... you can miss out on some probably cool stuff by pressing any of the following: ${controls.listInputsFor(LEAVE)} to play the current game.';
+			+ 'You can press any of the following: ${controls.getKeyStrings(ACCEPT)} to go to the github and update.\n'
+			+ 'Or you can additionally do it with any of the following: ${controls.getKeyStrings(SHIFT)} to go to the itch.io and update.\n\n'
+			+ 'Or... you can miss out on some probably cool stuff by pressing any of the following: ${controls.getKeyStrings(LEAVE)} to play the current game.';
 		_text.alignment = CENTER;
 
 		_text.screenCenter();
