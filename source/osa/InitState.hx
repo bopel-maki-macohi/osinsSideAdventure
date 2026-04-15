@@ -1,5 +1,6 @@
 package osa;
 
+import osa.states.menus.OutdatedState;
 import osa.util.Controls;
 import osa.states.transition.SplashState;
 import osa.objects.RhythmManager;
@@ -56,6 +57,10 @@ class InitState extends OSAState
 		Controls.instance = new Controls('Main');
 
 		OSACache.init();
+
+		#if html5
+		OutdatedState.SEEN = true;
+		#end
 	}
 
 	function leave()

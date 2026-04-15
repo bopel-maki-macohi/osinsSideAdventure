@@ -62,7 +62,7 @@ class TileScrollBG extends FlxBackdrop
 
 		if (_debugMode && _parent == null)
 		{
-			_debugModeInUse = Controls.instance.pressed.TILE_SCROLLING_BG_DEBUGMODE;
+			_debugModeInUse = Controls.instance.pressed.SHIFT;
 
 			if (_debugModeInUse)
 			{

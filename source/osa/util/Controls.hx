@@ -26,7 +26,7 @@ enum Inputs
 
 	TITLE_DEBUG;
 	TITLE_DEBUG_TRANSITION;
-	TILE_SCROLLING_BG_DEBUGMODE;
+	SHIFT;
 	DEBUG_CRASH;
 	SCREENSHOT;
 }
@@ -50,7 +50,7 @@ class Controls extends FlxControls<Inputs>
 
 			TITLE_DEBUG => [Key.SEVEN],
 			TITLE_DEBUG_TRANSITION => [Key.SPACE],
-			TILE_SCROLLING_BG_DEBUGMODE => [Key.SHIFT],
+			SHIFT => [Key.SHIFT],
 			DEBUG_CRASH => [Key.F1],
 			SCREENSHOT => [Key.F3],
 		];
