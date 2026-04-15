@@ -29,6 +29,8 @@
 
 	<haxeflag name="--dce full" />
 
+	<define name="WINDOWTITLE_GIT" if="debug"/>
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />

@@ -1,5 +1,6 @@
 package osa.util;
 
+import osa.util.macros.GitMacro;
 import flixel.FlxG;
 
 class Constants
@@ -29,5 +30,12 @@ class Constants
 	public static inline function cancelSfx()
 	{
 		FlxG.sound.play('sounds/cancel'.menuAsset().audioFile());
+	}
+
+	public static var GIT_STRING(get, null):String;
+
+	static function get_GIT_STRING():String
+	{
+		return '${GitMacro.getGitBranch()}:${GitMacro.getGitCommit()}' + ((GitMacro.getHasLocalChanges()) ? ' (local)' : ' (global)');
 	}
 }
