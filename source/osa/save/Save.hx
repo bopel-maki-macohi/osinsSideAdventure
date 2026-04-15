@@ -22,6 +22,10 @@ class Save
 		beatissues = new SaveField<Array<String>>('beatissues', ['issue1']);
 
 		options.get().pcname ??= true;
+		#if html5
+		options.get().pcname = false;
+		#end
+
 		options.get().fpsCounter ??= true;
 		options.get().cache ??= true;
 
