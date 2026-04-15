@@ -46,9 +46,12 @@ class SplashState extends OSAState
 		#if !debug
 		add(_watermark);
 		#end
+
 		_watermark.alignment = CENTER;
 		_watermark.size = 32;
 		_watermark.alpha = 0;
+
+		_watermark.text = FlxG.stage.window.title;
 	}
 
 	function randomMsg()
