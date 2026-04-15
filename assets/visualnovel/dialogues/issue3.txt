@@ -6,7 +6,8 @@ How long are you gonna take?;issue3/osin-turnt;_
 Shut up!;issue3/tirok-pissed;_
 
 It's not my fault this place is a fucking mess.;issue3/tirok-pissed;issue3-establishingShot
-Gone for what?\nLike four damn years?\nAnd everything's gone to SHIT.;issue3/tirok-pissed;issue3-establishingShot
+Gone for what?;issue3/tirok-looting;issue3-establishingShot
+Like four damn years?;issue3/tirok-pissed;issue3-establishingShot
 And everything's gone to SHIT.;issue3/tirok-looting;issue3-establishingShot
 CALL SINCO GOD DAMMIT. WE CAN GO BACK AND NOT HAVE TO WORRY ABOUT THIS SHIT.;issue3/osin-yell;issue3-establishingShot
 OR EVEN BETTER. HE CAN FUCKING FIX THIS SHIT.;issue3/osin-yell-attitude;issue3-establishingShot
