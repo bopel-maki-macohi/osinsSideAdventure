@@ -1,36 +1,31 @@
-package osa.util.macros;
+package osa.util;
 
 using StringTools;
 
-#if !display
-class OutdatedMacro
+class OutdatedUtil
 {
 	public static final HTTP_PATH:String = 'https://raw.githubusercontent.com/bopel-maki-macohi/osinsSideAdventure/refs/heads/stable/version.txt';
 
-	public static macro function getOutdated()
+	public static function getLatestVersion()
 	{
 		var latestVer = '';
 
-		#if !display
-		var pos = haxe.macro.Context.currentPos();
 		var http = new haxe.Http(HTTP_PATH);
 
 		http.onData = function(data:String)
 		{
 			latestVer = data.trim();
 
-			haxe.macro.Context.info('Outdated Check Latest Version: ${latestVer}', pos);
+			trace('Outdated Check Latest Version: ${latestVer}');
 		}
 
 		http.onError = function(error:Dynamic)
 		{
-			haxe.macro.Context.warning('Outdated Check HTTP Error: ${error}', pos);
+			trace('Outdated Check HTTP Error: ${error}');
 		}
 
 		http.request();
-		#end
 
-		return macro $v{latestVer};
+		return latestVer;
 	}
 }
-#end

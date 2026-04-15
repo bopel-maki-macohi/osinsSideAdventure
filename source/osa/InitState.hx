@@ -48,7 +48,7 @@ class InitState extends OSAState
 
 		FlxG.console.registerClass(Constants);
 		FlxG.console.registerClass(MacroUtil);
-		FlxG.console.registerClass(OutdatedMacro);
+		FlxG.console.registerClass(OutdatedUtil);
 
 		InitState.IMPORTANT_INITALIZED = true;
 	}

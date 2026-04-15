@@ -2,7 +2,6 @@ package osa.states.menus;
 
 import osa.util.Constants;
 import flixel.FlxG;
-import osa.util.macros.OutdatedMacro;
 import flixel.text.FlxText;
 import flixel.FlxSprite;
 

@@ -1,7 +1,7 @@
 package osa.util;
 
+import osa.util.OutdatedUtil;
 import lime.app.Application;
-import osa.util.macros.OutdatedMacro;
 import osa.util.macros.GitMacro;
 import flixel.FlxG;
 
@@ -45,7 +45,7 @@ class Constants
 
 	static function get_OUTDATED_LATEST_VERSION():String
 	{
-		return OutdatedMacro.getOutdated();
+		return OutdatedUtil.getLatestVersion();
 	}
 
 	public static var OUTDATED(get, null):Bool;
