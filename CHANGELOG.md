@@ -1,5 +1,6 @@
 # 0.9.3 (4/15/2026)
 
+- Issue 1 is now always considered beat
 - Added "Clear Save" debug menu option
 - The Story menu now displays the percent complete of the issue
 

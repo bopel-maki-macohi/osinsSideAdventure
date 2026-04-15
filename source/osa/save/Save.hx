@@ -19,7 +19,7 @@ class Save
 			fpsCounter: true,
 			cache: true,
 		});
-		beatissues = new SaveField<Array<String>>('beatissues', []);
+		beatissues = new SaveField<Array<String>>('beatissues', ['issue1']);
 
 		options.get().pcname ??= true;
 		options.get().fpsCounter ??= true;
@@ -27,6 +27,8 @@ class Save
 
 		addIssue('issue1');
 		addIssue('issue2');
+
+		beatIssue('issue1');
 
 		for (issue in beatissues.get())
 			EventManager.onBeatIssue(issue);
