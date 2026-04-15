@@ -5,10 +5,10 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.FlxBasic;
+import openfl.display.BitmapData;
 #if SCREENSHOT_PLUGIN
 import flixel.FlxG;
 import flixel.util.FlxTimer;
-import openfl.display.BitmapData;
 import openfl.display.PNGEncoderOptions;
 import openfl.utils.ByteArray;
 #end
