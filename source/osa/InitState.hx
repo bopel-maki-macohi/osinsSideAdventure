@@ -33,8 +33,10 @@ class InitState extends OSAState
 		this.transIn = null;
 
 		super.create();
-		
+
 		FlxG.stage.application.window.title = _watermark.text.replace('O.S.A.', 'Osin\'s Side Adventure');
+
+		leave();
 	}
 
 	function importantInit()
