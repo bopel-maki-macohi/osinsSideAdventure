@@ -83,9 +83,7 @@ class StoryMenuSubState extends TitleSubStateBase
 			case 'unplayed':
 				filterList = filterList.filter(f -> return !Save.beatissues.get().contains(f));
 
-			case 'all':
-
-			case null:
+			case 'all', null:
 
 			default:
 				trace('Unimplemented filter: ${filter.toLowerCase().trim()}');
