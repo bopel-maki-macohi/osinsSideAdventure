@@ -210,8 +210,13 @@ class TitleState extends OSAState
 			FlxG.switchState(() -> new TitleState());
 	}
 
+	var transitioning:Bool = false;
+
 	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:OSASubState)
 	{
+		if (transitioning) return;
+
+		transitioning = true;
 
 		for (spr in [_logo, _storymenuBtn, _creditsBtn, _optionsBtn])
 		{
@@ -232,6 +237,8 @@ class TitleState extends OSAState
 
 	function onSelectionExited(tileScrollBG:TileScrollBG)
 	{
+		transitioning = false;
+
 		for (spr in [_logo, _storymenuBtn, _creditsBtn, _optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
