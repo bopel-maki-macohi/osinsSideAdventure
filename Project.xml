@@ -4,7 +4,7 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<app title="Osin's Side Adventure" file="OSA" />
+	<app title="Osin's Side Adventure" file="OSA" packageName="com.maki.osa"/>
 	<app main="Main" />
 	<app company="Maki" />
 	<app version="0.9.3" />
