@@ -1,4 +1,8 @@
-# 0.9.0 : Issue Pack 1 (4/15/2026)
+# 0.9.1 (4/14/2026)
+
+- Just fixes to the changelog
+
+# 0.9.0 : Issue Pack 1 (4/14/2026)
 
 - **Added Issue 4 (Unlocked through playing issue 3)**
 - **Added Issue 3 (Unlocked through playing issue 2)**
@@ -35,7 +39,7 @@
   - Issue3 => Issue4
   - Etc...
 - Changelog file now included in the game build
-  - And there's also changelogs for 0.1 - 0.8 now
+  - And there's also changelogs for 0.1 - 0.8.1 now
 
 # 0.8.1 (4/13/2026)
 
