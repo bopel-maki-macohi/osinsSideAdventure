@@ -1,5 +1,6 @@
 package osa.states.visualnovel.events;
 
+import osa.util.Constants;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 
@@ -13,7 +14,7 @@ class TestingEventSystem extends EventRunner
 		char.build('osin');
 		eventManager.add(char);
 
-		FlxTween.tween(char, {y: 10}, LoremIpsum.piece.split(',')[0].length * VNState.OUT_LETTER_SPEED, {
+		FlxTween.tween(char, {y: 10}, Constants.LOREM_IPSUM.length * VNState.OUT_LETTER_SPEED, {
 			ease: FlxEase.sineInOut,
 			onComplete: t ->
 			{

@@ -1,5 +1,6 @@
 package osa.states.visualnovel.events;
 
+import osa.util.Constants;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
@@ -25,7 +26,7 @@ class Issue1EstablishingShot extends EventRunner
 
 		_game._dialogueBG.alpha = 0;
 
-		FlxTween.tween(_game._dialogueBG, {alpha: 1}, (0.03 * LoremIpsum.piece.split(',')[0].length), {
+		FlxTween.tween(_game._dialogueBG, {alpha: 1}, (0.03 * Constants.LOREM_IPSUM.length), {
 			ease: FlxEase.sineInOut,
 			onUpdate: t ->
 			{

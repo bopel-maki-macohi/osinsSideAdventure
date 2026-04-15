@@ -1,5 +1,6 @@
 package osa.states.visualnovel;
 
+import osa.util.Constants;
 import osa.save.Save;
 import osa.states.transition.VNCacher;
 import osa.objects.HoldToPerformGadge;
@@ -98,7 +99,7 @@ class VNState extends OSAState
 		_dialogueBox.screenCenter();
 		_dialogueBox.y = FlxG.height * 0.55;
 
-		_dialogueText = new FlxTypeText(_dialogueBox.x + 10, _dialogueBox.y + 10, Math.round(_dialogueBox.width) - 10, LoremIpsum.piece, 32);
+		_dialogueText = new FlxTypeText(_dialogueBox.x + 10, _dialogueBox.y + 10, Math.round(_dialogueBox.width) - 10, Constants.LOREM_IPSUM, 32);
 		_dialogueText.color = FlxColor.BLACK;
 
 		_dialogueText.setTypingVariation(0.75, true);
@@ -209,7 +210,7 @@ class VNState extends OSAState
 			if (_dialogueLine._isEvent && _ranEvent)
 				return;
 
-			FlxTimer.wait(_dialogueText.delay * LoremIpsum.piece.split(',')[0].length, onDialogueFinishTyping);
+			FlxTimer.wait(_dialogueText.delay * Constants.LOREM_IPSUM.length, onDialogueFinishTyping);
 		}
 	}
 

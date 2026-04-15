@@ -4,6 +4,8 @@ import flixel.FlxG;
 
 class Constants
 {
+	public static final LOREM_IPSUM:String = 'Lorem ipsum dolor sit amet';
+
 	public static final DEFAULT_BLUR_FOCUS:Float = 0;
 	public static final DEFAULT_BLUR_UNFOCUS:Float = 4;
 
