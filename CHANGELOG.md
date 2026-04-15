@@ -1,3 +1,5 @@
+# 0.9.2 (4/15/2026)
+
 # 0.9.1 (4/14/2026)
 
 - Just fixes to the changelog
