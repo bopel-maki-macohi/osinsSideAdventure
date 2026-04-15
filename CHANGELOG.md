@@ -1,5 +1,6 @@
 # Unreleased (4/15/2026)
 
+- Issue 3 dialogue tweaks
 - A lesser bop scale then the bop scale the issue title in the story menu is about to have no longer forces the scale
 - Using [`flixel-controls`](https://github.com/Geokureli/FlxControls/tree/master) for input stuff now
 - The Window title is changed at startup now
