@@ -5,6 +5,8 @@ class OutdatedMacro
 {
 	public static final HTTP_PATH:String = 'https://raw.githubusercontent.com/bopel-maki-macohi/osinsSideAdventure/refs/heads/stable/version.txt';
 
+	public static var LATEST_VERSION:String = '';
+
 	public static macro function getOutdated()
 	{
 		var outdated:Bool = false;
@@ -15,9 +17,11 @@ class OutdatedMacro
 
 		http.onData = function(data:String)
 		{
-			haxe.macro.Context.info('Outdated Check HTTP onData: ${data}', pos);
+			LATEST_VERSION = data;
+			
+			haxe.macro.Context.info('Outdated Check HTTP onData: ${LATEST_VERSION}', pos);
 
-			outdated = sys.io.File.getContent('version.txt') != data;
+			outdated = sys.io.File.getContent('version.txt') != LATEST_VERSION;
 		}
 
 		http.onError = function(error:Dynamic)
