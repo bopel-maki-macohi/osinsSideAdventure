@@ -55,4 +55,17 @@ class Controls extends FlxControls<Inputs>
 			SCREENSHOT => [Key.F3],
 		];
 	}
+
+	public function getKeyStrings():Array<String>
+	{
+		var keyStrings:Array<String> = [];
+
+		for (action => input in digitalSets)
+		{
+			trace(action);
+			trace(input);
+		}
+
+		return keyStrings;
+	}
 }
