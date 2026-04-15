@@ -112,6 +112,8 @@ class StoryMenuSubState extends TitleSubStateBase
 				reload(filters[filters.indexOf(_currentFilter) + 1] ?? filters[0]);
 			if (FlxG.keys.anyJustPressed([S, DOWN]))
 				reload(filters[filters.indexOf(_currentFilter) - 1] ?? filters[filters.length - 1]);
+
+			Constants.selectSfx();
 		}
 	}
 

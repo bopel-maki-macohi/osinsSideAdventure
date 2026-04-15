@@ -75,7 +75,7 @@ class TitleState extends OSAState
 		_logo.camera = blurCamFG;
 
 		add(_titleTileScrollBG);
-		
+
 		_debugTileScrollBG = TileScrollBG.build(null, 'tile-sinco'.menuAsset(), _titleTileScrollBG);
 		_debugTileScrollBG.alpha = 0;
 
@@ -212,6 +212,7 @@ class TitleState extends OSAState
 
 	function onSelectionClicked(tileScrollBG:TileScrollBG, substate:OSASubState)
 	{
+
 		for (spr in [_logo, _storymenuBtn, _creditsBtn, _optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
@@ -223,6 +224,8 @@ class TitleState extends OSAState
 			FlxTween.cancelTweensOf(tileScrollBG);
 			FlxTween.tween(tileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
+
+		Constants.selectSfx();
 
 		openSubState(substate);
 	}
@@ -248,6 +251,8 @@ class TitleState extends OSAState
 			FlxTween.cancelTweensOf(tileScrollBG);
 			FlxTween.tween(tileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
+
+		Constants.cancelSfx();
 	}
 
 	override function onExit()

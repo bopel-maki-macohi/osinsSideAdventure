@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.util.Constants;
 import flixel.math.FlxMath;
 import flixel.FlxObject;
 import flixel.group.FlxSpriteContainer.FlxTypedSpriteContainer;
@@ -103,6 +104,8 @@ class TitleSubStateBase extends OSASubState
 			_currentSelection = _sprites.length - 1;
 		if (_currentSelection > _sprites.length - 1)
 			_currentSelection = 0;
+
+		Constants.selectSfx();
 	}
 
 	public var _text:FlxText;

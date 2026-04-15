@@ -1,5 +1,7 @@
 package osa.util;
 
+import flixel.FlxG;
+
 class Constants
 {
 	public static final DEFAULT_BLUR_FOCUS:Float = 0;
@@ -15,5 +17,15 @@ class Constants
 		final date:String = '${dateNow.getMonth()}-${dateNow.getDate()}-${dateNow.getFullYear()}';
 
 		return '${date}_${seconds}';
+	}
+
+	public static inline function selectSfx()
+	{
+		FlxG.sound.play('sounds/select${FlxG.random.int(1, 4)}'.menuAsset().audioFile());
+	}
+
+	public static inline function cancelSfx()
+	{
+		FlxG.sound.play('sounds/cancel'.menuAsset().audioFile());
 	}
 }
