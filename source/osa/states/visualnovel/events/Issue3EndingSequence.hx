@@ -15,7 +15,8 @@ class Issue3EndingSequence extends EventRunner
 		super.runDialogueEvent(eventManager, params);
 
 		_game.changeLine(1);
-		FlxG.sound.play('sounds/thunderbolt-running'.visualNovelAsset().audioFile(), 1, false, null, true, function() {
+		FlxG.sound.play('sounds/thunderbolt-running'.visualNovelAsset().audioFile(), 1, false, null, true, function()
+		{
 			_game.changeLine(1);
 		});
 	}
