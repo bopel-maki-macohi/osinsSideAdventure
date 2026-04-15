@@ -7,26 +7,19 @@ class OutdatedMacro
 {
 	public static final HTTP_PATH:String = 'https://raw.githubusercontent.com/bopel-maki-macohi/osinsSideAdventure/refs/heads/stable/version.txt';
 
-	public static var LATEST_VERSION:String = '';
-
 	public static macro function getOutdated()
 	{
-		var outdated:Bool = false;
+		var latestVer = '';
 
 		#if !display
 		var pos = haxe.macro.Context.currentPos();
 		var http = new haxe.Http(HTTP_PATH);
 
-		var curVer = sys.io.File.getContent('version.txt').trim();
-
 		http.onData = function(data:String)
 		{
-			LATEST_VERSION = data.trim();
-			
-			haxe.macro.Context.info('Outdated Check LATEST_VERSION: ${LATEST_VERSION}', pos);
-			haxe.macro.Context.info('Outdated Check curVer: ${curVer}', pos);
+			latestVer = data.trim();
 
-			outdated = curVer != LATEST_VERSION;
+			haxe.macro.Context.info('Outdated Check Latest Version: ${latestVer}', pos);
 		}
 
 		http.onError = function(error:Dynamic)
@@ -35,11 +28,9 @@ class OutdatedMacro
 		}
 
 		http.request();
-
-		haxe.macro.Context.info('Outdated: ${outdated}', pos);
 		#end
 
-		return macro $v{outdated};
+		return macro $v{latestVer};
 	}
 }
 #end

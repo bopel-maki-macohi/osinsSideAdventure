@@ -41,11 +41,18 @@ class Constants
 		return ((GitMacro.getHasLocalChanges()) ? 'local_' : '') + '${GitMacro.getGitBranch()}:${GitMacro.getGitCommit()}';
 	}
 
+	public static var OUTDATED_LATEST_VERSION(get, null):String;
+
+	static function get_OUTDATED_LATEST_VERSION():String
+	{
+		return OutdatedMacro.getOutdated();
+	}
+
 	public static var OUTDATED(get, null):Bool;
 
 	static function get_OUTDATED():Bool
 	{
-		return OutdatedMacro.getOutdated();
+		return OUTDATED_LATEST_VERSION != VERSION;
 	}
 
 	public static var VERSION(get, null):String;
