@@ -29,7 +29,7 @@
 
 	<haxeflag name="--dce full" />
 
-	<define name="WINDOWTITLE_GIT" if="debug"/>
+	<define name="WINDOWTITLE_GIT" unless="DISABLE_WINDOWTITLE_GIT"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
