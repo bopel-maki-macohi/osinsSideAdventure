@@ -43,7 +43,7 @@ class Issue4 extends EventRunner
 				FlxG.sound.play('sounds/whoosh type4 05'.visualNovelAsset().audioFile(), 1, false, null, true, contLine);
 
 			case 14, 15:
-				FlxG.sound.play('sounds/loorc-flyingSfx'.visualNovelAsset().audioFile(), 1, false, null, true, contLine);
+				FlxG.sound.play('sounds/loroc-flyingSfx'.visualNovelAsset().audioFile(), 1, false, null, true, contLine);
 		}
 	}
 
