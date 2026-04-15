@@ -39,7 +39,7 @@ class OSACache
 
 		permCachedSounds.clear();
 		permCachedTextures.clear();
-		
+
 		Assets.cache.clear();
 	}
 
@@ -78,8 +78,10 @@ class OSACache
 
 		/** Signals **/
 
-		FlxG.signals.postStateSwitch.add(postStateSwitch);
-		FlxG.signals.postUpdate.add(postUpdate);
+		if (!FlxG.signals.postStateSwitch.has(postStateSwitch))
+			FlxG.signals.postStateSwitch.add(postStateSwitch);
+		if (!FlxG.signals.postStateSwitch.has(postUpdate))
+			FlxG.signals.postUpdate.add(postUpdate);
 
 		/** Audio Caching **/
 

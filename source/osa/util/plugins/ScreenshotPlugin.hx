@@ -29,7 +29,10 @@ class ScreenshotPlugin extends FlxBasic
 		#if SCREENSHOT_PLUGIN
 		#if sys
 		if (!sys.FileSystem.exists(ScreenshotPlugin.SCREENSHOT_FOLDER))
+		{
+			trace('Created directory ${ScreenshotPlugin.SCREENSHOT_FOLDER}');
 			sys.FileSystem.createDirectory(ScreenshotPlugin.SCREENSHOT_FOLDER);
+		}
 		#end
 
 		FlxG.plugins.addPlugin(new ScreenshotPlugin());
@@ -79,7 +82,8 @@ class ScreenshotPlugin extends FlxBasic
 
 		FlxTween.tween(grayscale, {amount: 0}, 1, {
 			ease: FlxEase.sineInOut,
-			onUpdate: t -> {
+			onUpdate: t ->
+			{
 				grayscale.setAmount(1 - t.percent);
 			}
 		});

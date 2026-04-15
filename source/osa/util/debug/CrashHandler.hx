@@ -14,7 +14,7 @@ class CrashHandler
 		#if sys
 		if (!sys.FileSystem.exists(CRASH_DIRECTORY))
 		{
-			log('Created CRASH_DIRECTORY: ${CRASH_DIRECTORY}');
+			trace('Created CRASH_DIRECTORY: ${CRASH_DIRECTORY}');
 			sys.FileSystem.createDirectory(CRASH_DIRECTORY);
 		}
 		#end

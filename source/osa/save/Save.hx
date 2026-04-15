@@ -77,11 +77,11 @@ class Save
 
 		FlxG.stage.application.onExit.add(function(l)
 		{
-			logSaveData();
+			trace(FlxG.save.data);
 			FlxG.save.flush();
 		});
 
-		logSaveData();
+		trace(FlxG.save.data);
 	}
 
 	public static function logSaveData()
