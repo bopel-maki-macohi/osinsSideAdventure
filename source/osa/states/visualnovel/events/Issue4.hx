@@ -6,7 +6,7 @@ class Issue4 extends EventRunner
 {
 	override public function new()
 	{
-		super(SCENES(['issue 4']));
+		super(SCENES(['issue4']));
 	}
 
 	override function continueLine(eventManager:EventManager)
