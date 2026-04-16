@@ -1,3 +1,8 @@
+# 0.10.1 (4/16/2026)
+
+- Git info ACTUALLY no longer displays in the Splash State now
+- Git info on the window title is disabled now
+
 # 0.10.0 (4/16/2026)
 
 - **Added Issue 5 (Unlocked after playing Issue 4)**

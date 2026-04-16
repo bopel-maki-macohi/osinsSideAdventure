@@ -55,7 +55,7 @@ class SplashState extends OSAState
 
 		_watermark.text = FlxG.stage.window.title;
 
-		_watermark.text.replace(' (${Constants.GIT_STRING})', '');
+		_watermark.text = '${FlxG.stage.application.meta.get('name')} ${FlxG.stage.application.meta.get('version')}';
 	}
 
 	function randomMsg()
