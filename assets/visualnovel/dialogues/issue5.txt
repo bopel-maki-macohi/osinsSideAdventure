@@ -1,3 +1,4 @@
+event_setDialogueSFX;loroc
 Are you two okay?;_;issue4/lorocSave/sky
 
 Yes...?;issue5/tirok-scared;issue4/lorocSave/sky
