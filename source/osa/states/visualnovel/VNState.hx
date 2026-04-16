@@ -101,8 +101,6 @@ class VNState extends OSAState
 		_dialogueText.setTypingVariation(0.75, true);
 		// _dialogueText.skipKeys = ['SPACE'];
 
-		_dialogueText.finishSounds = true;
-
 		_dialogueText.delay = 0.05;
 
 		_dialogueContinueHand = new FlxSprite(0, 0, 'continueHand'.visualNovelAsset().imageFile());
@@ -225,6 +223,7 @@ class VNState extends OSAState
 			}
 
 		_dialogueText.sounds = [];
+		_dialogueText.finishSounds = false;
 
 		for (sound in Constants.TYPING_SOUNDS.get(typingSoundMapID))
 			_dialogueText.sounds.push(FlxG.sound.load(sound.audioFile().visualNovelAsset()));
