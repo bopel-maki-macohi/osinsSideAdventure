@@ -1,7 +1,11 @@
 # 0.10.0 (4/16/2026)
 
+- The typing SFX system has been updated!
+  - Currently using a macro, so it's not dynamic.
+    - But any audio files in the directory during compiling will be added and files in this format: `prefix-doesntmatter`
+    - And in gameplay, it will look for that the current dialogue char prefix (example `tirok` prefix will be looked for with the `issue2/tirok-back` character), it will use that prefix
+  - Typing SFX has been moved to `assets/visualnovel/sounds/typing/`
 - Git info no longer displays in the Splash State
-- Typing SFX has been moved to `assets/visualnovel/sounds/typing/`
 
 # 0.9.5 (4/15/2026)
 
