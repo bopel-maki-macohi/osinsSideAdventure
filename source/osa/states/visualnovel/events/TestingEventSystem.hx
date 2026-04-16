@@ -21,7 +21,7 @@ class TestingEventSystem extends EventRunner
 				if (_game != null)
 				{
 					_game.changeLine(1);
-					FlxTween.tween(char, {alpha: 0}, _game._dialogueLine._line.length * VNState.OUT_LETTER_SPEED, {
+					FlxTween.tween(char, {alpha: 0}, '??????????'.length * VNState.OUT_LETTER_SPEED, {
 						ease: FlxEase.sineInOut,
 						onComplete: t ->
 						{
