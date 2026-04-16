@@ -1,5 +1,6 @@
 package osa;
 
+import osa.util.Constants;
 import osa.states.visualnovel.DialogueSprite;
 import osa.states.visualnovel.DialogueLine;
 import osa.save.Save;
@@ -87,9 +88,11 @@ class OSACache
 
 		permCacheSound('updog/get-your-ass-up'.audioFile().miscAsset());
 
-		// permCacheSound('type1'.audioFile().visualNovelAsset());
-		// permCacheSound('type2'.audioFile().visualNovelAsset());
-		// permCacheSound('type3'.audioFile().visualNovelAsset());
+		for (typingSounds in Constants.TYPING_SOUNDS)
+		{
+			for (sound in typingSounds)
+				permCacheSound(sound.audioFile().visualNovelAsset());
+		}
 
 		/** Texture Caching **/
 
