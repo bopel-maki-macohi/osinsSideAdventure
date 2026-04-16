@@ -2,23 +2,32 @@ event_setDialogueSFX;loroc
 Are you two okay?;_;issue4/lorocSave/sky
 
 Yes...?;issue5/tirok-scared;issue4/lorocSave/sky
+event_setDialogueSpeed;0.025
 NO.;issue5/osin-pissed;issue4/lorocSave/sky
 
+event_setDialogueSpeed;0.1
 Sorry. I'm still kinda new to this hero thing,;issue5/loroc-whoops;issue5-mountainShot
+event_resetDialogueSpeed
 I saw him heading over here but I wanted to sneak up on him and beat him.;issue5/loroc-yappin;issue5-mountainShot
+event_setDialogueSpeed;0.075
 I had no idea there were people left in this area.;issue5/loroc-whoops;issue5-mountainShot
+event_setDialogueSpeed;0.025
 Let alone someone who could keep Thunderbolt occupied.;issue5/loroc-impressed;issue5-mountainShot
 
 That name's stupid;issue3/osin-turnt;issue5-mountainShot
 He named himself, not me.;issue5/loroc-yappin;issue5-mountainShot
 
+event_setDialogueSpeed;0.2
 ...;issue5/tirok-worried;issue5-mountainShot
 
+event_setDialogueSpeed;0.025
 So what the fuck is his deal?;issue3/osin-yell;issue5-mountainShot
-Why is he metal?;issue3/osin-yell-attitude;issue5-mountainShot
+Why is he metal?;issue3/osin-yell;issue5-mountainShot
 Who the hell even is he?;issue3/osin-yell-attitude;issue5-mountainShot
-Last time we were here it was just me, Sinco, and that kid from Boredom City who were speedsters;issue3/osin-yell-attitude;issue5-mountainShot
+Last time we were here it was just me, Sinco, and that kid from Boredom City who were speedsters.;issue3/osin-yell-attitude;issue5-mountainShot
 
+event_resetDialogueSpeed
 I dont... know...;issue5/loroc-scared;issue5-mountainShot
 
+event_setDialogueSpeed;0.4
 ...;issue5/osin-temptedyell;issue5-mountainShot
