@@ -47,6 +47,7 @@ class Issue1Intro extends EventRunner
 			case 0, 1:
 				_osinFocus = true;
 			case 2:
+				_game.setDialogueSFX('tirok');
 				_osinFocus = false;
 			case 3:
 				_osinFocus = true;

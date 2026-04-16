@@ -1,5 +1,7 @@
 # 0.10.0 (4/16/2026)
 
+- Typing SFX has been moved to `assets/visualnovel/sounds/typing/`
+
 # 0.9.5 (4/15/2026)
 
 - Fixed Issue 3 not unlocking Issue 4 if you startup the game with issue3 beat

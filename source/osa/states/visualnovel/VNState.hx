@@ -193,31 +193,40 @@ class VNState extends OSAState
 
 	public var _typingSoundMapID:String = '';
 
-	function reloadDialogueSFX()
+	public function reloadDialogueSFX()
 	{
-		var charTypingsoundMapID:String = _dialogueLine?._character.split('-')[0];
 		var typingSoundMapID:String = 'default';
+		var charTypingsoundMapID:String = 'default';
+
+		if (_dialogueLine?._character != null)
+			charTypingsoundMapID = _dialogueLine?._character.split('-')[0];
 
 		if (Constants.TYPING_SOUNDS.exists(charTypingsoundMapID))
 			typingSoundMapID = charTypingsoundMapID;
 
 		if (typingSoundMapID != _typingSoundMapID)
 		{
-			_typingSoundMapID = typingSoundMapID;
+			setDialogueSFX(typingSoundMapID);
+		}
+	}
 
+	public function setDialogueSFX(typingSoundMapID:String)
+	{
+		_typingSoundMapID = typingSoundMapID;
+
+		if (_dialogueText.sounds != null)
 			for (sound in _dialogueText.sounds)
 			{
 				_dialogueText.sounds.remove(sound);
 				sound.destroy();
 			}
 
-			_dialogueText.sounds = [];
+		_dialogueText.sounds = [];
 
-			for (sound in Constants.TYPING_SOUNDS.get(typingSoundMapID))
-				_dialogueText.sounds.push(FlxG.sound.load(sound.audioFile().visualNovelAsset()));
-		}
+		for (sound in Constants.TYPING_SOUNDS.get(typingSoundMapID))
+			_dialogueText.sounds.push(FlxG.sound.load(sound.audioFile().visualNovelAsset()));
 
-		trace('typingSoundMapID: $typingSoundMapID');
+		trace('new typing sound map id: $typingSoundMapID');
 	}
 
 	function resetText()
