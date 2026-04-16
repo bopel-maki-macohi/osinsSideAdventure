@@ -1,5 +1,7 @@
 # 0.10.0 (4/16/2026)
 
+- **Added Issue 5 (Unlocked after playing Issue 4)**
+
 - Added "setDialogueSFX" default event for issues
 - Fixed Issue 1 not being playable cause of the selection not updating
 - The typing SFX system has been updated!

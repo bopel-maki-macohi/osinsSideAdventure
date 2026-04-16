@@ -1,5 +1,6 @@
 package osa.states.visualnovel.events;
 
+import osa.save.Save;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
 
@@ -55,5 +56,21 @@ class Issue4 extends EventRunner
 		if (_game != null)
 			if (_game._dialogueEntry != 16)
 				_game._dialogueTypingFinished = false;
+	}
+
+	override function onEnd(eventManager:EventManager, validEnd:Bool)
+	{
+		super.onEnd(eventManager, validEnd);
+
+		if (validEnd)
+			Save.addIssue('issue5');
+	}
+
+	override function onBeatIssue(issue:String)
+	{
+		super.onBeatIssue(issue);
+
+		if (issue == 'issue4')
+			Save.addIssue('issue5');
 	}
 }
