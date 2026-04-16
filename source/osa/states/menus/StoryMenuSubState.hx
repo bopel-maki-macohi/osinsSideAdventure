@@ -100,6 +100,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		_addDefaultScaleThingies = false;
 		createSprites();
+		changeSelection(0);
 	}
 
 	override function nonScrollingControls()
