@@ -5,3 +5,4 @@ dump/
 dev/vids/
 
 .DS_Store
+**.aup3-**
