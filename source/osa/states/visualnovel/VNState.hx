@@ -199,7 +199,10 @@ class VNState extends OSAState
 		var charTypingsoundMapID:String = 'default';
 
 		if (_dialogueLine?._character != null)
+		{
 			charTypingsoundMapID = _dialogueLine?._character.split('-')[0];
+			charTypingsoundMapID = haxe.io.Path.withoutDirectory(charTypingsoundMapID);
+		}
 
 		if (Constants.TYPING_SOUNDS.exists(charTypingsoundMapID))
 			typingSoundMapID = charTypingsoundMapID;
