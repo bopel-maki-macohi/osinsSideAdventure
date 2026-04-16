@@ -8,10 +8,12 @@ class TypingSoundMacro {
 
         #if !display
         var pos = haxe.macro.Context.currentPos();
-        var directory:String = 'assets/visualnovel/sounds/typing';
+        
+        var basedirectory:String = 'assets/visualnovel/';
+        var subdirectory:String = 'sounds/typing';
 
         // No sub-directory support, not right now.
-        for (file in sys.FileSystem.readDirectory(directory))
+        for (file in sys.FileSystem.readDirectory(basedirectory + subdirectory))
         {
             if (haxe.Path.extension(file) != 'wav') continue;
             
@@ -20,7 +22,7 @@ class TypingSoundMacro {
             if (!output.exists(filePrefix))
                 output.set(filePrefix, []);
 
-            output.get(filePrefix).push('$directory/$file');
+            output.get(filePrefix).push('$subdirectory/$file');
         }
 
         haxe.macro.Context.info('Output: ${output}', pos);
