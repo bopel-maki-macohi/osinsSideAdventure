@@ -87,9 +87,9 @@ class OSACache
 
 		permCacheSound('updog/get-your-ass-up'.audioFile().miscAsset());
 
-		permCacheSound('type1'.audioFile().visualNovelAsset());
-		permCacheSound('type2'.audioFile().visualNovelAsset());
-		permCacheSound('type3'.audioFile().visualNovelAsset());
+		// permCacheSound('type1'.audioFile().visualNovelAsset());
+		// permCacheSound('type2'.audioFile().visualNovelAsset());
+		// permCacheSound('type3'.audioFile().visualNovelAsset());
 
 		/** Texture Caching **/
 
