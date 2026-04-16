@@ -1,3 +1,5 @@
+# 0.10.0 (4/16/2026)
+
 # 0.9.4 (4/15/2026)
 
 - Added an OUTDATED SCREEN! (Desktop only)
