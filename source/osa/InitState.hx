@@ -62,7 +62,7 @@ class InitState extends OSAState
 		OSACache.init();
 
 		#if DISABLE_OUTDATEDSTATE
-		OutdatedState.SEEN = true;
+		osa.states.menus.OutdatedState.SEEN = true;
 		#end
 	}
 

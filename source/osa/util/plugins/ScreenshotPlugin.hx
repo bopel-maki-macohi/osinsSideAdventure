@@ -6,9 +6,9 @@ import flixel.tweens.FlxTween;
 import flixel.FlxSprite;
 import flixel.FlxBasic;
 import openfl.display.BitmapData;
-#if SCREENSHOT_PLUGIN
-import flixel.FlxG;
 import flixel.util.FlxTimer;
+import flixel.FlxG;
+#if SCREENSHOT_PLUGIN
 import openfl.display.PNGEncoderOptions;
 import openfl.utils.ByteArray;
 #end
