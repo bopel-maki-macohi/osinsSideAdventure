@@ -1,5 +1,6 @@
 package osa.util;
 
+import osa.util.macros.TypingSoundMacro;
 import osa.util.OutdatedUtil;
 import lime.app.Application;
 import osa.util.macros.GitMacro;
@@ -60,5 +61,12 @@ class Constants
 	static function get_VERSION():String
 	{
 		return Application.current.meta.get('version');
+	}
+
+	public static var TYPING_SOUNDS(get, null):Map<String, Array<String>>;
+
+	static function get_TYPING_SOUNDS():Map<String, Array<String>>
+	{
+		return TypingSoundMacro.getTypingSoundMap();
 	}
 }
