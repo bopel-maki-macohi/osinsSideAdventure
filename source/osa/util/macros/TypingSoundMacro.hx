@@ -22,7 +22,7 @@ class TypingSoundMacro {
             if (!output.exists(filePrefix))
                 output.set(filePrefix, []);
 
-            output.get(filePrefix).push('$subdirectory/$file');
+            output.get(filePrefix).push('$subdirectory/${haxe.io.Path.withoutExtension(file)}');
         }
 
         haxe.macro.Context.info('Output: ${output}', pos);
