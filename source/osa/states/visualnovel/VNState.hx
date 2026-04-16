@@ -101,9 +101,6 @@ class VNState extends OSAState
 		_dialogueText.setTypingVariation(0.75, true);
 		// _dialogueText.skipKeys = ['SPACE'];
 
-		_dialogueText.sounds = [];
-		// for (s in ['type1', 'type2', 'type3'])
-		// 	_dialogueText.sounds.push(FlxG.sound.load(s.visualNovelAsset().audioFile()));
 		_dialogueText.finishSounds = true;
 
 		_dialogueText.delay = 0.05;
@@ -183,6 +180,7 @@ class VNState extends OSAState
 		_dialogueBox.visible = _dialogueLine._line != null;
 		_dialogueText.visible = _dialogueBox.visible;
 
+		reloadDialogueSFX();
 		resetText();
 
 		buildBGAndCharacter();
@@ -192,6 +190,35 @@ class VNState extends OSAState
 	}
 
 	public var _ranEvent:Bool = false;
+
+	public var _typingSoundMapID:String = '';
+
+	function reloadDialogueSFX()
+	{
+		var charTypingsoundMapID:String = _dialogueLine?._character.split('-')[0];
+		var typingSoundMapID:String = 'default';
+
+		if (Constants.TYPING_SOUNDS.exists(charTypingsoundMapID))
+			typingSoundMapID = charTypingsoundMapID;
+
+		if (typingSoundMapID != _typingSoundMapID)
+		{
+			_typingSoundMapID = typingSoundMapID;
+
+			for (sound in _dialogueText.sounds)
+			{
+				_dialogueText.sounds.remove(sound);
+				sound.destroy();
+			}
+
+			_dialogueText.sounds = [];
+
+			for (sound in Constants.TYPING_SOUNDS.get(typingSoundMapID))
+				_dialogueText.sounds.push(FlxG.sound.load(sound.audioFile().visualNovelAsset()));
+		}
+
+		trace('typingSoundMapID: $typingSoundMapID');
+	}
 
 	function resetText()
 	{
