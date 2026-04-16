@@ -1,5 +1,6 @@
 # 0.10.0 (4/16/2026)
 
+- Git info no longer displays in the Splash State
 - Typing SFX has been moved to `assets/visualnovel/sounds/typing/`
 
 # 0.9.5 (4/15/2026)
