@@ -1,6 +1,6 @@
 # 0.10.0 (4/16/2026)
 
-- Fixed Issue 1 not being playable
+- Fixed Issue 1 not being playable cause of the selection not updating
 - The typing SFX system has been updated!
   - Currently using a macro, so it's not dynamic.
     - But any audio files in the directory during compiling will be added and files in this format: `prefix-doesntmatter`
