@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.util.ChapterUtil;
 import osa.states.transition.SplashState;
 import osa.states.visualnovel.EventManager;
 import osa.states.visualnovel.DialogueSprite;
@@ -53,7 +54,7 @@ class DebugSubState extends TitleSubStateBase
 		var bgs:Array<String> = [];
 		var events:Array<String> = [];
 
-		for (issue in Save.ISSUE_ORDER_PREFERENCE)
+		for (issue in ChapterUtil.ISSUE_ORDER_PREFERENCE)
 		{
 			trace(issue);
 

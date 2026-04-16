@@ -5,6 +5,8 @@ import osa.save.Save;
 
 class ChapterUtil
 {
+	public static final ISSUE_ORDER_PREFERENCE:Array<String> = ['issue1', 'issue2', 'bonusissue1', 'issue3', 'issue4', 'issue5'];
+
 	public static final CHAPTER_ONE:Array<String> = [
 		'issue1',
 		'issue2',

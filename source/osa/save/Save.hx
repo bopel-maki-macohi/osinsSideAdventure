@@ -1,5 +1,6 @@
 package osa.save;
 
+import osa.util.ChapterUtil;
 import osa.states.visualnovel.EventManager;
 import osa.util.SortUtil;
 import flixel.FlxG;
@@ -40,7 +41,7 @@ class Save
 		beatIssue('issue1');
 
 		#if UNLOCK_EVERYTHING
-		for (issue in ISSUE_ORDER_PREFERENCE)
+		for (issue in ChapterUtil.ISSUE_ORDER_PREFERENCE)
 		{
 			addIssue(issue);
 			beatIssue(issue);
@@ -53,8 +54,6 @@ class Save
 
 		Main.FPSCounter.visible = options.get().fpsCounter;
 	}
-
-	public static final ISSUE_ORDER_PREFERENCE:Array<String> = ['issue1', 'issue2', 'bonusissue1', 'issue3', 'issue4',];
 
 	public static function addIssue(issuefile:String)
 	{
@@ -72,7 +71,7 @@ class Save
 
 	public static function sortIssues()
 	{
-		issues.get().sort((a, b) -> SortUtil.defaultsAlphabetically(ISSUE_ORDER_PREFERENCE, a, b));
+		issues.get().sort((a, b) -> SortUtil.defaultsAlphabetically(ChapterUtil.ISSUE_ORDER_PREFERENCE, a, b));
 	}
 
 	public static function removeField(field:String)
