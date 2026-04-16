@@ -2,6 +2,7 @@
 
 - **Added Issue 5 (Unlocked after playing Issue 4)**
 
+- The FPS text now shares the same font as the game
 - Added "setDialogueSFX" default event for issues
 - Fixed Issue 1 not being playable cause of the selection not updating
 - The typing SFX system has been updated!

@@ -1,3 +1,4 @@
+import flixel.system.FlxAssets;
 import osa.util.Constants;
 import lime.app.Application;
 import flixel.FlxG;
@@ -15,6 +16,7 @@ class Main extends Sprite
 		super();
 
 		FPSCounter = new FPS(5, 5, FlxColor.WHITE);
+		FPSCounter.defaultTextFormat = new openfl.text.TextFormat(FlxAssets.FONT_DEFAULT, 12, FlxColor.WHITE);
 
 		FlxG.stage.window.title = '${Application.current.meta.get('name')} ${Application.current.meta.get('version')}';
 
