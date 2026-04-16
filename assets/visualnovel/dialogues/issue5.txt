@@ -1,7 +1,7 @@
-Are you two okay?;_;issue4/larocSave/sky
+Are you two okay?;_;issue4/lorocSave/sky
 
-Yes...?;issue5/tirok-worried;issue4/larocSave/sky
-NO.;issue5/osin-pissed;issue4/larocSave/sky
+Yes...?;issue5/tirok-worried;issue4/lorocSave/sky
+NO.;issue5/osin-pissed;issue4/lorocSave/sky
 
 Sorry. I'm still kinda new to this hero thing,;issue5/laroc-whoops;issue5-mountainShot
 I saw him heading over here but I wanted to sneak up on him and beat him.;issue5/laroc-yappin;issue5-mountainShot
@@ -19,4 +19,4 @@ Last time we were here it was just me, Sinco, and that kid from Boredom City who
 
 I dont... know...;issue5/laroc-uh;issue5-mountainShot
 
-;issue5/osin-temptedyell;issue5-mountainShot
+.....;issue5/osin-temptedyell;issue5-mountainShot

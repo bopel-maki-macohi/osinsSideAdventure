@@ -12,6 +12,8 @@ class EventManager extends FlxSpriteGroup
 		'setDialogueSpeed' => new SetDialogueSpeed(),
 		'resetDialogueSpeed' => new ResetDialogueSpeed(),
 		'setDialogueBoxHeightPadding' => new SetDialogueBoxHeightPadding(),
+		'setDialogueSFX' => new SetDialogueSFX(),
+
 		'issue1Intro' => new Issue1Intro(),
 		'issue1EstablishingShot' => new Issue1EstablishingShot(),
 		'issue2EndSequence' => new Issue2EndSequence(),

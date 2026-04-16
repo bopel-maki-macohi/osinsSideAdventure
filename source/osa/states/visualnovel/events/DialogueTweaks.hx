@@ -41,3 +41,17 @@ class SetDialogueBoxHeightPadding extends EventRunner
 		_game.changeLine(1);
 	}
 }
+
+class SetDialogueSFX extends EventRunner
+{
+	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)
+	{
+		super.runDialogueEvent(eventManager, params);
+
+		if (_game == null)
+			return;
+
+		_game.setDialogueSFX(params[0] ?? 'default');
+		_game.changeLine(1);
+	}
+}

@@ -45,9 +45,6 @@ class Issue4 extends EventRunner
 
 			case 14, 15:
 				FlxG.sound.play('sounds/loroc-flyingSfx'.visualNovelAsset().audioFile(), 1, false, null, true, contLine);
-
-			case 16:
-				_game.setDialogueSFX('loroc');
 		}
 	}
 
