@@ -1,6 +1,10 @@
 package osa.util.macros;
 
 #if !display
+
+/**
+ * There's no mod support yet so this stays a macro >:)
+ */
 class TypingSoundMacro {
     public static macro function getTypingSoundMap()
     {
