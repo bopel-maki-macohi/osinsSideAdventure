@@ -30,6 +30,7 @@ class Issue2EndSequence extends EventRunner
 
 						_game._dialogueBG.build(null);
 
+						_game.setDialogueSFX('default');
 						_game._dialogueText.resetText('Issue 2 Secret unlocked.');
 						_game._dialogueText.start(0.01);
 					}
