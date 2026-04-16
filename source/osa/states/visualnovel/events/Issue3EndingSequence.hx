@@ -29,4 +29,12 @@ class Issue3EndingSequence extends EventRunner
 		if (validEnd)
 			Save.addIssue('issue4');
 	}
+
+	override function onBeatIssue(issue:String)
+	{
+		super.onBeatIssue(issue);
+
+		if (issue == 'issue3')
+			Save.addIssue('issue4');
+	}
 }

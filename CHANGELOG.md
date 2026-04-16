@@ -1,4 +1,6 @@
-# 0.10.0 (4/16/2026)
+# 0.9.5 (4/15/2026)
+
+- Fixed Issue 3 not unlocking Issue 4 if you startup the game with issue3 beat
 
 # 0.9.4 (4/15/2026)
 
