@@ -1,14 +1,22 @@
 Are you two okay?;_;issue4/larocSave/sky
 
-Yes...?;issue5/tirok-worried;issue5/larocSave-sky-backdrop
-NO.;issue5/osin-pissed;issue5/larocSave-sky-backdrop
+Yes...?;issue5/tirok-worried;issue4/larocSave/sky
+NO.;issue5/osin-pissed;issue4/larocSave/sky
 
-Sorry. I'm still kinda new to this hero thing,;issue5/laroc-whoops;issue5/larocSave-sky-backdrop
-I saw him heading over here but I wanted to sneak up on him and beat him.;issue5/laroc-yappin;issue5/larocSave-sky-backdrop
-I had no idea there were people left.;issue5/laroc-woah;issue5/larocSave-sky-backdrop
-Let alone someone who could keep Thunderbolt occupied.;issue5/laroc-impressed;issue5/larocSave-sky-backdrop
+Sorry. I'm still kinda new to this hero thing,;issue5/laroc-whoops;issue5-mountainShot
+I saw him heading over here but I wanted to sneak up on him and beat him.;issue5/laroc-yappin;issue5-mountainShot
+I had no idea there were people left in this area.;issue5/laroc-woah;issue5-mountainShot
+Let alone someone who could keep Thunderbolt occupied.;issue5/laroc-impressed;issue5-mountainShot
 
-That name's stupid;issue5/osin-meh;issue5/larocSave-sky-backdrop
-He named himself, not me.;issue5/laroc-uh;issue5/larocSave-sky-backdrop
+That name's stupid;issue3/osin-turnt;issue5-mountainShot
+He named himself, not me.;issue5/laroc-uh;issue5-mountainShot
 
-I see.;issue5/tirok-worried;issue5/larocSave-sky-backdrop
+I see.;issue5/tirok-worried;issue5-mountainShot
+
+So what the fuck is his deal?;issue3/osin-yell;issue5-mountainShot
+Who the hell even is he?;issue3/osin-yell-attitude;issue5-mountainShot
+Last time we were here it was just me, Sinco, and that kid from Boredom City who were speedsters;issue3/osin-yell-attitude;issue5-mountainShot
+
+I dont... know...;issue5/laroc-uh;issue5-mountainShot
+
+;issue5/osin-temptedyell;issue5-mountainShot
