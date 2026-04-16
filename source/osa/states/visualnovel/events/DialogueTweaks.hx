@@ -51,7 +51,7 @@ class SetDialogueSFX extends EventRunner
 		if (_game == null)
 			return;
 
-		_game.setDialogueSFX(params[0] ?? 'default');
 		_game.changeLine(1);
+		_game.setDialogueSFX(params[0] ?? 'default');
 	}
 }
