@@ -22,5 +22,5 @@ _;_;issue4/looting/tirok-armor
 _;_;issue4/lorocSave/lab
 
 _;_;issue4/lorocSave/sky
-setDialogueSFX;loroc
+event_setDialogueSFX;loroc
 Are you two okay?;_;issue4/lorocSave/sky
