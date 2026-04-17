@@ -3,7 +3,7 @@ package osa.states.visualnovel.events;
 import flixel.FlxG;
 import osa.save.Save;
 
-class Issue3EndingSequence extends EventRunner
+class Issue3EndingSequence extends IssueEventRunner
 {
 	override public function new()
 	{
@@ -22,19 +22,10 @@ class Issue3EndingSequence extends EventRunner
 		});
 	}
 
-	override function onEnd(eventManager:EventManager, validEnd:Bool)
+	override function unlockIssues(issue:String)
 	{
-		super.onEnd(eventManager, validEnd);
+		super.unlockIssues(issue);
 
-		if (validEnd)
-			Save.addIssue('issue4');
-	}
-
-	override function onBeatIssue(issue:String)
-	{
-		super.onBeatIssue(issue);
-
-		if (issue == 'issue3')
-			Save.addIssue('issue4');
+		Save.addIssue('issue4');
 	}
 }
