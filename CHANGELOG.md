@@ -3,6 +3,7 @@
 - **Added Issue 6 (Unlocked after playing Issue 5)**
 - **Added Bonus Issue 2 (Unlocked while playing Issue 5)**
 
+- `onCreate` for events is now run right before the inital VNState `changeLine` call
 - Added more splash texts
 - At the end of Issue 2, if you perform the actions to unlock Bonus Issue 1, the mouse is now hidden afterwards
 - Tile Scrolling BG tile images are no longer perm-cached

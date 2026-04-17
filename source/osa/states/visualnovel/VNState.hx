@@ -108,7 +108,6 @@ class VNState extends OSAState
 		_dialogueContinueHand.updateHitbox();
 
 		_eventManager = new EventManager();
-		_eventManager.onCreate();
 
 		_holdToExit = new HoldToPerformGadge(FlxColor.RED, function()
 		{
@@ -127,6 +126,7 @@ class VNState extends OSAState
 		_dialogueUIGroup.add(_dialogueContinueHand);
 		_dialogueUIGroup.add(_holdToExit);
 
+		_eventManager.onCreate();
 		changeLine(0);
 
 		super.create();
