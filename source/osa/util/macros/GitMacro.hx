@@ -11,7 +11,7 @@ class GitMacro
 		var process = new sys.io.Process('git', ['rev-parse', 'HEAD']);
 		if (process.exitCode() != 0)
 		{
-			trace('Could not get the git commit... Is this an actual git repo?', pos);
+			trace('Could not get the git commit... Is this an actual git repo?');
 		}
 
 		commitHash = process.stdout.readLine().substr(0, 7);
@@ -31,7 +31,7 @@ class GitMacro
 		var process = new sys.io.Process('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
 		if (process.exitCode() != 0)
 		{
-			trace('Could not get the git branch... Is this an actual git repo?', pos);
+			trace('Could not get the git branch... Is this an actual git repo?');
 		}
 
 		gitBranch = process.stdout.readLine();
