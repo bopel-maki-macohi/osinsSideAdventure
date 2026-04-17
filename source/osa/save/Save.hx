@@ -47,6 +47,7 @@ class Save
 			beatIssue(issue);
 		}
 		beatIssue('issue2-bonus');
+		beatIssue('issue5-bonus');
 		#end
 
 		for (issue in beatissues.get())
