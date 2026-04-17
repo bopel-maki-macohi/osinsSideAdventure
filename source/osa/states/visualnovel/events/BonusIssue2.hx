@@ -53,14 +53,16 @@ class BonusIssue2 extends IssueEventRunner
 		{
 			FlxTimer.wait(.1 + ((12 - _game._dialogueEntry) / 10), () ->
 			{
-				_game.changeLine(1);
+				if (_game != null)
+					_game.changeLine(1);
 			});
 		}
 		else
 		{
 			FlxTimer.wait(.2, () ->
 			{
-				_game.changeLine(1);
+				if (_game != null)
+					_game.changeLine(1);
 			});
 		}
 	}
