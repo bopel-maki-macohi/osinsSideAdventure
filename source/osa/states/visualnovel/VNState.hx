@@ -228,7 +228,7 @@ class VNState extends OSAState
 			}
 
 		_dialogueText.sounds = [];
-		_dialogueText.finishSounds = false;
+		_dialogueText.finishSounds = typingSoundMapID == 'default';
 
 		for (sound in Constants.TYPING_SOUNDS.get(typingSoundMapID))
 			_dialogueText.sounds.push(FlxG.sound.load(sound.audioFile().visualNovelAsset()));
