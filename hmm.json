@@ -31,6 +31,11 @@
       "version": null
     },
     {
+      "name": "hxvlc",
+      "type": "haxelib",
+      "version": null
+    },
+    {
       "name": "openfl",
       "type": "git",
       "dir": null,
