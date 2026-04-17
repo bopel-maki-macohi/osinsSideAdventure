@@ -45,6 +45,12 @@ class AssetUtil
 		var file:String = text.textFile().readText();
 		var lines:Array<String> = [];
 
+		if (file == null)
+		{
+			trace('Null file content: $file');
+			return [];
+		}
+
 		for (line in file.split('\n'))
 			if (line.trim().length > 0)
 				lines.push(line.trim());
