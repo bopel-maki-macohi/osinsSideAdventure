@@ -23,7 +23,7 @@ class TileScrollBG extends FlxBackdrop
 	{
 		super();
 
-		this._tile = 'tile'.menuAsset();
+		this._tile = 'tiles/tile'.menuAsset();
 
 		this.velocity = velocity;
 
@@ -38,6 +38,7 @@ class TileScrollBG extends FlxBackdrop
 
 		if (tile != null)
 			tsb._tile = tile;
+
 		if (parent != null)
 		{
 			tsb._parent = parent;

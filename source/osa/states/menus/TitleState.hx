@@ -47,7 +47,7 @@ class TitleState extends OSAState
 
 	override function create()
 	{
-		_titleTileScrollBG = new TileScrollBG(FlxPoint.get(25, 25), true);
+		_titleTileScrollBG = TileScrollBG.build(FlxPoint.get(25, 25), null, null, true);
 
 		_logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
 		_logo.screenCenter();
@@ -71,16 +71,16 @@ class TitleState extends OSAState
 
 		add(_titleTileScrollBG);
 
-		_debugTileScrollBG = TileScrollBG.build(null, 'tile-sinco'.menuAsset(), _titleTileScrollBG);
+		_debugTileScrollBG = TileScrollBG.build(null, 'tiles/tile-sinco'.menuAsset(), _titleTileScrollBG);
 		_debugTileScrollBG.alpha = 0;
 
-		_storymenuTileScrollBG = TileScrollBG.build(null, 'tile-osin'.menuAsset(), _titleTileScrollBG);
+		_storymenuTileScrollBG = TileScrollBG.build(null, 'tiles/tile-osin'.menuAsset(), _titleTileScrollBG);
 		_storymenuTileScrollBG.alpha = 0;
 
-		_creditsTileScrollBG = TileScrollBG.build(null, 'tile-tirok'.menuAsset(), _titleTileScrollBG);
+		_creditsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-tirok'.menuAsset(), _titleTileScrollBG);
 		_creditsTileScrollBG.alpha = 0;
 
-		_optionsTileScrollBG = TileScrollBG.build(null, 'tile-loroc'.menuAsset(), _titleTileScrollBG);
+		_optionsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-loroc'.menuAsset(), _titleTileScrollBG);
 		_optionsTileScrollBG.alpha = 0;
 
 		add(_debugTileScrollBG);
