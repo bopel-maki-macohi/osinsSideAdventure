@@ -27,7 +27,7 @@ class TypingSoundMacro {
             output.get(filePrefix).push('$subdirectory/${haxe.io.Path.withoutExtension(file)}');
         }
 
-        trace('Output: ${output}');
+        trace('Typing Sound Keys: ${[for (key => value in output) key]}');
         #end
 
         return macro $v{output};
