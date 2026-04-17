@@ -22,8 +22,14 @@ class ListFileMacro
 
 			for (str in contents.split('\n'))
 			{
-				if (str.trim().length > 0 && str.trim() != null)
-					list.push(str.trim());
+				if (str == null)
+					continue;
+				if (str.trim() == null)
+					continue;
+				if (str.trim().length < 1)
+					continue;
+
+				list.push(str.trim());
 			}
 
 			trace('List File "$file" : $list');
