@@ -5,6 +5,7 @@
 0.10.2 but I compiled properly and it's fixes are there
 
 - Fixed StoryMenuSubState not having special fields in the crash handler
+- ChapterUtil List files are now built-in via macros :D
 
 # 0.10.2 (4/16/2026)
 
