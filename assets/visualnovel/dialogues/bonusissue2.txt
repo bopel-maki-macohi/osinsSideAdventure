@@ -1,19 +1,19 @@
-_;_;issue6/tempoCity-present
+_;_;bonusissue2/tempoCity-present
 
-_;_;issue6/tempoCity-badFuture
-_;_;issue6/tempoCity-present
-_;_;issue6/tempoCity-badFuture
-_;_;issue6/tempoCity-present
-_;_;issue6/tempoCity-badFuture
-_;_;issue6/tempoCity-badFuture
-_;_;issue6/tempoCity-present
-_;_;issue6/tempoCity-present
-_;_;issue6/tempoCity-present
-_;_;issue6/tempoCity-present
-_;_;issue6/tempoCity-badFuture
+_;_;bonusissue2/tempoCity-badFuture
+_;_;bonusissue2/tempoCity-present
+_;_;bonusissue2/tempoCity-badFuture
+_;_;bonusissue2/tempoCity-present
+_;_;bonusissue2/tempoCity-badFuture
+_;_;bonusissue2/tempoCity-badFuture
+_;_;bonusissue2/tempoCity-present
+_;_;bonusissue2/tempoCity-present
+_;_;bonusissue2/tempoCity-present
+_;_;bonusissue2/tempoCity-present
+_;_;bonusissue2/tempoCity-badFuture
 
-_;_;issue6/thunderbolt
+_;_;bonusissue2/thunderbolt
 
-_;_;issue6/thunderbolt-zoom
+_;_;bonusissue2/thunderbolt-zoom
 
-_;_;issue6/thunderbolt-turnaround
+_;_;bonusissue2/thunderbolt-turnaround
