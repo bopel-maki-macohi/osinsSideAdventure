@@ -48,9 +48,9 @@ class BonusIssue2 extends IssueEventRunner
 		if (_game == null)
 			return;
 
-		if (_game._dialogueEntry < 11)
+		if (_game._dialogueEntry < 12)
 		{
-			FlxTimer.wait(.1 + ((11 - _game._dialogueEntry) / 10), () ->
+			FlxTimer.wait(.1 + ((12 - _game._dialogueEntry) / 10), () ->
 			{
 				_game.changeLine(1);
 			});
@@ -68,7 +68,7 @@ class BonusIssue2 extends IssueEventRunner
 	{
 		super.update(eventManager, elapsed);
 
-		if (_game._dialogueEntry < 11)
+		if (_game._dialogueEntry < 12)
 			_game._dialogueTypingFinished = false;
 	}
 }
