@@ -14,16 +14,6 @@
 
 0.10.2 but I compiled properly and it's fixes are there
 
-- **Added Issue 6 (Unlocked after playing Issue 5)**
-- **Added Bonus Issue 2 (Unlocked while playing Issue 5)**
-
-- Added more splash texts
-- At the end of Issue 2, if you perform the actions to unlock Bonus Issue 1, the mouse is now hidden afterwards
-- Tile Scrolling BG tile images are no longer perm-cached
-- Tile Scrolling BG tile images have been moved to a `tiles` subfolder of `menus`
-- Fixed StoryMenuSubState not having special fields in the crash handler
-- ChapterUtil List files are now built-in via macros :D
-
 # 0.10.2 (4/16/2026)
 
 - Image rendering on web is now pixel-perfect
