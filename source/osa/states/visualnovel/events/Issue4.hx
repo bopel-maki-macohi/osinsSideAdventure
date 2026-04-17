@@ -4,7 +4,7 @@ import osa.save.Save;
 import flixel.util.FlxTimer;
 import flixel.FlxG;
 
-class Issue4 extends EventRunner
+class Issue4 extends IssueEventRunner
 {
 	override public function new()
 	{
@@ -58,19 +58,10 @@ class Issue4 extends EventRunner
 				_game._dialogueTypingFinished = false;
 	}
 
-	override function onEnd(eventManager:EventManager, validEnd:Bool)
+	override function unlockIssues(issue:String)
 	{
-		super.onEnd(eventManager, validEnd);
+		super.unlockIssues(issue);
 
-		if (validEnd)
-			Save.addIssue('issue5');
-	}
-
-	override function onBeatIssue(issue:String)
-	{
-		super.onBeatIssue(issue);
-
-		if (issue == 'issue4')
-			Save.addIssue('issue5');
+		Save.addIssue('issue5');
 	}
 }

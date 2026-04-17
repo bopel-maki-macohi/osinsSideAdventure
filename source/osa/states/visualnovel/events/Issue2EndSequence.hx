@@ -3,7 +3,7 @@ package osa.states.visualnovel.events;
 import osa.save.Save;
 import flixel.FlxG;
 
-class Issue2EndSequence extends EventRunner
+class Issue2EndSequence extends IssueEventRunner
 {
 	override public function new()
 	{
@@ -38,32 +38,17 @@ class Issue2EndSequence extends EventRunner
 			}
 	}
 
-	override function onEnd(eventManager:EventManager, validEnd:Bool)
+	override function unlockIssues(issue:String)
 	{
-		super.onEnd(eventManager, validEnd);
+		super.unlockIssues(issue);
 
-		if (validEnd)
+		if (_game?._dialogueCharacter?._id == 'issue2/osin-glare-data' || issue == 'issue2-bonus')
 		{
-			if (_game != null)
-				if (_game._dialogueCharacter._id == 'issue2/osin-glare-data')
-				{
-					Save.addIssue('bonusissue1');
-					Save.beatIssue('issue2-bonus');
-				}
-
-			Save.addIssue('issue3');
-		}
-	}
-
-	override function onBeatIssue(issue:String)
-	{
-		super.onBeatIssue(issue);
-
-		if (issue == 'issue2')
-			Save.addIssue('issue3');
-
-		if (issue == 'issue2-bonus')
+			Save.beatIssue('issue2-bonus');
 			Save.addIssue('bonusissue1');
+		}
+
+		Save.addIssue('issue3');
 	}
 
 	override function runDialogueEvent(eventManager:EventManager, ?params:Array<String>)

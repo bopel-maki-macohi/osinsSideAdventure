@@ -1,29 +1,18 @@
 package osa.states.visualnovel.events;
 
 import osa.save.Save;
-import flixel.util.FlxTimer;
-import flixel.FlxG;
 
-class Issue5 extends EventRunner
+class Issue5 extends IssueEventRunner
 {
 	override public function new()
 	{
 		super(ISSUES(['issue5']));
 	}
 
-	override function onEnd(eventManager:EventManager, validEnd:Bool)
+	override function unlockIssues(issue:String)
 	{
-		super.onEnd(eventManager, validEnd);
+		super.unlockIssues(issue);
 
-		if (validEnd)
-			Save.addIssue('issue6');
-	}
-
-	override function onBeatIssue(issue:String)
-	{
-		super.onBeatIssue(issue);
-
-		if (issue == 'issue5')
-			Save.addIssue('issue6');
+		Save.addIssue('issue6');
 	}
 }
