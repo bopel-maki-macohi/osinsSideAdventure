@@ -50,6 +50,8 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="flixel-controls" />
 
+	<haxelib name="hxvlc" if="desktop" />
+
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app preloader="flixel.system.FlxPreloader" />
