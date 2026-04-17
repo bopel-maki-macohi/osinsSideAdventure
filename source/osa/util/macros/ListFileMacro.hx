@@ -8,13 +8,15 @@ class ListFileMacro
 		var list:Array<String> = [];
 
 		#if !display
-		if (!sys.FileSystem.exists(file))
+		final path:String = 'dev/macros/listfiles/$file.txt';
+
+		if (!sys.FileSystem.exists(path))
 		{
 			trace('Missing List File : $file');
 		}
 		else
 		{
-			var contents:String = sys.io.File.getContent(file);
+			var contents:String = sys.io.File.getContent(path);
 
 			for (str in contents.split('\n'))
 			{

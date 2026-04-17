@@ -17,7 +17,7 @@ class ChapterUtil
 		'issue6'
 	];
 
-	public static final CHAPTER_ONE:Array<String> = ListFileMacro.getListFile('listfiles/chapter_one'.textFile().miscAsset());
+	public static final CHAPTER_ONE:Array<String> = ListFileMacro.getListFile('chapter_one');
 
 	public static final CHAPTER_MAP:Map<String, Array<String>> = ['Chapter 1' => CHAPTER_ONE,];
 
