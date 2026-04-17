@@ -64,6 +64,11 @@ class InitState extends OSAState
 		#if DISABLE_OUTDATEDSTATE
 		osa.states.menus.OutdatedState.SEEN = true;
 		#end
+
+		#if web
+		// pixel perfect render fix!
+		FlxG.stage.application.window.element.style.setProperty("image-rendering", "pixelated");
+		#end
 	}
 
 	function leave()
