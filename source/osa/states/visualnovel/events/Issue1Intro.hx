@@ -7,7 +7,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.FlxG;
 
-class Issue1Intro extends EventRunner
+class Issue1Intro extends IssueEventRunner
 {
 	override public function new()
 	{

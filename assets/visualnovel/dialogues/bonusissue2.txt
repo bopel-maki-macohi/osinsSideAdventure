@@ -1,1 +1,19 @@
+_;_;issue6/tempoCity-present
 
+_;_;issue6/tempoCity-badFuture
+_;_;issue6/tempoCity-present
+_;_;issue6/tempoCity-badFuture
+_;_;issue6/tempoCity-present
+_;_;issue6/tempoCity-badFuture
+_;_;issue6/tempoCity-badFuture
+_;_;issue6/tempoCity-present
+_;_;issue6/tempoCity-present
+_;_;issue6/tempoCity-present
+_;_;issue6/tempoCity-present
+_;_;issue6/tempoCity-badFuture
+
+_;_;issue6/thunderbolt
+
+_;_;issue6/thunderbolt-zoom
+
+_;_;issue6/thunderbolt-turnaround
