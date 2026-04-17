@@ -123,6 +123,7 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public function finishVideo(?transitionTime:Float = 0.5)
 	{
+		#if (html5 || hxvlc)
 		if (_vid != null)
 		{
 			#if hxvlc
@@ -133,6 +134,7 @@ class VideoCutscene extends FlxSpriteGroup
 			_vid.destroy();
 		}
 		_vid = null;
+		#end
 
 		FlxTween.tween(_blackScreen, {alpha: 0}, transitionTime, {
 			onComplete: t ->
