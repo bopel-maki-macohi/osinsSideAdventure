@@ -6,10 +6,12 @@ I guess.;issue6/osin-staresky;issue5-mountainShot
 Thanks for the jacket by the way.;issue6/osin-staresky;issue5-mountainShot
 You're welcome.;issue6/tirok-chill;issue5-mountainShot
 So...;issue6/osin-staresky;issue5-mountainShot
+event_setDialogueBoxHeightPadding;0.4
 What's the plan?;issue6/osin-crossarm;issue5-mountainShot
-event_setDialogueBoxHeightPadding;0.1
+event_setDialogueBoxHeightPadding;0.2
 Well, he's always around Tempo City so maybe he has a base somewhere there?;issue6/loroc-thinking;issue5-mountainShot
 Who wouldn't have their Base close to where they head the most?;issue6/tirok-obviously;issue5-mountainShot
+event_setDialogueBoxHeightPadding;0.1
 Yeah!;issue5/loroc-impressed;issue5-mountainShot
 Yeah?;issue6/loroc-uhm;issue5-mountainShot
 Yeah.;issue6/osin-ohyeah;issue5-mountainShot
