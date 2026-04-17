@@ -218,7 +218,10 @@ class OSACache
 			return;
 
 		texture.persist = true;
+
+		#if debug
 		trace('Perm cached texture: $key');
+		#end
 
 		forceRender(texture);
 
@@ -242,7 +245,10 @@ class OSACache
 			return;
 
 		texture.destroyOnNoUse = true;
+		
+		#if debug
 		trace('Temp cached texture: $key');
+		#end
 
 		forceRender(texture);
 

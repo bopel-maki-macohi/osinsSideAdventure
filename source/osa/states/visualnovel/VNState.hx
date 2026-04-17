@@ -233,7 +233,7 @@ class VNState extends OSAState
 		for (sound in Constants.TYPING_SOUNDS.get(typingSoundMapID))
 			_dialogueText.sounds.push(FlxG.sound.load(sound.audioFile().visualNovelAsset()));
 
-		trace('new typing sound map id: $typingSoundMapID');
+		// trace('new typing sound map id: $typingSoundMapID');
 	}
 
 	function resetText()
@@ -281,7 +281,7 @@ class VNState extends OSAState
 
 	public function onEnd(validEnd:Bool)
 	{
-		trace('End');
+		// trace('End');
 
 		_eventManager.onEnd(validEnd);
 

@@ -45,7 +45,7 @@ class EventManager extends FlxSpriteGroup
 
 		if (events.exists(event))
 		{
-			trace('Running dialogue event: $event');
+			// trace('Running dialogue event: $event');
 			events.get(event)?.runDialogueEvent(this, params);
 			return true;
 		}
