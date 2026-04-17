@@ -1,4 +1,4 @@
-package osa.states.visualnovel;
+package osa.states.visualnovel.events.runners;
 
 enum EventRunnerDialogueFile
 {
