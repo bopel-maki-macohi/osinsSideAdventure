@@ -3,7 +3,7 @@
 - **Added Issue 6 (Unlocked after playing Issue 5)**
 - **Added Bonus Issue 2 (Unlocked through Issue 5)**
 
-- Typing sounds are no longer perm-cached
+- Typing sounds are no longer perm-cached (or cached at all)
 - The default typing sound map id (the OG typing sounds) is now allowed to finish
 - `onCreate` for events is now run right before the inital VNState `changeLine` call
 - Added more splash texts
