@@ -1,16 +1,16 @@
-_;_;bonusissue2/tempoCity-present
+_;_;bonusissue2/tempoCity-past
 
-_;_;bonusissue2/tempoCity-badFuture
 _;_;bonusissue2/tempoCity-present
-_;_;bonusissue2/tempoCity-badFuture
+_;_;bonusissue2/tempoCity-past
 _;_;bonusissue2/tempoCity-present
-_;_;bonusissue2/tempoCity-badFuture
-_;_;bonusissue2/tempoCity-badFuture
+_;_;bonusissue2/tempoCity-past
 _;_;bonusissue2/tempoCity-present
 _;_;bonusissue2/tempoCity-present
+_;_;bonusissue2/tempoCity-past
+_;_;bonusissue2/tempoCity-past
+_;_;bonusissue2/tempoCity-past
+_;_;bonusissue2/tempoCity-past
 _;_;bonusissue2/tempoCity-present
-_;_;bonusissue2/tempoCity-present
-_;_;bonusissue2/tempoCity-badFuture
 
 _;_;bonusissue2/thunderbolt
 
