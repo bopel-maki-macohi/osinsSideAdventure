@@ -1,5 +1,7 @@
 # Unreleased (4/2026)
 
+- Fixed Blurry Text
+
 # 0.10.1 (4/16/2026)
 
 - Git info ACTUALLY no longer displays in the Splash State now
