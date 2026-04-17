@@ -11,8 +11,6 @@ class TypingSoundMacro {
         var output:Map<String, Array<String>> = [];
 
         #if !display
-        var pos = haxe.macro.Context.currentPos();
-
         var basedirectory:String = 'assets/visualnovel/';
         var subdirectory:String = 'sounds/typing';
 
@@ -29,7 +27,7 @@ class TypingSoundMacro {
             output.get(filePrefix).push('$subdirectory/${haxe.io.Path.withoutExtension(file)}');
         }
 
-        haxe.macro.Context.info('Output: ${output}', pos);
+        trace('Output: ${output}');
         #end
 
         return macro $v{output};

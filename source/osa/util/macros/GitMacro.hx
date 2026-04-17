@@ -8,16 +8,14 @@ class GitMacro
 		var commitHash:String = '';
 
 		#if !display
-		var pos = haxe.macro.Context.currentPos();
-
 		var process = new sys.io.Process('git', ['rev-parse', 'HEAD']);
 		if (process.exitCode() != 0)
 		{
-			haxe.macro.Context.info('Could not get the git commit... Is this an actual git repo?', pos);
+			trace('Could not get the git commit... Is this an actual git repo?', pos);
 		}
 
 		commitHash = process.stdout.readLine().substr(0, 7);
-		haxe.macro.Context.info('Git commit: ${commitHash}', pos);
+		trace('Git commit: ${commitHash}');
 
 		process.close();
 		#end
@@ -30,16 +28,14 @@ class GitMacro
 		var gitBranch:String = '';
 
 		#if !display
-		var pos = haxe.macro.Context.currentPos();
-
 		var process = new sys.io.Process('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
 		if (process.exitCode() != 0)
 		{
-			haxe.macro.Context.info('Could not get the git branch... Is this an actual git repo?', pos);
+			trace('Could not get the git branch... Is this an actual git repo?', pos);
 		}
 
 		gitBranch = process.stdout.readLine();
-		haxe.macro.Context.info('Git branch: ${gitBranch}', pos);
+		trace('Git branch: ${gitBranch}');
 
 		process.close();
 		#end
@@ -52,12 +48,10 @@ class GitMacro
 		var gitBranch:Bool = true;
 
 		#if !display
-        var pos = haxe.macro.Context.currentPos();
-
 		var process = new sys.io.Process('git', ['diff', '--quiet']);
         
         gitBranch = process.exitCode(true) == 1;
-		haxe.macro.Context.info('Local Git: ${gitBranch}', pos);
+		trace('Local Git: ${gitBranch}');
 
 		process.close();
 		#end
