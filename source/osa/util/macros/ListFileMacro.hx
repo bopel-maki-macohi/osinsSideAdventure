@@ -5,7 +5,7 @@ class ListFileMacro
 {
 	public static macro function getListFile(file:String)
 	{
-		var file:Array<String> = [];
+		var list:Array<String> = [];
 
 		#if !display
 		if (!sys.FileSystem.exists(file))
@@ -25,7 +25,7 @@ class ListFileMacro
 		}
 		#end
 
-		return macro $v{file};
+		return macro $v{list};
 	}
 }
 #end
