@@ -12,6 +12,7 @@ import flixel.addons.text.FlxTypeText;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import osa.states.visualnovel.cutscenes.VideoCutscene;
 
 class VNState extends OSAState
 {
@@ -82,6 +83,8 @@ class VNState extends OSAState
 
 	public var _holdToExit:HoldToPerformGadge;
 
+	public var _videoCutscene:VideoCutscene;
+
 	override function create()
 	{
 		add(_dialogueBGGroup = new FlxSpriteGroup());
@@ -118,11 +121,13 @@ class VNState extends OSAState
 		});
 		_holdToExit.setPosition(FlxG.width - _holdToExit.width - 32, FlxG.height - _holdToExit.height - 32);
 
+		
 		_dialogueBGGroup.add(_dialogueBG = new DialogueSprite(false));
 		_dialogueCharacterGroup.add(_dialogueCharacter = new DialogueSprite(true));
 		_dialogueBoxGroup.add(_dialogueBox);
 		_dialogueBoxGroup.add(_dialogueText);
 		_dialogueFGGroup.add(_eventManager);
+		_dialogueFGGroup.add(_videoCutscene = new VideoCutscene());
 		_dialogueUIGroup.add(_dialogueContinueHand);
 		_dialogueUIGroup.add(_holdToExit);
 

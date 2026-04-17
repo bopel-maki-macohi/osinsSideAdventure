@@ -34,32 +34,6 @@ class VideoCutscene extends FlxSpriteGroup
 
 		_blackScreen = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		_blackScreen.scrollFactor.set();
-
-		#if hxvlc
-		_vid = new FlxVideoSprite(0, 0);
-
-		_vid.active = false;
-
-		_vid.bitmap.onEndReached.add(finishVideo.bind(0.5));
-
-		_vid.bitmap.onFormatSetup.add(function():Void
-		{
-			if (_vid.bitmap != null && _vid.bitmap.bitmapData != null)
-			{
-				final scale:Float = Math.min(FlxG.width / _vid.bitmap.bitmapData.width, FlxG.height / _vid.bitmap.bitmapData.height);
-
-				_vid.setGraphicSize(_vid.bitmap.bitmapData.width * scale, _vid.bitmap.bitmapData.height * scale);
-				_vid.updateHitbox();
-				_vid.screenCenter();
-			}
-		});
-
-		_vid.bitmap.onEncounteredError.add(function(msg:String):Void
-		{
-			trace('Video error: $msg');
-			finishVideo(0.5);
-		});
-		#end
 	}
 
 	public function play(cutscene:String)
@@ -102,6 +76,30 @@ class VideoCutscene extends FlxSpriteGroup
 	#if hxvlc
 	public function playNative(cutscene:String)
 	{
+		_vid = new FlxVideoSprite(0, 0);
+
+		_vid.active = false;
+
+		_vid.bitmap.onEndReached.add(finishVideo.bind(0.5));
+
+		_vid.bitmap.onFormatSetup.add(function():Void
+		{
+			if (_vid.bitmap != null && _vid.bitmap.bitmapData != null)
+			{
+				final scale:Float = Math.min(FlxG.width / _vid.bitmap.bitmapData.width, FlxG.height / _vid.bitmap.bitmapData.height);
+
+				_vid.setGraphicSize(_vid.bitmap.bitmapData.width * scale, _vid.bitmap.bitmapData.height * scale);
+				_vid.updateHitbox();
+				_vid.screenCenter();
+			}
+		});
+
+		_vid.bitmap.onEncounteredError.add(function(msg:String):Void
+		{
+			trace('Video error: $msg');
+			finishVideo(0.5);
+		});
+
 		if (_vid != null)
 		{
 			if (!members.contains(_vid))
@@ -123,45 +121,36 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public function finishVideo(?transitionTime:Float = 0.5)
 	{
-		#if (html5 || hxvlc)
-		if (_vid != null)
+		destroyVideo();
+
+		if (_blackScreen != null)
 		{
-			#if hxvlc
-			_vid.stop();
-			#end
-			if (members.contains(_vid))
-				remove(_vid);
-			_vid.destroy();
+			FlxTween.tween(_blackScreen, {alpha: 0}, transitionTime, {
+				onComplete: t ->
+				{
+					if (members.contains(_blackScreen))
+						remove(_blackScreen);
+				}
+			});
 		}
-		_vid = null;
-		#end
-
-		FlxTween.tween(_blackScreen, {alpha: 0}, transitionTime, {
-			onComplete: t ->
-			{
-				if (members.contains(_blackScreen))
-					remove(_blackScreen);
-
-				if (_finishCallback != null)
-					_finishCallback.dispatch();
-			}
-		});
+		else
+		{
+			if (_finishCallback != null)
+				_finishCallback.dispatch();
+		}
 	}
 
 	public function pauseVideo():Void
 	{
-		#if html5
+		#if (html5 || hxvlc)
 		if (_vid != null)
 		{
+			#if html5
 			_vid.pauseVideo();
-			// onVideoPaused.dispatch();
-		}
-		#end
-
-		#if hxvlc
-		if (_vid != null)
-		{
+			#elseif hxvlc
 			_vid.pause();
+			#end
+
 			// onVideoPaused.dispatch();
 		}
 		#end
@@ -171,14 +160,7 @@ class VideoCutscene extends FlxSpriteGroup
 	{
 		_blackScreen.visible = false;
 
-		#if html5
-		if (_vid != null)
-		{
-			_vid.visible = false;
-		}
-		#end
-
-		#if hxvlc
+		#if (html5 || hxvlc)
 		if (_vid != null)
 		{
 			_vid.visible = false;
@@ -190,14 +172,7 @@ class VideoCutscene extends FlxSpriteGroup
 	{
 		_blackScreen.visible = false;
 
-		#if html5
-		if (_vid != null)
-		{
-			_vid.visible = true;
-		}
-		#end
-
-		#if hxvlc
+		#if (html5 || hxvlc)
 		if (_vid != null)
 		{
 			_vid.visible = true;
@@ -207,18 +182,15 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public function resumeVideo():Void
 	{
-		#if html5
+		#if (hxvlc || html5)
 		if (_vid != null)
 		{
+			#if html5
 			_vid.resumeVideo();
-			// onVideoResumed.dispatch();
-		}
-		#end
-
-		#if hxvlc
-		if (_vid != null)
-		{
+			#elseif hxvlc
 			_vid.resume();
+			#end
+
 			// onVideoResumed.dispatch();
 		}
 		#end
@@ -226,31 +198,17 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public function destroyVideo()
 	{
-		#if html5
-		if (_vid != null)
-			remove(_vid);
-		#end
-
-		#if hxvlc
-		if (_vid != null)
-		{
-			_vid.stop();
-			remove(_vid);
-		}
-		#end
-
 		#if (html5 || hxvlc)
 		if (_vid != null)
 		{
+			#if hxvlc
+			_vid.stop();
+			#end
+
+			remove(_vid);
 			_vid?.destroy();
 			_vid = null;
 		}
 		#end
-
-		if (_blackScreen != null)
-		{
-			remove(_blackScreen);
-			_blackScreen = null;
-		}
 	}
 }
