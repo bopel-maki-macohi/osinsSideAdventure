@@ -13,6 +13,9 @@ import hxvlc.flixel.FlxVideoSprite;
 #end
 import flixel.FlxSprite;
 
+/**
+ * majority yoinked from fnf
+ */
 class VideoCutscene extends FlxSpriteGroup
 {
 	public var _blackScreen:FlxSprite;
@@ -143,71 +146,109 @@ class VideoCutscene extends FlxSpriteGroup
 		});
 	}
 
-	public function restartVideo():Void
-	{
-		if (_vid != null)
-		{
-			#if html5
-			_vid.restartVideo();
-			_vid.resumeVideo();
-			#end
-
-			#if hxvlc
-			_vid.bitmap.time = 0;
-			_vid.resume();
-			#end
-		}
-
-		//   onVideoRestarted.dispatch();
-	}
-
 	public function pauseVideo():Void
 	{
-		#if hxvlc
-		if (_vid == null)
-			return;
-
-		_vid.pause();
+		#if html5
+		if (_vid != null)
+		{
+			_vid.pauseVideo();
+			// onVideoPaused.dispatch();
+		}
 		#end
 
-		// onVideoPaused.dispatch();
+		#if hxvlc
+		if (_vid != null)
+		{
+			_vid.pause();
+			// onVideoPaused.dispatch();
+		}
+		#end
 	}
 
 	public function hideVideo():Void
 	{
 		_blackScreen.visible = false;
 
-		#if hxvlc
-		if (_vid == null)
-			return;
+		#if html5
+		if (_vid != null)
+		{
+			_vid.visible = false;
+		}
+		#end
 
-		_vid.visible = false;
+		#if hxvlc
+		if (_vid != null)
+		{
+			_vid.visible = false;
+		}
 		#end
 	}
 
 	public function showVideo():Void
 	{
-		_blackScreen.visible = true;
+		_blackScreen.visible = false;
+
+		#if html5
+		if (_vid != null)
+		{
+			_vid.visible = true;
+		}
+		#end
 
 		#if hxvlc
-		if (_vid == null)
-			return;
-
-		_vid.visible = true;
+		if (_vid != null)
+		{
+			_vid.visible = true;
+		}
 		#end
 	}
 
 	public function resumeVideo():Void
 	{
-		if (_vid == null)
-			return;
-
-		#if hxvlc
-		_vid.resume();
-		#elseif html5
-		_vid.resumeVideo();
+		#if html5
+		if (_vid != null)
+		{
+			_vid.resumeVideo();
+			// onVideoResumed.dispatch();
+		}
 		#end
 
-		// onVideoResumed.dispatch();
+		#if hxvlc
+		if (_vid != null)
+		{
+			_vid.resume();
+			// onVideoResumed.dispatch();
+		}
+		#end
+	}
+
+	public function destroyVideo()
+	{
+		#if html5
+		if (_vid != null)
+			remove(_vid);
+		#end
+
+		#if hxvlc
+		if (_vid != null)
+		{
+			_vid.stop();
+			remove(_vid);
+		}
+		#end
+
+		#if (html5 || hxvlc)
+		if (_vid != null)
+		{
+			_vid?.destroy();
+			_vid = null;
+		}
+		#end
+
+		if (_blackScreen != null)
+		{
+			remove(_blackScreen);
+			_blackScreen = null;
+		}
 	}
 }
