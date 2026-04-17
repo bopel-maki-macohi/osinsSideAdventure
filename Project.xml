@@ -32,7 +32,7 @@
 	<define name="DISABLE_WINDOWTITLE_GIT" unless="debug" />
 	<define name="WINDOWTITLE_GIT" unless="DISABLE_WINDOWTITLE_GIT"/>
 
-	<define name="DISABLE_OUTDATEDSTATE" if="html5"/>
+	<define name="DISABLE_OUTDATEDSTATE" if="html5 || debug"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
