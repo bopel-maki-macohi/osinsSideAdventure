@@ -36,6 +36,15 @@ class VideoCutscene extends FlxSpriteGroup
 		_blackScreen.scrollFactor.set();
 	}
 
+	public function isPlaying():Bool
+	{
+		#if (html5 || hxvlc)
+		return _vid != null;
+		#else
+		return false;
+		#end
+	}
+
 	public function play(cutscene:String)
 	{
 		FlxTween.cancelTweensOf(_blackScreen);

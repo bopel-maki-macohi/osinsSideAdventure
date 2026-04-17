@@ -121,7 +121,6 @@ class VNState extends OSAState
 		});
 		_holdToExit.setPosition(FlxG.width - _holdToExit.width - 32, FlxG.height - _holdToExit.height - 32);
 
-		
 		_dialogueBGGroup.add(_dialogueBG = new DialogueSprite(false));
 		_dialogueCharacterGroup.add(_dialogueCharacter = new DialogueSprite(true));
 		_dialogueBoxGroup.add(_dialogueBox);
@@ -130,6 +129,11 @@ class VNState extends OSAState
 		_dialogueFGGroup.add(_videoCutscene = new VideoCutscene());
 		_dialogueUIGroup.add(_dialogueContinueHand);
 		_dialogueUIGroup.add(_holdToExit);
+
+		_videoCutscene._finishCallback.add(function()
+		{
+			onDialogueFinishTyping();
+		});
 
 		_eventManager.onCreate();
 		changeLine(0);
@@ -297,6 +301,9 @@ class VNState extends OSAState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (_videoCutscene.isPlaying() && _dialogueTypingFinished)
+			_dialogueTypingFinished = false;
 
 		if (_dialogueTypingFinished && controls.justPressed.ACCEPT)
 			changeLine(1);
