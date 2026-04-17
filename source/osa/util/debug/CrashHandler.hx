@@ -95,7 +95,7 @@ class CrashHandler
 
 		switch (currentState)
 		{
-			case 'osa.states.menus.storymenu.StoryMenuState':
+			case 'osa.states.menus.StoryMenuState':
 				stateFields = [
 					'_currentSelection',
 

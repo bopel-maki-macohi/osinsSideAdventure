@@ -1,5 +1,7 @@
 # 0.11 (4/17/2026)
 
+- Fixed StoryMenuSubState not having special fields in the crash handler
+
 # 0.10.2 (4/16/2026)
 
 - Image rendering on web is now pixel-perfect
