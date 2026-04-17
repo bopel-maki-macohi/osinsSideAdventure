@@ -1,7 +1,7 @@
 # 0.11 (4/17/2026)
 
 - **Added Issue 6 (Unlocked after playing Issue 5)**
-- **Added Bonus Issue 2 (Unlocked while playing Issue 5)**
+- **Added Bonus Issue 2 (Unlocked through Issue 5)**
 
 - The default typing sound map id (the OG typing sounds) is now allowed to finish
 - `onCreate` for events is now run right before the inital VNState `changeLine` call
