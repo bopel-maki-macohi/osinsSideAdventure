@@ -1,5 +1,3 @@
-event_issue4
-
 _;_;issue4/fight/duo-punch
 _;_;issue4/fight/duo-kick
 _;_;issue4/fight/thunderbolt-swing
