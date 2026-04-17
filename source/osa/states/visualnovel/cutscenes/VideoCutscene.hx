@@ -15,43 +15,43 @@ import flixel.FlxSprite;
 
 class VideoCutscene extends FlxSpriteGroup
 {
-	public var blackScreen:FlxSprite;
+	public var _blackScreen:FlxSprite;
 
 	#if hxvlc
-	public var vid:FlxVideoSprite;
+	public var _vid:FlxVideoSprite;
 	#elseif html5
-	public var vid:FlxVideo;
+	public var _vid:FlxVideo;
 	#end
 
-	public var finishCallback:FlxSignal = new FlxSignal();
+	public var _finishCallback:FlxSignal = new FlxSignal();
 
 	override public function new()
 	{
 		super();
 
-		blackScreen = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
-		blackScreen.scrollFactor.set();
+		_blackScreen = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+		_blackScreen.scrollFactor.set();
 
 		#if hxvlc
-		vid = new FlxVideoSprite(0, 0);
+		_vid = new FlxVideoSprite(0, 0);
 
-		vid.active = false;
+		_vid.active = false;
 
-		vid.bitmap.onEndReached.add(finishVideo.bind(0.5));
+		_vid.bitmap.onEndReached.add(finishVideo.bind(0.5));
 
-		vid.bitmap.onFormatSetup.add(function():Void
+		_vid.bitmap.onFormatSetup.add(function():Void
 		{
-			if (vid.bitmap != null && vid.bitmap.bitmapData != null)
+			if (_vid.bitmap != null && _vid.bitmap.bitmapData != null)
 			{
-				final scale:Float = Math.min(FlxG.width / vid.bitmap.bitmapData.width, FlxG.height / vid.bitmap.bitmapData.height);
+				final scale:Float = Math.min(FlxG.width / _vid.bitmap.bitmapData.width, FlxG.height / _vid.bitmap.bitmapData.height);
 
-				vid.setGraphicSize(vid.bitmap.bitmapData.width * scale, vid.bitmap.bitmapData.height * scale);
-				vid.updateHitbox();
-				vid.screenCenter();
+				_vid.setGraphicSize(_vid.bitmap.bitmapData.width * scale, _vid.bitmap.bitmapData.height * scale);
+				_vid.updateHitbox();
+				_vid.screenCenter();
 			}
 		});
 
-		vid.bitmap.onEncounteredError.add(function(msg:String):Void
+		_vid.bitmap.onEncounteredError.add(function(msg:String):Void
 		{
 			trace('Video error: $msg');
 			finishVideo(0.5);
@@ -61,10 +61,10 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public function play(cutscene:String)
 	{
-		FlxTween.cancelTweensOf(blackScreen);
-		blackScreen.alpha = 1;
-		if (!members.contains(blackScreen))
-			add(blackScreen);
+		FlxTween.cancelTweensOf(_blackScreen);
+		_blackScreen.alpha = 1;
+		if (!members.contains(_blackScreen))
+			add(_blackScreen);
 
 		#if hxvlc
 		playNative(cutscene);
@@ -80,11 +80,11 @@ class VideoCutscene extends FlxSpriteGroup
 	public function playWeb(cutscene:String)
 	{
 		// Video displays OVER the FlxState.
-		vid = new FlxVideo(cutscene);
+		_vid = new FlxVideo(cutscene);
 
-		if (vid != null)
+		if (_vid != null)
 		{
-			vid.finishCallback = finishVideo.bind(0.5);
+			_vid.finishCallback = finishVideo.bind(0.5);
 
 			// onVideoStarted.dispatch();
 		}
@@ -99,15 +99,15 @@ class VideoCutscene extends FlxSpriteGroup
 	#if hxvlc
 	public function playNative(cutscene:String)
 	{
-		if (vid != null)
+		if (_vid != null)
 		{
-			if (!members.contains(vid))
-				add(vid);
+			if (!members.contains(_vid))
+				add(_vid);
 
 			final fileOptions:Array<String> = [];
 
-			vid.load(cutscene, fileOptions);
-			vid.play();
+			_vid.load(cutscene, fileOptions);
+			_vid.play();
 			// onVideoStarted.dispatch();
 		}
 		else
@@ -120,41 +120,41 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public function finishVideo(?transitionTime:Float = 0.5)
 	{
-		if (vid != null)
+		if (_vid != null)
 		{
 			#if hxvlc
-			vid.stop();
+			_vid.stop();
 			#end
-			if (members.contains(vid))
-				remove(vid);
-			vid.destroy();
+			if (members.contains(_vid))
+				remove(_vid);
+			_vid.destroy();
 		}
-		vid = null;
+		_vid = null;
 
-		FlxTween.tween(blackScreen, {alpha: 0}, transitionTime, {
+		FlxTween.tween(_blackScreen, {alpha: 0}, transitionTime, {
 			onComplete: t ->
 			{
-				if (members.contains(blackScreen))
-					remove(blackScreen);
+				if (members.contains(_blackScreen))
+					remove(_blackScreen);
 
-				if (finishCallback != null)
-					finishCallback.dispatch();
+				if (_finishCallback != null)
+					_finishCallback.dispatch();
 			}
 		});
 	}
 
 	public function restartVideo():Void
 	{
-		if (vid != null)
+		if (_vid != null)
 		{
 			#if html5
-			vid.restartVideo();
-			vid.resumeVideo();
+			_vid.restartVideo();
+			_vid.resumeVideo();
 			#end
 
 			#if hxvlc
-			vid.bitmap.time = 0;
-			vid.resume();
+			_vid.bitmap.time = 0;
+			_vid.resume();
 			#end
 		}
 
@@ -164,10 +164,10 @@ class VideoCutscene extends FlxSpriteGroup
 	public function pauseVideo():Void
 	{
 		#if hxvlc
-		if (vid == null)
+		if (_vid == null)
 			return;
 
-		vid.pause();
+		_vid.pause();
 		#end
 
 		// onVideoPaused.dispatch();
@@ -175,37 +175,37 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public function hideVideo():Void
 	{
-		blackScreen.visible = false;
+		_blackScreen.visible = false;
 
 		#if hxvlc
-		if (vid == null)
+		if (_vid == null)
 			return;
 
-		vid.visible = false;
+		_vid.visible = false;
 		#end
 	}
 
 	public function showVideo():Void
 	{
-		blackScreen.visible = true;
+		_blackScreen.visible = true;
 
 		#if hxvlc
-		if (vid == null)
+		if (_vid == null)
 			return;
 
-		vid.visible = true;
+		_vid.visible = true;
 		#end
 	}
 
 	public function resumeVideo():Void
 	{
-		if (vid == null)
+		if (_vid == null)
 			return;
 
 		#if hxvlc
-		vid.resume();
+		_vid.resume();
 		#elseif html5
-		vid.resumeVideo();
+		_vid.resumeVideo();
 		#end
 
 		// onVideoResumed.dispatch();

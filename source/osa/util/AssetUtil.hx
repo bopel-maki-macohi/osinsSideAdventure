@@ -19,6 +19,9 @@ class AssetUtil
 	public static inline function jsonFile(file:String):String
 		return '$file.json';
 
+	public static inline function videoFile(file:String):String
+		return '$file.mp4';
+
 	public static inline function visualNovelAsset(file:String):String
 		return assetPath('visualnovel/$file');
 

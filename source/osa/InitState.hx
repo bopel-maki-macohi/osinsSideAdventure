@@ -1,5 +1,6 @@
 package osa;
 
+import osa.states.debug.TestVideoState;
 import osa.util.*;
 import osa.states.transition.SplashState;
 import osa.objects.RhythmManager;
@@ -88,6 +89,8 @@ class InitState extends OSAState
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		else if (MacroUtil.isDefined('TITLE'))
 			FlxG.switchState(() -> new TitleState());
+		else if (MacroUtil.isDefined('VIDEODEBUG'))
+			FlxG.switchState(() -> new TestVideoState());
 		else
 			FlxG.switchState(() -> new SplashState());
 	}
