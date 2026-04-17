@@ -21,7 +21,8 @@ class BonusIssue2 extends IssueEventRunner
 		crowdPanic.play();
 		crowdPanic.pause();
 
-		crowdPanic.onComplete = function() {
+		crowdPanic.onComplete = function()
+		{
 			// this'll be enough
 			_game.changeLine(100);
 		};
@@ -55,6 +56,13 @@ class BonusIssue2 extends IssueEventRunner
 				_game.changeLine(1);
 			});
 		}
+		else
+		{
+			FlxTimer.wait(.2, () ->
+			{
+				_game.changeLine(1);
+			});
+		}
 	}
 
 	override function onEnd(eventManager:EventManager, validEnd:Bool)
@@ -68,7 +76,6 @@ class BonusIssue2 extends IssueEventRunner
 	{
 		super.update(eventManager, elapsed);
 
-		if (_game._dialogueEntry < 12)
-			_game._dialogueTypingFinished = false;
+		_game._dialogueTypingFinished = false;
 	}
 }
