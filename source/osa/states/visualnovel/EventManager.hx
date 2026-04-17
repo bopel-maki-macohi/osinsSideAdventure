@@ -21,6 +21,8 @@ class EventManager extends FlxSpriteGroup
 		'issue3EndingSequence' => new Issue3EndingSequence(),
 		'issue4' => new Issue4(),
 		'issue5' => new Issue5(),
+		'bonus2' => new BonusIssue2(),
+		'issue6' => new Issue6(),
 	];
 
 	public function new()
