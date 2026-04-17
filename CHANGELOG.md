@@ -1,5 +1,7 @@
 # 0.11 (4/17/2026)
 
+- At the end of Issue 2, if you perform the actions to unlock Bonus Issue 1, the mouse is now hidden afterwards
+
 - Tile Scrolling BG tile images are no longer perm-cached
 - Tile Scrolling BG tile images have been moved to a `tiles` subfolder of `menus`
 - Fixed StoryMenuSubState not having special fields in the crash handler

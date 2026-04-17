@@ -7,7 +7,7 @@ class Issue2EndSequence extends IssueEventRunner
 {
 	override public function new()
 	{
-		super(ISSUES(['issue2', 'issue2-']));
+		super(ISSUES(['issue2', 'issue2-', 'issue2-bonus']));
 	}
 
 	override function update(eventManager:EventManager, elapsed:Float)
@@ -15,7 +15,7 @@ class Issue2EndSequence extends IssueEventRunner
 		super.update(eventManager, elapsed);
 
 		if (_game != null)
-			if (!_game._leaving && FlxG.mouse.visible && _game._dialogueCharacter._id == 'issue2/osin-glare')
+			if (!_game._leaving && FlxG.mouse.visible)
 			{
 				_game._dialogueCharacter.setColorTransform(1.0, 1.0, 1.0);
 
@@ -33,6 +33,8 @@ class Issue2EndSequence extends IssueEventRunner
 						_game.setDialogueSFX('default');
 						_game._dialogueText.resetText('Issue 2 Secret unlocked.');
 						_game._dialogueText.start(0.01);
+
+						FlxG.mouse.visible = false;
 					}
 				}
 			}
