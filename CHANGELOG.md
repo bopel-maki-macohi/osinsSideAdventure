@@ -4,6 +4,8 @@
 
 0.10.2 but I compiled properly and it's fixes are there
 
+- Tile Scrolling BG tile images are no longer perm-cached
+- Tile Scrolling BG tile images have been moved to a `tiles` subfolder of `menus`
 - Fixed StoryMenuSubState not having special fields in the crash handler
 - ChapterUtil List files are now built-in via macros :D
 

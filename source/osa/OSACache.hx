@@ -102,12 +102,6 @@ class OSACache
 
 		permCacheTexture('logo'.imageFile().menuAsset());
 
-		permCacheTexture('tile'.imageFile().menuAsset());
-		permCacheTexture('tile-osin'.imageFile().menuAsset());
-		permCacheTexture('tile-sinco'.imageFile().menuAsset());
-		permCacheTexture('tile-tirok'.imageFile().menuAsset());
-		permCacheTexture('tile-loroc'.imageFile().menuAsset());
-
 		permCacheIssueTextures();
 	}
 
