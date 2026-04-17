@@ -12,22 +12,16 @@
 
 	<icon path="dev/icon.png" />
 
+	<haxeflag name="--dce full" />
+
 	<define name="DISABLE_TITLE_WATERMARK_BLUR" unless="ENABLE_TITLE_WATERMARK_BLUR" />
 
 	<haxedef name="openfl-enable-handle-error" />
-
 	<define name="HXCPP_CHECK_POINTER" />
 	<define name="HXCPP_STACK_LINE" />
 	<define name="HXCPP_STACK_TRACE" />
 
-	<!--
-		Disable a macro in Lime that generates a random number for Assets.cache.version every build.
-	-->
-	<haxedef name="lime_disable_assets_version" />
-
 	<define name="SCREENSHOT_PLUGIN" if="desktop" />
-
-	<haxeflag name="--dce full" />
 
 	<define name="DISABLE_WINDOWTITLE_GIT" unless="debug" />
 	<define name="WINDOWTITLE_GIT" unless="DISABLE_WINDOWTITLE_GIT"/>
@@ -80,4 +74,6 @@
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 	<haxedef name="message.reporting" value="pretty" />
 
+	<haxedef name="lime_disable_assets_version" />
+	
 </project>
