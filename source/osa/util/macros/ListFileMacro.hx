@@ -20,7 +20,7 @@ class ListFileMacro
 
 			for (str in contents.split('\n'))
 			{
-				list.push(str);
+				list.push(str.trim());
 			}
 
 			trace('List File "$file" : $list');
