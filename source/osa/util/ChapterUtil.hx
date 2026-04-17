@@ -1,5 +1,6 @@
 package osa.util;
 
+import osa.util.macros.ListFileMacro;
 import flixel.math.FlxMath;
 import osa.save.Save;
 
@@ -16,16 +17,7 @@ class ChapterUtil
 		'issue6'
 	];
 
-	public static final CHAPTER_ONE:Array<String> = [
-		'issue1',
-		'issue2',
-		'issue3',
-		'issue4',
-		'issue5',
-		'issue6',
-		'bonusissue1',
-		'bonusissue2',
-	];
+	public static final CHAPTER_ONE:Array<String> = ListFileMacro.getListFile('listfiles/chapter_one'.textFile().miscAsset());
 
 	public static final CHAPTER_MAP:Map<String, Array<String>> = ['Chapter 1' => CHAPTER_ONE,];
 
