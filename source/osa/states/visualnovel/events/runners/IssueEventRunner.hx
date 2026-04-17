@@ -10,12 +10,12 @@ class IssueEventRunner extends EventRunner
 
 		switch (_dialogueFileType)
 		{
-			case ISSUE(issue):
-				if (_game._issue == issue)
+			case ISSUE(i):
+				if (issue == i)
 					unlockIssues(issue);
 
-			case ISSUES(issues):
-				if (issues.contains(_game._issue))
+			case ISSUES(iis):
+				if (iis.contains(issue))
 					unlockIssues(issue);
 
 			default:
