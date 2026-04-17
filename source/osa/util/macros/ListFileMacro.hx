@@ -1,5 +1,7 @@
 package osa.util.macros;
 
+using StringTools;
+
 #if !display
 class ListFileMacro
 {
