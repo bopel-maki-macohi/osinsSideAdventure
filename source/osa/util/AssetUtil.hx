@@ -47,7 +47,7 @@ class AssetUtil
 
 		if (file == null)
 		{
-			trace('Null file content: $file');
+			trace('Null file content: $text');
 			return [];
 		}
 
