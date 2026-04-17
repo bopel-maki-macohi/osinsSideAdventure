@@ -8,7 +8,7 @@
 	<app title="Osin's Side Adventure" file="OSA" package="com.maki.osa" />
 	<app main="Main" />
 	<app company="Maki" />
-	<app version="0.11.0" />
+	<app version="0.11.1" />
 
 	<icon path="dev/icon.png" />
 
@@ -33,6 +33,8 @@
 	<define name="WINDOWTITLE_GIT" unless="DISABLE_WINDOWTITLE_GIT"/>
 
 	<define name="DISABLE_OUTDATEDSTATE" if="html5 || debug"/>
+
+	<define name="CRASHHANDLER_INCLUDE_GIT" if="debug || hl"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 

@@ -1,4 +1,9 @@
-# 0.11 (4/17/2026)
+# 0.11.1 (4/17/2026)
+
+- Git info is now only included in debug (or hashlink) builds or via the flag `CRASHHANDLER_INCLUDE_GIT`
+- Changelog fixes
+
+# 0.11.0 (4/17/2026)
 
 - **Added Issue 6 (Unlocked after playing Issue 5)**
 - **Added Bonus Issue 2 (Unlocked through Issue 5)**
@@ -11,7 +16,7 @@
 - Tile Scrolling BG tile images are no longer perm-cached
 - Tile Scrolling BG tile images have been moved to a `tiles` subfolder of `menus`
 - Fixed StoryMenuSubState not having special fields in the crash handler
-- ChapterUtil List files are now built-in via macros :D
+- ChapterUtil Chapter Lists are now built-in via macros :D
 
 # 0.10.3 (4/17/2026)
 

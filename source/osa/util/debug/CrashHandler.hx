@@ -88,7 +88,11 @@ class CrashHandler
 		final filename:String = '$CRASH_DIRECTORY/${Constants.getTimestamp()}.txt';
 
 		errorMessage += '\nGame Version: ${Constants.VERSION}';
+		
+		#if CRASHHANDLER_INCLUDE_GIT
 		errorMessage += '\nGit info: ${Constants.GIT_STRING}';
+		#end
+
 		errorMessage += '\nCurrent State: ${currentState}';
 
 		var stateFields:Array<String> = [];
