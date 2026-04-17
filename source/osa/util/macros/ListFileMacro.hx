@@ -2,41 +2,40 @@ package osa.util.macros;
 
 using StringTools;
 
-#if !display
 class ListFileMacro
 {
 	public static macro function getListFile(file:String)
 	{
 		var list:Array<String> = [];
 
-		#if !display
-		final path:String = 'dev/macros/listfiles/$file.txt';
-
-		if (!sys.FileSystem.exists(path))
+		if (!haxe.macro.Context.defined("display"))
 		{
-			trace('Missing List File : $file');
-		}
-		else
-		{
-			var contents:String = sys.io.File.getContent(path);
+			final path:String = 'dev/macros/listfiles/$file.txt';
 
-			for (str in contents.split('\n'))
+			if (!sys.FileSystem.exists(path))
 			{
-				if (str == null)
-					continue;
-				if (str.trim() == null)
-					continue;
-				if (str.trim().length < 1)
-					continue;
-
-				list.push(str.trim());
+				trace('Missing List File : $file');
 			}
+			else
+			{
+				var contents:String = sys.io.File.getContent(path);
 
-			trace('List File "$file" : $list');
+				for (str in contents.split('\n'))
+				{
+					if (str == null)
+						continue;
+					if (str.trim() == null)
+						continue;
+					if (str.trim().length < 1)
+						continue;
+
+					list.push(str.trim());
+				}
+
+				trace('List File "$file" : $list');
+			}
 		}
-		#end
 
 		return macro $v{list};
 	}
 }
-#end

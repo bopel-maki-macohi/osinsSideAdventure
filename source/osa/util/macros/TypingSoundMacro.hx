@@ -1,36 +1,36 @@
 package osa.util.macros;
 
-#if !display
-
 /**
  * There's no mod support yet so this stays a macro >:)
  */
-class TypingSoundMacro {
-    public static macro function getTypingSoundMap()
-    {
-        var output:Map<String, Array<String>> = [];
+class TypingSoundMacro
+{
+	public static macro function getTypingSoundMap()
+	{
+		var output:Map<String, Array<String>> = [];
 
-        #if !display
-        var basedirectory:String = 'assets/visualnovel/';
-        var subdirectory:String = 'sounds/typing';
+		if (!haxe.macro.Context.defined("display"))
+		{
+			var basedirectory:String = 'assets/visualnovel/';
+			var subdirectory:String = 'sounds/typing';
 
-        // No sub-directory support, not right now.
-        for (file in sys.FileSystem.readDirectory(basedirectory + subdirectory))
-        {
-            if (haxe.io.Path.extension(file) != 'wav') continue;
-            
-            var filePrefix:String = file.split('-')[0];
+			// No sub-directory support, not right now.
+			for (file in sys.FileSystem.readDirectory(basedirectory + subdirectory))
+			{
+				if (haxe.io.Path.extension(file) != 'wav')
+					continue;
 
-            if (!output.exists(filePrefix))
-                output.set(filePrefix, []);
+				var filePrefix:String = file.split('-')[0];
 
-            output.get(filePrefix).push('$subdirectory/${haxe.io.Path.withoutExtension(file)}');
-        }
+				if (!output.exists(filePrefix))
+					output.set(filePrefix, []);
 
-        trace('Typing Sound Keys: ${[for (key => value in output) key]}');
-        #end
+				output.get(filePrefix).push('$subdirectory/${haxe.io.Path.withoutExtension(file)}');
+			}
 
-        return macro $v{output};
-    }
+			trace('Typing Sound Keys: ${[for (key => value in output) key]}');
+		}
+
+		return macro $v{output};
+	}
 }
-#end
