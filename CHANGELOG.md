@@ -1,4 +1,4 @@
-# Unreleased (4/2026)
+# 0.10.2 (4/2026)
 
 - Image rendering on web is now pixel-perfect
 - Fixed Blurry Text on desktop (on web it seems to still be there)
