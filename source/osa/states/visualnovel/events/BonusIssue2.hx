@@ -20,6 +20,11 @@ class BonusIssue2 extends IssueEventRunner
 
 		crowdPanic.play();
 		crowdPanic.pause();
+
+		crowdPanic.onComplete = function() {
+			// this'll be enough
+			_game.changeLine(100);
+		};
 	}
 
 	override function continueLine(eventManager:EventManager)
@@ -45,7 +50,7 @@ class BonusIssue2 extends IssueEventRunner
 
 		if (_game._dialogueEntry < 11)
 		{
-			FlxTimer.wait(.1 + ((11 - _game._dialogueEntry) / 100), () ->
+			FlxTimer.wait(.1 + ((11 - _game._dialogueEntry) / 10), () ->
 			{
 				_game.changeLine(1);
 			});
