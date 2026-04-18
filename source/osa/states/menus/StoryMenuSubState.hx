@@ -59,7 +59,8 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	public function reload(filter:String)
 	{
-		if (currentFilter == filter) return;
+		if (currentFilter == filter)
+			return;
 
 		var targetTales = [for (entryID => tale in entryData) {entryID: entryID, tale: tale}];
 
@@ -100,7 +101,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		for (data in targetTales)
 			addTale(data.tale, data.entryID);
-		
+
 		createSprites();
 		changeSelection(0);
 	}
@@ -132,9 +133,10 @@ class StoryMenuSubState extends TitleSubStateBase
 		if (controls.justPressed.UP || controls.justPressed.DOWN)
 		{
 			if (controls.justPressed.UP)
-				reload(StoryMenuSubState.filters[StoryMenuSubState.filters.indexOf(currentFilter) - 1]);
+				reload(StoryMenuSubState.filters[StoryMenuSubState.filters.indexOf(currentFilter) - 1] ?? StoryMenuSubState.filters[StoryMenuSubState.filters.length
+					- 1]);
 			if (controls.justPressed.DOWN)
-				reload(StoryMenuSubState.filters[StoryMenuSubState.filters.indexOf(currentFilter) + 1]);
+				reload(StoryMenuSubState.filters[StoryMenuSubState.filters.indexOf(currentFilter) + 1] ?? StoryMenuSubState.filters[0]);
 		}
 	}
 }
