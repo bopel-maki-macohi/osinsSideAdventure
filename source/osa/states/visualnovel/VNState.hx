@@ -126,7 +126,12 @@ class VNState extends OSAState
 	{
 		if (line.speaker != null)
 		{
-			speaker.data = speakers.get(line.speaker.id);
+			if (speaker?.data?.id != line.speaker.id)
+			{
+				speaker.build(null);
+				speaker.data = speakers.get(line.speaker.id);
+			}
+
 			speaker.build(line.speaker.state);
 		}
 		else
