@@ -1,5 +1,6 @@
 package osa.states.visualnovel;
 
+import osa.util.SoundUtil;
 import osa.states.menus.TitleState;
 import flixel.FlxSprite;
 import flixel.FlxG;
@@ -59,6 +60,8 @@ class VNState extends OSAState
 		dialogueText = new FlxTypeText(0, 0, Math.round(FlxG.width / 1), '', 16);
 		dialogueText.alignment = CENTER;
 		dialogueText.y = 20;
+
+		dialogueText.sounds = SoundUtil.getLoadedSoundsFromDirectory('typing/'.visualNovelAsset());
 
 		continueHand = new FlxSprite(0, 0, 'continueHand'.imageFile().visualNovelAsset());
 

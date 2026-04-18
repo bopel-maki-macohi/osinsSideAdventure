@@ -1,5 +1,7 @@
 package osa.util;
 
+import lime.utils.Assets;
+import flixel.sound.FlxSound;
 import flixel.FlxG;
 
 class SoundUtil
@@ -9,4 +11,18 @@ class SoundUtil
 
 	public static inline function cancelSfx()
 		FlxG.sound.play('sounds/cancel'.menuAsset().audioFile());
+
+	public static function getLoadedSoundsFromDirectory(directory:String)
+	{
+		var sounds:Array<FlxSound> = [];
+
+		for (file in Assets.list().filter(f -> return f.startsWith(directory)))
+		{
+			if (!file.endsWith(''.audioFile())) continue;
+
+			sounds.push(FlxG.sound.load(file));
+		}
+
+		return sounds;
+	}
 }
