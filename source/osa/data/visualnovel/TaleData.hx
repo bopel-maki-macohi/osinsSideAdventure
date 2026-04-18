@@ -1,6 +1,6 @@
 package osa.data.visualnovel;
 
-import osa.data.visualnovel.tales.TaleLineData;
+import osa.data.visualnovel.tales.*;
 import json2object.JsonParser;
 import osa.util.Constants;
 

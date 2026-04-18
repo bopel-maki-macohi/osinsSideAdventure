@@ -1,7 +1,6 @@
 package osa.data.visualnovel;
 
-import haxe.io.Path;
-import osa.data.visualnovel.speaker.SpeakerStateData;
+import osa.data.visualnovel.speaker.*;
 import osa.util.Constants;
 import json2object.JsonParser;
 
