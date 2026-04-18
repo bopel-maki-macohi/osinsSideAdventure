@@ -32,7 +32,7 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 		switch (data.iteration)
 		{
 			default:
-				trace('No changes required for iteration: ${data.iteration}');
+				trace('No changes required for tale iteration: ${data.iteration}');
 		}
 	}
 }
