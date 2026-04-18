@@ -105,7 +105,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	public function addTale(tale:TaleData, entryID:String)
 	{
-		spriteList.push(makeSprite('story/titles/${tale?.storymenu?.titleAsset}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
+		spriteList.push(makeSprite('story/titles/${tale?.storymenu?.titleAsset ?? $entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
 	}
 
 	public function setTaleString(tale:TaleData, entryID:String)
