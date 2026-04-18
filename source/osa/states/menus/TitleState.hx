@@ -113,13 +113,11 @@ class TitleState extends OSAState
 		optionsBtn.y = FlxG.height - optionsBtn.height - (storymenuBtn.x / 4);
 		creditsBtn.x = FlxG.width - creditsBtn.width - storymenuBtn.x;
 
-		storymenuBtn.shader = new GrayscaleShader(.75);
-
 		add(storymenuBtn);
 		add(optionsBtn);
 		add(creditsBtn);
 
-		// storymenuBtn._onClick.add(() -> onSelectionClicked(storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(storymenuTileScrollBG))));
+		storymenuBtn.onClick.add(() -> onSelectionClicked(storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(storymenuTileScrollBG))));
 		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
 		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
 
