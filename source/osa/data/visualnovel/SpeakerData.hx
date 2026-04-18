@@ -1,5 +1,6 @@
 package osa.data.visualnovel;
 
+import haxe.io.Path;
 import osa.data.visualnovel.speaker.SpeakerStateData;
 import osa.util.Constants;
 import json2object.JsonParser;
@@ -10,9 +11,15 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 	public var states:Array<SpeakerStateData>;
 
-	override public function new(file:String)
+	@:jignored
+	public var id:String;
+
+	override public function new(id:String, file:String)
 	{
 		iteration = Constants.ITERATION_SPEAKERDATA;
+		states = [];
+
+		this.id = id;
 
 		super(file);
 	}

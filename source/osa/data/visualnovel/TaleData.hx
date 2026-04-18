@@ -13,6 +13,7 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 	override public function new(file:String)
 	{
 		iteration = Constants.ITERATION_TALEDATA;
+		lines = [];
 
 		super(file);
 	}

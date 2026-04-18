@@ -21,19 +21,19 @@ class VNState extends OSAState
 			if (speakers.exists(taleLine.speaker.id))
 				continue;
 
-			speakers.set(taleLine.speaker.id, new VNSpeaker(taleLine.speaker.id, new SpeakerData(taleLine.speaker.id.speakerAsset('data'.jsonFile()))));
+			speakers.set(taleLine.speaker.id, new SpeakerData(taleLine.speaker.id, taleLine.speaker.id.speakerAsset('data'.jsonFile())));
 		}
 
 		trace('Speakers: ${[for (id => speaker in speakers) id]}');
 	}
 
-	public var speakers:Map<String, VNSpeaker> = [];
+	public var speakers:Map<String, SpeakerData> = [];
 
 	public var speaker:VNSpeaker;
 
 	override function create()
 	{
-		speaker = new VNSpeaker(null, null);
+		speaker = new VNSpeaker(null);
 		add(speaker);
 
 		super.create();
@@ -54,13 +54,21 @@ class VNState extends OSAState
 	{
 		lineNumber += increment;
 
+		buildSpeaker();
+	}
+
+	public function buildSpeaker()
+	{
 		if (line.speaker != null)
 		{
-			speaker = speakers.get(line.speaker.id).copy();
+			speaker.data = speakers.get(line.speaker.id);
+			speaker.build(line.speaker.state);
 		}
 		else
 		{
 			speaker.visible = speaker.active = false;
 		}
+
+		speaker.screenCenter();
 	}
 }

@@ -8,13 +8,17 @@ class VNSpeaker extends FlxSprite
 {
 	public var data:SpeakerData = null;
 
-	public var speaker:String = null;
+	public var speaker(get, never):String;
 
-	public function new(speaker:String, data:SpeakerData)
+	function get_speaker():String
+	{
+		return data.id;
+	}
+
+	public function new(data:SpeakerData)
 	{
 		super();
 
-		this.speaker = speaker;
 		this.data = data;
 
 		build(null);
@@ -40,10 +44,15 @@ class VNSpeaker extends FlxSprite
 		}
 
 		loadGraphic(speaker.speakerAsset('imgs/${stateInfo.asset}').imageFile());
+
+		trace('Built $state');
 	}
 
-    public function copy():VNSpeaker
-    {
-        return new VNSpeaker(speaker, data);
-    }
+	public function copy():VNSpeaker
+	{
+		trace('Copying $speaker');
+		return new VNSpeaker(data);
+	}
+
+	public static function load(file:String) {}
 }
