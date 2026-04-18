@@ -57,7 +57,7 @@ class OptionsSubState extends TitleSubStateBase
 		if (specialThing != null)
 			specialThing(spr);
 
-		_spriteList.push(spr);
+		spriteList.push(spr);
 	}
 
 	public static function getEnabledString(value:Bool):String

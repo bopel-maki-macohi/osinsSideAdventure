@@ -14,20 +14,20 @@ import flixel.FlxG;
 
 class TitleSubStateBase extends OSASubState
 {
-	public var _onExit:Void->Void;
+	public var onExit:Void->Void;
 
-	public var _spriteList:Array<ClickableSprite> = [];
+	public var spriteList:Array<ClickableSprite> = [];
 
 	override public function new(onExit:Void->Void)
 	{
 		super();
 
-		this._onExit = onExit;
+		this.onExit = onExit;
 	}
 
 	override function close()
 	{
-		_onExit();
+		onExit();
 
 		FlxTimer.wait(OSAState.DEFAULT_TRANSITION.duration, () ->
 		{
@@ -64,30 +64,30 @@ class TitleSubStateBase extends OSASubState
 
 		positionSpritesGroup();
 
-		for (sprite in _sprites.members)
+		for (sprite in sprites.members)
 		{
 			if (sprite == null)
 				continue;
 
-			if (_currentSelection == sprite.ID)
+			if (currentSelection == sprite.ID)
 			{
-				sprite._overlapUpdate.dispatch();
+				sprite.overlapUpdate.dispatch();
 
 				if (!TitleState.bgScrolling)
 					if (controls.justPressed.ACCEPT)
-						sprite._onClick.dispatch();
+						sprite.onClick.dispatch();
 			}
 			else
-				sprite._unoverlapUpdate.dispatch();
+				sprite.unoverlapUpdate.dispatch();
 		}
 
-		_text.screenCenter();
-		_text.y = FlxG.height - _text.height - 32;
+		displayText.screenCenter();
+		displayText.y = FlxG.height - displayText.height - 32;
 	}
 
 	public function positionSpritesGroup()
 	{
-		_sprites.x = FlxMath.lerp(_sprites.x, _currentSelection * -256, 0.1);
+		sprites.x = FlxMath.lerp(sprites.x, currentSelection * -256, 0.1);
 	}
 
 	public function nonScrollingControls()
@@ -103,62 +103,62 @@ class TitleSubStateBase extends OSASubState
 
 	public function changeSelection(increment:Int)
 	{
-		_currentSelection += increment;
+		currentSelection += increment;
 
-		if (_currentSelection < 0)
-			_currentSelection = _sprites.length - 1;
-		if (_currentSelection > _sprites.length - 1)
-			_currentSelection = 0;
+		if (currentSelection < 0)
+			currentSelection = sprites.length - 1;
+		if (currentSelection > sprites.length - 1)
+			currentSelection = 0;
 
 		SoundUtil.selectSfx();
 	}
 
-	public var _text:FlxText;
+	public var displayText:FlxText;
 
 	public function setText(text:String)
-		_text.text = text;
+		displayText.text = text;
 
 	public function makeSprite(asset:String, optionText:Void->String, ?onClick:Void->Void):ClickableSprite
 	{
 		var credSpr:ClickableSprite = new ClickableSprite(0, 0, asset.menuAsset().imageFile());
-		credSpr._overlapUpdate.add(() -> setText((optionText == null) ? 'Unknown' : optionText()));
+		credSpr.overlapUpdate.add(() -> setText((optionText == null) ? 'Unknown' : optionText()));
 
 		if (onClick != null)
-			credSpr._onClick.add(onClick);
+			credSpr.onClick.add(onClick);
 
 		return credSpr;
 	}
 
-	public var _sprites:FlxTypedSpriteContainer<ClickableSprite>;
+	public var sprites:FlxTypedSpriteContainer<ClickableSprite>;
 
-	public var _currentSelection:Int = 0;
+	public var currentSelection:Int = 0;
 
 	override function create()
 	{
 		super.create();
 
-		_sprites = new FlxTypedSpriteContainer<ClickableSprite>();
-		_sprites.camera = TitleState.blurCamFG;
-		_sprites.alpha = 0;
+		sprites = new FlxTypedSpriteContainer<ClickableSprite>();
+		sprites.camera = TitleState.blurCamFG;
+		sprites.alpha = 0;
 
-		FlxTween.tween(_sprites, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
+		FlxTween.tween(sprites, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
 			ease: FlxEase.sineInOut
 		});
 
 		createSprites();
 
-		_text = new FlxText(0, 0, 0, '', 16);
-		_text.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
-		_text.camera = TitleState.blurCamFG;
-		_text.alpha = 0;
-		_text.alignment = CENTER;
+		displayText = new FlxText(0, 0, 0, '', 16);
+		displayText.setBorderStyle(OUTLINE, FlxColor.BLACK, 2);
+		displayText.camera = TitleState.blurCamFG;
+		displayText.alpha = 0;
+		displayText.alignment = CENTER;
 
-		FlxTween.tween(_text, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
+		FlxTween.tween(displayText, {alpha: 1}, OSAState.DEFAULT_TRANSITION.duration, {
 			ease: FlxEase.sineInOut
 		});
 
-		add(_sprites);
-		add(_text);
+		add(sprites);
+		add(displayText);
 
 		FlxG.mouse.visible = false;
 
@@ -167,7 +167,7 @@ class TitleSubStateBase extends OSASubState
 
 	public function positionSprites()
 	{
-		for (sprite in _sprites.members)
+		for (sprite in sprites.members)
 		{
 			sprite.screenCenter();
 			sprite.x += sprite.ID * 256;
@@ -176,25 +176,25 @@ class TitleSubStateBase extends OSASubState
 
 	public function createSprites()
 	{
-		for (i => obj in _spriteList)
+		for (i => obj in spriteList)
 		{
-			obj._useMouse = false;
+			obj.useMouse = false;
 
 			obj.scale.set(.5, .5);
 			obj.updateHitbox();
 
 			obj.ID = i;
-			if (_addDefaultScaleThingies)
+			if (addDefaultScaleThingies)
 			{
-				obj._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
-				obj._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
+				obj.overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(obj, .6, .1));
+				obj.unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(obj, .5, .1));
 			}
 
-			_sprites.add(obj);
+			sprites.add(obj);
 		}
 
 		positionSprites();
 	}
 
-	public var _addDefaultScaleThingies:Bool = false;
+	public var addDefaultScaleThingies:Bool = false;
 }

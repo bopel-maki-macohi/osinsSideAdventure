@@ -17,45 +17,45 @@ import osa.objects.TileScrollBG;
 
 class TitleState extends OSAState
 {
-	public var _titleTileScrollBG:TileScrollBG;
+	public var titleTileScrollBG:TileScrollBG;
 
-	public var _storymenuTileScrollBG:TileScrollBG;
-	public var _debugTileScrollBG:TileScrollBG;
-	public var _creditsTileScrollBG:TileScrollBG;
-	public var _optionsTileScrollBG:TileScrollBG;
+	public var storymenuTileScrollBG:TileScrollBG;
+	public var debugTileScrollBG:TileScrollBG;
+	public var creditsTileScrollBG:TileScrollBG;
+	public var optionsTileScrollBG:TileScrollBG;
 
-	public var _logo:FlxSprite;
+	public var logo:FlxSprite;
 
-	public var _blurFilterBG:BlurFilter;
-	public var _blurFilterFG:BlurFilter;
+	public var blurFilterBG:BlurFilter;
+	public var blurFilterFG:BlurFilter;
 
 	public static var blurCamBG:FlxCamera;
 	public static var blurCamFG:FlxCamera;
 
-	public var _storymenuBtn:ClickableSprite;
-	public var _optionsBtn:ClickableSprite;
-	public var _creditsBtn:ClickableSprite;
+	public var storymenuBtn:ClickableSprite;
+	public var optionsBtn:ClickableSprite;
+	public var creditsBtn:ClickableSprite;
 
 	public static var bgScrolling:Bool = false;
 
-	public var _targetState:String = null;
+	public var targetState:String = null;
 
 	override public function new(?targetState:String)
 	{
 		super();
 
-		this._targetState = targetState;
+		this.targetState = targetState;
 	}
 
 	override function create()
 	{
-		_titleTileScrollBG = TileScrollBG.build(FlxPoint.get(25, 25), null, null, true);
+		titleTileScrollBG = TileScrollBG.build(FlxPoint.get(25, 25), null, null, true);
 
-		_logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
-		_logo.screenCenter();
+		logo = new FlxSprite(0, 0, 'logo'.imageFile().menuAsset());
+		logo.screenCenter();
 
-		_blurFilterBG = new BlurFilter(Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_BLUR_UNFOCUS, 1);
-		_blurFilterFG = new BlurFilter(Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_BLUR_FOCUS, 1);
+		blurFilterBG = new BlurFilter(Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_BLUR_UNFOCUS, 1);
+		blurFilterFG = new BlurFilter(Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_BLUR_FOCUS, 1);
 
 		blurCamBG = new FlxCamera();
 		FlxG.cameras.add(blurCamBG);
@@ -64,39 +64,39 @@ class TitleState extends OSAState
 		FlxG.cameras.add(blurCamFG);
 		blurCamFG.bgColor.alpha = 0;
 
-		blurCamBG.filters = [_blurFilterBG];
-		blurCamFG.filters = [_blurFilterFG];
+		blurCamBG.filters = [blurFilterBG];
+		blurCamFG.filters = [blurFilterFG];
 
-		_titleTileScrollBG.camera = blurCamBG;
+		titleTileScrollBG.camera = blurCamBG;
 
-		_logo.camera = blurCamFG;
+		logo.camera = blurCamFG;
 
-		add(_titleTileScrollBG);
+		add(titleTileScrollBG);
 
-		_debugTileScrollBG = TileScrollBG.build(null, 'tiles/tile-sinco'.menuAsset(), _titleTileScrollBG);
-		_debugTileScrollBG.alpha = 0;
+		debugTileScrollBG = TileScrollBG.build(null, 'tiles/tile-sinco'.menuAsset(), titleTileScrollBG);
+		debugTileScrollBG.alpha = 0;
 
-		_storymenuTileScrollBG = TileScrollBG.build(null, 'tiles/tile-osin'.menuAsset(), _titleTileScrollBG);
-		_storymenuTileScrollBG.alpha = 0;
+		storymenuTileScrollBG = TileScrollBG.build(null, 'tiles/tile-osin'.menuAsset(), titleTileScrollBG);
+		storymenuTileScrollBG.alpha = 0;
 
-		_creditsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-tirok'.menuAsset(), _titleTileScrollBG);
-		_creditsTileScrollBG.alpha = 0;
+		creditsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-tirok'.menuAsset(), titleTileScrollBG);
+		creditsTileScrollBG.alpha = 0;
 
-		_optionsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-loroc'.menuAsset(), _titleTileScrollBG);
-		_optionsTileScrollBG.alpha = 0;
+		optionsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-loroc'.menuAsset(), titleTileScrollBG);
+		optionsTileScrollBG.alpha = 0;
 
-		add(_debugTileScrollBG);
-		add(_storymenuTileScrollBG);
-		add(_creditsTileScrollBG);
-		add(_optionsTileScrollBG);
+		add(debugTileScrollBG);
+		add(storymenuTileScrollBG);
+		add(creditsTileScrollBG);
+		add(optionsTileScrollBG);
 
-		add(_logo);
+		add(logo);
 
-		_storymenuBtn = new ClickableSprite(0, 0, 'title/play'.menuAsset().imageFile());
-		_optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
-		_creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
+		storymenuBtn = new ClickableSprite(0, 0, 'title/play'.menuAsset().imageFile());
+		optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
+		creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
 
-		for (btn in [_storymenuBtn, _optionsBtn, _creditsBtn])
+		for (btn in [storymenuBtn, optionsBtn, creditsBtn])
 		{
 			btn.scale.set(0.5, 0.5);
 
@@ -105,23 +105,23 @@ class TitleState extends OSAState
 
 			btn.cameras = [blurCamFG];
 
-			btn._overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(btn, 0.6, 0.5));
-			btn._unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
+			btn.overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(btn, 0.6, 0.5));
+			btn.unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
 		}
 
-		_storymenuBtn.x = 128;
-		_optionsBtn.y = FlxG.height - _optionsBtn.height - (_storymenuBtn.x / 4);
-		_creditsBtn.x = FlxG.width - _creditsBtn.width - _storymenuBtn.x;
+		storymenuBtn.x = 128;
+		optionsBtn.y = FlxG.height - optionsBtn.height - (storymenuBtn.x / 4);
+		creditsBtn.x = FlxG.width - creditsBtn.width - storymenuBtn.x;
 
-		_storymenuBtn.shader = new GrayscaleShader(.75);
+		storymenuBtn.shader = new GrayscaleShader(.75);
 
-		add(_storymenuBtn);
-		add(_optionsBtn);
-		add(_creditsBtn);
+		add(storymenuBtn);
+		add(optionsBtn);
+		add(creditsBtn);
 
-		// _storymenuBtn._onClick.add(() -> onSelectionClicked(_storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(_storymenuTileScrollBG))));
-		_optionsBtn._onClick.add(() -> onSelectionClicked(_optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(_optionsTileScrollBG))));
-		_creditsBtn._onClick.add(() -> onSelectionClicked(_creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(_creditsTileScrollBG))));
+		// storymenuBtn._onClick.add(() -> onSelectionClicked(storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(storymenuTileScrollBG))));
+		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
+		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
 
 		persistentUpdate = true;
 
@@ -140,14 +140,14 @@ class TitleState extends OSAState
 
 		var TSFunc:Void->Void = null;
 
-		switch (_targetState?.toLowerCase())
+		switch (targetState?.toLowerCase())
 		{
 			case 'storymenu':
-				TSFunc = () -> _storymenuBtn._onClick.dispatch();
+				TSFunc = () -> storymenuBtn.onClick.dispatch();
 			case 'credits':
-				TSFunc = () -> _creditsBtn._onClick.dispatch();
+				TSFunc = () -> creditsBtn.onClick.dispatch();
 			case 'optionsmenu':
-				TSFunc = () -> _optionsBtn._onClick.dispatch();
+				TSFunc = () -> optionsBtn.onClick.dispatch();
 			case 'debugmenu':
 				TSFunc = debugSubState;
 		}
@@ -156,7 +156,7 @@ class TitleState extends OSAState
 		{
 			FlxG.mouse.visible = false;
 
-			for (obj in [_storymenuBtn, _optionsBtn, _creditsBtn, _logo, _titleTileScrollBG,])
+			for (obj in [storymenuBtn, optionsBtn, creditsBtn, logo, titleTileScrollBG,])
 				obj.alpha = 0;
 
 			FlxTimer.wait(transIn.duration, () ->
@@ -170,23 +170,23 @@ class TitleState extends OSAState
 	{
 		super.update(elapsed);
 
-		bgScrolling = _titleTileScrollBG._debugModeInUse;
+		bgScrolling = titleTileScrollBG.debugModeInUse;
 		if (bgScrolling)
 		{
-			_blurFilterBG.blurX = FlxMath.lerp(_blurFilterBG.blurX, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
-			_blurFilterBG.blurY = FlxMath.lerp(_blurFilterBG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterBG.blurX = FlxMath.lerp(blurFilterBG.blurX, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterBG.blurY = FlxMath.lerp(blurFilterBG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
 
-			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
-			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterFG.blurX = FlxMath.lerp(blurFilterFG.blurX, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterFG.blurY = FlxMath.lerp(blurFilterFG.blurY, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
 			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 0.15, Constants.DEFAULT_LERP_SPEED);
 		}
 		else
 		{
-			_blurFilterBG.blurX = FlxMath.lerp(_blurFilterBG.blurX, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
-			_blurFilterBG.blurY = FlxMath.lerp(_blurFilterBG.blurY, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterBG.blurX = FlxMath.lerp(blurFilterBG.blurX, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterBG.blurY = FlxMath.lerp(blurFilterBG.blurY, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
 
-			_blurFilterFG.blurX = FlxMath.lerp(_blurFilterFG.blurX, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
-			_blurFilterFG.blurY = FlxMath.lerp(_blurFilterFG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterFG.blurX = FlxMath.lerp(blurFilterFG.blurX, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterFG.blurY = FlxMath.lerp(blurFilterFG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
 			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 1, Constants.DEFAULT_LERP_SPEED);
 
 			nonScrollingControls();
@@ -198,7 +198,7 @@ class TitleState extends OSAState
 
 	function debugSubState()
 	{
-		onSelectionClicked(_debugTileScrollBG, new DebugSubState(() -> onSelectionExited(_debugTileScrollBG)));
+		onSelectionClicked(debugTileScrollBG, new DebugSubState(() -> onSelectionExited(debugTileScrollBG)));
 	}
 
 	function nonScrollingControls()
@@ -216,7 +216,7 @@ class TitleState extends OSAState
 
 		transitioning = true;
 
-		for (spr in [_logo, _storymenuBtn, _creditsBtn, _optionsBtn])
+		for (spr in [logo, storymenuBtn, creditsBtn, optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
@@ -237,16 +237,16 @@ class TitleState extends OSAState
 	{
 		transitioning = false;
 
-		for (spr in [_logo, _storymenuBtn, _creditsBtn, _optionsBtn])
+		for (spr in [logo, storymenuBtn, creditsBtn, optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
 
-		if (_titleTileScrollBG.alpha < 1)
+		if (titleTileScrollBG.alpha < 1)
 		{
-			FlxTween.cancelTweensOf(_titleTileScrollBG);
-			FlxTween.tween(_titleTileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
+			FlxTween.cancelTweensOf(titleTileScrollBG);
+			FlxTween.tween(titleTileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
 
 		FlxG.mouse.visible = true;

@@ -10,7 +10,7 @@ class DebugSubState extends TitleSubStateBase
 	{
 		super(onExit);
 
-		_spriteList = [
+		spriteList = [
 
 			makeSprite('debug/default', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
 

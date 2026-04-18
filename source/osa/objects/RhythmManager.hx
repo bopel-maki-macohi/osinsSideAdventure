@@ -16,41 +16,41 @@ class RhythmManager
 
 	public static var instance:RhythmManager;
 
-	public var _time:Float;
-	public var _bpm(default, set):Float;
+	public var time:Float;
+	public var bpm(default, set):Float;
 
-	public var _step:Int;
-	public var _beat:Int;
+	public var step:Int;
+	public var beat:Int;
 
-	public var _crotchet(get, never):Float;
-	public var _quaver(get, never):Float;
+	public var crotchet(get, never):Float;
+	public var quaver(get, never):Float;
 
-	public var _stepHit(default, null) = new FlxTypedSignal<Int->Void>();
-	public var _beatHit(default, null) = new FlxTypedSignal<Int->Void>();
+	public var stepHit(default, null) = new FlxTypedSignal<Int->Void>();
+	public var beatHit(default, null) = new FlxTypedSignal<Int->Void>();
 
-	var _changeStep:Int = 0;
-	var _changeTimestamp:Float = 0;
+	var changeStep:Int = 0;
+	var changeTimestamp:Float = 0;
 
 	public function new() {}
 
 	public function update()
 	{
-		final lastStep:Int = _step;
-		final lastBeat:Int = _beat;
+		final lastStep:Int = step;
+		final lastBeat:Int = beat;
 
-		_step = _changeStep + Math.floor((_time - _changeTimestamp) / _quaver);
-		_beat = Math.floor(_step / RhythmManager.STEPS_PER_BEAT);
+		step = changeStep + Math.floor((time - changeTimestamp) / quaver);
+		beat = Math.floor(step / RhythmManager.STEPS_PER_BEAT);
 
-		if (lastStep != _step)
-			_stepHit.dispatch(_step);
-		if (lastBeat != _beat)
-			_beatHit.dispatch(_beat);
+		if (lastStep != step)
+			stepHit.dispatch(step);
+		if (lastBeat != beat)
+			beatHit.dispatch(beat);
 
 		// Debug watching (for debugging purposes)
-		FlxG.watch.addQuick('time', _time);
-		FlxG.watch.addQuick('bpm', _bpm);
-		FlxG.watch.addQuick('step', _step);
-		FlxG.watch.addQuick('beat', _beat);
+		FlxG.watch.addQuick('time', time);
+		FlxG.watch.addQuick('bpm', bpm);
+		FlxG.watch.addQuick('step', step);
+		FlxG.watch.addQuick('beat', beat);
 	}
 
 	/**
@@ -59,32 +59,32 @@ class RhythmManager
 	 */
 	public function reset(bpm:Float = 0)
 	{
-		this._bpm = bpm;
+		this.bpm = bpm;
 
-		_time = 0;
+		time = 0;
 
-		_step = 0;
-		_beat = 0;
+		step = 0;
+		beat = 0;
 
-		_changeStep = 0;
-		_changeTimestamp = 0;
+		changeStep = 0;
+		changeTimestamp = 0;
 	}
 
-	function set__bpm(value:Float):Float
+	function set_bpm(value:Float):Float
 	{
-		if (this._bpm == value)
+		if (this.bpm == value)
 			return value;
-		this._bpm = value;
+		this.bpm = value;
 
-		_changeStep = _step;
-		_changeTimestamp = _time;
+		changeStep = step;
+		changeTimestamp = time;
 
 		return value;
 	}
 
-	inline function get__crotchet():Float
-		return RhythmManager.SECS_PER_MIN / _bpm * RhythmManager.MS_PER_SEC;
+	inline function get_crotchet():Float
+		return RhythmManager.SECS_PER_MIN / bpm * RhythmManager.MS_PER_SEC;
 
-	inline function get__quaver():Float
-		return _crotchet / RhythmManager.STEPS_PER_BEAT;
+	inline function get_quaver():Float
+		return crotchet / RhythmManager.STEPS_PER_BEAT;
 }

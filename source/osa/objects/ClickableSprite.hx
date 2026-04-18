@@ -19,26 +19,26 @@ class ClickableSprite extends FlxSprite
 		sprite.scale.y = FlxMath.lerp(sprite.scale.y, scale, lerp);
 	}
 
-	public var _overlapUpdate:FlxSignal = new FlxSignal();
-	public var _unoverlapUpdate:FlxSignal = new FlxSignal();
-	public var _onClick:FlxSignal = new FlxSignal();
+	public var overlapUpdate:FlxSignal = new FlxSignal();
+	public var unoverlapUpdate:FlxSignal = new FlxSignal();
+	public var onClick:FlxSignal = new FlxSignal();
 
-	public var _useMouse:Bool = true;
+	public var useMouse:Bool = true;
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (_useMouse)
+		if (useMouse)
 			if (FlxG.mouse.overlaps(this) && alpha > 0)
 			{
-				_overlapUpdate.dispatch();
+				overlapUpdate.dispatch();
 				if (FlxG.mouse.justPressed)
-					_onClick.dispatch();
+					onClick.dispatch();
 			}
 			else
 			{
-				_unoverlapUpdate.dispatch();
+				unoverlapUpdate.dispatch();
 			}
 	}
 }

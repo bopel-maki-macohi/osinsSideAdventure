@@ -22,7 +22,7 @@ class ScreenshotPlugin extends FlxBasic
 {
 	public static final SCREENSHOT_FOLDER:String = 'screenshots';
 
-	var _tookScreenshot:Bool = false;
+	var tookScreenshot:Bool = false;
 
 	public static function init()
 	{
@@ -44,9 +44,9 @@ class ScreenshotPlugin extends FlxBasic
 		super.update(elapsed);
 
 		#if SCREENSHOT_PLUGIN
-		if (Controls.instance.justPressed.SCREENSHOT && !_tookScreenshot)
+		if (Controls.instance.justPressed.SCREENSHOT && !tookScreenshot)
 		{
-			_tookScreenshot = true;
+			tookScreenshot = true;
 
 			#if sys
 			final screenshot:BitmapData = BitmapData.fromImage(FlxG.stage.window.readPixels());
@@ -64,7 +64,7 @@ class ScreenshotPlugin extends FlxBasic
 
 			FlxTimer.wait(1, () ->
 			{
-				_tookScreenshot = false;
+				tookScreenshot = false;
 				trace('Can screenshot again');
 			});
 		}

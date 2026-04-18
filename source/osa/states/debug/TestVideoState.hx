@@ -4,15 +4,15 @@ import osa.objects.cutscenes.VideoCutscene;
 
 class TestVideoState extends OSAState
 {
-    public var _video:VideoCutscene;
+    public var video:VideoCutscene;
 
 	override function create()
 	{
 		super.create();
 
-        _video = new VideoCutscene();
-        _video.play('testVid'.videoFile().miscAsset());
+        video = new VideoCutscene();
+        video.play('testVid'.videoFile().miscAsset());
 
-        add(_video);
+        add(video);
 	}
 }

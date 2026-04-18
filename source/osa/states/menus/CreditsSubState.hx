@@ -8,7 +8,7 @@ class CreditsSubState extends TitleSubStateBase
 	{
 		super(onExit);
 
-		_spriteList = [
+		spriteList = [
 			makeSprite('credits/maki', () -> return 'Maki : Artist, Programmer', () -> FlxG.openURL('https://github.com/bopel-maki-macohi')),
 			makeSprite('credits/requazar', () -> return 'Requazar : Composer, Motivator', () -> FlxG.openURL('https://www.youtube.com/@requazar')),
 			makeSprite('credits/pogo', () -> return 'Pogo : VS IMPOSTOR (Updog) - Get Your Ass Up! (Temp song for story menu)',

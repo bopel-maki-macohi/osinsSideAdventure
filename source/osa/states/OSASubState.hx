@@ -7,9 +7,9 @@ import flixel.FlxSubState;
 
 class OSASubState extends FlxSubState
 {
-	public var _rhythmManager(get, never):RhythmManager;
+	public var rhythmManager(get, never):RhythmManager;
 
-	function get__rhythmManager():RhythmManager
+	function get_rhythmManager():RhythmManager
 	{
 		return RhythmManager.instance;
 	}
@@ -18,10 +18,10 @@ class OSASubState extends FlxSubState
 	{
 		super.create();
 
-		if (_rhythmManager != null)
+		if (rhythmManager != null)
 		{
-			_rhythmManager._beatHit.add(onBeatHit);
-			_rhythmManager._stepHit.add(onStepHit);
+			rhythmManager.beatHit.add(onBeatHit);
+			rhythmManager.stepHit.add(onStepHit);
 		}
 
 		closeCallback = onClose;
@@ -33,16 +33,16 @@ class OSASubState extends FlxSubState
 	{
 		super.update(elapsed);
 
-		if (_rhythmManager != null)
-			_rhythmManager.update();
+		if (rhythmManager != null)
+			rhythmManager.update();
 	}
 
 	override public function destroy()
 	{
 		super.destroy();
 
-		_rhythmManager._beatHit.remove(onBeatHit);
-		_rhythmManager._stepHit.remove(onStepHit);
+		rhythmManager.beatHit.remove(onBeatHit);
+		rhythmManager.stepHit.remove(onStepHit);
 	}
 
 	public function onBeatHit(curBeat:Int) {}

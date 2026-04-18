@@ -16,10 +16,10 @@ class HoldToPerformGadge extends FlxRadialGauge
 	 */
 	public static final HOLD_TIME:Float = 1.5;
 
-	var _holdDelta:Float = 0;
+	var holdDelta:Float = 0;
 
-	public var _onComplete:Void->Void;
-	public var _condition:Void->Bool;
+	public var onComplete:Void->Void;
+	public var condition:Void->Bool;
 
 	override public function new(primaryColor:FlxColor, condition:Void->Bool, ?onComplete:Void->Void)
 	{
@@ -28,8 +28,8 @@ class HoldToPerformGadge extends FlxRadialGauge
 		makeShapeGraphic(CIRCLE, 40, 20, primaryColor ?? FlxColor.WHITE);
 		amount = 0;
 
-		this._onComplete = onComplete;
-		this._condition = condition;
+		this.onComplete = onComplete;
+		this.condition = condition;
 
 		this.antialiasing = true;
 	}
@@ -38,18 +38,18 @@ class HoldToPerformGadge extends FlxRadialGauge
 	{
 		super.update(elapsed);
 
-		if ((_condition != null && _condition()))
-			_holdDelta += elapsed;
+		if ((condition != null && condition()))
+			holdDelta += elapsed;
 		else
-			_holdDelta = FlxMath.lerp(_holdDelta, -0.1, (elapsed * 3).clamp(0, 1));
+			holdDelta = FlxMath.lerp(holdDelta, -0.1, (elapsed * 3).clamp(0, 1));
 
-		_holdDelta = _holdDelta.clamp(0, HoldToPerformGadge.HOLD_TIME);
-		amount = Math.min(1, Math.max(0, (_holdDelta / HoldToPerformGadge.HOLD_TIME) * 1.025));
+		holdDelta = holdDelta.clamp(0, HoldToPerformGadge.HOLD_TIME);
+		amount = Math.min(1, Math.max(0, (holdDelta / HoldToPerformGadge.HOLD_TIME) * 1.025));
 		scale.x = scale.y = FlxMath.lerp(1, 1.3, amount).clamp(1, 1.3);
 		alpha = FlxMath.lerp(0, 1, amount).clamp(0, 1);
 
 		// If the dial is full, skip the video.
-		if (amount >= 1 && _onComplete != null)
-			_onComplete();
+		if (amount >= 1 && onComplete != null)
+			onComplete();
 	}
 }

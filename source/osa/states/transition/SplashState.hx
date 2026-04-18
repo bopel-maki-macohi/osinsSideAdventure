@@ -47,16 +47,16 @@ class SplashState extends OSAState
 	function initWatermark()
 	{
 		#if !debug
-		add(_watermark);
+		add(watermark);
 		#end
 
-		_watermark.alignment = CENTER;
-		_watermark.size = 32;
-		_watermark.alpha = 0;
+		watermark.alignment = CENTER;
+		watermark.size = 32;
+		watermark.alpha = 0;
 
-		_watermark.text = FlxG.stage.window.title;
+		watermark.text = FlxG.stage.window.title;
 
-		_watermark.text = '${FlxG.stage.application.meta.get('name')} ${FlxG.stage.application.meta.get('version')}';
+		watermark.text = '${FlxG.stage.application.meta.get('name')} ${FlxG.stage.application.meta.get('version')}';
 	}
 
 	function randomMsg()
@@ -114,13 +114,13 @@ class SplashState extends OSAState
 	function displayMsg()
 	{
 		if (msg != null && msg.clearWatermark)
-			_watermark.text = line;
+			watermark.text = line;
 		else
-			_watermark.text += '\n\n${line}';
+			watermark.text += '\n\n${line}';
 
-		_watermark.screenCenter();
+		watermark.screenCenter();
 
-		FlxTween.tween(_watermark, {alpha: 1}, this.transIn.duration * 0.25);
+		FlxTween.tween(watermark, {alpha: 1}, this.transIn.duration * 0.25);
 
 		if (msg?.specialCase != null)
 		{

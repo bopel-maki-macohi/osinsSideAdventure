@@ -32,7 +32,7 @@ class OSAState extends FlxUIState
 		},);
 	}
 
-	public var _watermark:FlxText;
+	public var watermark:FlxText;
 
 	override function create()
 	{
@@ -42,13 +42,13 @@ class OSAState extends FlxUIState
 
 		super.create();
 
-		_watermark = new FlxText(10, 10, FlxG.width, 'O.S.A. ${VersionUtil.VERSION} (${Constants.GIT_STRING})', 16);
-		_watermark.alignment = LEFT;
-		_watermark.color = FlxColor.WHITE;
-		_watermark.y = FlxG.height - _watermark.height;
+		watermark = new FlxText(10, 10, FlxG.width, 'O.S.A. ${VersionUtil.VERSION} (${Constants.GIT_STRING})', 16);
+		watermark.alignment = LEFT;
+		watermark.color = FlxColor.WHITE;
+		watermark.y = FlxG.height - watermark.height;
 
 		#if debug
-		add(_watermark);
+		add(watermark);
 		#end
 
 		#if DISABLE_TITLE_WATERMARK_BLUR
@@ -56,13 +56,13 @@ class OSAState extends FlxUIState
 		FlxG.cameras.add(regCam, false);
 		regCam.bgColor.alpha = 0;
 
-		_watermark.camera = regCam;
+		watermark.camera = regCam;
 		#end
 
-		if (_rhythmManager != null)
+		if (rhythmManager != null)
 		{
-			_rhythmManager._beatHit.add(onBeatHit);
-			_rhythmManager._stepHit.add(onStepHit);
+			rhythmManager.beatHit.add(onBeatHit);
+			rhythmManager.stepHit.add(onStepHit);
 		}
 
 		FlxG.inputs.addInput(controls);
@@ -87,9 +87,9 @@ class OSAState extends FlxUIState
 
 	function onExit() {}
 
-	public var _rhythmManager(get, never):RhythmManager;
+	public var rhythmManager(get, never):RhythmManager;
 
-	function get__rhythmManager():RhythmManager
+	function get_rhythmManager():RhythmManager
 	{
 		return RhythmManager.instance;
 	}
@@ -98,16 +98,16 @@ class OSAState extends FlxUIState
 	{
 		super.update(elapsed);
 
-		if (_rhythmManager != null)
-			_rhythmManager.update();
+		if (rhythmManager != null)
+			rhythmManager.update();
 	}
 
 	override public function destroy()
 	{
 		super.destroy();
 
-		_rhythmManager._beatHit.remove(onBeatHit);
-		_rhythmManager._stepHit.remove(onStepHit);
+		rhythmManager.beatHit.remove(onBeatHit);
+		rhythmManager.stepHit.remove(onStepHit);
 	}
 
 	public function onBeatHit(curBeat:Int) {}
