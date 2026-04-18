@@ -60,14 +60,24 @@ class StoryMenuSubState extends TitleSubStateBase
 		var targetTales = [for (entryID => tale in entryData) {entryID: entryID, tale: tale}];
 
 		if (filter.toLowerCase().trim() != null)
+		{
+			var filteredTargetTales = targetTales.filter(d -> return d.tale.storymenu?.filters.contains(filter));
+
+			function setFilteredTales()
+			{
+				if (filteredTargetTales.length > 0)
+					targetTales = filteredTargetTales;
+			}
+
 			switch (filter.toLowerCase().trim())
 			{
 				case 'all', null, '':
 
 				default:
 					trace('Attempting filter: $filter');
-					targetTales = targetTales.filter(d -> return d.tale.storymenu?.filters.contains(filter));
+					setFilteredTales();
 			}
+		}
 
 		for (data in targetTales)
 		{
