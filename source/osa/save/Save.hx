@@ -15,7 +15,6 @@ class Save
 		options = new SaveField<SaveOptions>('options', {
 			pcname: true,
 			fpsCounter: true,
-			cache: true,
 		});
 		beatissues = new SaveField<Array<String>>('beatissues', []);
 
@@ -25,7 +24,6 @@ class Save
 		#end
 
 		options.get().fpsCounter ??= true;
-		options.get().cache ??= true;
 
 		Main.FPSCounter.visible = options.get().fpsCounter;
 

@@ -60,8 +60,6 @@ class InitState extends OSAState
 
 		Controls.instance = new Controls('Main');
 
-		OSACache.init();
-
 		#if DISABLE_OUTDATEDSTATE
 		osa.states.menus.OutdatedState.SEEN = true;
 		#end

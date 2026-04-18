@@ -2,6 +2,8 @@
 
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
+- Removed Assets Cache System
+
 # 0.11.2 (4/17/2026)
 
 - Chapter 1 assets are now in a `chapter1/` folder for characters and backgrounds
