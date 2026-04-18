@@ -55,6 +55,8 @@ class StoryMenuSubState extends TitleSubStateBase
 		reload('debug');
 	}
 
+	public var currentFilter:String = '';
+
 	public function reload(filter:String)
 	{
 		var targetTales = [for (entryID => tale in entryData) {entryID: entryID, tale: tale}];
@@ -66,12 +68,16 @@ class StoryMenuSubState extends TitleSubStateBase
 			function setFilteredTales()
 			{
 				if (filteredTargetTales.length > 0)
+				{
 					targetTales = filteredTargetTales;
+					currentFilter = filter;
+				}
 			}
 
 			switch (filter.toLowerCase().trim())
 			{
 				case 'all', null, '':
+					currentFilter = 'all';
 
 				default:
 					trace('Attempting filter: $filter');
@@ -80,17 +86,22 @@ class StoryMenuSubState extends TitleSubStateBase
 		}
 
 		for (data in targetTales)
-		{
 			addTale(data.tale, data.entryID);
-		}
 	}
 
 	public function addTale(tale:TaleData, entryID:String)
 	{
-		spriteList.push(makeSprite('story/titles/${tale?.storymenu?.titleAsset}', function()
-		{
-			return '${tale?.storymenu?.display ?? entryID}';
-		}, () -> taleSelected(entryID)));
+		spriteList.push(makeSprite('story/titles/${tale?.storymenu?.titleAsset}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
+	}
+
+	public function setTaleString(tale:TaleData, entryID:String)
+	{
+		var msg:String = '';
+
+		msg += 'Current Filter: ${currentFilter}\n';
+		msg += '${tale?.storymenu?.display ?? entryID}';
+
+		return msg;
 	}
 
 	public function taleSelected(tale:String)
