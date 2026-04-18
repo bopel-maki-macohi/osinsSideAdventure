@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.states.visualnovel.VNState;
 import osa.states.transition.SplashState;
 import flixel.FlxG;
 import osa.save.Save;
@@ -28,6 +29,7 @@ class DebugSubState extends TitleSubStateBase
 
 			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new SplashState())),
 			makeSprite('debug/default', () -> return 'Go to Github Page', () -> FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure')),
+			makeSprite('debug/default', () -> return 'Go to Lorem Ipsum VN', () -> FlxG.switchState(() -> new VNState('lorem'))),
 		];
 	}
 
