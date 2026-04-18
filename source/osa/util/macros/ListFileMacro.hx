@@ -8,8 +8,6 @@ class ListFileMacro
 	{
 		var list:Array<String> = [];
 
-		if (!haxe.macro.Context.defined("display"))
-		{
 			final path:String = 'dev/macros/listfiles/$file.txt';
 
 			if (!sys.FileSystem.exists(path))
@@ -34,7 +32,6 @@ class ListFileMacro
 
 				trace('List File "$file" : $list');
 			}
-		}
 
 		return macro $v{list};
 	}

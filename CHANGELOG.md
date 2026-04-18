@@ -1,7 +1,6 @@
 # Unreleased
 
 - If a video is playing in VNState via `_videoCutscene`, you won't be able to continue until it's done.
-- Macros `#if !display` has been fixed
 - Web builds are now compiled at max compression + bzip2 (About a 5.3% improvement in size, not bad)
 - Desktop builds are now compiled via 7zip (About a 2% improvement in size, could be better...)
 

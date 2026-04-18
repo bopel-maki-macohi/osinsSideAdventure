@@ -6,19 +6,16 @@ class GitMacro
 	{
 		var commitHash:String = '';
 
-		if (!haxe.macro.Context.defined("display"))
+		var process = new sys.io.Process('git', ['rev-parse', 'HEAD']);
+		if (process.exitCode() != 0)
 		{
-			var process = new sys.io.Process('git', ['rev-parse', 'HEAD']);
-			if (process.exitCode() != 0)
-			{
-				trace('Could not get the git commit... Is this an actual git repo?');
-			}
-
-			commitHash = process.stdout.readLine().substr(0, 7);
-			trace('Git commit: ${commitHash}');
-
-			process.close();
+			trace('Could not get the git commit... Is this an actual git repo?');
 		}
+
+		commitHash = process.stdout.readLine().substr(0, 7);
+		trace('Git commit: ${commitHash}');
+
+		process.close();
 
 		return macro $v{commitHash};
 	}
@@ -27,19 +24,16 @@ class GitMacro
 	{
 		var gitBranch:String = '';
 
-		if (!haxe.macro.Context.defined("display"))
+		var process = new sys.io.Process('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
+		if (process.exitCode() != 0)
 		{
-			var process = new sys.io.Process('git', ['rev-parse', '--abbrev-ref', 'HEAD']);
-			if (process.exitCode() != 0)
-			{
-				trace('Could not get the git branch... Is this an actual git repo?');
-			}
-
-			gitBranch = process.stdout.readLine();
-			trace('Git branch: ${gitBranch}');
-
-			process.close();
+			trace('Could not get the git branch... Is this an actual git repo?');
 		}
+
+		gitBranch = process.stdout.readLine();
+		trace('Git branch: ${gitBranch}');
+
+		process.close();
 
 		return macro $v{gitBranch};
 	}
@@ -48,15 +42,12 @@ class GitMacro
 	{
 		var gitBranch:Bool = true;
 
-		if (!haxe.macro.Context.defined("display"))
-		{
-			var process = new sys.io.Process('git', ['diff', '--quiet']);
+		var process = new sys.io.Process('git', ['diff', '--quiet']);
 
-			gitBranch = process.exitCode(true) == 1;
-			trace('Local Git: ${gitBranch}');
+		gitBranch = process.exitCode(true) == 1;
+		trace('Local Git: ${gitBranch}');
 
-			process.close();
-		}
+		process.close();
 
 		return macro $v{gitBranch};
 	}
