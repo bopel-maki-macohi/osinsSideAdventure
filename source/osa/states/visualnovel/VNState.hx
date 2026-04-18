@@ -52,7 +52,7 @@ class VNState extends OSAState
 	{
 		speaker = new VNSpeaker(null);
 
-		dialogueText = new FlxTypeText(0, 0, Math.round(FlxG.width / 2), '', 16);
+		dialogueText = new FlxTypeText(0, 0, Math.round(FlxG.width / 1), '', 16);
 		dialogueText.alignment = CENTER;
 		dialogueText.y = 20;
 
