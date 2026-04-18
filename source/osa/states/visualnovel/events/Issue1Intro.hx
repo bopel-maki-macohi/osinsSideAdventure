@@ -77,7 +77,7 @@ class Issue1Intro extends IssueEventRunner
 		_game.changeLine(1);
 
 		_tirok = new DialogueSprite(true);
-		_tirok.build('issue1/tirok-confused');
+		_tirok.build('chapter1/issue1/tirok-confused');
 
 		_tirok.x = FlxG.width + _tirok.width;
 
@@ -93,7 +93,7 @@ class Issue1Intro extends IssueEventRunner
 				if (_game == null)
 					return;
 
-				_tirok.build('issue1/tirok-OHSHIT', () ->
+				_tirok.build('chapter1/issue1/tirok-OHSHIT', () ->
 				{
 					if (_game == null)
 						return;

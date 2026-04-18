@@ -26,7 +26,7 @@ class Issue2EndSequence extends IssueEventRunner
 					if (FlxG.mouse.justPressed)
 					{
 						_game._dialogueCharacter.setColorTransform(1.0, 1.0, 1.0);
-						_game._dialogueCharacter.build('issue2/osin-glare-data', () -> _game.positionDialogueCharacter(_game._dialogueCharacter));
+						_game._dialogueCharacter.build('chapter1/issue2/osin-glare-data', () -> _game.positionDialogueCharacter(_game._dialogueCharacter));
 
 						_game._dialogueBG.build(null);
 
@@ -44,7 +44,7 @@ class Issue2EndSequence extends IssueEventRunner
 	{
 		super.unlockIssues(issue);
 
-		if (_game?._dialogueCharacter?._id == 'issue2/osin-glare-data' || issue == 'issue2-bonus')
+		if (_game?._dialogueCharacter?._id == 'chapter1/issue2/osin-glare-data' || issue == 'issue2-bonus')
 		{
 			Save.beatIssue('issue2-bonus');
 			Save.addIssue('bonusissue1');

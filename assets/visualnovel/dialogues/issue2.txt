@@ -1,39 +1,39 @@
 event_setDialogueBoxHeightPadding;0.1
-_;_;issue2-establishingshot
+_;_;chapter1/issue2-establishingshot
 
 event_setDialogueSpeed;0.1
-...;issue2/osin-upset;issue2-establishingshot
+...;chapter1/issue2/osin-upset;chapter1/issue2-establishingshot
 
 event_setDialogueSpeed;0.075
-What happened?;issue2/osin-upset;issue2-establishingshot
+What happened?;chapter1/issue2/osin-upset;chapter1/issue2-establishingshot
 
 event_resetDialogueSpeed;
-Beats me;issue2/tirok-back;issue2-establishingshot
-We've been gone for years.;issue2/tirok-back;issue2-establishingshot
-For all we know this could be just...;issue2/tirok-backtilt;issue2-establishingshot
-Them in another damn war.;issue2/tirok-backtilt;issue2-establishingshot
+Beats me;chapter1/issue2/tirok-back;chapter1/issue2-establishingshot
+We've been gone for years.;chapter1/issue2/tirok-back;chapter1/issue2-establishingshot
+For all we know this could be just...;chapter1/issue2/tirok-backtilt;chapter1/issue2-establishingshot
+Them in another damn war.;chapter1/issue2/tirok-backtilt;chapter1/issue2-establishingshot
 
-It can't just be that...;issue2/osin-upset-fists;issue2-establishingshot
-It can't be...;issue2/osin-upset-fists;issue2-establishingshot
+It can't just be that...;chapter1/issue2/osin-upset-fists;chapter1/issue2-establishingshot
+It can't be...;chapter1/issue2/osin-upset-fists;chapter1/issue2-establishingshot
 
 event_setDialogueSpeed;0.075
-There's gotta be something more to it...;issue2/osin-upset-fists;issue2-establishingshot
+There's gotta be something more to it...;chapter1/issue2/osin-upset-fists;chapter1/issue2-establishingshot
 
 event_setDialogueSpeed;0.1
-There's gotta...;issue2/osin-upset-fists-tears;issue2-establishingshot
+There's gotta...;chapter1/issue2/osin-upset-fists-tears;chapter1/issue2-establishingshot
 
 event_setDialogueSpeed;0.2
-...;issue2/tirok-sadglare;issue2-establishingshot
+...;chapter1/issue2/tirok-sadglare;chapter1/issue2-establishingshot
 
 event_setDialogueSpeed;0.1
-It...;issue2/tirok-sadglare;issue2-establishingshot
+It...;chapter1/issue2/tirok-sadglare;chapter1/issue2-establishingshot
 
 event_resetDialogueSpeed;
-It'll be okay.;issue2/tirok-back;issue2-establishingshot
+It'll be okay.;chapter1/issue2/tirok-back;chapter1/issue2-establishingshot
 
 event_setDialogueSpeed;0.1
-...;issue2/osin-glare;issue2-establishingshot
+...;chapter1/issue2/osin-glare;chapter1/issue2-establishingshot
 
 event_setDialogueSpeed;0.2
 event_issue2EndSequence
-No it won't.;issue2/osin-glare;issue2-establishingshot
+No it won't.;chapter1/issue2/osin-glare;chapter1/issue2-establishingshot

@@ -1,19 +1,19 @@
-_;_;bonusissue2/tempoCity-past
+_;_;chapter1/bonusissue2/tempoCity-past
 
-_;_;bonusissue2/tempoCity-present
-_;_;bonusissue2/tempoCity-past
-_;_;bonusissue2/tempoCity-present
-_;_;bonusissue2/tempoCity-past
-_;_;bonusissue2/tempoCity-present
-_;_;bonusissue2/tempoCity-present
-_;_;bonusissue2/tempoCity-past
-_;_;bonusissue2/tempoCity-past
-_;_;bonusissue2/tempoCity-past
-_;_;bonusissue2/tempoCity-past
-_;_;bonusissue2/tempoCity-present
+_;_;chapter1/bonusissue2/tempoCity-present
+_;_;chapter1/bonusissue2/tempoCity-past
+_;_;chapter1/bonusissue2/tempoCity-present
+_;_;chapter1/bonusissue2/tempoCity-past
+_;_;chapter1/bonusissue2/tempoCity-present
+_;_;chapter1/bonusissue2/tempoCity-present
+_;_;chapter1/bonusissue2/tempoCity-past
+_;_;chapter1/bonusissue2/tempoCity-past
+_;_;chapter1/bonusissue2/tempoCity-past
+_;_;chapter1/bonusissue2/tempoCity-past
+_;_;chapter1/bonusissue2/tempoCity-present
 
-_;_;bonusissue2/thunderbolt
+_;_;chapter1/bonusissue2/thunderbolt
 
-_;_;bonusissue2/thunderbolt-zoom
+_;_;chapter1/bonusissue2/thunderbolt-zoom
 
-_;_;bonusissue2/thunderbolt-turnaround
+_;_;chapter1/bonusissue2/thunderbolt-turnaround

@@ -1,33 +1,33 @@
 event_setDialogueSFX;loroc
-Are you two okay?;_;issue4/lorocSave/sky
+Are you two okay?;_;chapter1/issue4/lorocSave/sky
 
-Yes...?;issue5/tirok-scared;issue4/lorocSave/sky
+Yes...?;chapter1/issue5/tirok-scared;chapter1/issue4/lorocSave/sky
 event_setDialogueSpeed;0.025
-NO.;issue5/osin-pissed;issue4/lorocSave/sky
+NO.;chapter1/issue5/osin-pissed;chapter1/issue4/lorocSave/sky
 
 event_setDialogueSpeed;0.1
-Sorry. I'm still kinda new to this hero thing,;issue5/loroc-whoops;issue5-mountainShot
+Sorry. I'm still kinda new to this hero thing,;chapter1/issue5/loroc-whoops;chapter1/issue5-mountainShot
 event_resetDialogueSpeed
-I saw him heading over here but I wanted to sneak up on him and beat him.;issue5/loroc-yappin;issue5-mountainShot
+I saw him heading over here but I wanted to sneak up on him and beat him.;chapter1/issue5/loroc-yappin;chapter1/issue5-mountainShot
 event_setDialogueSpeed;0.075
-I had no idea there were people left in this area.;issue5/loroc-whoops;issue5-mountainShot
+I had no idea there were people left in this area.;chapter1/issue5/loroc-whoops;chapter1/issue5-mountainShot
 event_setDialogueSpeed;0.025
-Let alone someone who could keep Thunderbolt occupied.;issue5/loroc-impressed;issue5-mountainShot
+Let alone someone who could keep Thunderbolt occupied.;chapter1/issue5/loroc-impressed;chapter1/issue5-mountainShot
 
-That name's stupid;issue3/osin-turnt;issue5-mountainShot
-He named himself, not me.;issue5/loroc-yappin;issue5-mountainShot
+That name's stupid;chapter1/issue3/osin-turnt;chapter1/issue5-mountainShot
+He named himself, not me.;chapter1/issue5/loroc-yappin;chapter1/issue5-mountainShot
 
 event_setDialogueSpeed;0.2
-...;issue5/tirok-worried;issue5-mountainShot
+...;chapter1/issue5/tirok-worried;chapter1/issue5-mountainShot
 
 event_setDialogueSpeed;0.025
-So what the fuck is his deal?;issue3/osin-yell;issue5-mountainShot
-Why is he metal?;issue3/osin-yell;issue5-mountainShot
-Who the hell even is he?;issue3/osin-yell-attitude;issue5-mountainShot
-Last time we were here it was just me, Sinco, and that kid from Boredom City who were speedsters.;issue3/osin-yell-attitude;issue5-mountainShot
+So what the fuck is his deal?;chapter1/issue3/osin-yell;chapter1/issue5-mountainShot
+Why is he metal?;chapter1/issue3/osin-yell;chapter1/issue5-mountainShot
+Who the hell even is he?;chapter1/issue3/osin-yell-attitude;chapter1/issue5-mountainShot
+Last time we were here it was just me, Sinco, and that kid from Boredom City who were speedsters.;chapter1/issue3/osin-yell-attitude;chapter1/issue5-mountainShot
 
 event_resetDialogueSpeed
-I dont... know...;issue5/loroc-scared;issue5-mountainShot
+I dont... know...;chapter1/issue5/loroc-scared;chapter1/issue5-mountainShot
 
 event_setDialogueSpeed;0.4
-...;issue5/osin-temptedyell;issue5-mountainShot
+...;chapter1/issue5/osin-temptedyell;chapter1/issue5-mountainShot

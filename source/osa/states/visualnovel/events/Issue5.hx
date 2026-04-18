@@ -14,7 +14,7 @@ class Issue5 extends IssueEventRunner
 	{
 		super.unlockIssues(issue);
 
-		if (_game?._dialogueCharacter?._id == 'issue2/osin-glare-data' || issue == 'issue5-bonus')
+		if (_game?._dialogueCharacter?._id == 'chapter1/issue2/osin-glare-data' || issue == 'issue5-bonus')
 		{
 			Save.beatIssue('issue5-bonus');
 			Save.addIssue('bonusissue2');
@@ -56,7 +56,7 @@ class Issue5 extends IssueEventRunner
 							_game._dialogueList.remove(line);
 
 						_game._dialogueCharacter.setColorTransform(1.0, 1.0, 1.0);
-						_game._dialogueCharacter.build('issue2/osin-glare-data', () -> _game.positionDialogueCharacter(_game._dialogueCharacter));
+						_game._dialogueCharacter.build('chapter1/issue2/osin-glare-data', () -> _game.positionDialogueCharacter(_game._dialogueCharacter));
 
 						_game._dialogueBG.build(null);
 

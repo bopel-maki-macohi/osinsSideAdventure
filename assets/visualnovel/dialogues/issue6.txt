@@ -1,17 +1,17 @@
 event_setDialogueBoxHeightPadding;0.4
-_;_;issue5-mountainShot
-It has been a day.;_;issue5-mountainShot
-Feeling better?;issue6/tirok-chill;issue5-mountainShot
-I guess.;issue6/osin-staresky;issue5-mountainShot
-Thanks for the jacket by the way.;issue6/osin-staresky;issue5-mountainShot
-You're welcome.;issue6/tirok-chill;issue5-mountainShot
-So...;issue6/osin-staresky;issue5-mountainShot
+_;_;chapter1/issue5-mountainShot
+It has been a day.;_;chapter1/issue5-mountainShot
+Feeling better?;chapter1/issue6/tirok-chill;chapter1/issue5-mountainShot
+I guess.;chapter1/issue6/osin-staresky;chapter1/issue5-mountainShot
+Thanks for the jacket by the way.;chapter1/issue6/osin-staresky;chapter1/issue5-mountainShot
+You're welcome.;chapter1/issue6/tirok-chill;chapter1/issue5-mountainShot
+So...;chapter1/issue6/osin-staresky;chapter1/issue5-mountainShot
 event_setDialogueBoxHeightPadding;0.4
-What's the plan?;issue6/osin-crossarm;issue5-mountainShot
+What's the plan?;chapter1/issue6/osin-crossarm;chapter1/issue5-mountainShot
 event_setDialogueBoxHeightPadding;0.2
-Well, he's always around Tempo City so maybe he has a base somewhere there?;issue6/loroc-thinking;issue5-mountainShot
-Who wouldn't have their Base close to where they head the most?;issue6/tirok-obviously;issue5-mountainShot
+Well, he's always around Tempo City so maybe he has a base somewhere there?;chapter1/issue6/loroc-thinking;chapter1/issue5-mountainShot
+Who wouldn't have their Base close to where they head the most?;chapter1/issue6/tirok-obviously;chapter1/issue5-mountainShot
 event_setDialogueBoxHeightPadding;0.1
-Yeah!;issue5/loroc-impressed;issue5-mountainShot
-Yeah?;issue6/loroc-uhm;issue5-mountainShot
-Yeah.;issue6/osin-ohyeah;issue5-mountainShot
+Yeah!;chapter1/issue5/loroc-impressed;chapter1/issue5-mountainShot
+Yeah?;chapter1/issue6/loroc-uhm;chapter1/issue5-mountainShot
+Yeah.;chapter1/issue6/osin-ohyeah;chapter1/issue5-mountainShot

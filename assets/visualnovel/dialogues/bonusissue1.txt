@@ -1,23 +1,23 @@
 event_setDialogueSpeed;0.2
-...;bonusissue1/tirok-back;_
+...;chapter1/bonusissue1/tirok-back;_
 
 event_resetDialogueSpeed
-So what're you working on?;issue1/osin-what;_
-JESUS CHRIST!;bonusissue1/tirok-WHATTHEFUCK;_
+So what're you working on?;chapter1/issue1/osin-what;_
+JESUS CHRIST!;chapter1/bonusissue1/tirok-WHATTHEFUCK;_
 
-Learn to fucking knock dude...;bonusissue1/tirok-irritated;_
-We live in the same base of operations.;bonusissue1/osin-bruh;_
-Also there's barely doors.;bonusissue1/osin-ohwait;_
+Learn to fucking knock dude...;chapter1/bonusissue1/tirok-irritated;_
+We live in the same base of operations.;chapter1/bonusissue1/osin-bruh;_
+Also there's barely doors.;chapter1/bonusissue1/osin-ohwait;_
 
-...;bonusissue1/tirok-irritated;_
-Whatever;bonusissue1/tirok-back;_
+...;chapter1/bonusissue1/tirok-irritated;_
+Whatever;chapter1/bonusissue1/tirok-back;_
 
-So what're you working on?;issue1/osin-what;_
-You've seen it before;bonusissue1/tirok-back;_
-It's my "Iron-man suit";bonusissue1/tirok-back;_
-Trademark pending hehe;issue1/osin-smile;_
+So what're you working on?;chapter1/issue1/osin-what;_
+You've seen it before;chapter1/bonusissue1/tirok-back;_
+It's my "Iron-man suit";chapter1/bonusissue1/tirok-back;_
+Trademark pending hehe;chapter1/issue1/osin-smile;_
 
-Shut--;bonusissue1/tirok-irritated-tilt;_
+Shut--;chapter1/bonusissue1/tirok-irritated-tilt;_
 event_bonusissue1EndSequence
---up...;bonusissue1/tirok-irritated-tilt;whitevoid
-Huh?;issue1/tirok-OHSHIT;whitevoid
+--up...;chapter1/bonusissue1/tirok-irritated-tilt;whitevoid
+Huh?;chapter1/issue1/tirok-OHSHIT;whitevoid

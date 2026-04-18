@@ -156,14 +156,21 @@ class OSACache
 		{
 			final filteredallImgPaths = allImgPaths.filter(f -> return f == img);
 
-			// trace('$img : ${filteredallImgPaths.length}');
-
 			if (filteredallImgPaths.length > 1)
+			{
+				trace('Perm caching issue texture: $img (uses: ${filteredallImgPaths.length})');
 				permCacheImgPaths.push(img);
+			}
 		}
+
+		var oldTrace = haxe.Log.trace;
+
+		haxe.Log.trace = (v, ?infos) -> {};
 
 		for (img in permCacheImgPaths)
 			permCacheTexture(img);
+
+		haxe.Log.trace = oldTrace;
 	}
 
 	public static function permCacheSound(key:String)
@@ -245,7 +252,7 @@ class OSACache
 			return;
 
 		texture.destroyOnNoUse = true;
-		
+
 		#if debug
 		trace('Temp cached texture: $key');
 		#end
