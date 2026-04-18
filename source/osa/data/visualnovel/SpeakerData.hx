@@ -32,7 +32,7 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 		switch (data.iteration)
 		{
 			default:
-				trace('No changes required for speajer iteration: ${data.iteration}');
+				trace('No changes required for speaker iteration: ${data.iteration}');
 		}
 	}
 
