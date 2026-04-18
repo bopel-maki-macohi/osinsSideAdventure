@@ -1,5 +1,7 @@
 package osa.states.visualnovel;
 
+import flixel.util.FlxColor;
+import osa.objects.HoldToPerformGadge;
 import osa.util.SoundUtil;
 import osa.states.menus.TitleState;
 import flixel.FlxSprite;
@@ -42,6 +44,8 @@ class VNState extends OSAState
 
 	public var continueHand:FlxSprite;
 
+	public var holdToSkipGadge:HoldToPerformGadge;
+
 	public var speaker:VNSpeaker;
 
 	public var lineNumber:Int = 0;
@@ -70,9 +74,18 @@ class VNState extends OSAState
 
 		continueHand.setPosition(FlxG.width - continueHand.width * 2, FlxG.height - continueHand.height * 2);
 
+		holdToSkipGadge = new HoldToPerformGadge(FlxColor.RED, function()
+		{
+			return controls.pressed.HOLD_SKIP;
+		}, endTale);
+
+		holdToSkipGadge.setPosition(continueHand.getGraphicMidpoint().x - holdToSkipGadge.width * .5,
+			continueHand.getGraphicMidpoint().y - holdToSkipGadge.height * .5);
+
 		add(speaker);
 		add(dialogueText);
 		add(continueHand);
+		add(holdToSkipGadge);
 
 		super.create();
 
