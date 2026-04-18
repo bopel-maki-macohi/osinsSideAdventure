@@ -31,8 +31,8 @@ class AssetUtil
 	public static inline function visualNovelAsset(file:String):String
 		return assetPath('visualnovel/$file');
 
-	public static inline function taleAsset(tale:String, file:String):String
-		return visualNovelAsset('tales/$tale/$file');
+	public static inline function taleAsset(file:String):String
+		return visualNovelAsset('tales/$file');
 
 	public static inline function speakerAsset(speaker:String, file:String):String
 		return visualNovelAsset('speakers/$speaker/$file');
