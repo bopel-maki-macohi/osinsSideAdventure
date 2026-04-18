@@ -1,0 +1,14 @@
+{
+    "iteration": 0,
+
+    "lines": [
+        {
+            "text": "Lorem Ipsum Dolor Sit Amet",
+
+            "speaker": {
+                "id": "test",
+                "state": "default"
+            }
+        }
+    ]
+}

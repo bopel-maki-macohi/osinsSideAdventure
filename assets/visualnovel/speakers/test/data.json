@@ -1,0 +1,15 @@
+{
+    "iteration": 0,
+
+    "states": [
+        {
+            "id": "default",
+            "asset": "default",
+
+            "offsets": [
+                0,
+                0
+            ]
+        }
+    ]
+}
