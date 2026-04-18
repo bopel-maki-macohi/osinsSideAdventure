@@ -7,6 +7,8 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 {
 	public var iteration:Int;
 
+	public var lines:Array<TaleLineData>;
+
 	override public function new(file:String)
 	{
 		iteration = Constants.ITERATION_TALEDATA;
@@ -23,12 +25,13 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 
 		var data:TaleData = new JsonParser<TaleData>().fromJson(file.readText(), file);
 
+		this.iteration = data.iteration;
+		this.lines = data.lines;
+
 		switch (data.iteration)
 		{
 			default:
-				trace('No upgrade required from iteration: ${data.iteration}');
+				trace('No changes required for iteration: ${data.iteration}');
 		}
-
-		this.iteration = Constants.ITERATION_TALEDATA;
 	}
 }
