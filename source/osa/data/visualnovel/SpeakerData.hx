@@ -1,0 +1,2 @@
+package osa.data.visualnovel;
+

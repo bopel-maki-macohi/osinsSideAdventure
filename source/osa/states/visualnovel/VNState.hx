@@ -1,13 +1,15 @@
 package osa.states.visualnovel;
 
+import osa.data.visualnovel.TaleData;
+
 class VNState extends OSAState
 {
-	public var _tale:String = '';
+	public var taleData:TaleData;
 
-	override public function new(tale:String)
+	override public function new(taleID:String)
 	{
 		super();
 
-		this._tale = tale;
+		taleData = new TaleData(taleID.jsonFile().taleAsset());
 	}
 }

@@ -1,5 +1,6 @@
 package osa.states;
 
+import osa.util.VersionUtil;
 import osa.util.Constants;
 import osa.util.Controls;
 import osa.objects.RhythmManager;
@@ -41,7 +42,7 @@ class OSAState extends FlxUIState
 
 		super.create();
 
-		_watermark = new FlxText(10, 10, FlxG.width, 'O.S.A. ${Constants.VERSION} (${Constants.GIT_STRING})', 16);
+		_watermark = new FlxText(10, 10, FlxG.width, 'O.S.A. ${VersionUtil.VERSION} (${Constants.GIT_STRING})', 16);
 		_watermark.alignment = LEFT;
 		_watermark.color = FlxColor.WHITE;
 		_watermark.y = FlxG.height - _watermark.height;

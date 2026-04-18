@@ -1,9 +1,6 @@
 package osa.util;
 
-import osa.util.OutdatedUtil;
-import lime.app.Application;
 import osa.util.macros.GitMacro;
-import flixel.FlxG;
 
 class Constants
 {
@@ -12,51 +9,13 @@ class Constants
 
 	public static final DEFAULT_LERP_SPEED:Float = 0.04;
 
-	public static function getTimestamp():String
-	{
-		final dateNow:Date = Date.now();
-
-		final seconds:Float = dateNow.getTime() / 1000;
-		final date:String = '${dateNow.getMonth()}-${dateNow.getDate()}-${dateNow.getFullYear()}';
-
-		return '${date}_${seconds}';
-	}
-
-	public static inline function selectSfx()
-	{
-		FlxG.sound.play('sounds/select${FlxG.random.int(1, 4)}'.menuAsset().audioFile());
-	}
-
-	public static inline function cancelSfx()
-	{
-		FlxG.sound.play('sounds/cancel'.menuAsset().audioFile());
-	}
+	public static final ITERATION_SPEAKERDATA:Int = 0;
+	public static final ITERATION_TALEDATA:Int = 0;
 
 	public static var GIT_STRING(get, null):String;
 
 	static function get_GIT_STRING():String
 	{
 		return ((GitMacro.getHasLocalChanges()) ? 'local_' : '') + '${GitMacro.getGitBranch()}:${GitMacro.getGitCommit()}';
-	}
-
-	public static var OUTDATED_LATEST_VERSION(get, null):String;
-
-	static function get_OUTDATED_LATEST_VERSION():String
-	{
-		return OutdatedUtil.getLatestVersion();
-	}
-
-	public static var OUTDATED(get, null):Bool;
-
-	static function get_OUTDATED():Bool
-	{
-		return OUTDATED_LATEST_VERSION != VERSION;
-	}
-
-	public static var VERSION(get, null):String;
-
-	static function get_VERSION():String
-	{
-		return Application.current.meta.get('version');
 	}
 }

@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.util.SoundUtil;
 import osa.shaders.GrayscaleShader;
 import flixel.util.FlxTimer;
 import osa.util.Constants;
@@ -227,7 +228,7 @@ class TitleState extends OSAState
 			FlxTween.tween(tileScrollBG, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
 
-		Constants.selectSfx();
+		SoundUtil.selectSfx();
 
 		openSubState(substate);
 	}
@@ -256,7 +257,7 @@ class TitleState extends OSAState
 			FlxTween.tween(tileScrollBG, {alpha: 0}, this.transOut.duration, {ease: FlxEase.sineInOut});
 		}
 
-		Constants.cancelSfx();
+		SoundUtil.cancelSfx();
 	}
 
 	override function onExit()

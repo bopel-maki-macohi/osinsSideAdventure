@@ -36,6 +36,11 @@
       "version": null
     },
     {
+      "name": "json2object",
+      "type": "haxelib",
+      "version": null
+    },
+    {
       "name": "openfl",
       "type": "git",
       "dir": null,

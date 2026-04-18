@@ -85,9 +85,9 @@ class CrashHandler
 				currentState = Type.getClassName(currentStateCls) ?? 'No state loaded';
 		}
 
-		final filename:String = '$CRASH_DIRECTORY/${Constants.getTimestamp()}.txt';
+		final filename:String = '$CRASH_DIRECTORY/${DateUtil.getTimestamp()}.txt';
 
-		errorMessage += '\nGame Version: ${Constants.VERSION}';
+		errorMessage += '\nGame Version: ${VersionUtil.VERSION}';
 		
 		#if CRASHHANDLER_INCLUDE_GIT
 		errorMessage += '\nGit info: ${Constants.GIT_STRING}';

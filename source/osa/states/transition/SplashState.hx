@@ -1,5 +1,6 @@
 package osa.states.transition;
 
+import osa.util.VersionUtil;
 import osa.states.menus.OutdatedState;
 import osa.util.Constants;
 import osa.states.menus.TitleState;
@@ -138,7 +139,7 @@ class SplashState extends OSAState
 
 	function leave()
 	{
-		if (Constants.OUTDATED && !OutdatedState.SEEN)
+		if (VersionUtil.OUTDATED && !OutdatedState.SEEN)
 			FlxG.switchState(() -> new OutdatedState());
 		else
 			FlxG.switchState(() -> new TitleState());

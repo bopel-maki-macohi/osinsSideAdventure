@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.util.SoundUtil;
 import osa.util.Constants;
 import flixel.math.FlxMath;
 import flixel.group.FlxSpriteContainer.FlxTypedSpriteContainer;
@@ -109,7 +110,7 @@ class TitleSubStateBase extends OSASubState
 		if (_currentSelection > _sprites.length - 1)
 			_currentSelection = 0;
 
-		Constants.selectSfx();
+		SoundUtil.selectSfx();
 	}
 
 	public var _text:FlxText;

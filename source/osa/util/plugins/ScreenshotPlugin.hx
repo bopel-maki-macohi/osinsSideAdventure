@@ -52,7 +52,7 @@ class ScreenshotPlugin extends FlxBasic
 			final screenshot:BitmapData = BitmapData.fromImage(FlxG.stage.window.readPixels());
 			final bytes:ByteArray = screenshot.encode(screenshot.rect, new PNGEncoderOptions());
 
-			final path = '${ScreenshotPlugin.SCREENSHOT_FOLDER}/screenshot_${Constants.getTimestamp()}.png';
+			final path = '${ScreenshotPlugin.SCREENSHOT_FOLDER}/screenshot_${DateUtil.getTimestamp()}.png';
 
 			sys.io.File.saveBytes(path, bytes);
 			trace('Saved screenshot to $path');
