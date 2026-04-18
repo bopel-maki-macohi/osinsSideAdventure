@@ -9,5 +9,6 @@ typedef TaleStoryMenuData =
 	var display:String;
 
 	@:optional
+	@:default([])
 	var filters:Array<String>;
 }
