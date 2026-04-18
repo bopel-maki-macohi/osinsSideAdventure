@@ -1,6 +1,7 @@
 package osa.states.menus;
 
 import osa.states.visualnovel.VNState;
+import osa.states.visualnovel.editors.VNEditor;
 import osa.states.transition.SplashState;
 import flixel.FlxG;
 import osa.save.Save;
