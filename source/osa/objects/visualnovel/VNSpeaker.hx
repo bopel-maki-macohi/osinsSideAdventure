@@ -26,8 +26,6 @@ class VNSpeaker extends FlxSprite
 		super();
 
 		this.data = data;
-
-		build(null);
 	}
 
 	public var state(default, null):String = null;
