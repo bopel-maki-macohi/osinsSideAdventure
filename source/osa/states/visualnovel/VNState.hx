@@ -54,7 +54,7 @@ class VNState extends OSAState
 
 		dialogueText = new FlxTypeText(0, 0, Math.round(FlxG.width / 2), '', 16);
 		dialogueText.alignment = CENTER;
-		dialogueText.y = 40;
+		dialogueText.y = 20;
 
 		add(speaker);
 		add(dialogueText);
@@ -62,6 +62,12 @@ class VNState extends OSAState
 		super.create();
 
 		changeLine(0);
+	}
+
+	override function update(elapsed:Float) {
+		super.update(elapsed);
+
+		dialogueText.screenCenter(X);
 	}
 
 	public function changeLine(increment:Int = 0)
