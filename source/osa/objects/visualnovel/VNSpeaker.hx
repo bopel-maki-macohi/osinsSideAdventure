@@ -6,7 +6,13 @@ import osa.data.visualnovel.SpeakerData;
 
 class VNSpeaker extends FlxSprite
 {
-	public var data:SpeakerData = null;
+	public var data(default, set):SpeakerData = null;
+
+    function set_data(newData:SpeakerData):SpeakerData
+    {
+        build(null);
+        return newData;
+    }
 
 	public var speaker(get, never):String;
 
