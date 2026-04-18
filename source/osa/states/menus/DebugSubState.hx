@@ -33,11 +33,6 @@ class DebugSubState extends TitleSubStateBase
 
 	public static function resetGame()
 	{
-		OSACache.wipeCaches();
-
-		FlxG.signals.postStateSwitch.remove(OSACache.postStateSwitch);
-		FlxG.signals.postUpdate.remove(OSACache.postUpdate);
-
 		FlxG.resetGame();
 	}
 }
