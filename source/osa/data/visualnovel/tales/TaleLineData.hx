@@ -4,7 +4,8 @@ import osa.data.visualnovel.speaker.SpeakerTaleData;
 
 typedef TaleLineData =
 {
-	text:String,
+	var text:String;
 
-    speaker:SpeakerTaleData,
+    @:optional
+    var speaker:SpeakerTaleData;
 }

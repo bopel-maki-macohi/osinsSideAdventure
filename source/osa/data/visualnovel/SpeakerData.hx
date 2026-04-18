@@ -2,12 +2,13 @@ package osa.data.visualnovel;
 
 import osa.data.visualnovel.speaker.SpeakerStateData;
 import osa.util.Constants;
+import json2object.JsonParser;
 
 class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 {
 	public var iteration:Int = 0;
 
-    public var states:Array<SpeakerStateData>;
+	public var states:Array<SpeakerStateData>;
 
 	override public function new(file:String)
 	{
@@ -33,5 +34,14 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 			default:
 				trace('No changes required for iteration: ${data.iteration}');
 		}
+	}
+
+	public function getStateInfo(stateID:String):SpeakerStateData
+	{
+		for (state in states)
+			if (state.id == stateID)
+				return state;
+
+		return null;
 	}
 }
