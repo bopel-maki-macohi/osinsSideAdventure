@@ -9,6 +9,14 @@
                 "id": "test",
                 "state": "default"
             }
+        },
+        {
+            "text": "Lorem ipsum dolor sit amet?",
+
+            "speaker": {
+                "id": "test",
+                "state": "uhm"
+            }
         }
     ]
 }
