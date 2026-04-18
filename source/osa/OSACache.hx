@@ -1,8 +1,6 @@
 package osa;
 
 import osa.util.Constants;
-import osa.states.visualnovel.DialogueSprite;
-import osa.states.visualnovel.DialogueLine;
 import osa.save.Save;
 import flixel.util.FlxTimer;
 import flixel.sound.FlxSound;
@@ -95,82 +93,6 @@ class OSACache
 		permCacheTexture('title/options'.imageFile().menuAsset());
 
 		permCacheTexture('logo'.imageFile().menuAsset());
-
-		permCacheIssueTextures();
-	}
-
-	public static function permCacheIssueTextures()
-	{
-		if (!Save.options.get().cache)
-			return;
-
-		var issueImgPaths:Map<String, Array<String>> = [];
-
-		for (issue in Save.issues.get())
-		{
-			var issueArr = [];
-
-			var char:DialogueSprite = new DialogueSprite(true);
-			var bg:DialogueSprite = new DialogueSprite(false);
-
-			// trace(issue);
-
-			for (rawline in issue.parseDialogueFile())
-			{
-				var line:DialogueLine = new DialogueLine(rawline);
-
-				if (line._isEvent)
-					continue;
-
-				// trace(line);
-
-				if (line._character != null)
-					char.build(line._character);
-				if (line._bg != null)
-					bg.build(line._bg);
-
-				if (char?.graphic?.assetsKey != null)
-					if (!issueArr.contains(char?.graphic?.assetsKey))
-						issueArr.push(char?.graphic?.assetsKey);
-
-				if (bg?.graphic?.assetsKey != null)
-					if (!issueArr.contains(bg?.graphic?.assetsKey))
-						issueArr.push(bg?.graphic?.assetsKey);
-			}
-
-			issueImgPaths.set(issue, issueArr);
-		}
-
-		var allImgPaths:Array<String> = [];
-		var permCacheImgPaths:Array<String> = [];
-
-		for (issue => imgs in issueImgPaths)
-		{
-			// trace('$issue : $imgs');
-
-			for (img in imgs)
-				allImgPaths.push(img);
-		}
-
-		for (img in allImgPaths)
-		{
-			final filteredallImgPaths = allImgPaths.filter(f -> return f == img);
-
-			if (filteredallImgPaths.length > 1)
-			{
-				trace('Perm caching issue texture: $img (uses: ${filteredallImgPaths.length})');
-				permCacheImgPaths.push(img);
-			}
-		}
-
-		var oldTrace = haxe.Log.trace;
-
-		haxe.Log.trace = (v, ?infos) -> {};
-
-		for (img in permCacheImgPaths)
-			permCacheTexture(img);
-
-		haxe.Log.trace = oldTrace;
 	}
 
 	public static function permCacheSound(key:String)

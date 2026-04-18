@@ -4,7 +4,6 @@ import osa.states.debug.TestVideoState;
 import osa.util.*;
 import osa.states.transition.SplashState;
 import osa.objects.RhythmManager;
-import osa.states.visualnovel.VNState;
 import osa.util.macros.*;
 import osa.util.debug.CrashHandler;
 import osa.save.Save;
@@ -50,7 +49,6 @@ class InitState extends OSAState
 		FlxG.console.registerClass(Constants);
 		FlxG.console.registerClass(MacroUtil);
 		FlxG.console.registerClass(OutdatedUtil);
-		FlxG.console.registerClass(ChapterUtil);
 
 		InitState.IMPORTANT_INITALIZED = true;
 	}
@@ -77,9 +75,7 @@ class InitState extends OSAState
 	{
 		var ENTER_VN = MacroUtil.getDefine('ENTER_VN');
 
-		if (ENTER_VN != null)
-			FlxG.switchState(() -> VNState.build(ENTER_VN));
-		else if (MacroUtil.isDefined('STORYMENU'))
+		if (MacroUtil.isDefined('STORYMENU'))
 			FlxG.switchState(() -> new TitleState('STORYMENU'));
 		else if (MacroUtil.isDefined('CREDITS'))
 			FlxG.switchState(() -> new TitleState('CREDITS'));

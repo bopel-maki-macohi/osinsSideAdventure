@@ -1,8 +1,5 @@
 package osa.save;
 
-import osa.util.ChapterUtil;
-import osa.states.visualnovel.EventManager;
-import osa.util.SortUtil;
 import flixel.FlxG;
 
 class Save
@@ -30,49 +27,12 @@ class Save
 		options.get().fpsCounter ??= true;
 		options.get().cache ??= true;
 
-		#if LOSE_EVERYTHING
-		issues.set([]);
-		beatissues.set([]);
-		#end
-
-		addIssue('issue1');
-		addIssue('issue2');
-
-		beatIssue('issue1');
-
-		#if UNLOCK_EVERYTHING
-		for (issue in ChapterUtil.ISSUE_ORDER_PREFERENCE)
-		{
-			addIssue(issue);
-			beatIssue(issue);
-		}
-		beatIssue('issue2-bonus');
-		beatIssue('issue5-bonus');
-		#end
-
-		for (issue in beatissues.get())
-			EventManager.onBeatIssue(issue);
-
 		Main.FPSCounter.visible = options.get().fpsCounter;
-	}
 
-	public static function addIssue(issuefile:String)
-	{
-		if (!issues.get().contains(issuefile))
-			issues.get().push(issuefile);
+		removeField('chapters');
 
-		sortIssues();
-	}
-
-	public static function beatIssue(id:String)
-	{
-		if (!beatissues.get().contains(id))
-			beatissues.get().push(id);
-	}
-
-	public static function sortIssues()
-	{
-		issues.get().sort((a, b) -> SortUtil.defaultsAlphabetically(ChapterUtil.ISSUE_ORDER_PREFERENCE, a, b));
+		removeField('issues');
+		removeField('beatissues');
 	}
 
 	public static function removeField(field:String)
@@ -84,8 +44,6 @@ class Save
 	public static function init()
 	{
 		FlxG.save.bind('OSA', 'Maki');
-
-		removeField('chapters');
 
 		fieldInit();
 

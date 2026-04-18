@@ -1,5 +1,6 @@
 package osa.states.menus;
 
+import osa.shaders.GrayscaleShader;
 import flixel.util.FlxTimer;
 import osa.util.Constants;
 import flixel.tweens.FlxEase;
@@ -111,11 +112,13 @@ class TitleState extends OSAState
 		_optionsBtn.y = FlxG.height - _optionsBtn.height - (_storymenuBtn.x / 4);
 		_creditsBtn.x = FlxG.width - _creditsBtn.width - _storymenuBtn.x;
 
+		_storymenuBtn.shader = new GrayscaleShader(.75);
+
 		add(_storymenuBtn);
 		add(_optionsBtn);
 		add(_creditsBtn);
 
-		_storymenuBtn._onClick.add(() -> onSelectionClicked(_storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(_storymenuTileScrollBG))));
+		// _storymenuBtn._onClick.add(() -> onSelectionClicked(_storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(_storymenuTileScrollBG))));
 		_optionsBtn._onClick.add(() -> onSelectionClicked(_optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(_optionsTileScrollBG))));
 		_creditsBtn._onClick.add(() -> onSelectionClicked(_creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(_creditsTileScrollBG))));
 

@@ -1,6 +1,6 @@
 package osa.states.debug;
 
-import osa.states.visualnovel.cutscenes.VideoCutscene;
+import osa.objects.cutscenes.VideoCutscene;
 
 class TestVideoState extends OSAState
 {

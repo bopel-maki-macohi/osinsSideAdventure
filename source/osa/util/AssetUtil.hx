@@ -22,9 +22,6 @@ class AssetUtil
 	public static inline function videoFile(file:String):String
 		return '$file.mp4';
 
-	public static inline function visualNovelAsset(file:String):String
-		return assetPath('visualnovel/$file');
-
 	public static inline function menuAsset(file:String):String
 		return assetPath('menus/$file');
 
@@ -59,10 +56,5 @@ class AssetUtil
 				lines.push(line.trim());
 
 		return lines;
-	}
-
-	public static function parseDialogueFile(scene:String):Array<String>
-	{
-		return textSplit('dialogues/$scene'.visualNovelAsset());
 	}
 }

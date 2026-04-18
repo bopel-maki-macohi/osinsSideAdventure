@@ -1,5 +1,7 @@
 # 0.12.0 (4/2026)
 
+THE GAME IS TAKING A NEW DIRECTION NOW
+
 # 0.11.2 (4/17/2026)
 
 - Chapter 1 assets are now in a `chapter1/` folder for characters and backgrounds

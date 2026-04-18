@@ -1,11 +1,6 @@
 package osa.states.menus;
 
-import osa.util.ChapterUtil;
 import osa.states.transition.SplashState;
-import osa.states.visualnovel.EventManager;
-import osa.states.visualnovel.DialogueSprite;
-import osa.states.visualnovel.DialogueLine;
-import osa.states.visualnovel.VNState;
 import flixel.FlxG;
 import osa.save.Save;
 
@@ -16,7 +11,6 @@ class DebugSubState extends TitleSubStateBase
 		super(onExit);
 
 		_spriteList = [
-			makeSprite('debug/default', () -> return 'Get missing assets', getMissingAssets),
 
 			makeSprite('debug/default', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
 
@@ -34,7 +28,6 @@ class DebugSubState extends TitleSubStateBase
 
 			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new SplashState())),
 			makeSprite('debug/default', () -> return 'Go to Github Page', () -> FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure')),
-			makeSprite('debug/default', () -> return 'Go to Lorem Ipsum VN', () -> FlxG.switchState(() -> VNState.build('lorem'))),
 		];
 	}
 
@@ -46,67 +39,5 @@ class DebugSubState extends TitleSubStateBase
 		FlxG.signals.postUpdate.remove(OSACache.postUpdate);
 
 		FlxG.resetGame();
-	}
-
-	function getMissingAssets()
-	{
-		var chars:Array<String> = [];
-		var bgs:Array<String> = [];
-		var events:Array<String> = [];
-
-		for (issue in ChapterUtil.ISSUE_ORDER_PREFERENCE)
-		{
-			trace(issue);
-
-			for (rawline in issue.parseDialogueFile())
-			{
-				var dialogueLine:DialogueLine = new DialogueLine(rawline);
-
-				if (dialogueLine._isEvent)
-				{
-					if (!EventManager.events.exists(dialogueLine._event))
-					{
-						if (!events.contains(dialogueLine._event))
-						{
-							trace(' - event: ${dialogueLine._event}');
-							events.push(dialogueLine._event);
-						}
-					}
-
-					continue;
-				}
-
-				final char = dialogueLine._character;
-				final bg = dialogueLine._bg;
-
-				final charPath = '${DialogueSprite.CHARACTERS_FOLDER}/$char'.visualNovelAsset().imageFile();
-				final bgPath = '${DialogueSprite.BACKGROUNDS_FOLDER}/$bg'.visualNovelAsset().imageFile();
-
-				if (char != null)
-					if (!charPath.fileExists() && !chars.contains(charPath))
-					{
-						trace(' - char: ${charPath.replace('characters/'.visualNovelAsset(), '')}');
-						chars.push(charPath);
-					}
-
-				if (![
-					'lightgrayvoid',
-					'whitevoid',
-					'blackvoid',
-					'void',
-					'grayvoid',
-					'grryvoid',
-					'lightgreyvoid',
-					'darkgrayvoid',
-					'darkgreyvoid',
-				].contains(bg))
-					if (bg != null)
-						if (!bgPath.fileExists() && !bgs.contains(bgPath))
-						{
-							trace(' - bg: ${bgPath.replace('backgrounds/'.visualNovelAsset(), '')}');
-							bgs.push(bgPath);
-						}
-			}
-		}
 	}
 }
