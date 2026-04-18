@@ -44,8 +44,6 @@ class VNSpeaker extends FlxSprite
 		}
 
 		loadGraphic(speaker.speakerAsset('imgs/${stateInfo.asset}').imageFile());
-
-		trace('Built $state');
 	}
 
 	public function copy():VNSpeaker
