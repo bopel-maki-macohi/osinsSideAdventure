@@ -52,7 +52,7 @@ class StoryMenuSubState extends TitleSubStateBase
 		super.create();
 
 		trace('filters: ' + StoryMenuSubState.filters);
-		reload('debug');
+		reload(StoryMenuSubState.filters[0]);
 	}
 
 	public var currentFilter:String = '';
