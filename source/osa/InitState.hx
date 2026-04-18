@@ -1,5 +1,6 @@
 package osa;
 
+import osa.states.visualnovel.VNState;
 import osa.states.debug.TestVideoState;
 import osa.util.*;
 import osa.states.transition.SplashState;
@@ -75,7 +76,9 @@ class InitState extends OSAState
 	{
 		var ENTER_VN = MacroUtil.getDefine('ENTER_VN');
 
-		if (MacroUtil.isDefined('STORYMENU'))
+		if (ENTER_VN != null)
+			FlxG.switchState(() -> new VNState(ENTER_VN));
+		else if (MacroUtil.isDefined('STORYMENU'))
 			FlxG.switchState(() -> new TitleState('STORYMENU'));
 		else if (MacroUtil.isDefined('CREDITS'))
 			FlxG.switchState(() -> new TitleState('CREDITS'));
