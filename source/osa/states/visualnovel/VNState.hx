@@ -60,6 +60,10 @@ class VNState extends OSAState
 		dialogueText.y = 20;
 
 		continueHand = new FlxSprite(0,0,'continueHand'.imageFile().visualNovelAsset());
+		
+		continueHand.scale.set(2,2);
+		continueHand.updateHitbox();
+
 		continueHand.setPosition(FlxG.width - continueHand.width * 2, FlxG.height - continueHand.height * 2);
 
 		add(speaker);
