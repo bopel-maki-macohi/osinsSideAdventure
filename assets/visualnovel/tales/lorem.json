@@ -1,10 +1,8 @@
 {
     "iteration": 0,
-
     "lines": [
         {
             "text": "Lorem ipsum dolor sit amet.",
-
             "speaker": {
                 "id": "test",
                 "state": "default"
@@ -12,11 +10,17 @@
         },
         {
             "text": "Lorem ipsum dolor sit amet?",
-
             "speaker": {
                 "id": "test",
                 "state": "uhm"
             }
         }
-    ]
+    ],
+    "storymenu": {
+        "titleAsset": "lorem",
+        "display": "Lorem Tale : Dummy tale, testing tale.",
+        "filters": [
+            "debug"
+        ]
+    }
 }
