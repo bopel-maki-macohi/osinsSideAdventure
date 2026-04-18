@@ -10,10 +10,13 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 
 	public var lines:Array<TaleLineData>;
 
+	public var storymenu:TaleStoryMenuData;
+
 	override public function new(file:String)
 	{
 		iteration = Constants.ITERATION_TALEDATA;
 		lines = [];
+		storymenu = null;
 
 		super(file);
 	}
@@ -29,11 +32,6 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 
 		this.iteration = data?.iteration ?? Constants.ITERATION_TALEDATA;
 		this.lines = data?.lines ?? [];
-
-		switch (data.iteration)
-		{
-			default:
-				// trace('No changes required for tale iteration: ${data.iteration}');
-		}
+		this.storymenu = data?.storymenu ?? null;
 	}
 }

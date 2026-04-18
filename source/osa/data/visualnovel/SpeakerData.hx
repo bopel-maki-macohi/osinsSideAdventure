@@ -35,12 +35,6 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 		this.iteration = data?.iteration ?? Constants.ITERATION_SPEAKERDATA;
 		this.states = data?.states ?? [];
-
-		switch (data.iteration)
-		{
-			default:
-				// trace('No changes required for speaker iteration: ${data.iteration}');
-		}
 	}
 
 	public function getStateInfo(stateID:String):SpeakerStateData
