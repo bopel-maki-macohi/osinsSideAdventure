@@ -47,9 +47,9 @@ class StoryMenuSubState extends TitleSubStateBase
 		return f;
 	}
 
-	override public function new(onExit:Void->Void)
+	override public function create()
 	{
-		super(onExit);
+		super.create();
 
 		trace('filters: ' + StoryMenuSubState.filters);
 		reload('debug');
@@ -61,7 +61,18 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		var targetTales = [for (entryID => tale in entryData) {entryID: entryID, tale: tale}];
 
-		if (filter.toLowerCase().trim() != null)
+		currentSelection = 0;
+
+		spriteList = [];
+
+		if (sprites != null)
+		{
+			sprites.setPosition();
+
+			sprites.clear();
+		}
+
+		if (filter?.toLowerCase().trim() != null)
 		{
 			var filteredTargetTales = targetTales.filter(d -> return d.tale.storymenu?.filters.contains(filter));
 
@@ -87,6 +98,9 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		for (data in targetTales)
 			addTale(data.tale, data.entryID);
+		
+		createSprites();
+		changeSelection(0);
 	}
 
 	public function addTale(tale:TaleData, entryID:String)
@@ -107,5 +121,18 @@ class StoryMenuSubState extends TitleSubStateBase
 	public function taleSelected(tale:String)
 	{
 		FlxG.switchState(() -> new VNState(tale));
+	}
+
+	override function nonScrollingControls()
+	{
+		super.nonScrollingControls();
+
+		if (controls.justPressed.UP || controls.justPressed.DOWN)
+		{
+			if (controls.justPressed.UP)
+				reload(StoryMenuSubState.filters[StoryMenuSubState.filters.indexOf(currentFilter) - 1]);
+			if (controls.justPressed.DOWN)
+				reload(StoryMenuSubState.filters[StoryMenuSubState.filters.indexOf(currentFilter) + 1]);
+		}
 	}
 }
