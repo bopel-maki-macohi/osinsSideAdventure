@@ -29,7 +29,7 @@ class VNState extends OSAState
 			speakers.set(taleLine.speaker.id, new SpeakerData(taleLine.speaker.id, taleLine.speaker.id.speakerAsset('data'.jsonFile())));
 		}
 
-		trace('Speakers: ${[for (id => speaker in speakers) id]}');
+		trace('$taleID speakers: ${[for (id => speaker in speakers) id]}');
 	}
 
 	public var speakers:Map<String, SpeakerData> = [];
