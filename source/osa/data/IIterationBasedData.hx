@@ -1,6 +1,6 @@
 package osa.data;
 
-extern interface IIterationBasedData
+interface IIterationBasedData
 {
 	public var iteration:Int;
 }

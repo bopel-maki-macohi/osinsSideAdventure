@@ -1,14 +1,19 @@
 package osa.data;
 
-import json2object.JsonParser;
-
 class ObjectData<T>
 {
 	public function new(file:String)
 	{
-		load(new JsonParser<T>().fromJson(file.readText()));
+		load(file);
 	}
 
-    @:jignored
-	public function load(data:T) {}
+	@:jignored
+	public function load(file:String)
+	{
+		if (!file.fileExists())
+		{
+			trace('${Std.string(Type.getClass(this))} : $file does not exist.');
+			return;
+		}
+	}
 }
