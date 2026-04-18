@@ -89,7 +89,7 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		spriteList.push(makeSprite('story/titles/${tale?.storymenu?.titleAsset}', function()
 		{
-			return '${tale?.storymenu?.titleAsset ?? entryID}';
+			return '${tale?.storymenu?.display ?? entryID}';
 		}, () -> taleSelected(entryID)));
 	}
 

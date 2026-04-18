@@ -17,7 +17,7 @@
         }
     ],
     "storymenu": {
-        "titleAsset": "LoreM",
+        "titleAsset": "lorem",
         "display": "Lorem Tale : Dummy tale, testing tale.",
         "filters": [
             "debug"
