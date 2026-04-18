@@ -28,6 +28,18 @@ class VNState extends OSAState
 			speakers.set(taleLine.speaker.id, new SpeakerData(taleLine.speaker.id, taleLine.speaker.id.speakerAsset('data'.jsonFile())));
 		}
 
+		for (id => data in speakers)
+		{
+			var speakerSprite:VNSpeaker = new VNSpeaker(data);
+
+			for (state in data.states)
+			{
+				speakerSprite.build(state.id);
+
+				OSACache.tempCacheTexture(speakerSprite.graphic.assetsKey);
+			}
+		}
+
 		trace('Speakers: ${[for (id => speaker in speakers) id]}');
 	}
 
