@@ -1,5 +1,7 @@
 package osa.states.visualnovel;
 
+import flixel.FlxG;
+import flixel.addons.text.FlxTypeText;
 import osa.data.visualnovel.tales.TaleLineData;
 import osa.objects.visualnovel.*;
 import osa.data.visualnovel.*;
@@ -29,17 +31,13 @@ class VNState extends OSAState
 
 	public var speakers:Map<String, SpeakerData> = [];
 
+	public var textWriteDelay:Float = 0.03;
+	public var textEraseDelay:Float = 0.015;
+
+	public var dialogueText:FlxTypeText;
+	public var finishedWriting:Bool = false;
+
 	public var speaker:VNSpeaker;
-
-	override function create()
-	{
-		speaker = new VNSpeaker(null);
-		add(speaker);
-
-		super.create();
-
-		changeLine(0);
-	}
 
 	public var lineNumber:Int = 0;
 
@@ -50,11 +48,42 @@ class VNState extends OSAState
 		return taleData?.lines[lineNumber] ?? null;
 	}
 
+	override function create()
+	{
+		speaker = new VNSpeaker(null);
+
+		dialogueText = new FlxTypeText(0, 0, FlxG.width, '', 16);
+		dialogueText.alignment = CENTER;
+		dialogueText.y = 10;
+
+		add(speaker);
+		add(dialogueText);
+
+		super.create();
+
+		changeLine(0);
+	}
+
 	public function changeLine(increment:Int = 0)
 	{
 		lineNumber += increment;
 
+		writeDialogue();
+
 		buildSpeaker();
+	}
+
+	public function writeDialogue()
+	{
+		finishedWriting = false;
+
+		dialogueText.resetText(line.text);
+		dialogueText.start(textWriteDelay, true, false, [], finishWritingDialogue);
+	}
+
+	public function finishWritingDialogue()
+	{
+		finishedWriting = true;
 	}
 
 	public function buildSpeaker()
