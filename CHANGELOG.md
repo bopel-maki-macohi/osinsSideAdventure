@@ -1,4 +1,4 @@
-# Unreleased
+# 0.11.2 (4/17/2026)
 
 - Chapter 1 assets are now in a `chapter1/` folder for characters and backgrounds
 - If a video is playing in VNState via `_videoCutscene`, you won't be able to continue until it's done.
