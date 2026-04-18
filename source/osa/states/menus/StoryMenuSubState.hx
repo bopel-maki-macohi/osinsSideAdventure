@@ -59,6 +59,8 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	public function reload(filter:String)
 	{
+		if (currentFilter == filter) return;
+
 		var targetTales = [for (entryID => tale in entryData) {entryID: entryID, tale: tale}];
 
 		currentSelection = 0;
@@ -105,7 +107,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	public function addTale(tale:TaleData, entryID:String)
 	{
-		spriteList.push(makeSprite('story/titles/${tale?.storymenu?.titleAsset ?? $entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
+		spriteList.push(makeSprite('story/titles/${tale?.storymenu?.titleAsset ?? entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
 	}
 
 	public function setTaleString(tale:TaleData, entryID:String)
