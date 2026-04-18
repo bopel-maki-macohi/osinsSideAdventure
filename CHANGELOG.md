@@ -3,6 +3,10 @@
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
 - Removed Assets Cache System
+- Rebuilt Visual Novel stuff all the way from the ground up
+  - Speakers are now sperate from Tales and are also JSON
+  - Tales are now JSON!
+  - Issues are Tales now
 
 # 0.11.2 (4/17/2026)
 
