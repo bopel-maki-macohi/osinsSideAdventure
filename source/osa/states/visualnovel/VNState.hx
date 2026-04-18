@@ -1,5 +1,6 @@
 package osa.states.visualnovel;
 
+import osa.states.menus.TitleState;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.addons.text.FlxTypeText;
@@ -59,9 +60,9 @@ class VNState extends OSAState
 		dialogueText.alignment = CENTER;
 		dialogueText.y = 20;
 
-		continueHand = new FlxSprite(0,0,'continueHand'.imageFile().visualNovelAsset());
-		
-		continueHand.scale.set(2,2);
+		continueHand = new FlxSprite(0, 0, 'continueHand'.imageFile().visualNovelAsset());
+
+		continueHand.scale.set(2, 2);
 		continueHand.updateHitbox();
 
 		continueHand.setPosition(FlxG.width - continueHand.width * 2, FlxG.height - continueHand.height * 2);
@@ -75,16 +76,29 @@ class VNState extends OSAState
 		changeLine(0);
 	}
 
-	override function update(elapsed:Float) {
+	override function update(elapsed:Float)
+	{
 		super.update(elapsed);
 
 		dialogueText.screenCenter(X);
 
 		continueHand.visible = finishedWriting;
+
+		if (finishedWriting && controls.justPressed.ACCEPT)
+			changeLine(1);
 	}
 
 	public function changeLine(increment:Int = 0)
 	{
+		if (lineNumber + increment < 0)
+			return;
+		if (lineNumber + increment >= taleData.lines.length)
+		{
+			endTale();
+
+			return;
+		}
+
 		lineNumber += increment;
 
 		writeDialogue();
@@ -118,5 +132,10 @@ class VNState extends OSAState
 		}
 
 		speaker.screenCenter();
+	}
+
+	public function endTale()
+	{
+		FlxG.switchState(() -> new TitleState());
 	}
 }
