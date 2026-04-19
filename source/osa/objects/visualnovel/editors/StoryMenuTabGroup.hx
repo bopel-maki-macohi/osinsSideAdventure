@@ -32,7 +32,7 @@ class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 		add(makeText(titleAssetInput, 'Title Asset: '));
 		add(titleAssetInput);
 
-		displayInput = new FlxUIInputText(titleAssetInput.x, titleAssetInput.y + titleAssetInput.height + 20, Math.round(displayInput.width), '', 8);
+		displayInput = new FlxUIInputText(titleAssetInput.x, titleAssetInput.y + titleAssetInput.height + 20, Math.round(titleAssetInput.width), '', 8);
 		displayInput.callback = onDisplayTextChange;
 
 		add(makeText(displayInput, 'Title Asset: '));
