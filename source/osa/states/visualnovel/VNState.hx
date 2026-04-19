@@ -1,6 +1,6 @@
 package osa.states.visualnovel;
 
-import osa.modding.scripting.ScriptHandler;
+import osa.modding.scripting.;
 import flixel.util.FlxColor;
 import osa.objects.HoldToPerformGadge;
 import osa.util.SoundUtil;
@@ -119,8 +119,6 @@ class VNState extends OSAState
 	{
 		if (lineNumber + increment < 0)
 		{
-			ScriptHandler.call('onAttemptedUnderflow', []);
-
 			return;
 		}
 
@@ -136,8 +134,6 @@ class VNState extends OSAState
 		writeDialogue();
 
 		buildSpeaker();
-
-		ScriptHandler.call('onChangedLine', [lineNumber]);
 	}
 
 	public function writeDialogue()
@@ -146,15 +142,11 @@ class VNState extends OSAState
 
 		dialogueText.resetText(line.text);
 		dialogueText.start(textWriteDelay, true, false, [], finishWritingDialogue);
-
-		ScriptHandler.call('onDialogueStartedWriting', []);
 	}
 
 	public function finishWritingDialogue()
 	{
 		finishedWriting = true;
-
-		ScriptHandler.call('onDialogueFinishedWriting', []);
 	}
 
 	public function buildSpeaker()
@@ -175,14 +167,10 @@ class VNState extends OSAState
 		}
 
 		speaker.screenCenter();
-
-		ScriptHandler.call('onBuiltSpeaker', [speaker]);
 	}
 
 	public function endTale(validEnd:Bool)
 	{
-		ScriptHandler.call('onEndtale', [validEnd]);
-
 		FlxG.switchState(() -> new TitleState());
 	}
 }

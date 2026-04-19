@@ -1,6 +1,5 @@
 package osa.modding;
 
-import osa.modding.scripting.ScriptHandler;
 import osa.util.WindowUtil;
 import osa.modding.modules.ModuleHandler;
 import polymod.format.ParseRules;
@@ -51,13 +50,11 @@ class ModCore
 			Polymod.onError = onPolymodError;
 
 		ModuleHandler.clearModules();
-		// ScriptHandler.clearScripts();
 		Polymod.clearScripts();
 
 		loadAllMods();
 
 		ModuleHandler.loadModules();
-		// ScriptHandler.loadScripts();
 	}
 
 	public static function loadAllMods()
@@ -129,8 +126,8 @@ class ModCore
 			ignoredFiles: buildIgnoreList(),
 
 			// scripted classes are disabled until I can figure out the fucking classes apparently already being registered shit
-			// useScriptedClasses: true,
-			// loadScriptsAsync: #if html5 true #else false #end,
+			useScriptedClasses: true,
+			loadScriptsAsync: #if html5 true #else false #end,
 
 			frameworkParams: {
 				coreAssetRedirect: null
