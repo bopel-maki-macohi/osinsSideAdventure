@@ -1,6 +1,6 @@
 package osa.objects.visualnovel.editors;
 
-import flixel.addons.ui.FlxInputText;
+import flixel.ui.FlxButton;
 import osa.data.visualnovel.tales.TaleLineData;
 import flixel.addons.ui.FlxUIInputText;
 import osa.data.visualnovel.SpeakerData;
@@ -24,6 +24,9 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public var textInput:FlxUIInputText;
 	public var onTextChangeCallback:String->Int->Void;
 
+	public var newLineBTN:FlxButton;
+	public var onNewLineCallback:Void->Void;
+
 	override function create()
 	{
 		super.create();
@@ -40,6 +43,8 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		speakersStateDropdown = new FlxUIDropDownMenu(textInput.x, textInput.y + textInput.height + 20, null, onSpeakerStateChange);
 
+		newLineBTN = new FlxButton(speakersStateDropdown.x + speakersStateDropdown.width + 10, speakersStateDropdown.y, 'New Line', onNewLine);
+
 		add(makeText(linesDropdown, 'Selected Line: '));
 		add(linesDropdown);
 
@@ -52,7 +57,15 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		add(makeText(speakersStateDropdown, 'Line Speaker State: '));
 		add(speakersStateDropdown);
 
+		add(newLineBTN);
+
 		onSpeakerChange(speakersDropdown.selectedLabel);
+	}
+
+	public function onNewLine()
+	{
+		if (onNewLineCallback != null)
+			onNewLineCallback();
 	}
 
 	public function onSpeakerStateChange(speakerState:String)

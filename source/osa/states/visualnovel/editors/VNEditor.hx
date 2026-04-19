@@ -31,6 +31,7 @@ class VNEditor extends OSAState
 		uiBox.linesTabGroup.onTextChangeCallback = onLineTextChange;
 		uiBox.linesTabGroup.onSpeakerChangeCallback = onLineSpeakerChange;
 		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
+		uiBox.linesTabGroup.onNewLineCallback = onNewLine;
 
 		super.create();
 
@@ -52,6 +53,17 @@ class VNEditor extends OSAState
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
+	}
+
+	function onNewLine()
+	{
+		_tale.lines.push({
+			text: '',
+		});
+
+		loadTale(null);
+
+		uiBox.linesTabGroup.linesDropdown.selectedId = '${uiBox.linesTabGroup.linesDropdown.list.length}';
 	}
 
 	function onLineSpeakerStateChange(newState:String, index:Int)
