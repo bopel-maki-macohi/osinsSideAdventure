@@ -46,7 +46,15 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 		fileRef.addEventListener(Event.CANCEL, onSaveCancel);
 		fileRef.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 
-		fileRef.save(new JsonWriter<TaleData>().write(_tale, '\t'), '${(taleID.text.length > 0) ? taleID.text : 'VNEditor-${DateUtil.getTimestamp()}'}.json');
+		var filename:String = taleID.text;
+
+		if (taleID.text.length < 1)
+		{
+			filename = 'VNEditor-${DateUtil.getTimestamp()}';
+			taleID.text = filename;
+		}
+
+		fileRef.save(new JsonWriter<TaleData>().write(_tale, '\t'), '$filename.json');
 	}
 
 	function onSaveComplete(e:Event)
