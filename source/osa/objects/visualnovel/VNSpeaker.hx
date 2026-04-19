@@ -12,7 +12,7 @@ class VNSpeaker extends FlxSprite
 
 	function get_speaker():String
 	{
-		return data.id;
+		return data?.id;
 	}
 
 	public function new(data:SpeakerData)

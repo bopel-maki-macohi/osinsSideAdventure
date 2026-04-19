@@ -86,13 +86,15 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onSpeakerStateChange(speakerState:String)
 	{
+		// trace('new speaker state: "$speakerState"');
+
 		if (onSpeakerStateChangeCallback != null)
 			onSpeakerStateChangeCallback(speakerState, Std.parseInt(linesDropdown.selectedId));
 	}
 
 	public function onSpeakerChange(speakerID:String)
 	{
-		trace('new speaker: "$speakerID"');
+		// trace('new speaker: "$speakerID"');
 
 		var speaker:SpeakerData = null;
 
@@ -111,14 +113,13 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 					speakersStateDropdown.makeListButton(i, state.label, state.name)
 			];
 			DropdownListUpdater.updateList(newList, newBtnList, speakersStateDropdown, '');
+			onSpeakerStateChange('');
 		}
 		else
 		{
 			speakersStateDropdown.setData(newList);
+			onSpeakerStateChange(speaker?.states[0]?.id ?? newList[0].name);
 		}
-
-		if (speaker.states != null)
-			onSpeakerStateChange(speaker?.states[0]?.id ?? '');
 
 		if (onSpeakerChangeCallback != null)
 			onSpeakerChangeCallback(speakerID, Std.parseInt(linesDropdown.selectedId));
@@ -136,13 +137,14 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		var line:TaleLineData = _tale?.lines[index] ?? null;
 
-		speakersDropdown.selectedId = speakersDropdown.getBtnById(line?.speaker?.id ?? SpeakerData.speakers[0])?.name;
-		textInput.text = line?.text ?? '';
-
-		onTextChange(textInput.text, '');
-
+		speakersDropdown.selectedId = speakersDropdown.getBtnById(line?.speaker?.id ?? '')?.name;
 		onSpeakerChange(speakersDropdown.selectedId);
-		speakersStateDropdown.selectedId = speakersStateDropdown.getBtnById(line?.speaker?.state ?? speakersStateDropdown.selectedId)?.name;
+
+		speakersStateDropdown.selectedId = speakersStateDropdown.getBtnById(line?.speaker?.state ?? '')?.name;
+		onSpeakerStateChange(speakersStateDropdown.selectedId);
+
+		textInput.text = line?.text ?? '';
+		onTextChange(textInput.text, '');
 	}
 
 	public var lines(get, never):Array<StrNameLabel>;
