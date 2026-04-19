@@ -10,24 +10,24 @@ class BasicScript extends Iris
 
 	override public function new(script:String)
 	{
-		if (!script.scriptAsset().fileExists())
-			WindowUtil.alert('Script Error : Missing Script', 'Missing Script File: ${script.scriptAsset()}');
+		if (!script.scriptFile().fileExists())
+			WindowUtil.alert('Script Error : Missing Script', 'Missing Script File: ${script.scriptFile()}');
 
-		if (registeredScripts.exists(script.scriptAsset()))
+		if (registeredScripts.exists(script.scriptFile()))
 		{
-			trace('The following Script File is already registered and will be overwritten: ${script.scriptAsset()}');
+			trace('The following Script File is already registered and will be overwritten: ${script.scriptFile()}');
 
 			// WindowUtil.alert('Script Error : Already Registered Script',
-			// 	'The following Script File is already registered and will be overwritten: ${script.scriptAsset()}');
+			// 	'The following Script File is already registered and will be overwritten: ${script.scriptFile()}');
 
-			registeredScripts.remove(script.scriptAsset());
+			registeredScripts.remove(script.scriptFile());
 		}
 
-		super(script.scriptAsset().fileExists() ? '' : path.readText(), {
-			name: script.scriptAsset()
+		super(script.scriptFile().fileExists() ? '' : script.scriptFile().readText(), {
+			name: script.scriptFile()
 		});
 
-		registeredScripts.set(script.scriptAsset(), this);
+		registeredScripts.set(script.scriptFile(), this);
 
 		onLoad();
 	}

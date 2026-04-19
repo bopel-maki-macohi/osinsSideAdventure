@@ -40,8 +40,8 @@ class AssetUtil
 	public static inline function scriptFile(file:String):String
 		return assetPath('scripts/$file.hx');
 
-	public static inline function visualNovelAsset(file:String):String
-		return assetPath('visualnovel/$file');
+	public static inline function shaderFile(file:String):String
+		return assetPath('shaders/$file.frag');
 
 	public static inline function fileExists(file:String):Bool
 		return Assets.exists(file);
