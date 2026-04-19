@@ -1,5 +1,6 @@
 package osa.states.visualnovel.editors;
 
+import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
 import osa.objects.visualnovel.VNSpeaker;
@@ -22,6 +23,7 @@ class TaleEditor extends OSAState
 	public var line_speaker:VNSpeaker;
 
 	public var storymenu_displayText:FlxText;
+	public var storymenu_titleAsset:FlxSprite;
 
 	override function create()
 	{
@@ -36,10 +38,13 @@ class TaleEditor extends OSAState
 		storymenu_displayText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
 		storymenu_displayText.alignment = CENTER;
 
+		storymenu_titleAsset = new FlxSprite();
+
 		add(line_dialogueText);
 		add(line_speaker = new VNSpeaker(null));
 
 		add(storymenu_displayText);
+		add(storymenu_titleAsset);
 
 		add(uiBox);
 
@@ -79,12 +84,18 @@ class TaleEditor extends OSAState
 
 		line_dialogueText.screenCenter(X);
 
-		line_speaker.screenCenter();
+		line_speaker.screenCenter(Y);
 		line_speaker.x = FlxG.width - line_speaker.width * 2;
+
+		storymenu_titleAsset.screenCenter();
+		storymenu_titleAsset.x = FlxG.width - storymenu_titleAsset.width * 2;
 
 		line_speaker.visible = (line_dialogueText.visible = uiBox.selected_tab == 1) && line_speaker.data != null;
 
-		storymenu_displayText.visible = uiBox.selected_tab == 2;
+		storymenu_titleAsset.visible = storymenu_displayText.visible = uiBox.selected_tab == 2;
+
+		if (storymenu_titleAsset.visible)
+			loadStorymenuTitle();
 
 		if (_tale.storymenu?.display?.trim().length > 0)
 		{
@@ -116,6 +127,35 @@ class TaleEditor extends OSAState
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
+	}
+
+	public function loadStorymenuTitle()
+	{
+		var path:String = 'story/titles/'.menuAsset();
+
+		if (_tale.storymenu?.titleAsset?.trim().length > 0)
+		{
+			path += _tale.storymenu.titleAsset;
+			storymenu_titleAsset.alpha = 1;
+		}
+		else
+		{
+			path += uiBox.dataTabGroup._taleID.split('-')[0];
+			storymenu_titleAsset.alpha = .5;
+		}
+
+		path = path.imageFile();
+		if (path.fileExists())
+		{
+			storymenu_titleAsset.loadGraphic(path);
+			
+			storymenu_titleAsset.scale.set(.5, .5);
+			storymenu_titleAsset.updateHitbox();
+
+			storymenu_titleAsset.visible = true;
+		}
+		else
+			storymenu_titleAsset.visible = false;
 	}
 
 	function onLineSpeakerStateChange(text:String, index:Int)
