@@ -35,8 +35,6 @@ class OSAState extends FlxUIState
 		},);
 	}
 
-	public var watermark:FlxText;
-
 	override function create()
 	{
 		TRANSITION_CAMERA = new FlxCamera();
@@ -44,23 +42,6 @@ class OSAState extends FlxUIState
 		TRANSITION_CAMERA.bgColor.alpha = 0;
 
 		super.create();
-
-		watermark = new FlxText(10, 10, FlxG.width, 'O.S.A. ${VersionUtil.VERSION} (${Constants.GIT_STRING})', 16);
-		watermark.alignment = LEFT;
-		watermark.color = FlxColor.WHITE;
-		watermark.y = FlxG.height - watermark.height;
-
-		#if debug
-		add(watermark);
-		#end
-
-		#if DISABLE_TITLE_WATERMARK_BLUR
-		var regCam = new FlxCamera();
-		FlxG.cameras.add(regCam, false);
-		regCam.bgColor.alpha = 0;
-
-		watermark.camera = regCam;
-		#end
 
 		if (rhythmManager != null)
 		{

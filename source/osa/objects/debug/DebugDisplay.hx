@@ -11,7 +11,7 @@ import openfl.text.TextField;
 
 /**
  * Replacement for the FPS counter where the intent was to
- * merge the FPS Counter and Debug Watermark
+ * merge the FPS Counter and Debug Watermark, but now we've got a memory counter so that's cool :D
  * 
  * Majority of the code comes from here: https://github.com/VirtuGuy/WTF-Engine/pull/12/changes#diff-d2dd61f6e96d440be09fd2b86ec512a770b5e925b1a7e8fa2568b845f82652a5
  */
