@@ -34,7 +34,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 		_fileReference.addEventListener(Event.CANCEL, onLoadCancel);
 		_fileReference.addEventListener(IOErrorEvent.IO_ERROR, onLoadError);
 
-		_fileReference.browse([new FileFilter('Data File', '.json')]);
+		_fileReference.browse([new FileFilter('Data File', 'json')]);
 	}
 
 	function removeFileReferenceEvents()
