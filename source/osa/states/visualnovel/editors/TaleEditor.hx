@@ -6,12 +6,12 @@ import osa.util.Constants;
 import osa.data.visualnovel.SpeakerData;
 import json2object.JsonParser;
 import openfl.net.FileReference;
-import osa.objects.visualnovel.editors.TabMenu;
+import osa.objects.visualnovel.taleeditor.TabMenu;
 import osa.data.visualnovel.TaleData;
 import osa.states.menus.TitleState;
 import flixel.FlxG;
 
-class VNEditor extends OSAState
+class TaleEditor extends OSAState
 {
 	public var _tale:TaleData;
 

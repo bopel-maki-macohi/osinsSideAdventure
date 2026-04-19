@@ -1,4 +1,4 @@
-package osa.objects.visualnovel.editors;
+package osa.objects.visualnovel.taleeditor;
 
 import haxe.io.Path;
 import osa.util.DateUtil;

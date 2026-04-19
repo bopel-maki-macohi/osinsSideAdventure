@@ -1,4 +1,4 @@
-package osa.objects.visualnovel.editors;
+package osa.objects.visualnovel.taleeditor;
 
 import flixel.addons.ui.FlxUIButton;
 import flixel.addons.ui.StrNameLabel;

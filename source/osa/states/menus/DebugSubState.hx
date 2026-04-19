@@ -1,7 +1,7 @@
 package osa.states.menus;
 
 import osa.states.visualnovel.VNState;
-import osa.states.visualnovel.editors.VNEditor;
+import osa.states.visualnovel.editors.TaleEditor;
 import osa.states.transition.SplashState;
 import flixel.FlxG;
 import osa.save.Save;
@@ -13,7 +13,7 @@ class DebugSubState extends TitleSubStateBase
 		super(onExit);
 
 		spriteList = [
-			makeSprite('debug/default', () -> return 'Go to Tale Editor', () -> FlxG.switchState(() -> new VNEditor())),
+			makeSprite('debug/default', () -> return 'Go to Tale Editor', () -> FlxG.switchState(() -> new TaleEditor())),
 
 			makeSprite('debug/default', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
 

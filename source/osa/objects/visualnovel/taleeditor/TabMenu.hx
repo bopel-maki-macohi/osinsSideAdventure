@@ -1,4 +1,4 @@
-package osa.objects.visualnovel.editors;
+package osa.objects.visualnovel.taleeditor;
 
 import osa.data.visualnovel.TaleData;
 import flixel.addons.ui.FlxUITabMenu;

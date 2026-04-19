@@ -1,4 +1,4 @@
-package osa.objects.visualnovel.editors;
+package osa.objects.visualnovel.taleeditor;
 
 import flixel.ui.FlxButton;
 import osa.data.visualnovel.tales.TaleLineData;
