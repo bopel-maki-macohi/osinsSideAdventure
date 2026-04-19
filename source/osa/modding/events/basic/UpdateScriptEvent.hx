@@ -11,7 +11,7 @@ class UpdateScriptEvent extends BasicScriptEvent
 		this.elapsed = elapsed;
 	}
 
-	override function toString():String
+	override public function toString():String
 	{
 		return '$type | $elapsed';
 	}
