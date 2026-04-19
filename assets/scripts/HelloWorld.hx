@@ -10,8 +10,6 @@ class HelloWorld extends Module
 
 	override function onScriptEvent(event:BasicScriptEvent)
 	{
-		super.onScriptEvent(event);
-		
-		trace(event);
+		trace(event.toString());
 	}
 }
