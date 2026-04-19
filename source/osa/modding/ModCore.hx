@@ -54,7 +54,7 @@ class ModCore
 
 		loadAllMods();
 
-		ModuleHandler.loadModules();
+		// ModuleHandler.loadModules();
 	}
 
 	public static function loadAllMods()
