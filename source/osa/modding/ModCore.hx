@@ -135,7 +135,8 @@ class ModCore
 			if (type == TEXT)
 				amt -= modIDs.length; // I don't wanna count the metadata files
 
-			trace(' * Replaced / Added ${amt} ${type} file(s)');
+			if (amt > 0)
+				trace(' * Replaced / Added ${amt} ${type} file(s)');
 		}
 	}
 }
