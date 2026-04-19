@@ -41,7 +41,8 @@ class StoryMenuSubState extends TitleSubStateBase
 		{
 			if (data.storymenu?.filters.length > 0)
 				for (filter in data.storymenu.filters)
-					f.push(filter);
+					if (!f.contains(filter))
+						f.push(filter);
 		}
 
 		return f;
@@ -74,6 +75,9 @@ class StoryMenuSubState extends TitleSubStateBase
 
 			sprites.clear();
 		}
+
+		// flip it cause its backwards for some reason
+		targetTales = [for (i => e in targetTales) targetTales[(targetTales.length - 1) - i]];
 
 		if (filter?.toLowerCase().trim() != null)
 		{
@@ -132,11 +136,12 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		if (controls.justPressed.UP || controls.justPressed.DOWN)
 		{
+			final fs = StoryMenuSubState.filters;
+
 			if (controls.justPressed.UP)
-				reload(StoryMenuSubState.filters[StoryMenuSubState.filters.indexOf(currentFilter) - 1] ?? StoryMenuSubState.filters[StoryMenuSubState.filters.length
-					- 1]);
+				reload(fs[fs.indexOf(currentFilter) + 1] ?? fs[0]);
 			if (controls.justPressed.DOWN)
-				reload(StoryMenuSubState.filters[StoryMenuSubState.filters.indexOf(currentFilter) + 1] ?? StoryMenuSubState.filters[0]);
+				reload(fs[fs.indexOf(currentFilter) - 1] ?? fs[fs.length - 1]);
 		}
 	}
 }
