@@ -202,9 +202,17 @@ class TaleEditor extends OSAState
 		{
 			speaker.data = new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile()));
 
-			_tale.lines[index].speaker = {
-				id: newSpeaker,
-				state: speaker.data.states[0]?.id ?? '',
+			if (_tale.lines[index].speaker == null)
+				_tale.lines[index].speaker = {
+					id: newSpeaker,
+					state: speaker.data.states[0]?.id ?? '',
+				}
+			else
+			{
+				_tale.lines[index].speaker.id = newSpeaker;
+
+				if (!speaker.data.hasStateID(_tale.lines[index].speaker.state))
+					_tale.lines[index].speaker.state = speaker.data.states[0]?.id ?? '';
 			}
 		}
 

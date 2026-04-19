@@ -101,9 +101,6 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		else
 			speaker = new SpeakerData(speakerID, speakerID.speakerAsset('data'.jsonFile()));
 
-		speakersStateInput.text = speaker.states[0]?.id ?? speakersStateInput.text;
-		onSpeakerStateChange(speakersStateInput.text, 'update');
-
 		if (onSpeakerChangeCallback != null)
 			onSpeakerChangeCallback(speakerID, Std.parseInt(linesDropdown.selectedId));
 	}
@@ -120,7 +117,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		var line:TaleLineData = _tale?.lines[index] ?? null;
 
-		speakersDropdown.selectedId = speakersDropdown.getBtnById(line?.speaker?.id ?? '')?.name;
+		speakersDropdown.selectedId = line?.speaker?.id ?? '';
 		onSpeakerChange(speakersDropdown.selectedId);
 
 		textInput.text = line?.text ?? '';
