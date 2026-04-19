@@ -1,6 +1,6 @@
 package osa.states;
 
-import osa.modding.events.basic.BasicScriptEvent;
+import osa.modding.events.basic.*;
 import osa.modding.modules.ModuleHandler;
 import osa.util.Controls;
 import flixel.FlxG;
