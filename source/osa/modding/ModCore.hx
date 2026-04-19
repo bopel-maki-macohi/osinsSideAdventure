@@ -46,12 +46,12 @@ class ModCore
 		if (Polymod.onError == null)
 			Polymod.onError = onPolymodError;
 
-		ModuleHandler.clearModules();
+		// ModuleHandler.clearModules();
 		Polymod.clearScripts();
 
 		loadAllMods();
 
-		ModuleHandler.loadModules();
+		// ModuleHandler.loadModules();
 	}
 
 	public static function loadAllMods()
@@ -122,6 +122,7 @@ class ModCore
 			parseRules: buildParseRules(),
 			ignoredFiles: buildIgnoreList(),
 
+			// scripted classes are disabled until I can figure out the fucking classes apparently already being registered shit
 			// useScriptedClasses: true,
 			// loadScriptsAsync: #if html5 true #else false #end,
 
