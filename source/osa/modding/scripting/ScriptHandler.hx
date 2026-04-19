@@ -1,5 +1,6 @@
 package osa.modding.scripting;
 
+import osa.objects.RhythmManager;
 import osa.util.WindowUtil;
 import haxe.io.Path;
 import crowplexus.iris.Iris;
@@ -58,10 +59,22 @@ class ScriptHandler
 		}
 
 		call('create');
+
+		RhythmManager.instance.beatHit.add(onBeatHit);
+		RhythmManager.instance.stepHit.add(onStepHit);
 	}
+
+	static function onBeatHit(curBeat:Int)
+		call('onBeatHit', [curBeat]);
+
+	static function onStepHit(curStep:Int)
+		call('onStepHit', [curStep]);
 
 	public static function clearScripts()
 	{
+		RhythmManager.instance?.beatHit?.remove(onBeatHit);
+		RhythmManager.instance?.stepHit?.remove(onStepHit);
+
 		for (path => script in registeredScripts)
 		{
 			registeredScripts.remove(path);
@@ -71,5 +84,6 @@ class ScriptHandler
 
 	public static function call(func:String, ?args:Array<Dynamic>)
 		for (script in registeredScripts)
-			script.call(func, args);
+			if (script.exists(func))
+				script.call(func, args);
 }

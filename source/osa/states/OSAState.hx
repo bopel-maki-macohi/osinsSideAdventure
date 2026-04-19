@@ -1,5 +1,6 @@
 package osa.states;
 
+import osa.modding.scripting.ScriptHandler;
 import osa.util.VersionUtil;
 import osa.util.Constants;
 import osa.util.Controls;
@@ -97,6 +98,8 @@ class OSAState extends FlxUIState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		ScriptHandler.call('update', [elapsed]);
 
 		if (rhythmManager != null)
 			rhythmManager.update();

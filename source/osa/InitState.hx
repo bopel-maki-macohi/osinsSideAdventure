@@ -51,8 +51,6 @@ class InitState extends OSAState
 
 		ScriptUtil.init();
 		
-		ModCore.reload();
-
 		FlxG.signals.postUpdate.add(modReloadCheck);
 
 		FlxG.console.registerClass(Constants);
@@ -77,6 +75,8 @@ class InitState extends OSAState
 
 		Controls.instance = new Controls('Main');
 
+		ModCore.reload();
+		
 		#if DISABLE_OUTDATEDSTATE
 		osa.states.menus.OutdatedState.SEEN = true;
 		#end
