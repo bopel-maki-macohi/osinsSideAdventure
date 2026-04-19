@@ -1,7 +1,6 @@
 package osa.states.visualnovel.editors;
 
 import osa.util.Constants;
-import osa.util.DateUtil;
 import osa.data.visualnovel.SpeakerData;
 import json2object.JsonParser;
 import openfl.net.FileReference;

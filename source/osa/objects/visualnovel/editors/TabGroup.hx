@@ -2,7 +2,6 @@ package osa.objects.visualnovel.editors;
 
 import flixel.FlxSprite;
 import flixel.text.FlxText;
-import flixel.FlxBasic;
 import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUI;
 
