@@ -15,15 +15,13 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 	override public function new(id:String, file:String)
 	{
-		iteration = Constants.ITERATION_SPEAKERDATA;
-		states = [];
-
+		build();
 		this.id = id;
 
 		super(file);
 	}
 
-	public function build(iteration:Int, states:Array<SpeakerStateData>)
+	public function build(?iteration:Int, ?states:Array<SpeakerStateData>)
 	{
 		this.iteration = iteration ?? Constants.ITERATION_SPEAKERDATA;
 		this.states = states ?? [];

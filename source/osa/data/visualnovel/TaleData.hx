@@ -14,14 +14,12 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 
 	override public function new(file:String)
 	{
-		iteration = Constants.ITERATION_TALEDATA;
-		lines = [];
-		storymenu = null;
+		build();
 
 		super(file);
 	}
 
-	public function build(iteration:Int, lines:Array<TaleLineData>, storymenu:TaleStoryMenuData)
+	public function build(?iteration:Int, ?lines:Array<TaleLineData>, ?storymenu:TaleStoryMenuData)
 	{
 		this.iteration = iteration ?? Constants.ITERATION_TALEDATA;
 		this.lines = lines ?? [];
