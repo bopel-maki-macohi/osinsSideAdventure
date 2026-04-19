@@ -1,5 +1,6 @@
 package osa.modding.scripting;
 
+import haxe.io.Path;
 import crowplexus.iris.Iris;
 import polymod.util.DefineUtil;
 
@@ -20,6 +21,9 @@ class ScriptHandler
 
 		for (file in ModCore.modFileSystem.readDirectoryRecursive(SCRIPT_PATH))
 		{
+			if (Path.extension(file) != Path.extension(''.scriptFile()))
+				return;
+
 			trace('Potential script: $file');
 		};
 	}
