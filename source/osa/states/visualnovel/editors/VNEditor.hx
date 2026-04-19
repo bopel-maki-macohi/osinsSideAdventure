@@ -16,13 +16,11 @@ class VNEditor extends OSAState
 
 	override function create()
 	{
-		_tale = new TaleData('lorem'.taleAsset().jsonFile());
+		_tale = new TaleData(null);
 
 		add(uiBox = new TabMenu(_tale));
 
 		uiBox.dataTabGroup.loadJSONCallback = loadTale;
-
-		loadTale(null);
 
 		super.create();
 	}
