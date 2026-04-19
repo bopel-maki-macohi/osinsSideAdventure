@@ -122,8 +122,8 @@ class ModCore
 			parseRules: buildParseRules(),
 			ignoredFiles: buildIgnoreList(),
 
-			useScriptedClasses: true,
-			loadScriptsAsync: #if html5 true #else false #end,
+			// useScriptedClasses: true,
+			// loadScriptsAsync: #if html5 true #else false #end,
 
 			frameworkParams: {
 				coreAssetRedirect: null
