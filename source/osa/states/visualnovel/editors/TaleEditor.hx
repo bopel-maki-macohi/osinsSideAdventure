@@ -130,11 +130,6 @@ class TaleEditor extends OSAState
 		_tale.lines.remove(_tale.lines[index]);
 
 		loadTale(null);
-
-		if (_tale.lines.length == 0 || index - 1 <= 0)
-			uiBox.linesTabGroup.linesDropdown.selectedId = '0';
-		else
-			uiBox.linesTabGroup.linesDropdown.selectedId = '${index - 1}';
 	}
 
 	function onNewLine()
@@ -144,8 +139,6 @@ class TaleEditor extends OSAState
 		});
 
 		loadTale(null);
-
-		uiBox.linesTabGroup.linesDropdown.selectedId = '${uiBox.linesTabGroup.linesDropdown.list.length}';
 	}
 
 	function onLineSpeakerStateChange(newState:String, index:Int)
