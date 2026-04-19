@@ -32,7 +32,7 @@ class ModCore
 			case null:
 				return;
 
-			case MOD_MISSING_ICON:
+			case MOD_MISSING_ICON, MOD_LOAD_START, SCRIPT_PARSE_START, FRAMEWORK_INIT:
 				return;
 
 			default:
