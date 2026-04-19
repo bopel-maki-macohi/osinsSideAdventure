@@ -134,12 +134,6 @@ class ModCore
 
 			if (type == TEXT)
 				amt -= modIDs.length; // I don't wanna count the metadata files
-			if (type == IMAGE)
-			{
-				for (mod in mods)
-					if (mod.icon != null)
-						amt -= modIDs.length; // I don't wanna count the icon files either
-			}
 
 			trace(' * Replaced / Added ${amt} ${type} file(s)');
 		}
