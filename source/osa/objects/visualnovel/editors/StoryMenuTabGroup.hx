@@ -16,13 +16,38 @@ class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 
 	public var filtersDropdown:FlxUIDropDownMenu;
 
-	public var filterText:FlxUIInputText;
-	public var onFilterAddedCallback:String->Void;
-
 	override function create()
 	{
 		super.create();
 
-        name = 'Story Menu';
+		name = 'Story Menu';
+
+		filtersDropdown = new FlxUIDropDownMenu(10, 20, null);
+		add(makeText(filtersDropdown, 'Filters: '));
+		add(filtersDropdown);
+
+		titleAssetInput = new FlxUIInputText(filtersDropdown.x + filtersDropdown.width + 10, filtersDropdown.y, 620, '', 8);
+		titleAssetInput.callback = onTitleAssetChange;
+
+		add(makeText(titleAssetInput, 'Title Asset: '));
+		add(titleAssetInput);
+
+		displayInput = new FlxUIInputText(titleAssetInput.x, titleAssetInput.y + titleAssetInput.height + 20, Math.round(displayInput.width), '', 8);
+		displayInput.callback = onDisplayTextChange;
+
+		add(makeText(displayInput, 'Title Asset: '));
+		add(displayInput);
+	}
+
+	public function onTitleAssetChange(text:String, action:String)
+	{
+		if (onTitleAssetChangeCallback != null)
+			onTitleAssetChangeCallback(text);
+	}
+
+	public function onDisplayTextChange(text:String, action:String)
+	{
+		if (onDisplayTextChangeCallback != null)
+			onDisplayTextChangeCallback(text);
 	}
 }
