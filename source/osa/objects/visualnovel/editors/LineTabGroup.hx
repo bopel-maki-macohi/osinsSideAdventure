@@ -1,12 +1,9 @@
 package osa.objects.visualnovel.editors;
 
+import flixel.addons.ui.FlxInputText;
 import osa.data.visualnovel.tales.TaleLineData;
-import flixel.util.FlxColor;
 import flixel.addons.ui.FlxUIInputText;
 import osa.data.visualnovel.SpeakerData;
-import flixel.text.FlxText;
-import haxe.io.Path;
-import lime.utils.Assets;
 import flixel.addons.ui.FlxUIButton;
 import flixel.addons.ui.StrNameLabel;
 import osa.data.visualnovel.TaleData;
@@ -20,6 +17,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public var speakersDropdown:FlxUIDropDownMenu;
 
 	public var textInput:FlxUIInputText;
+	public var onTextChangeCallback:String->Int->Void;
 
 	override function create()
 	{
@@ -34,6 +32,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 			[for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)]);
 
 		textInput = new FlxUIInputText(speakersDropdown.x + speakersDropdown.width + 10, speakersDropdown.y, 275, '', 8);
+		textInput.callback = onTextChange;
 
 		add(makeText(linesDropdown, 'Selected Line: '));
 		add(linesDropdown);
@@ -43,6 +42,20 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		add(makeText(textInput, 'Line Text: '));
 		add(textInput);
+	}
+
+	public function onTextChange(text:String, action:String)
+	{
+		switch (action)
+		{
+			case FlxInputText.BACKSPACE_ACTION:
+			case FlxInputText.DELETE_ACTION:
+			case FlxInputText.ENTER_ACTION:
+			case FlxInputText.INPUT_ACTION:
+		}
+
+		if (onTextChangeCallback != null)
+			onTextChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
 	}
 
 	public function onChangedLine(indexStr:String)

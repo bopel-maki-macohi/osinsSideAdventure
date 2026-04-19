@@ -21,8 +21,11 @@ class VNEditor extends OSAState
 		add(uiBox = new TabMenu(_tale));
 
 		uiBox.dataTabGroup.loadJSONCallback = loadTale;
+		uiBox.linesTabGroup.onTextChangeCallback = onLineTextChange;
 
 		super.create();
+
+		FlxG.mouse.visible = true;
 	}
 
 	override function update(elapsed:Float)
@@ -32,7 +35,28 @@ class VNEditor extends OSAState
 		uiBox._tale = _tale;
 
 		if (controls.justPressed.LEAVE)
+		{
+			if (uiBox.dataTabGroup.taleID.hasFocus)
+				return;
+			if (uiBox.linesTabGroup.textInput.hasFocus)
+				return;
+
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
+		}
+	}
+
+	function onLineTextChange(newText:String, index:Int)
+	{
+		if (_tale.lines[index] == null)
+		{
+			_tale.lines[index] = {
+				text: newText,
+			};
+		}
+		else
+		{
+			_tale.lines[index].text = newText;
+		}
 	}
 
 	function loadTale(file:FileReference)
