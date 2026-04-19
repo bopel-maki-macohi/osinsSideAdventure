@@ -47,7 +47,17 @@ class AssetUtil
 		return Assets.exists(file);
 
 	public static inline function readText(file:String):String
-		return Assets.getText(file);
+	{
+		try
+		{
+			return Assets.getText(file);
+		}
+		catch (e)
+		{
+			trace(e);
+			return '';
+		}
+	}
 
 	public static function textSplit(text:String):Array<String>
 	{

@@ -20,7 +20,7 @@ class ScriptUtil
 	{
 		var className = Type.getClassName(cls);
 		
-		trace('Importing $className');
+		trace('ADDING DEFAULT IMPORT : "$className"');
 		DEFAULT_IMPORTS.set(className, cls);
 	}
 }

@@ -30,6 +30,9 @@ class ModCore
 
 		switch (e.code)
 		{
+			case null:
+				return;
+
 			case MOD_MISSING_ICON:
 				return;
 

@@ -1,5 +1,6 @@
 package osa.modding.scripting;
 
+import osa.util.WindowUtil;
 import haxe.io.Path;
 import crowplexus.iris.Iris;
 import polymod.util.DefineUtil;
@@ -26,14 +27,35 @@ class ScriptHandler
 		clearScripts();
 
 		for (path in SCRIPT_PATHS)
+		{
+			// trace(path);
+
 			if (ModCore.modFileSystem.exists(path))
 				for (file in ModCore.modFileSystem.readDirectoryRecursive(path))
 				{
 					if (Path.extension(file) != Path.extension(''.scriptFile()))
-						return;
+						continue;
 
-					trace('Potential script: $file');
+					trace('Potential script: $path$file');
+
+					if (registeredScripts.exists(Path.withoutExtension(file)))
+					{
+						var oldScript = registeredScripts.get(Path.withoutExtension(file));
+
+						@:privateAccess
+						trace('Overriding "${oldScript.scriptCode.split('\n')[0].substr(2)}" with "$path$file"');
+
+						registeredScripts.remove(Path.withoutExtension(file));
+						oldScript.destroy();
+					}
+
+					var script:Iris = new Iris('// ${path + file}\n\n' + '$path$file'.readText(), {
+						name: Path.withoutExtension(file)
+					});
+
+					registeredScripts.set(script.config.name, script);
 				};
+		}
 	}
 
 	public static function clearScripts()

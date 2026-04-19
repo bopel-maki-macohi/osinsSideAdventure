@@ -30,7 +30,7 @@ class ScreenshotPlugin extends FlxBasic
 		#if sys
 		if (!sys.FileSystem.exists(ScreenshotPlugin.SCREENSHOT_FOLDER))
 		{
-			trace('Created directory ${ScreenshotPlugin.SCREENSHOT_FOLDER}');
+			trace('Created SCREENSHOT_FOLDER:  ${ScreenshotPlugin.SCREENSHOT_FOLDER}');
 			sys.FileSystem.createDirectory(ScreenshotPlugin.SCREENSHOT_FOLDER);
 		}
 		#end
