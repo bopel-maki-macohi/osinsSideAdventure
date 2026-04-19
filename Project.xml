@@ -34,6 +34,8 @@
 	<haxedef name="POLYMOD_ROOT_PATH" value="scripts/" />
 	<haxedef name="POLYMOD_DEBUG" if="debug"/>
 
+	<define name="INCLUDE_DEBUG_MODS" if="debug"/>
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
@@ -42,6 +44,7 @@
 	<source path="source" />
 	<assets path="assets" />
 	<assets path="mods" />
+	<assets path="dev/debugMods" rename="mods" if="INCLUDE_DEBUG_MODS"/>
 	<assets path="CHANGELOG.md" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
