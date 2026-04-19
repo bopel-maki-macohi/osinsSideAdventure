@@ -1,5 +1,8 @@
 package osa.objects.visualnovel.editors;
 
+import osa.data.visualnovel.tales.TaleLineData;
+import flixel.util.FlxColor;
+import flixel.addons.ui.FlxUIInputText;
 import osa.data.visualnovel.SpeakerData;
 import flixel.text.FlxText;
 import haxe.io.Path;
@@ -14,8 +17,9 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public var _tale:TaleData;
 
 	public var linesDropdown:FlxUIDropDownMenu;
-
 	public var speakersDropdown:FlxUIDropDownMenu;
+
+	public var textInput:FlxUIInputText;
 
 	override function create()
 	{
@@ -24,16 +28,39 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		name = 'Lines';
 
 		linesDropdown = new FlxUIDropDownMenu(10, 20, null);
+		linesDropdown.callback = onChangedLine;
 
-		var speakers:Array<StrNameLabel> = [for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)];
+		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y,
+			[for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)]);
 
-		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y, speakers);
+		textInput = new FlxUIInputText(speakersDropdown.x + speakersDropdown.width + 10, speakersDropdown.y, 275, '', 8);
 
 		add(makeText(linesDropdown, 'Selected Line: '));
 		add(linesDropdown);
 
-		add(makeText(speakersDropdown, 'Speaker: '));
+		add(makeText(speakersDropdown, 'Line Speaker: '));
 		add(speakersDropdown);
+
+		add(makeText(textInput, 'Line Text: '));
+		add(textInput);
+	}
+
+	public function onChangedLine(indexStr:String)
+	{
+		// trace('onChangedLine: $indexStr');
+
+		var index:Int = Std.parseInt(indexStr);
+
+		var line:TaleLineData = _tale.lines[index] ?? null;
+
+		if (line == null)
+		{
+			trace('Null line');
+			return;
+		}
+
+		speakersDropdown.selectedId = speakersDropdown.getBtnById(line.speaker?.id ?? '').name;
+		textInput.text = line.text;
 	}
 
 	public var lines(get, never):Array<StrNameLabel>;
@@ -68,6 +95,8 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		{
 			trace('Updated Lines Dropdown ($diffs diffs)');
 			linesDropdown.setData(lines);
+
+			onChangedLine('0');
 		}
 	}
 }

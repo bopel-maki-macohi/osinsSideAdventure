@@ -22,6 +22,8 @@ class VNEditor extends OSAState
 
 		uiBox.dataTabGroup.loadJSONCallback = loadTale;
 
+		loadTale(null);
+
 		super.create();
 	}
 
@@ -37,9 +39,11 @@ class VNEditor extends OSAState
 
 	function loadTale(file:FileReference)
 	{
-		var taleData:TaleData = new JsonParser<TaleData>().fromJson(file.data.toString(), file.name);
-
-		_tale.build(taleData.iteration, taleData.lines, taleData.storymenu);
+		if (file != null)
+		{
+			var taleData:TaleData = new JsonParser<TaleData>().fromJson(file.data.toString(), file.name);
+			_tale.build(taleData.iteration, taleData.lines, taleData.storymenu);
+		}
 
 		uiBox.linesTabGroup.updateList();
 	}
