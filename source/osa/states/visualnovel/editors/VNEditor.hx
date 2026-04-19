@@ -1,30 +1,21 @@
 package osa.states.visualnovel.editors;
 
+import osa.objects.visualnovel.editors.TabMenu;
 import osa.data.visualnovel.TaleData;
-import flixel.addons.ui.FlxUITabMenu;
 import osa.states.menus.TitleState;
 import flixel.FlxG;
 
 class VNEditor extends OSAState
 {
-	public var uiBox:FlxUITabMenu;
-
 	public var _tale:TaleData;
+
+	public var uiBox:TabMenu;
 
 	override function create()
 	{
 		_tale = new TaleData(null);
 
-		var tabs = [{name: 'Lines', label: 'Lines'}, {name: 'Storymenu', label: 'Storymenu'},];
-
-		uiBox = new FlxUITabMenu(null, null, tabs, true);
-		add(uiBox);
-
-		uiBox.resize(640, 480);
-		uiBox.setPosition(20, 20);
-		uiBox.selected_tab = 0;
-
-		uiBox.screenCenter(Y);
+		add(uiBox = new TabMenu());
 
 		super.create();
 	}
