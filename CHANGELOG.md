@@ -2,6 +2,10 @@
 
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
+- Replaced FPS Counter with a Debug Display
+  - Displays the game's version
+  - Displays the current FPS
+  - Displays memory info (if it can)
 - ADDED MODDING SUPPORT VIA POLYMOD (WOH)
 - Reading text files that dont exist no longer crashes the game
 - ADDED TALE EDITOR
