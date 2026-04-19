@@ -1,5 +1,6 @@
 package osa.states.visualnovel.editors;
 
+import osa.data.visualnovel.SpeakerData;
 import json2object.JsonParser;
 import openfl.net.FileReference;
 import osa.objects.visualnovel.editors.TabMenu;
@@ -15,7 +16,7 @@ class VNEditor extends OSAState
 
 	override function create()
 	{
-		_tale = new TaleData(null);
+		_tale = new TaleData('lorem'.taleAsset().jsonFile());
 
 		add(uiBox = new TabMenu(_tale));
 

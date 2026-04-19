@@ -1,5 +1,6 @@
 package osa.data.visualnovel;
 
+import haxe.io.Path;
 import osa.data.visualnovel.speaker.*;
 import osa.util.Constants;
 import json2object.JsonParser;
@@ -12,6 +13,26 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 	@:jignored
 	public var id:String;
+
+	public static var speakers(get, never):Array<String>;
+
+	static function get_speakers():Array<String>
+	{
+		var speakers:Array<String> = [];
+
+		final speakersDir = 'speakers/'.visualNovelAsset().getFilesInDirectory().filter(f -> return f.endsWith('data'.jsonFile()));
+
+		for (file in speakersDir)
+		{
+			var sf = Path.withoutExtension(file).split('/');
+
+			var speakerID = sf[sf.length - 2];
+
+			speakers.push(speakerID);
+		}
+
+		return speakers;
+	}
 
 	override public function new(id:String, file:String)
 	{
