@@ -49,10 +49,17 @@ class GetAllImports
 					imports.push(line);
 		}
 
+		var listed:Array<String> = [];
+
 		for (imp in imports)
 		{
 			if (imports.filter(f -> f == imp).length > 1)
+			{
+                if (listed.contains(imp)) continue;
+
 				trace(imp);
+                listed.push(imp);
+			}
 		}
 	}
 }
