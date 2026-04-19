@@ -1,5 +1,6 @@
 package osa.modding;
 
+import osa.modding.modules.ModuleHandler;
 import polymod.format.ParseRules;
 import polymod.backends.PolymodAssets.PolymodAssetType;
 import polymod.fs.ZipFileSystem;
@@ -31,9 +32,12 @@ class ModCore
 		if (Polymod.onError == null)
 			Polymod.onError = onPolymodError;
 
+		ModuleHandler.clearModules();
 		Polymod.clearScripts();
 
 		loadAllMods();
+
+		ModuleHandler.loadModules();
 	}
 
 	public static function loadAllMods()
