@@ -1,0 +1,15 @@
+package osa.modding.modules;
+
+import polymod.hscript.HScriptedClass;
+
+class ScriptedModule extends Module implements HScriptedClass {}
+
+class Module
+{
+	public var id:String = '';
+
+	public function new(id:String)
+	{
+		this.id = id;
+	}
+}
