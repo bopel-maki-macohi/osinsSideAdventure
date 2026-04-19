@@ -1,5 +1,6 @@
 package osa.modding;
 
+import polymod.format.ParseRules;
 import polymod.backends.PolymodAssets.PolymodAssetType;
 import polymod.fs.ZipFileSystem;
 import polymod.Polymod;
@@ -62,6 +63,32 @@ class ModCore
 		return modMetadata;
 	}
 
+	static function buildIgnoreList():Array<String>
+	{
+		var result = Polymod.getDefaultIgnoreList();
+
+		result.push('.vscode');
+		result.push('.haxelib');
+		result.push('.idea');
+		result.push('.git');
+		result.push('.gitignore');
+		result.push('.gitattributes');
+		result.push('README.md');
+
+		return result;
+	}
+
+	static function buildParseRules():polymod.format.ParseRules
+	{
+		var output:polymod.format.ParseRules = polymod.format.ParseRules.getDefault();
+		// Ensure TXT files have merge support.
+		output.addType('txt', TextFileFormat.LINES);
+
+		// You can specify the format of a specific file, with file extension.
+		// output.addFile("data/introText.txt", TextFileFormat.LINES)
+		return output;
+	}
+
 	static function loadMods(dirs:Array<String>)
 	{
 		trace('Attempting to load ${dirs.length} mod(s)');
@@ -73,6 +100,12 @@ class ModCore
 			framework: OPENFL,
 			customFilesystem: modFileSystem,
 			errorCallback: onPolymodError,
+
+			parseRules: buildParseRules(),
+			ignoredFiles: buildIgnoreList(),
+
+			useScriptedClasses: true,
+			loadScriptsAsync: #if html5 true #else false #end
 		});
 
 		loadedMods = [];
