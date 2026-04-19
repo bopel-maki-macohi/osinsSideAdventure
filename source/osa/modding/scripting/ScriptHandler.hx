@@ -8,24 +8,32 @@ class ScriptHandler
 {
 	public static var registeredScripts:Map<String, Iris> = [];
 
-	public static var SCRIPT_PATH(get, never):String;
+	public static var SCRIPT_PATHS(get, never):Array<String>;
 
-	static function get_SCRIPT_PATH():String
+	static function get_SCRIPT_PATHS():Array<String>
 	{
-		return DefineUtil.getDefineString('POLYMOD_ROOT_PATH').assetPath();
+		var rootPath:String = DefineUtil.getDefineString('POLYMOD_ROOT_PATH');
+		var paths:Array<String> = [rootPath.assetPath()];
+
+		for (mod in ModCore.loadedMods)
+			paths.push(ModCore.MOD_ROOT + '/' + mod.dirName + '/' + rootPath);
+
+		return paths;
 	}
 
 	public static function loadScripts()
 	{
 		clearScripts();
 
-		for (file in ModCore.modFileSystem.readDirectoryRecursive(SCRIPT_PATH))
-		{
-			if (Path.extension(file) != Path.extension(''.scriptFile()))
-				return;
+		for (path in SCRIPT_PATHS)
+			if (ModCore.modFileSystem.exists(path))
+				for (file in ModCore.modFileSystem.readDirectoryRecursive(path))
+				{
+					if (Path.extension(file) != Path.extension(''.scriptFile()))
+						return;
 
-			trace('Potential script: $file');
-		};
+					trace('Potential script: $file');
+				};
 	}
 
 	public static function clearScripts()
