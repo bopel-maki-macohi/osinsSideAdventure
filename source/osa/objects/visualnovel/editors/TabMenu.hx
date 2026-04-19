@@ -7,12 +7,17 @@ class TabMenu extends FlxUITabMenu implements ITaleContainer
 {
 	public var _tale:TaleData;
 
+	public var dataTabGroup:DataTabGroup;
 	public var linesTabGroup:LineTabGroup;
 	public var storyTabGroup:StoryMenuTabGroup;
 
 	override public function new(tale:TaleData)
 	{
-		super(null, null, [{name: 'Lines', label: 'Lines'}, {name: 'Story Menu', label: 'Story Menu'},], true);
+		super(null, null, [
+			{name: 'Data', label: 'Data'},
+			{name: 'Lines', label: 'Lines'},
+			{name: 'Story Menu', label: 'Story Menu'},
+		], true);
 
 		resize(640, 480);
 
@@ -21,11 +26,13 @@ class TabMenu extends FlxUITabMenu implements ITaleContainer
 
 		selected_tab = 0;
 
+		dataTabGroup = new DataTabGroup(this);
 		linesTabGroup = new LineTabGroup(this);
 		storyTabGroup = new StoryMenuTabGroup(this);
 
-        _tale = tale;
+		_tale = tale;
 
+		addGroup(dataTabGroup);
 		addGroup(linesTabGroup);
 		addGroup(storyTabGroup);
 	}
@@ -34,6 +41,6 @@ class TabMenu extends FlxUITabMenu implements ITaleContainer
 	{
 		super.update(elapsed);
 
-		linesTabGroup._tale = storyTabGroup._tale = _tale;
+		dataTabGroup._tale = linesTabGroup._tale = storyTabGroup._tale = _tale;
 	}
 }
