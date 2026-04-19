@@ -17,7 +17,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 	public var loadJSONCallback:FileReference->Void;
 
 	public var saveJSON:FlxButton;
-	public var saveJSONCallback:String->Void;
+	public var saveJSONCallback:Void->Void;
 
 	public var taleID:FlxUIInputText;
 
@@ -26,8 +26,6 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 		super.create();
 
 		name = 'Data';
-
-		saveJSONCallback = e -> trace(e);
 
 		loadJSON = new FlxButton(10, 10, 'Load JSON', loadJSONMethod);
 		add(loadJSON);
@@ -54,25 +52,25 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 	function onSaveComplete(e:Event)
 	{
 		trace('Successfully saved file');
-		dispatchSaveJSONCallback('success');
+		dispatchSaveJSONCallback();
 	}
 
 	function onSaveCancel(e:Event)
 	{
 		trace('Cancelled saving file');
-		dispatchSaveJSONCallback('info');
+		dispatchSaveJSONCallback();
 	}
 
 	function onSaveError(e:Event)
 	{
 		trace('IO error saving file');
-		dispatchSaveJSONCallback('error');
+		dispatchSaveJSONCallback();
 	}
 
-	function dispatchSaveJSONCallback(event:String)
+	function dispatchSaveJSONCallback()
 	{
 		if (saveJSONCallback != null)
-			saveJSONCallback(event);
+			saveJSONCallback();
 	}
 
 	function loadJSONMethod()
