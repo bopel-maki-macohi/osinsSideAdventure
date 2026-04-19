@@ -35,9 +35,19 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		@:privateAccess
 		var btnLines:Array<FlxUIButton> = [for (i => line in lines) linesDropdown.makeListButton(i, line.label, line.name)];
 
-		if (linesDropdown.list != btnLines)
+		var diffs = 0;
+
+		for (i => line in linesDropdown.list)
 		{
-			trace('Updated Lines Dropdown');
+			if (btnLines[i].label.text != line.label.text)
+			{
+				diffs++;
+			}
+		}
+
+		if (diffs > 0)
+		{
+			trace('Updated Lines Dropdown ($diffs diffs)');
 			linesDropdown.list = btnLines;
 		}
 	}
