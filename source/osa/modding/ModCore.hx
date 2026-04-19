@@ -45,6 +45,8 @@ class ModCore
 		return modIds;
 	}
 
+	public static var loadedMods:Map<String, ModMetadata> = [];
+
 	public static function getAllMods():Array<ModMetadata>
 	{
 		trace('Scanning the mods folder...');
@@ -63,11 +65,17 @@ class ModCore
 	{
 		trace('Attempting to load ${dirs.length} mod(s)');
 
-		Polymod.init({
+		var mods = Polymod.init({
 			modRoot: MOD_ROOT,
 			apiVersionRule: API_VERSION_RULE,
 			dirs: dirs,
 			framework: OPENFL
 		});
+
+		loadedMods = [];
+		for (mod in mods)
+			loadedMods.set(mod.id, mod);
+
+		trace('Loaded mods: ${[for (mod in loadedMods) mod]}');
 	}
 }
