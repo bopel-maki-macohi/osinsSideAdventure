@@ -169,9 +169,11 @@ class TaleEditor extends OSAState
 			onLineSpeakerChange(uiBox.linesTabGroup.speakersDropdown.selectedId, index);
 
 		if (_tale.lines[index].speaker != null)
+		{
 			_tale.lines[index].speaker.state = newState;
 
-		speaker.build(newState);
+			speaker.build(newState);
+		}
 	}
 
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
