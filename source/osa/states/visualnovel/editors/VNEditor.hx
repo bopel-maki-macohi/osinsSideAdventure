@@ -18,7 +18,7 @@ class VNEditor extends OSAState
 	override function create()
 	{
 		_tale = new TaleData(null);
-		// onNewLine();
+		_tale.storymenu = {};
 
 		add(uiBox = new TabMenu(_tale));
 
@@ -34,6 +34,11 @@ class VNEditor extends OSAState
 		uiBox.linesTabGroup.onNewLineCallback = onNewLine;
 		uiBox.linesTabGroup.onRemoveLineCallback = onRemoveLine;
 
+		uiBox.storyTabGroup.onTitleAssetChangeCallback = onTitleAssetChange;
+		uiBox.storyTabGroup.onDisplayTextChangeCallback = onDisplayTextChange;
+
+		onNewLine();
+		
 		super.create();
 
 		FlxG.mouse.visible = true;
@@ -54,6 +59,16 @@ class VNEditor extends OSAState
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
+	}
+
+	function onDisplayTextChange(text:String)
+	{
+		_tale.storymenu.display = text;
+	}
+
+	function onTitleAssetChange(text:String)
+	{
+		_tale.storymenu.titleAsset = text;
 	}
 
 	function onRemoveLine(index:Int)
