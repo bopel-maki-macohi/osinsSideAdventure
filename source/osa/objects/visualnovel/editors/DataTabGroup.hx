@@ -1,5 +1,6 @@
 package osa.objects.visualnovel.editors;
 
+import haxe.io.Path;
 import osa.util.DateUtil;
 import flixel.addons.ui.FlxUIInputText;
 import json2object.JsonWriter;
@@ -46,7 +47,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 
 		var fileRef = new FileReference();
 
-		fileRef.addEventListener(Event.COMPLETE, onSaveComplete);
+		fileRef.addEventListener(Event.SELECT, onSaveComplete);
 		fileRef.addEventListener(Event.CANCEL, onSaveCancel);
 		fileRef.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 
@@ -64,6 +65,9 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 	function onSaveComplete(e:Event)
 	{
 		trace('Successfully saved file');
+
+		taleID.text = Path.withoutExtension(e.target.name);
+
 		dispatchSaveJSONCallback();
 	}
 
@@ -108,6 +112,8 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 		var fileRef:FileReference = e.target;
 		trace('Loaded file: ' + fileRef.name);
 
+		taleID.text = Path.withoutExtension(e.target.name);
+		
 		if (loadJSONCallback != null)
 			loadJSONCallback(fileRef);
 	}
