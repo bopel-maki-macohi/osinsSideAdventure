@@ -76,6 +76,8 @@ class TaleEditor extends OSAState
 		speaker.screenCenter();
 		speaker.x = FlxG.width - speaker.width * 2;
 
+		speaker.visible = (dialogueText.visible = uiBox.selected_tab == 1) && speaker.data != null;
+
 		if (controls.justPressed.LEAVE)
 		{
 			if (uiBox.dataTabGroup.taleID.hasFocus)
@@ -109,12 +111,12 @@ class TaleEditor extends OSAState
 		else
 			_tale.lines[index].speaker.state = text;
 
-		if (speaker?.data?.hasStateID(text))
+		if (speaker?.data?.hasStateID(text) && speaker.state != null)
 		{
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.GREEN;
 			speaker.build(text);
 		}
-		else if (speaker?.data?.hasStateIDLowercase(text))
+		else if (speaker?.data?.hasStateIDLowercase(text) && speaker.state != null)
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.YELLOW;
 		else
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.RED;
@@ -196,6 +198,11 @@ class TaleEditor extends OSAState
 
 		if (newSpeaker == '' || newSpeaker == null)
 		{
+			uiBox.linesTabGroup.speakersStateInput.text = '';
+
+			speaker.build(null);
+			speaker.data = null;
+
 			_tale.lines[index].speaker = null;
 		}
 		else
@@ -203,10 +210,12 @@ class TaleEditor extends OSAState
 			speaker.data = new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile()));
 
 			if (_tale.lines[index].speaker == null)
+			{
 				_tale.lines[index].speaker = {
 					id: newSpeaker,
 					state: speaker.data.states[0]?.id ?? '',
 				}
+			}
 			else
 			{
 				_tale.lines[index].speaker.id = newSpeaker;
@@ -214,6 +223,8 @@ class TaleEditor extends OSAState
 				if (!speaker.data.hasStateID(_tale.lines[index].speaker.state))
 					_tale.lines[index].speaker.state = speaker.data.states[0]?.id ?? '';
 			}
+
+			speaker.build(_tale.lines[index].speaker.state);
 		}
 
 		refresh();
