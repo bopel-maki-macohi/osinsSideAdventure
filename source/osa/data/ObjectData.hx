@@ -4,13 +4,20 @@ import osa.util.WindowUtil;
 
 class ObjectData<T>
 {
+	public var className(get, never):String;
+
+	function get_className():String
+	{
+		return '${Type.getClass(this)}'.replace('$', '');
+	}
+
 	public function new(file:String)
 	{
 		if (file != null)
 		{
 			if (!file.fileExists())
 			{
-				WindowUtil.alert('ObjectData Error', '"$file" does not exist.');
+				WindowUtil.alert('${className.split('.')[className.split('.').length - 1]} Error', '"$file" does not exist.');
 				return;
 			}
 
@@ -18,7 +25,7 @@ class ObjectData<T>
 		}
 		else
 		{
-			trace('It\'s null...');
+			trace('$className : It\'s null...');
 		}
 	}
 
