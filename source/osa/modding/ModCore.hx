@@ -1,5 +1,6 @@
 package osa.modding;
 
+import osa.util.WindowUtil;
 import osa.modding.modules.ModuleHandler;
 import polymod.format.ParseRules;
 import polymod.backends.PolymodAssets.PolymodAssetType;
@@ -24,7 +25,12 @@ class ModCore
 
 	static function onPolymodError(e:PolymodError)
 	{
-		trace('${e.code ?? 'debug'}'.toUpperCase() + ' : ' + e.message);
+		final msg:String = '${e.code ?? 'debug'}'.toUpperCase() + ' : ' + e.message;
+
+		if (e.severity == ERROR || e.severity == WARNING)
+			WindowUtil.alert('Polymod ${e.severity}', msg);
+		else
+			trace(msg);
 	}
 
 	public static function reload()
