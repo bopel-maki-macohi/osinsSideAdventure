@@ -73,8 +73,8 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 			return;
 		}
 
-		speakersDropdown.selectedId = speakersDropdown.getBtnById(line.speaker?.id ?? '').name;
-		textInput.text = line.text;
+		speakersDropdown.selectedId = speakersDropdown.getBtnById(line.speaker?.id ?? SpeakerData.speakers[0])?.name;
+		textInput.text = line?.text ?? '';
 	}
 
 	public var lines(get, never):Array<StrNameLabel>;

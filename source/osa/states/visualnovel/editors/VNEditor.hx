@@ -65,6 +65,8 @@ class VNEditor extends OSAState
 			_tale.lines[index] = {
 				text: newText,
 			};
+
+			loadTale(null);
 		}
 		else
 		{
