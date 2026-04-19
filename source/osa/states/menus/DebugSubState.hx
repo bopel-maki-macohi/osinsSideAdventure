@@ -13,6 +13,7 @@ class DebugSubState extends TitleSubStateBase
 		super(onExit);
 
 		spriteList = [
+			makeSprite('debug/default', () -> return 'Go to Tale Editor', () -> FlxG.switchState(() -> new VNEditor())),
 
 			makeSprite('debug/default', () -> return 'Crash The Game', () -> throw 'DebugSubState Crash'),
 
@@ -30,9 +31,7 @@ class DebugSubState extends TitleSubStateBase
 
 			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new SplashState())),
 			makeSprite('debug/default', () -> return 'Go to Github Page', () -> FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure')),
-			makeSprite('debug/default', () -> return 'Go to Lorem Ipsum VN', () -> FlxG.switchState(() -> new VNState('lorem'))),
-			
-			makeSprite('debug/default', () -> return 'Go to VN Editor', () -> FlxG.switchState(() -> new VNEditor())),
+			makeSprite('debug/default', () -> return 'Go to Lorem Ipsum VN', () -> FlxG.switchState(() -> new VNState('lorem'))),			
 		];
 	}
 
