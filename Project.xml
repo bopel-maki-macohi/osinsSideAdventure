@@ -47,6 +47,8 @@
 	<haxelib name="flixel-controls" />
 
 	<haxelib name="json2object" />
+
+	<haxelib name="polymod" />
 	
 	<haxelib name="hxvlc" if="desktop" unless="hl" />
 
