@@ -27,6 +27,9 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public var newLineBTN:FlxButton;
 	public var onNewLineCallback:Void->Void;
 
+	public var removeLineBTN:FlxButton;
+	public var onRemoveLineCallback:Int->Void;
+
 	override function create()
 	{
 		super.create();
@@ -45,6 +48,8 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		newLineBTN = new FlxButton(speakersStateDropdown.x + speakersStateDropdown.width + 10, speakersStateDropdown.y, 'New Line', onNewLine);
 
+		removeLineBTN = new FlxButton(newLineBTN.x + newLineBTN.width + 10, newLineBTN.y, 'Remove Line', onRemoveLine);
+
 		add(makeText(linesDropdown, 'Selected Line: '));
 		add(linesDropdown);
 
@@ -58,8 +63,15 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		add(speakersStateDropdown);
 
 		add(newLineBTN);
+		add(removeLineBTN);
 
 		onSpeakerChange(speakersDropdown.selectedLabel);
+	}
+
+	public function onRemoveLine()
+	{
+		if (onRemoveLineCallback != null)
+			onRemoveLineCallback(Std.parseInt(linesDropdown.selectedId));
 	}
 
 	public function onNewLine()
@@ -131,8 +143,17 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	{
 		var diffs = 0;
 
-		if (linesDropdown.list.length < btnLines.length || linesDropdown.list.length > btnLines.length)
+		if (linesDropdown.list.length < btnLines.length)
 			diffs += btnLines.length - linesDropdown.list.length;
+
+		if (linesDropdown.list.length > btnLines.length)
+			diffs += btnLines.length - linesDropdown.list.length;
+
+		// trace(linesDropdown.list.length);
+		// trace(btnLines.length);
+
+		if (btnLines.length == 0 && linesDropdown.list.length > 0)
+			diffs += linesDropdown.list.length;
 
 		for (i => line in linesDropdown.list)
 		{
@@ -140,10 +161,27 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 				diffs++;
 		}
 
-		if (diffs > 0)
+		if (Math.abs(diffs) > 0)
 		{
 			trace('Updated Lines Dropdown ($diffs diffs)');
-			linesDropdown.setData(lines);
+
+			if (lines.length == 0)
+			{
+				for (button in linesDropdown.list)
+				{
+					linesDropdown.list.remove(button);
+					button.destroy();
+				}
+				linesDropdown.selectedId = '0';
+				linesDropdown.header.text.text = '';
+
+				@:privateAccess {
+					linesDropdown.dropPanel.resize(linesDropdown.header.background.width, linesDropdown.getPanelHeight());
+					linesDropdown.updateButtonPositions();
+				}
+			}
+			else
+				linesDropdown.setData(lines);
 
 			onChangedLine('0');
 		}
