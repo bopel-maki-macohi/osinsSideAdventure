@@ -1,3 +1,4 @@
+import osa.objects.debug.DebugDisplay;
 import flixel.system.FlxAssets;
 import osa.util.Constants;
 import lime.app.Application;
@@ -9,14 +10,13 @@ import openfl.display.Sprite;
 
 class Main extends Sprite
 {
-	public static var FPSCounter:FPS;
+	public static var debugDisplay:DebugDisplay;
 
 	public function new()
 	{
 		super();
 
-		FPSCounter = new FPS(5, 5, FlxColor.WHITE);
-		FPSCounter.defaultTextFormat = new openfl.text.TextFormat(FlxAssets.FONT_DEFAULT, 12, FlxColor.WHITE);
+		debugDisplay = new DebugDisplay(5, 5);
 
 		FlxG.stage.window.title = '${Application.current.meta.get('name')} ${Application.current.meta.get('version')}';
 
@@ -25,6 +25,6 @@ class Main extends Sprite
 		#end
 
 		addChild(new FlxGame(1280, 720, osa.InitState));
-		addChild(FPSCounter);
+		addChild(debugDisplay);
 	}
 }

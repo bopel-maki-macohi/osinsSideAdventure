@@ -14,7 +14,7 @@ class Save
 		issues = new SaveField<Array<String>>('issues', []);
 		options = new SaveField<SaveOptions>('options', {
 			pcname: true,
-			fpsCounter: true,
+			debugDisplay: true,
 		});
 		beatissues = new SaveField<Array<String>>('beatissues', []);
 
@@ -23,9 +23,9 @@ class Save
 		options.get().pcname = false;
 		#end
 
-		options.get().fpsCounter ??= true;
+		options.get().debugDisplay ??= (options.get().fpsCounter ?? true);
 
-		Main.FPSCounter.visible = options.get().fpsCounter;
+		Main.debugDisplay.visible = options.get().debugDisplay;
 
 		removeField('chapters');
 
