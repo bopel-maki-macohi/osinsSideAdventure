@@ -175,11 +175,18 @@ class TaleEditor extends OSAState
 		if (_tale.lines[index] == null)
 			onLineTextChange(uiBox.linesTabGroup.textInput.text, index);
 
-		speaker.data = new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile()));
+		if (newSpeaker == '' || newSpeaker == null)
+		{
+			_tale.lines[index].speaker = null;
+		}
+		else
+		{
+			speaker.data = new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile()));
 
-		_tale.lines[index].speaker = {
-			id: newSpeaker,
-			state: speaker.data.states[0].id,
+			_tale.lines[index].speaker = {
+				id: newSpeaker,
+				state: speaker.data.states[0].id,
+			}
 		}
 	}
 

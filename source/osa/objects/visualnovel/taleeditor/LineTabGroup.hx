@@ -38,13 +38,17 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		linesDropdown = new FlxUIDropDownMenu(10, 20, null, onChangedLine);
 
-		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y,
-			[for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)], onSpeakerChange);
+		var speakers = [for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)];
+		speakers.insert(0, new StrNameLabel('', ''));
+
+		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y, speakers, onSpeakerChange);
+		speakersDropdown.selectedId = '';
 
 		textInput = new FlxUIInputText(speakersDropdown.x + speakersDropdown.width + 10, speakersDropdown.y, 275, '', 8);
 		textInput.callback = onTextChange;
 
 		speakersStateDropdown = new FlxUIDropDownMenu(textInput.x, textInput.y + textInput.height + 20, null, onSpeakerStateChange);
+		speakersStateDropdown.selectedId = '';
 
 		newLineBTN = new FlxButton(speakersStateDropdown.x + speakersStateDropdown.width + 10, speakersStateDropdown.y, 'New Line', onNewLine);
 
@@ -88,15 +92,36 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onSpeakerChange(speakerID:String)
 	{
-		// trace('new speaker: $speakerID');
+		trace('new speaker: "$speakerID"');
 
-		var speaker = new SpeakerData(speakerID, speakerID.speakerAsset('data'.jsonFile()));
+		var speaker:SpeakerData = null;
 
-		speakersStateDropdown.setData([for (state in speaker.states) new StrNameLabel(state.id, state.id)]);
-		onSpeakerStateChange(speaker.states[0].id);
+		if (speakerID.trim() == '')
+			speaker = new SpeakerData(null, null);
+		else
+			speaker = new SpeakerData(speakerID, speakerID.speakerAsset('data'.jsonFile()));
+
+		var newList = [for (state in speaker.states) new StrNameLabel(state.id, state.id)];
+
+		if (newList.length == 0)
+		{
+			@:privateAccess
+			var newBtnList = [
+				for (i => state in newList)
+					speakersStateDropdown.makeListButton(i, state.label, state.name)
+			];
+			DropdownListUpdater.updateList(newList, newBtnList, speakersStateDropdown, '');
+		}
+		else
+		{
+			speakersStateDropdown.setData(newList);
+		}
+
+		if (speaker.states != null)
+			onSpeakerStateChange(speaker?.states[0]?.id ?? '');
 
 		if (onSpeakerChangeCallback != null)
-			onSpeakerChangeCallback(speaker.id, Std.parseInt(linesDropdown.selectedId));
+			onSpeakerChangeCallback(speakerID, Std.parseInt(linesDropdown.selectedId));
 	}
 
 	public function onTextChange(text:String, action:String)
