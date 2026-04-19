@@ -26,7 +26,7 @@ class ObjectData<T>
 		}
 		else
 		{
-			trace('$className : It\'s null...');
+			trace('$className : Null file');
 		}
 	}
 
