@@ -38,8 +38,6 @@ class VNEditor extends OSAState
 	{
 		var taleData:TaleData = new JsonParser<TaleData>().fromJson(file.data.toString(), file.name);
 
-		_tale.iteration = taleData.iteration;
-		_tale.lines = taleData.lines;
-		_tale.storymenu = taleData.storymenu;
+		_tale.build(taleData.iteration, taleData.lines, taleData.storymenu);
 	}
 }

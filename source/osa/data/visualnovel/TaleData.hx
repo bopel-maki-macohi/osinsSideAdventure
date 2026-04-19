@@ -21,19 +21,25 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 		super(file);
 	}
 
+	public function build(iteration:Int, lines:Array<TaleLineData>, storymenu:TaleStoryMenuData)
+	{
+		this.iteration = iteration ?? Constants.ITERATION_TALEDATA;
+		this.lines = lines ?? [];
+		this.storymenu = storymenu ?? null;
+	}
+
 	override function load(file:String)
 	{
 		super.load(file);
 
-		if (file == null) return;
+		if (file == null)
+			return;
 
 		if (!file.fileExists())
 			return;
 
 		var data:TaleData = new JsonParser<TaleData>().fromJson(file.readText(), file);
 
-		this.iteration = data?.iteration ?? Constants.ITERATION_TALEDATA;
-		this.lines = data?.lines ?? [];
-		this.storymenu = data?.storymenu ?? null;
+		build(data.iteration, data.lines, data.storymenu);
 	}
 }
