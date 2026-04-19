@@ -1,5 +1,6 @@
 package osa;
 
+import osa.states.visualnovel.editors.VNEditor;
 import osa.states.visualnovel.VNState;
 import osa.states.debug.TestVideoState;
 import osa.util.*;
@@ -88,6 +89,8 @@ class InitState extends OSAState
 			FlxG.switchState(() -> new TitleState());
 		else if (MacroUtil.isDefined('VIDEODEBUG'))
 			FlxG.switchState(() -> new TestVideoState());
+		else if (MacroUtil.isDefined('VNEDITOR'))
+			FlxG.switchState(() -> new VNEditor());
 		else
 			FlxG.switchState(() -> new SplashState());
 	}

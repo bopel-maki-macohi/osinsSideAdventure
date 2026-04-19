@@ -25,6 +25,8 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 	{
 		super.load(file);
 
+		if (file == null) return;
+
 		if (!file.fileExists())
 			return;
 

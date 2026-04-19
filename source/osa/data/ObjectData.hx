@@ -6,13 +6,20 @@ class ObjectData<T>
 {
 	public function new(file:String)
 	{
-		if (!file.fileExists())
+		if (file != null)
 		{
-			WindowUtil.alert('ObjectData Error', '"$file" does not exist.');
-			return;
-		}
+			if (!file.fileExists())
+			{
+				WindowUtil.alert('ObjectData Error', '"$file" does not exist.');
+				return;
+			}
 
-		load(file);
+			load(file);
+		}
+		else
+		{
+			trace('It\'s null...');
+		}
 	}
 
 	public function load(file:String) {}
