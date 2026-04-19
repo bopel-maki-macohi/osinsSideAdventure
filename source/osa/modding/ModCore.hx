@@ -108,7 +108,7 @@ class ModCore
 						amt -= modIDs.length; // I don't wanna count the icon files either
 			}
 
-			trace(' * Replaced / Added ${amt} ${type} files');
+			trace(' * Replaced / Added ${amt} ${type} file(s)');
 		}
 	}
 }
