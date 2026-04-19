@@ -1,7 +1,6 @@
-package dev.post_0_12.scripts;
-
 /**
- * haxe -m dev.post_0_12.scripts.GetAllImports.hx --interp
+ * cd dev/post_0_12/scripts
+ * haxe -m GetAllImports.hx --interp
  */
 class GetAllImports
 {
