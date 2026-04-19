@@ -174,6 +174,8 @@ class TaleEditor extends OSAState
 
 			speaker.build(newState);
 		}
+		
+		refresh();
 	}
 
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
@@ -194,6 +196,8 @@ class TaleEditor extends OSAState
 				state: speaker.data.states[0].id,
 			}
 		}
+
+		refresh();
 	}
 
 	function onLineTextChange(newText:String, index:Int)
