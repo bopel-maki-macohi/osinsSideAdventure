@@ -1,6 +1,8 @@
 package osa.modding.modules;
 
-class Module
+import osa.modding.events.ScriptEvent;
+
+class Module implements IScriptedEventClass
 {
 	public var id:String = '';
 
@@ -11,4 +13,10 @@ class Module
 
 	public function toString():String
 		return '$id';
+
+	public function onCreate(event:ScriptEvent):Void {}
+
+	public function onUpdate(event:ScriptEvent):Void {}
+
+	public function onDestroy(event:ScriptEvent):Void {}
 }

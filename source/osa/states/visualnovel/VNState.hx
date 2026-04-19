@@ -1,6 +1,5 @@
 package osa.states.visualnovel;
 
-import osa.modding.scripting.;
 import flixel.util.FlxColor;
 import osa.objects.HoldToPerformGadge;
 import osa.util.SoundUtil;
