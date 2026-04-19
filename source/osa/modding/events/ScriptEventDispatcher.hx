@@ -1,0 +1,26 @@
+package osa.modding.events;
+
+import osa.modding.events.basic.*;
+
+class ScriptEventDispatcher
+{
+	public static function dispatch(target:Null<IScriptedEventClass>, event:ScriptEvent)
+	{
+		if (target == null || event == null)
+			return;
+
+		target.onScriptEvent(cast event);
+
+		switch (event.type)
+		{
+			case CREATE:
+				target.onCreate(event);
+			case UPDATE:
+				target.onUpdate(cast event);
+			case DESTROY:
+				target.onDestroy(event);
+
+			default:
+		}
+	}
+}

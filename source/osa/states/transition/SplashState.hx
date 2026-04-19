@@ -1,5 +1,7 @@
 package osa.states.transition;
 
+import flixel.util.FlxColor;
+import flixel.text.FlxText;
 import osa.util.VersionUtil;
 import osa.states.menus.OutdatedState;
 import osa.util.Constants;
@@ -39,24 +41,29 @@ class SplashState extends OSAState
 		msgs = Json.parse('splashTexts'.miscAsset().jsonFile().readText());
 		debugMsgs = msgs.lines.filter(l -> return l?.filter == 'debug');
 
-		initWatermark();
+		initTextOBJ();
 		initMsg();
 		displayMsg();
 	}
 
-	function initWatermark()
+	var splashText:FlxText;
+
+	function initTextOBJ()
 	{
-		#if !debug
-		add(watermark);
-		#end
+		splashText = new FlxText(10, 10, FlxG.width, 'O.S.A. ${VersionUtil.VERSION} (${Constants.GIT_STRING})', 16);
+		splashText.alignment = LEFT;
+		splashText.color = FlxColor.WHITE;
+		splashText.y = FlxG.height - splashText.height;
 
-		watermark.alignment = CENTER;
-		watermark.size = 32;
-		watermark.alpha = 0;
+		add(splashText);
 
-		watermark.text = FlxG.stage.window.title;
+		splashText.alignment = CENTER;
+		splashText.size = 32;
+		splashText.alpha = 0;
 
-		watermark.text = '${FlxG.stage.application.meta.get('name')} ${FlxG.stage.application.meta.get('version')}';
+		splashText.text = FlxG.stage.window.title;
+
+		splashText.text = '${FlxG.stage.application.meta.get('name')} ${FlxG.stage.application.meta.get('version')}';
 	}
 
 	function randomMsg()
@@ -114,13 +121,13 @@ class SplashState extends OSAState
 	function displayMsg()
 	{
 		if (msg != null && msg.clearWatermark)
-			watermark.text = line;
+			splashText.text = line;
 		else
-			watermark.text += '\n\n${line}';
+			splashText.text += '\n\n${line}';
 
-		watermark.screenCenter();
+		splashText.screenCenter();
 
-		FlxTween.tween(watermark, {alpha: 1}, this.transIn.duration * 0.25);
+		FlxTween.tween(splashText, {alpha: 1}, this.transIn.duration * 0.25);
 
 		if (msg?.specialCase != null)
 		{

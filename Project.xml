@@ -34,6 +34,9 @@
 	<haxedef name="POLYMOD_ROOT_PATH" value="scripts/" />
 	<haxedef name="POLYMOD_DEBUG" if="debug"/>
 
+	<!-- <define name="REMOVE_MODDING" unless="debug"/> -->
+
+	<define name="HAS_MODDING" unless="REMOVE_MODDING"/>
 	<define name="INCLUDE_DEBUG_MODS" if="debug"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
@@ -57,7 +60,6 @@
 	<haxelib name="json2object" />
 
 	<haxelib name="polymod" />
-	<haxelib name="hscript-iris" />
 
 	<haxelib name="hxvlc" if="desktop" unless="hl" />
 

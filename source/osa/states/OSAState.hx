@@ -1,6 +1,7 @@
 package osa.states;
 
-import osa.modding.scripting.ScriptHandler;
+import osa.modding.events.ScriptEvent;
+import osa.modding.modules.ModuleHandler;
 import osa.util.VersionUtil;
 import osa.util.Constants;
 import osa.util.Controls;
@@ -33,8 +34,6 @@ class OSAState extends FlxUIState
 		},);
 	}
 
-	public var watermark:FlxText;
-
 	override function create()
 	{
 		TRANSITION_CAMERA = new FlxCamera();
@@ -42,23 +41,6 @@ class OSAState extends FlxUIState
 		TRANSITION_CAMERA.bgColor.alpha = 0;
 
 		super.create();
-
-		watermark = new FlxText(10, 10, FlxG.width, 'O.S.A. ${VersionUtil.VERSION} (${Constants.GIT_STRING})', 16);
-		watermark.alignment = LEFT;
-		watermark.color = FlxColor.WHITE;
-		watermark.y = FlxG.height - watermark.height;
-
-		#if debug
-		add(watermark);
-		#end
-
-		#if DISABLE_TITLE_WATERMARK_BLUR
-		var regCam = new FlxCamera();
-		FlxG.cameras.add(regCam, false);
-		regCam.bgColor.alpha = 0;
-
-		watermark.camera = regCam;
-		#end
 
 		if (rhythmManager != null)
 		{
@@ -99,7 +81,7 @@ class OSAState extends FlxUIState
 	{
 		super.update(elapsed);
 
-		ScriptHandler.call('update', [elapsed]);
+		dispatchEvent(new UpdateScriptEvent(elapsed));
 
 		if (rhythmManager != null)
 			rhythmManager.update();
@@ -122,5 +104,10 @@ class OSAState extends FlxUIState
 	function get_controls():Controls
 	{
 		return Controls.instance;
+	}
+
+	public function dispatchEvent(event:ScriptEvent)
+	{
+		ModuleHandler.dispatchEvent(event);
 	}
 }
