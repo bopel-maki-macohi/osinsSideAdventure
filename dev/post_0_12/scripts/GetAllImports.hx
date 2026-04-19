@@ -53,13 +53,20 @@ class GetAllImports
 
 		for (imp in imports)
 		{
-			if (imports.filter(f -> f == imp).length > 1)
-			{
-                if (listed.contains(imp)) continue;
+			var uses:Array<String> = imports.filter(f -> f == imp);
 
-				trace(imp);
-                listed.push(imp);
+			var line:String = imp + ' // ${uses.length}';
+
+			if (uses.length > 1)
+			{
+				if (listed.contains(line))
+					continue;
+
+				trace(line);
+				listed.push(line);
 			}
 		}
+
+		File.saveContent('Imports.txt', listed.join('\n'));
 	}
 }
