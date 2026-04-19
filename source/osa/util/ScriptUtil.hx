@@ -26,10 +26,10 @@ class ScriptUtil
 		addImport(flixel.FlxState);
 		addImport(flixel.FlxSubState);
 
-		addImport(PolymodScriptClass.abstractClassImpls.get('flixel.input.keyboard.FlxKey'));
+		addAbstractImport('flixel.input.keyboard.FlxKey');
 
 		addImport(flixel.math.FlxMath);
-		addImport(PolymodScriptClass.abstractClassImpls.get('flixel.math.FlxPoint'));
+		addAbstractImport('flixel.math.FlxPoint');
 		addImport(flixel.math.FlxVelocity);
 
 		addImport(flixel.sound.FlxSound);
@@ -39,7 +39,7 @@ class ScriptUtil
 		addImport(flixel.tweens.FlxEase);
 		addImport(flixel.tweens.FlxTween);
 
-		addImport(PolymodScriptClass.abstractClassImpls.get('flixel.util.FlxColor'));
+		addAbstractImport('flixel.util.FlxColor');
 
 		addImport(lime.utils.Assets);
 
@@ -78,9 +78,11 @@ class ScriptUtil
 
 	public static function addImport(cls:Dynamic)
 	{
-		var className = Type.getClassName(cls);
+		DEFAULT_IMPORTS.set(Type.getClassName(cls), cls);
+	}
 
-		trace('ADDING DEFAULT IMPORT : "$className"');
-		DEFAULT_IMPORTS.set(className, cls);
+	public static function addAbstractImport(cls:String)
+	{
+		DEFAULT_IMPORTS.set(cls, PolymodScriptClass.abstractClassImpls.get(cls));
 	}
 }
