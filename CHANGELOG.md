@@ -4,7 +4,7 @@ THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANT
 
 - ADDED MODDING SUPPORT VIA POLYMOD (WOH)
 - Reading text files that dont exist no longer crashes the game
-- ADDED TALE EDITOR / VNEditor
+- ADDED TALE EDITOR
 - Removed Assets Cache System
 - Rebuilt Visual Novel stuff (pretty much) all the way from the ground up
   - Redone Story Menu (kinda)
