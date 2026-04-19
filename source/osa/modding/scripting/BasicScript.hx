@@ -14,29 +14,25 @@ class BasicScript extends Iris
 			name: script.scriptFile()
 		});
 
-		if (!script.scriptFile().fileExists())
-			WindowUtil.alert('Script Error : Missing Script', 'Missing Script File: ${script.scriptFile()}');
-
-		if (registeredScripts.exists(script.scriptFile()))
-		{
-			trace('The following Script File is already registered and will be overwritten: ${script.scriptFile()}');
-
-			// WindowUtil.alert('Script Error : Already Registered Script',
-			// 	'The following Script File is already registered and will be overwritten: ${script.scriptFile()}');
-
-			registeredScripts.remove(script.scriptFile());
-		}
-
-		if (script.scriptFile().fileExists())
-		{
-			registeredScripts.set(script.scriptFile(), this);
-
-			onLoad();
-		}
+		onLoad();
 	}
 
 	public function onLoad()
 	{
+		if (!config.name.fileExists())
+		{
+			WindowUtil.alert('Script Error : Missing Script', 'Missing Script File: ${config.name}');
+			return;
+		}
+
+		if (registeredScripts.exists(config.name))
+		{
+			trace('The following Script File is already registered and will be overwritten: ${config.name}');
+			registeredScripts.remove(config.name);
+		}
+
+		registeredScripts.set(config.name, this);
+
 		for (clsName => cls in ScriptUtil.DEFAULT_IMPORTS)
 			set(clsName, cls, false);
 
