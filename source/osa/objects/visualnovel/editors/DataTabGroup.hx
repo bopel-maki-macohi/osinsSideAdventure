@@ -12,7 +12,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 	public var _tale:TaleData;
 
 	public var loadJSON:FlxButton;
-	public var loadJSONCallback:String->Void;
+	public var loadJSONCallback:FileReference->Void;
 
 	override function create()
 	{
@@ -30,43 +30,34 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 	{
 		_fileReference = new FileReference();
 
-		_fileReference.addEventListener(Event.COMPLETE, onLoadComplete);
-		_fileReference.addEventListener(Event.CANCEL, onLoadCancel);
-		_fileReference.addEventListener(IOErrorEvent.IO_ERROR, onLoadError);
+		_fileReference.addEventListener(Event.SELECT, onLoadSelect);
 
-		_fileReference.browse([new FileFilter('Data File', 'json')]);
+		_fileReference.browse();
 	}
 
-	function clearFileReferenceEvents()
+	function clearFileReference()
 	{
-		_fileReference.removeEventListener(Event.COMPLETE, onLoadComplete);
-		_fileReference.removeEventListener(Event.CANCEL, onLoadCancel);
-		_fileReference.removeEventListener(IOErrorEvent.IO_ERROR, onLoadError);
+		_fileReference.removeEventListener(Event.SELECT, onLoadSelect);
 
 		_fileReference = null;
 	}
 
+	function onLoadSelect(e:Event)
+	{
+		var file:FileReference = e.target;
+
+		trace('Selected file: ${file.name}');
+
+		file.addEventListener(Event.COMPLETE, onLoadComplete);
+		file.load();
+	}
+
 	function onLoadComplete(e:Event)
 	{
-		clearFileReferenceEvents();
-
-		trace('Load Complete: ' + e);
+		var file:FileReference = e.target;
+		trace('Loaded file: ' + file.name);
 
 		if (loadJSONCallback != null)
-			loadJSONCallback('');
-	}
-
-	function onLoadCancel(e:Event)
-	{
-		clearFileReferenceEvents();
-
-		trace('Load Cancel: ' + e);
-	}
-
-	function onLoadError(e:Event)
-	{
-		clearFileReferenceEvents();
-		
-		trace('Load Error: ' + e);
+			loadJSONCallback(file);
 	}
 }
