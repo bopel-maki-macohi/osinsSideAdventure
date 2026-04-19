@@ -1,5 +1,6 @@
 package osa.objects.visualnovel.editors;
 
+import flixel.addons.ui.FlxUIButton;
 import flixel.addons.ui.StrNameLabel;
 import osa.data.visualnovel.TaleData;
 import flixel.addons.ui.FlxUIDropDownMenu;
@@ -29,11 +30,15 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function updateList()
 	{
-		var lines:Array<StrNameLabel> = [for (i => line in _tale?.lines ?? []) new StrNameLabel('Line #$i', 'Line #$i')];
+		var lines:Array<StrNameLabel> = [for (i => line in _tale?.lines ?? []) new StrNameLabel('Line #${i + 1}', '$i')];
 
-		if (lines.length == 0)
-			linesDropdown.setData(null);
-		else
-			linesDropdown.setData(lines);
+		@:privateAccess
+		var btnLines:Array<FlxUIButton> = [for (i => line in lines) linesDropdown.makeListButton(i, line.label, line.name)];
+
+		if (linesDropdown.list != btnLines)
+		{
+			trace('Updated Lines Dropdown');
+			linesDropdown.list = btnLines;
+		}
 	}
 }
