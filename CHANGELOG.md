@@ -2,6 +2,8 @@
 
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
+- ADDED SCRIPTING SUPPORT VIA HSCRIPT-IRIS (double woh)
+- ADDED MODDING SUPPORT VIA POLYMOD (woh)
 - Reading text files that dont exist no longer crashes the game
 - ADDED TALE EDITOR / VNEditor
 - Removed Assets Cache System
