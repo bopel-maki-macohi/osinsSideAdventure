@@ -1,6 +1,6 @@
 package osa;
 
-import osa.states.visualnovel.taleeditor.TaleEditor;
+import osa.states.visualnovel.editors.TaleEditor;
 import osa.states.visualnovel.VNState;
 import osa.states.debug.TestVideoState;
 import osa.util.*;
