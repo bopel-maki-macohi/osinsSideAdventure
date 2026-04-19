@@ -6,9 +6,9 @@ class ScriptHandler
 {
 	public static var registeredScripts:Map<String, BasicScript> = [];
 
-	public var SCRIPT_PATH(get, never):String;
+	public static var SCRIPT_PATH(get, never):String;
 
-	function get_SCRIPT_PATH():String
+	static function get_SCRIPT_PATH():String
 	{
 		return DefineUtil.getDefineString('POLYMOD_ROOT_PATH').assetPath();
 	}
