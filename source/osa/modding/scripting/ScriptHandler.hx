@@ -1,10 +1,11 @@
 package osa.modding.scripting;
 
+import crowplexus.iris.Iris;
 import polymod.util.DefineUtil;
 
 class ScriptHandler
 {
-	public static var registeredScripts:Map<String, BasicScript> = [];
+	public static var registeredScripts:Map<String, Iris> = [];
 
 	public static var SCRIPT_PATH(get, never):String;
 
