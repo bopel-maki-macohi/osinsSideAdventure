@@ -67,7 +67,7 @@ class ScriptUtil
 			return;
 		}
 
-		trace(className);
+		trace('Importing $className');
 		DEFAULT_IMPORTS.set(className, cls);
 	}
 }
