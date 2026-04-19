@@ -1,5 +1,3 @@
-package dev.debugMods.scripting.scripts;
-
 import osa.modding.modules.Module;
 
 class HelloWorld extends Module

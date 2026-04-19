@@ -123,7 +123,13 @@ class ModCore
 			ignoredFiles: buildIgnoreList(),
 
 			useScriptedClasses: true,
-			loadScriptsAsync: #if html5 true #else false #end
+			loadScriptsAsync: #if html5 true #else false #end,
+
+			frameworkParams: {
+				coreAssetRedirect: null
+			},
+
+			skipDependencyErrors: true,
 		});
 
 		loadedMods = [];
