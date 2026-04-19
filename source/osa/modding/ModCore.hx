@@ -1,5 +1,6 @@
 package osa.modding;
 
+import polymod.backends.PolymodAssets.PolymodAssetType;
 import polymod.fs.ZipFileSystem;
 import polymod.Polymod;
 
@@ -77,5 +78,20 @@ class ModCore
 			loadedMods.set(mod.id, mod);
 
 		trace('Loaded mods: ${[for (mod in loadedMods) mod]}');
+
+		for (type in [
+			PolymodAssetType.AUDIO_GENERIC,
+			PolymodAssetType.AUDIO_MUSIC,
+			PolymodAssetType.AUDIO_SOUND,
+			// PolymodAssetType.BYTES,
+			PolymodAssetType.FONT,
+			PolymodAssetType.IMAGE,
+			// PolymodAssetType.MANIFEST,
+			// PolymodAssetType.TEMPLATE,
+			PolymodAssetType.TEXT,
+			// PolymodAssetType.UNKNOWN,
+			PolymodAssetType.VIDEO,
+		])
+			trace(' * Replaced / Added ${[for (asset in Polymod.listModFiles(type)) asset].length} ${type} files');
 	}
 }
