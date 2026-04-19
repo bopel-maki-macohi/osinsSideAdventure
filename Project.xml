@@ -57,6 +57,7 @@
 	<haxelib name="json2object" />
 
 	<haxelib name="polymod" />
+	<haxelib name="hscript-iris" />
 
 	<haxelib name="hxvlc" if="desktop" unless="hl" />
 
