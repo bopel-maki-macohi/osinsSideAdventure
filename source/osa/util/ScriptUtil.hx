@@ -14,6 +14,8 @@ class ScriptUtil
 		DEFAULT_IMPORTS = [];
 
 		addImport(flixel.FlxG);
+		addImport(flixel.FlxSprite);
+		addImport(flixel.FlxBasic);
 	}
 
 	public static function addImport(cls:Dynamic)
