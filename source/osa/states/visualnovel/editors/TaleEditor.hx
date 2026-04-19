@@ -59,6 +59,8 @@ class TaleEditor extends OSAState
 		super.create();
 
 		FlxG.mouse.visible = true;
+
+		refresh();
 	}
 
 	override function update(elapsed:Float)
@@ -76,7 +78,15 @@ class TaleEditor extends OSAState
 		{
 			if (uiBox.dataTabGroup.taleID.hasFocus)
 				return;
+
 			if (uiBox.linesTabGroup.textInput.hasFocus)
+				return;
+
+			if (uiBox.storyTabGroup.filterInput.hasFocus)
+				return;
+			if (uiBox.storyTabGroup.displayInput.hasFocus)
+				return;
+			if (uiBox.storyTabGroup.titleAssetInput.hasFocus)
 				return;
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
@@ -90,7 +100,7 @@ class TaleEditor extends OSAState
 
 		_tale.storymenu.filters.remove(filter);
 
-		loadTale(null);
+		refresh();
 
 		uiBox.storyTabGroup.filtersDropdown.selectedId = uiBox.storyTabGroup.btnFilters[uiBox.storyTabGroup.btnFilters.length - 1]?.name;
 	}
@@ -107,7 +117,7 @@ class TaleEditor extends OSAState
 
 		_tale.storymenu.filters.push(filter);
 
-		loadTale(null);
+		refresh();
 
 		uiBox.storyTabGroup.filtersDropdown.selectedId = uiBox.storyTabGroup.btnFilters[uiBox.storyTabGroup.btnFilters.length - 1]?.name;
 	}
@@ -124,21 +134,30 @@ class TaleEditor extends OSAState
 
 	function onRemoveLine(index:Int)
 	{
-		if (_tale.lines[index] == null)
-			return;
-
 		_tale.lines.remove(_tale.lines[index]);
 
-		loadTale(null);
+		refresh();
+
+		var ldd = uiBox.linesTabGroup.linesDropdown;
+
+		ldd.selectedId = (ldd.list[index - 1] ?? ldd.list[ldd.list.length - 1])?.name ?? '0';
 	}
 
 	function onNewLine()
 	{
 		_tale.lines.push({
 			text: '',
+			speaker: {
+				id: 'test',
+				state: 'default',
+			}
 		});
 
-		loadTale(null);
+		refresh();
+
+		var ldd = uiBox.linesTabGroup.linesDropdown;
+
+		ldd.selectedId = ldd.list[ldd.list.length - 1]?.name ?? '0';
 	}
 
 	function onLineSpeakerStateChange(newState:String, index:Int)
@@ -171,8 +190,6 @@ class TaleEditor extends OSAState
 			_tale.lines[index] = {
 				text: newText,
 			};
-
-			loadTale(null);
 		}
 		else
 		{
@@ -180,6 +197,7 @@ class TaleEditor extends OSAState
 		}
 
 		dialogueText.text = newText;
+		refresh();
 	}
 
 	function loadTale(file:FileReference)
@@ -190,6 +208,11 @@ class TaleEditor extends OSAState
 			_tale.build(taleData.iteration, taleData.lines, taleData.storymenu, taleData.generatedBy);
 		}
 
+		refresh();
+	}
+
+	function refresh()
+	{
 		uiBox.linesTabGroup.updateList();
 		uiBox.storyTabGroup.updateList();
 	}
