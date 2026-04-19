@@ -26,7 +26,7 @@ class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 		add(makeText(filtersDropdown, 'Filters: '));
 		add(filtersDropdown);
 
-		titleAssetInput = new FlxUIInputText(filtersDropdown.x + filtersDropdown.width + 10, filtersDropdown.y, 620, '', 8);
+		titleAssetInput = new FlxUIInputText(filtersDropdown.x + filtersDropdown.width + 10, filtersDropdown.y, 480, '', 8);
 		titleAssetInput.callback = onTitleAssetChange;
 
 		add(makeText(titleAssetInput, 'Title Asset: '));
@@ -35,7 +35,7 @@ class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 		displayInput = new FlxUIInputText(titleAssetInput.x, titleAssetInput.y + titleAssetInput.height + 20, Math.round(titleAssetInput.width), '', 8);
 		displayInput.callback = onDisplayTextChange;
 
-		add(makeText(displayInput, 'Title Asset: '));
+		add(makeText(displayInput, 'Display Text: '));
 		add(displayInput);
 	}
 
