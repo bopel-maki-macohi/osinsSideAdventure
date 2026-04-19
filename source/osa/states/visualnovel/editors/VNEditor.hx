@@ -21,7 +21,9 @@ class VNEditor extends OSAState
 		add(uiBox = new TabMenu(_tale));
 
 		uiBox.dataTabGroup.loadJSONCallback = loadTale;
+
 		uiBox.linesTabGroup.onTextChangeCallback = onLineTextChange;
+		uiBox.linesTabGroup.onSpeakerChangeCallback = onLineSpeakerChange;
 
 		super.create();
 
@@ -42,6 +44,17 @@ class VNEditor extends OSAState
 				return;
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
+		}
+	}
+
+	function onLineSpeakerChange(newSpeaker:String, index:Int)
+	{
+		if (_tale.lines[index] == null)
+			onLineTextChange(uiBox.linesTabGroup.textInput.text, index);
+
+		_tale.lines[index].speaker = {
+			id: newSpeaker,
+			state: new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile())).states[0].id,
 		}
 	}
 

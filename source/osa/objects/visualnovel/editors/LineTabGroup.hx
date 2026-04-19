@@ -14,7 +14,9 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public var _tale:TaleData;
 
 	public var linesDropdown:FlxUIDropDownMenu;
+
 	public var speakersDropdown:FlxUIDropDownMenu;
+	public var onSpeakerChangeCallback:String->Int->Void;
 
 	public var textInput:FlxUIInputText;
 	public var onTextChangeCallback:String->Int->Void;
@@ -30,6 +32,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y,
 			[for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)]);
+			speakersDropdown.callback = onSpeakerChange;
 
 		textInput = new FlxUIInputText(speakersDropdown.x + speakersDropdown.width + 10, speakersDropdown.y, 275, '', 8);
 		textInput.callback = onTextChange;
@@ -44,24 +47,22 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		add(textInput);
 	}
 
+	public function onSpeakerChange(speakerID:String)
+	{
+		trace('new speaker: $speakerID');
+
+		if (onSpeakerChangeCallback != null)
+			onSpeakerChangeCallback(speakerID, Std.parseInt(linesDropdown.selectedId));
+	}
+
 	public function onTextChange(text:String, action:String)
 	{
-		switch (action)
-		{
-			case FlxInputText.BACKSPACE_ACTION:
-			case FlxInputText.DELETE_ACTION:
-			case FlxInputText.ENTER_ACTION:
-			case FlxInputText.INPUT_ACTION:
-		}
-
 		if (onTextChangeCallback != null)
 			onTextChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
 	}
 
 	public function onChangedLine(indexStr:String)
 	{
-		// trace('onChangedLine: $indexStr');
-
 		var index:Int = Std.parseInt(indexStr);
 
 		var line:TaleLineData = _tale.lines[index] ?? null;
