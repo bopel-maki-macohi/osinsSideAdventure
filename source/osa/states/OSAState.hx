@@ -1,5 +1,6 @@
 package osa.states;
 
+import osa.modding.events.basic.BasicScriptEvent;
 import osa.modding.modules.ModuleHandler;
 import osa.util.VersionUtil;
 import osa.util.Constants;
@@ -122,8 +123,8 @@ class OSAState extends FlxUIState
 		return Controls.instance;
 	}
 
-	public function dispatchEvent(event:ScriptEvent)
+	public function dispatchEvent(event:BasicScriptEvent)
 	{
-		ModuleHandler.callEvent(event);
+		ModuleHandler.dispatchEvent(event);
 	}
 }

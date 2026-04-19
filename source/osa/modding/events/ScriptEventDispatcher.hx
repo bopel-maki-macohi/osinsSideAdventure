@@ -1,5 +1,7 @@
 package osa.modding.events;
 
+import osa.modding.events.basic.*;
+
 class ScriptEventDispatcher
 {
 	public static function dispatch(target:Null<IScriptedEventClass>, event:BasicScriptEvent)

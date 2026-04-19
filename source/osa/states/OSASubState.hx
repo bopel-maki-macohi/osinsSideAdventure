@@ -1,5 +1,6 @@
 package osa.states;
 
+import osa.modding.events.basic.BasicScriptEvent;
 import osa.modding.modules.ModuleHandler;
 import osa.util.Controls;
 import flixel.FlxG;
@@ -72,8 +73,8 @@ class OSASubState extends FlxSubState
 		return Controls.instance;
 	}
 
-	public function dispatchEvent(event:ScriptEvent)
+	public function dispatchEvent(event:BasicScriptEvent)
 	{
-		ModuleHandler.callEvent(event);
+		ModuleHandler.dispatchEvent(event);
 	}
 }
