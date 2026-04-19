@@ -98,7 +98,7 @@ class StoryMenuSubState extends TitleSubStateBase
 					currentFilter = 'all';
 
 				default:
-					trace('Attempting filter: $filter');
+					// trace('Attempting filter: $filter');
 					setFilteredTales();
 			}
 		}
