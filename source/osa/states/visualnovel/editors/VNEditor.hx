@@ -39,5 +39,7 @@ class VNEditor extends OSAState
 		var taleData:TaleData = new JsonParser<TaleData>().fromJson(file.data.toString(), file.name);
 
 		_tale.build(taleData.iteration, taleData.lines, taleData.storymenu);
+
+		uiBox.linesTabGroup.updateList();
 	}
 }

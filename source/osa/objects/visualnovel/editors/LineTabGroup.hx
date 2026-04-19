@@ -21,13 +21,6 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		add(linesDropdown);
 	}
 
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
-
-		updateList();
-	}
-
 	public var lines(get, never):Array<StrNameLabel>;
 
 	function get_lines():Array<StrNameLabel>
@@ -47,12 +40,12 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	{
 		var diffs = 0;
 
-		if (linesDropdown.list.length < btnLines.length)
+		if (linesDropdown.list.length < btnLines.length || linesDropdown.list.length > btnLines.length)
 			diffs += btnLines.length - linesDropdown.list.length;
 
 		for (i => line in linesDropdown.list)
 		{
-			if (line.label.text != btnLines[i].label.text)
+			if (line?.label?.text != btnLines[i]?.label?.text)
 				diffs++;
 		}
 
