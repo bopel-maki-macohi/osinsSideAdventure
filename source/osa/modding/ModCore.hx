@@ -73,19 +73,20 @@ class ModCore
 			framework: OPENFL,
 			customFilesystem: modFileSystem,
 			errorCallback: onPolymodError,
-
 		});
 
 		loadedMods = [];
 		for (mod in mods)
 			loadedMods.set(mod.id, mod);
 
-		trace('Loaded mods: ${[for (mod in loadedMods) mod.id]}');
+		var modIDs = [for (mod in loadedMods) mod.id];
+
+		trace('Loaded mods: ${modIDs}');
 
 		for (type in [
 			PolymodAssetType.AUDIO_GENERIC,
-			PolymodAssetType.AUDIO_MUSIC,
-			PolymodAssetType.AUDIO_SOUND,
+			// PolymodAssetType.AUDIO_MUSIC,
+			// PolymodAssetType.AUDIO_SOUND,
 			// PolymodAssetType.BYTES,
 			PolymodAssetType.FONT,
 			PolymodAssetType.IMAGE,
@@ -95,6 +96,19 @@ class ModCore
 			// PolymodAssetType.UNKNOWN,
 			PolymodAssetType.VIDEO,
 		])
-			trace(' * Replaced / Added ${[for (asset in Polymod.listModFiles(type)) asset].length} ${type} files');
+		{
+			var amt:Int = [for (asset in Polymod.listModFiles(type)) asset].length;
+
+			if (type == TEXT)
+				amt -= modIDs.length; // I don't wanna count the metadata files
+			if (type == IMAGE)
+			{
+				for (mod in mods)
+					if (mod.icon != null)
+						amt -= modIDs.length; // I don't wanna count the icon files either
+			}
+
+			trace(' * Replaced / Added ${amt} ${type} files');
+		}
 	}
 }
