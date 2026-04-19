@@ -27,6 +27,14 @@ class ModCore
 	{
 		final msg:String = '${e.code ?? 'debug'}'.toUpperCase() + ' : ' + e.message;
 
+		switch (e.code)
+		{
+			case MOD_MISSING_ICON:
+				return;
+
+			default:
+		}
+
 		if (e.severity == ERROR || e.severity == WARNING)
 			WindowUtil.alert('Polymod ${e.severity}', msg);
 		else
