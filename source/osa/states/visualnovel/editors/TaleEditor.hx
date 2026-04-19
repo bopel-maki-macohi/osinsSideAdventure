@@ -18,7 +18,7 @@ class TaleEditor extends OSAState
 
 	public var uiBox:TabMenu;
 
-	public var topText:FlxText;
+	public var line_dialogueText:FlxText;
 	public var line_speaker:VNSpeaker;
 
 	override function create()
@@ -28,10 +28,10 @@ class TaleEditor extends OSAState
 
 		uiBox = new TabMenu(_tale);
 
-		topText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
-		topText.alignment = CENTER;
+		line_dialogueText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
+		line_dialogueText.alignment = CENTER;
 
-		add(topText);
+		add(line_dialogueText);
 		add(line_speaker = new VNSpeaker(null));
 
 		add(uiBox);
@@ -70,12 +70,12 @@ class TaleEditor extends OSAState
 
 		uiBox._tale = _tale;
 
-		topText.screenCenter(X);
+		line_dialogueText.screenCenter(X);
 
 		line_speaker.screenCenter();
 		line_speaker.x = FlxG.width - line_speaker.width * 2;
 
-		line_speaker.visible = uiBox.selected_tab == 1 && line_speaker.data != null;
+		line_speaker.visible = (line_dialogueText.visible = uiBox.selected_tab == 1) && line_speaker.data != null;
 
 		if (controls.justPressed.LEAVE)
 		{
@@ -242,7 +242,7 @@ class TaleEditor extends OSAState
 			_tale.lines[index].text = newText;
 		}
 
-		topText.text = newText;
+		line_dialogueText.text = newText;
 		refresh();
 	}
 
