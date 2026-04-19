@@ -50,14 +50,14 @@ class ModCore
 		if (Polymod.onError == null)
 			Polymod.onError = onPolymodError;
 
-		// ModuleHandler.clearModules();
-		ScriptHandler.clearScripts();
+		ModuleHandler.clearModules();
+		// ScriptHandler.clearScripts();
 		Polymod.clearScripts();
 
 		loadAllMods();
 
-		// ModuleHandler.loadModules();
-		ScriptHandler.loadScripts();
+		ModuleHandler.loadModules();
+		// ScriptHandler.loadScripts();
 	}
 
 	public static function loadAllMods()

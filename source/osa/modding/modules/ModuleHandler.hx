@@ -1,7 +1,5 @@
 package osa.modding.modules;
 
-import osa.modding.modules.Module.ScriptedModule;
-
 class ModuleHandler
 {
 	public static var modules:Map<String, Module> = [];
