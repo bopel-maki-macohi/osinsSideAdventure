@@ -9,6 +9,8 @@ class ScriptUtil
 	public static function init()
 	{
 		buildDEFAULT_IMPORTS();
+
+		trace('${[for (key => val in DEFAULT_IMPORTS) key]} default import(s)');
 	}
 
 	public static function buildDEFAULT_IMPORTS()
@@ -33,7 +35,7 @@ class ScriptUtil
 		addImport(flixel.sound.FlxSound);
 
 		addImport(flixel.text.FlxText);
-		
+
 		addImport(flixel.tweens.FlxEase);
 		addImport(flixel.tweens.FlxTween);
 
@@ -77,7 +79,7 @@ class ScriptUtil
 	public static function addImport(cls:Dynamic)
 	{
 		var className = Type.getClassName(cls);
-		
+
 		trace('ADDING DEFAULT IMPORT : "$className"');
 		DEFAULT_IMPORTS.set(className, cls);
 	}
