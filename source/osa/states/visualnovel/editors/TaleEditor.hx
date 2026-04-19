@@ -86,7 +86,7 @@ class TaleEditor extends OSAState
 
 		storymenu_displayText.visible = uiBox.selected_tab == 2;
 
-		if (_tale.storymenu?.display != null)
+		if (_tale.storymenu?.display?.trim().length > 0)
 			storymenu_displayText.text = _tale.storymenu?.display;
 		else
 			storymenu_displayText.text = uiBox.dataTabGroup._taleID;

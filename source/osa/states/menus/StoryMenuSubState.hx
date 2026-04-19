@@ -116,7 +116,7 @@ class StoryMenuSubState extends TitleSubStateBase
 		var msg:String = '';
 
 		msg += 'Current Filter: ${currentFilter}\n';
-		msg += '${tale?.storymenu?.display ?? entryID}';
+		msg += (tale?.storymenu?.display?.trim().length > 0) ? tale?.storymenu?.display : entryID;
 
 		return msg;
 	}
