@@ -11,6 +11,18 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 	public var states:Array<SpeakerStateData>;
 
+	public function getStateIDS():Array<String>
+		return [for (data in states) data.id.trim()];
+
+	public function getStateIDSLowercase():Array<String>
+		return [for (id in getStateIDS()) id.toLowerCase()];
+
+	public function hasStateID(id:String):Bool
+		return getStateIDS().contains(id.trim());
+
+	public function hasStateIDLowercase(id:String):Bool
+		return getStateIDSLowercase().contains(id.trim().toLowerCase());
+
 	@:jignored
 	public var id:String;
 

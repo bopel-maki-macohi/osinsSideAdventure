@@ -1,5 +1,6 @@
 package osa.states.visualnovel.editors;
 
+import flixel.util.FlxColor;
 import flixel.text.FlxText;
 import osa.objects.visualnovel.VNSpeaker;
 import osa.util.Constants;
@@ -43,6 +44,7 @@ class TaleEditor extends OSAState
 		};
 
 		uiBox.linesTabGroup.onTextChangeCallback = onLineTextChange;
+		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
 		uiBox.linesTabGroup.onSpeakerChangeCallback = onLineSpeakerChange;
 		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
 		uiBox.linesTabGroup.onNewLineCallback = onNewLine;
@@ -81,6 +83,8 @@ class TaleEditor extends OSAState
 
 			if (uiBox.linesTabGroup.textInput.hasFocus)
 				return;
+			if (uiBox.linesTabGroup.speakersStateInput.hasFocus)
+				return;
 
 			if (uiBox.storyTabGroup.filterInput.hasFocus)
 				return;
@@ -91,6 +95,29 @@ class TaleEditor extends OSAState
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
+	}
+
+	function onLineSpeakerStateChange(text:String, index:Int)
+	{
+		if (_tale.lines[index].speaker == null)
+		{
+			_tale.lines[index].speaker = {
+				id: uiBox.linesTabGroup.speakersDropdown.selectedId,
+				state: text,
+			}
+		}
+		else
+			_tale.lines[index].speaker.state = text;
+
+		if (speaker?.data?.hasStateID(text))
+		{
+			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.GREEN;
+			speaker.build(text);
+		}
+		else if (speaker?.data?.hasStateIDLowercase(text))
+			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.YELLOW;
+		else
+			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.RED;
 	}
 
 	function onRemoveFilter(filter:String)
@@ -125,11 +152,13 @@ class TaleEditor extends OSAState
 	function onDisplayTextChange(text:String)
 	{
 		_tale.storymenu.display = text;
+		refresh();
 	}
 
 	function onTitleAssetChange(text:String)
 	{
 		_tale.storymenu.titleAsset = text;
+		refresh();
 	}
 
 	function onRemoveLine(index:Int)
@@ -160,24 +189,6 @@ class TaleEditor extends OSAState
 		ldd.selectedId = ldd.list[ldd.list.length - 1]?.name ?? '0';
 	}
 
-	function onLineSpeakerStateChange(newState:String, index:Int)
-	{
-		if (_tale.lines[index] == null)
-			onLineTextChange(uiBox.linesTabGroup.textInput.text, index);
-
-		if (_tale.lines[index].speaker == null)
-			onLineSpeakerChange(uiBox.linesTabGroup.speakersDropdown.selectedId, index);
-
-		if (_tale.lines[index].speaker != null)
-		{
-			_tale.lines[index].speaker.state = newState;
-
-			speaker.build(newState);
-		}
-		
-		refresh();
-	}
-
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
 	{
 		if (_tale.lines[index] == null)
@@ -193,7 +204,7 @@ class TaleEditor extends OSAState
 
 			_tale.lines[index].speaker = {
 				id: newSpeaker,
-				state: speaker.data.states[0].id,
+				state: speaker.data.states[0]?.id ?? '',
 			}
 		}
 
