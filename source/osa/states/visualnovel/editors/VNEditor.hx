@@ -1,5 +1,7 @@
 package osa.states.visualnovel.editors;
 
+import json2object.JsonParser;
+import openfl.net.FileReference;
 import osa.objects.visualnovel.editors.TabMenu;
 import osa.data.visualnovel.TaleData;
 import osa.states.menus.TitleState;
@@ -17,6 +19,8 @@ class VNEditor extends OSAState
 
 		add(uiBox = new TabMenu(_tale));
 
+		uiBox.dataTabGroup.loadJSONCallback = loadTale;
+
 		super.create();
 	}
 
@@ -28,5 +32,14 @@ class VNEditor extends OSAState
 
 		if (controls.justPressed.LEAVE)
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
+	}
+
+	function loadTale(file:FileReference)
+	{
+		var taleData:TaleData = new JsonParser<TaleData>().fromJson(file.data.toString(), file.name);
+
+		_tale.iteration = taleData.iteration;
+		_tale.lines = taleData.lines;
+		_tale.storymenu = taleData.storymenu;
 	}
 }
