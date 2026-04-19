@@ -30,6 +30,7 @@ enum Inputs
 	SHIFT;
 	DEBUG_CRASH;
 	SCREENSHOT;
+	MOD_RELOAD;
 }
 
 class Controls extends FlxControls<Inputs>
@@ -54,8 +55,10 @@ class Controls extends FlxControls<Inputs>
 			TITLE_DEBUG => [Key.SEVEN],
 			TITLE_DEBUG_TRANSITION => [Key.SPACE],
 			SHIFT => [Key.SHIFT],
+
 			DEBUG_CRASH => [Key.F1],
 			SCREENSHOT => [Key.F3],
+			MOD_RELOAD => [Key.F5],
 		];
 	}
 

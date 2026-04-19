@@ -1,5 +1,6 @@
 package osa;
 
+import osa.modding.ModCore;
 import osa.states.visualnovel.editors.TaleEditor;
 import osa.states.visualnovel.VNState;
 import osa.states.debug.TestVideoState;
@@ -48,11 +49,24 @@ class InitState extends OSAState
 
 		ScreenshotPlugin.init();
 
+		ModCore.reload();
+
+		FlxG.signals.postUpdate.add(modReloadCheck);
+
 		FlxG.console.registerClass(Constants);
 		FlxG.console.registerClass(MacroUtil);
 		FlxG.console.registerClass(OutdatedUtil);
 
 		InitState.IMPORTANT_INITALIZED = true;
+	}
+
+	function modReloadCheck()
+	{
+		if (controls.justPressed.MOD_RELOAD)
+		{
+			ModCore.reload();
+			FlxG.resetState();
+		}
 	}
 
 	function unimportantInit()

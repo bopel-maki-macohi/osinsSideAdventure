@@ -24,11 +24,15 @@
 	<define name="SCREENSHOT_PLUGIN" if="desktop" />
 
 	<define name="DISABLE_WINDOWTITLE_GIT" unless="debug" />
-	<define name="WINDOWTITLE_GIT" unless="DISABLE_WINDOWTITLE_GIT"/>
+	<define name="WINDOWTITLE_GIT" unless="DISABLE_WINDOWTITLE_GIT" />
 
-	<define name="DISABLE_OUTDATEDSTATE" if="html5 || debug"/>
+	<define name="DISABLE_OUTDATEDSTATE" if="html5 || debug" />
 
-	<define name="CRASHHANDLER_INCLUDE_GIT" if="debug || hl"/>
+	<define name="CRASHHANDLER_INCLUDE_GIT" if="debug || hl" />
+
+	<define name="hscriptPos" />
+	<haxedef name="POLYMOD_ROOT_PATH" value="scripts/" />
+	<haxedef name="POLYMOD_DEBUG" if="debug"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -37,6 +41,7 @@
 
 	<source path="source" />
 	<assets path="assets" />
+	<assets path="mods" />
 	<assets path="CHANGELOG.md" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
@@ -49,7 +54,7 @@
 	<haxelib name="json2object" />
 
 	<haxelib name="polymod" />
-	
+
 	<haxelib name="hxvlc" if="desktop" unless="hl" />
 
 	<!-- _________________________ Application Settings _________________________ -->
@@ -79,5 +84,5 @@
 	<haxedef name="message.reporting" value="pretty" />
 
 	<haxedef name="lime_disable_assets_version" />
-	
+
 </project>
