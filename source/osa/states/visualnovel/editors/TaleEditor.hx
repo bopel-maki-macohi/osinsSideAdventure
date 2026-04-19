@@ -18,9 +18,8 @@ class TaleEditor extends OSAState
 
 	public var uiBox:TabMenu;
 
-	public var dialogueText:FlxText;
-
-	public var speaker:VNSpeaker;
+	public var line_dialogueText:FlxText;
+	public var line_speaker:VNSpeaker;
 
 	override function create()
 	{
@@ -29,11 +28,11 @@ class TaleEditor extends OSAState
 
 		uiBox = new TabMenu(_tale);
 
-		dialogueText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
-		dialogueText.alignment = CENTER;
+		line_dialogueText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
+		line_dialogueText.alignment = CENTER;
 
-		add(dialogueText);
-		add(speaker = new VNSpeaker(null));
+		add(line_dialogueText);
+		add(line_speaker = new VNSpeaker(null));
 
 		add(uiBox);
 
@@ -71,12 +70,12 @@ class TaleEditor extends OSAState
 
 		uiBox._tale = _tale;
 
-		dialogueText.screenCenter(X);
+		line_dialogueText.screenCenter(X);
 
-		speaker.screenCenter();
-		speaker.x = FlxG.width - speaker.width * 2;
+		line_speaker.screenCenter();
+		line_speaker.x = FlxG.width - line_speaker.width * 2;
 
-		speaker.visible = (dialogueText.visible = uiBox.selected_tab == 1) && speaker.data != null;
+		line_speaker.visible = (line_dialogueText.visible = uiBox.selected_tab == 1) && line_speaker.data != null;
 
 		if (controls.justPressed.LEAVE)
 		{
@@ -111,12 +110,12 @@ class TaleEditor extends OSAState
 		else
 			_tale.lines[index].speaker.state = text;
 
-		if (speaker?.data?.hasStateID(text) && speaker.state != null)
+		if (line_speaker?.data?.hasStateID(text) && line_speaker.state != null)
 		{
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.GREEN;
-			speaker.build(text);
+			line_speaker.build(text);
 		}
-		else if (speaker?.data?.hasStateIDLowercase(text) && speaker.state != null)
+		else if (line_speaker?.data?.hasStateIDLowercase(text) && line_speaker.state != null)
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.YELLOW;
 		else
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.RED;
@@ -200,31 +199,31 @@ class TaleEditor extends OSAState
 		{
 			uiBox.linesTabGroup.speakersStateInput.text = '';
 
-			speaker.build(null);
-			speaker.data = null;
+			line_speaker.build(null);
+			line_speaker.data = null;
 
 			_tale.lines[index].speaker = null;
 		}
 		else
 		{
-			speaker.data = new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile()));
+			line_speaker.data = new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile()));
 
 			if (_tale.lines[index].speaker == null)
 			{
 				_tale.lines[index].speaker = {
 					id: newSpeaker,
-					state: speaker.data.states[0]?.id ?? '',
+					state: line_speaker.data.states[0]?.id ?? '',
 				}
 			}
 			else
 			{
 				_tale.lines[index].speaker.id = newSpeaker;
 
-				if (!speaker.data.hasStateID(_tale.lines[index].speaker.state))
-					_tale.lines[index].speaker.state = speaker.data.states[0]?.id ?? '';
+				if (!line_speaker.data.hasStateID(_tale.lines[index].speaker.state))
+					_tale.lines[index].speaker.state = line_speaker.data.states[0]?.id ?? '';
 			}
 
-			speaker.build(_tale.lines[index].speaker.state);
+			line_speaker.build(_tale.lines[index].speaker.state);
 		}
 
 		refresh();
@@ -243,7 +242,7 @@ class TaleEditor extends OSAState
 			_tale.lines[index].text = newText;
 		}
 
-		dialogueText.text = newText;
+		line_dialogueText.text = newText;
 		refresh();
 	}
 
