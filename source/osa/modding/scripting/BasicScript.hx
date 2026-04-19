@@ -10,6 +10,10 @@ class BasicScript extends Iris
 
 	override public function new(script:String)
 	{
+		super(script.scriptFile().fileExists() ? '' : script.scriptFile().readText(), {
+			name: script.scriptFile()
+		});
+
 		if (!script.scriptFile().fileExists())
 			WindowUtil.alert('Script Error : Missing Script', 'Missing Script File: ${script.scriptFile()}');
 
@@ -23,13 +27,12 @@ class BasicScript extends Iris
 			registeredScripts.remove(script.scriptFile());
 		}
 
-		super(script.scriptFile().fileExists() ? '' : script.scriptFile().readText(), {
-			name: script.scriptFile()
-		});
+		if (script.scriptFile().fileExists())
+		{
+			registeredScripts.set(script.scriptFile(), this);
 
-		registeredScripts.set(script.scriptFile(), this);
-
-		onLoad();
+			onLoad();
+		}
 	}
 
 	public function onLoad()
