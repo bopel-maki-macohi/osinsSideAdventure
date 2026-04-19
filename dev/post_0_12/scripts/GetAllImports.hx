@@ -50,6 +50,7 @@ class GetAllImports
 		}
 
 		var listed:Array<String> = [];
+		var listedWithAmount:Map<String, Int> = [];
 
 		for (imp in imports)
 		{
@@ -62,9 +63,22 @@ class GetAllImports
 				if (listed.contains(line))
 					continue;
 
-				trace(line);
 				listed.push(line);
+				listedWithAmount.set(line, uses.length);
 			}
+		}
+
+		listed.sort((s1, s2) ->
+		{
+			var s1m = listedWithAmount.get(s1);
+			var s2m = listedWithAmount.get(s2);
+
+			return s2m - s1m;
+		});
+
+		for (line in listed)
+		{
+			trace(line);
 		}
 
 		File.saveContent('Imports.txt', listed.join('\n'));
