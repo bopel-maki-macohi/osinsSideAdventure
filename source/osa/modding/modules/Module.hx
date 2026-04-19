@@ -1,6 +1,6 @@
 package osa.modding.modules;
 
-import osa.modding.events.BasicScriptEvent;
+import osa.modding.events.basic.*;
 
 class Module implements IScriptedEventClass
 {
@@ -16,7 +16,7 @@ class Module implements IScriptedEventClass
 
 	public function onCreate(event:BasicScriptEvent):Void {}
 
-	public function onUpdate(event:BasicScriptEvent):Void {}
+	public function onUpdate(event:UpdateScriptEvent):Void {}
 
 	public function onDestroy(event:BasicScriptEvent):Void {}
 

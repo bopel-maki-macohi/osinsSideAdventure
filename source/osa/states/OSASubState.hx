@@ -1,5 +1,6 @@
 package osa.states;
 
+import osa.modding.modules.ModuleHandler;
 import osa.util.Controls;
 import flixel.FlxG;
 import osa.objects.RhythmManager;
@@ -69,5 +70,10 @@ class OSASubState extends FlxSubState
 	function get_controls():Controls
 	{
 		return Controls.instance;
+	}
+
+	public function dispatchEvent(event:ScriptEvent)
+	{
+		ModuleHandler.callEvent(event);
 	}
 }

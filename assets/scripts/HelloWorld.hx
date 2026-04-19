@@ -1,4 +1,9 @@
-function create()
+import osa.modding.modules.Module;
+
+class HelloWorld extends Module
 {
-	trace('Hello World but modded');
+	override public function new()
+	{
+		super('helloworld');
+	}
 }

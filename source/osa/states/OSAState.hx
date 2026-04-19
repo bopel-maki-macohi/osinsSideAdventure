@@ -1,5 +1,6 @@
 package osa.states;
 
+import osa.modding.modules.ModuleHandler;
 import osa.util.VersionUtil;
 import osa.util.Constants;
 import osa.util.Controls;
@@ -119,5 +120,10 @@ class OSAState extends FlxUIState
 	function get_controls():Controls
 	{
 		return Controls.instance;
+	}
+
+	public function dispatchEvent(event:ScriptEvent)
+	{
+		ModuleHandler.callEvent(event);
 	}
 }
