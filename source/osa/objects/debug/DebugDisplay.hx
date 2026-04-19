@@ -1,5 +1,7 @@
 package osa.objects.debug;
 
+import osa.util.Constants;
+import osa.util.VersionUtil;
 import openfl.system.System;
 import flixel.math.FlxMath;
 import flixel.FlxG;
@@ -72,7 +74,14 @@ class DebugDisplay extends TextField
 		// If your memory usage is above 1000 megabytes, display it in gigabytes. (default: megabytes)
 		var memoryUnit = systemMemory >= 1000 ? 'gb' : 'mb';
 
-		text = ['FPS: ${currentFPS}', 'MEM: ${systemMemory} / ${maxMemory}${memoryUnit}',].join('\n');
+		var texts = [
+			'OSA: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
+            
+			'FPS: ${currentFPS}',
+			'MEM: ${systemMemory} / ${maxMemory}${memoryUnit}',
+		];
+
+		text = texts.join('\n');
 		width = defaultTextFormat.size * ((FlxG.width - (x * 2)) / defaultTextFormat.size);
 
 		textColor = FlxColor.WHITE;
