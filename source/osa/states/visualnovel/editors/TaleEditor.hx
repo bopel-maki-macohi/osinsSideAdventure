@@ -87,9 +87,15 @@ class TaleEditor extends OSAState
 		storymenu_displayText.visible = uiBox.selected_tab == 2;
 
 		if (_tale.storymenu?.display?.trim().length > 0)
+		{
 			storymenu_displayText.text = _tale.storymenu?.display;
+			storymenu_displayText.alpha = 1;
+		}
 		else
+		{
 			storymenu_displayText.text = uiBox.dataTabGroup._taleID;
+			storymenu_displayText.alpha = .5;
+		}
 
 		if (controls.justPressed.LEAVE)
 		{
