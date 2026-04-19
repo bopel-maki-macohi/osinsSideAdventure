@@ -1,5 +1,6 @@
 package osa.states.visualnovel;
 
+import osa.modding.scripting.ScriptHandler;
 import flixel.util.FlxColor;
 import osa.objects.HoldToPerformGadge;
 import osa.util.SoundUtil;
@@ -14,6 +15,8 @@ import osa.data.visualnovel.*;
 class VNState extends OSAState
 {
 	public var taleData:TaleData;
+
+	public static var instance:VNState;
 
 	override public function new(taleID:String)
 	{
@@ -59,6 +62,11 @@ class VNState extends OSAState
 
 	override function create()
 	{
+		if (instance != null)
+			instance = null;
+
+		instance = this;
+
 		speaker = new VNSpeaker(null);
 
 		dialogueText = new FlxTypeText(0, 0, Math.round(FlxG.width / 1), '', 16);
@@ -77,7 +85,10 @@ class VNState extends OSAState
 		holdToSkipGadge = new HoldToPerformGadge(FlxColor.RED, function()
 		{
 			return controls.pressed.HOLD_SKIP;
-		}, endTale);
+		}, function()
+		{
+			endTale(false);
+		});
 
 		holdToSkipGadge.setPosition(continueHand.getGraphicMidpoint().x - holdToSkipGadge.width * .5,
 			continueHand.getGraphicMidpoint().y - holdToSkipGadge.height * .5);
@@ -107,10 +118,15 @@ class VNState extends OSAState
 	public function changeLine(increment:Int = 0)
 	{
 		if (lineNumber + increment < 0)
+		{
+			ScriptHandler.call('onAttemptedUnderflow', []);
+
 			return;
+		}
+
 		if (lineNumber + increment >= taleData.lines.length)
 		{
-			endTale();
+			endTale(true);
 
 			return;
 		}
@@ -120,6 +136,8 @@ class VNState extends OSAState
 		writeDialogue();
 
 		buildSpeaker();
+
+		ScriptHandler.call('onChangedLine', [lineNumber]);
 	}
 
 	public function writeDialogue()
@@ -128,11 +146,15 @@ class VNState extends OSAState
 
 		dialogueText.resetText(line.text);
 		dialogueText.start(textWriteDelay, true, false, [], finishWritingDialogue);
+
+		ScriptHandler.call('onDialogueStartedWriting', []);
 	}
 
 	public function finishWritingDialogue()
 	{
 		finishedWriting = true;
+
+		ScriptHandler.call('onDialogueFinishedWriting', []);
 	}
 
 	public function buildSpeaker()
@@ -153,10 +175,14 @@ class VNState extends OSAState
 		}
 
 		speaker.screenCenter();
+
+		ScriptHandler.call('onBuiltSpeaker', [speaker]);
 	}
 
-	public function endTale()
+	public function endTale(validEnd:Bool)
 	{
+		ScriptHandler.call('onEndtale', [validEnd]);
+
 		FlxG.switchState(() -> new TitleState());
 	}
 }
