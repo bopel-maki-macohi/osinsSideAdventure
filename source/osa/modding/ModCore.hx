@@ -70,7 +70,10 @@ class ModCore
 			modRoot: MOD_ROOT,
 			apiVersionRule: API_VERSION_RULE,
 			dirs: dirs,
-			framework: OPENFL
+			framework: OPENFL,
+			customFilesystem: modFileSystem,
+			errorCallback: onPolymodError,
+			
 		});
 
 		loadedMods = [];
