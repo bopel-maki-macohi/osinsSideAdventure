@@ -1,5 +1,6 @@
 package osa.objects.debug;
 
+import openfl.events.Event;
 import osa.util.Constants;
 import osa.util.VersionUtil;
 import openfl.system.System;
@@ -17,6 +18,8 @@ import openfl.text.TextField;
  */
 class DebugDisplay extends TextField
 {
+	public var backgroundOpacity:Float = 0.5;
+
 	public var currentFPS(default, null):Int;
 
 	public var systemMemory(default, null):Float = 0;
@@ -43,6 +46,8 @@ class DebugDisplay extends TextField
 
 	override function __enterFrame(deltaTime:Float):Void
 	{
+		debugDisplayBG.visible = this.visible;
+		
 		final now:Float = haxe.Timer.stamp() * 1000;
 		times.push(now);
 		while (times[0] < now - 1000)
@@ -60,29 +65,71 @@ class DebugDisplay extends TextField
 			maxMemory = systemMemory; // Update max memory if current memory exceeds it.
 
 		currentFPS = times.length < FlxG.updateFramerate ? times.length : FlxG.updateFramerate;
-		updateDisplay();
-		// redrawBackground();
+
+		if (visible)
+		{
+			updateDisplay();
+			redrawBackground();
+		}
 		deltaTimeout = 0.0;
 	}
 
-	/**
-	 * Updates the display of the FPS and memory usage.
-	 * [!NOTE] Made the function `dynamic` so it can be overridden by mods and custom builds.
-	 */
-	public dynamic function updateDisplay():Void
+	public function createBackground():Void
+	{
+		if (parent == null)
+		{
+			trace('Parent is null, retrying next frame...');
+			addEventListener(Event.ADDED_TO_STAGE, retryCreateBackground);
+			return;
+		}
+		debugDisplayBG = new Shape();
+		debugDisplayBG.x = this.x;
+		debugDisplayBG.y = this.y;
+		debugDisplayBG.alpha = backgroundOpacity;
+		parent.addChildAt(debugDisplayBG, parent.getChildIndex(this));
+		trace('debugDisplayBG Initialized.');
+	}
+
+	function retryCreateBackground(_):Void
+	{
+		if (parent == null)
+			return;
+		removeEventListener(Event.ADDED_TO_STAGE, retryCreateBackground);
+		createBackground();
+	}
+
+	function redrawBackground():Void
+	{
+		if (debugDisplayBG == null)
+			return;
+
+		debugDisplayBG.x = this.x;
+		debugDisplayBG.y = this.y;
+		debugDisplayBG.graphics.clear();
+
+		debugDisplayBG.graphics.beginFill(FlxColor.BLACK, 1);
+		debugDisplayBG.graphics.drawRect(-(bgSizeOffset / 2), -(bgSizeOffset / 2), this.width + bgSizeOffset, this.height);
+		debugDisplayBG.graphics.endFill();
+
+		debugDisplayBG.alpha = backgroundOpacity;
+	}
+
+	public var bgSizeOffset:Int = 10;
+
+	public function updateDisplay():Void
 	{
 		// If your memory usage is above 1000 megabytes, display it in gigabytes. (default: megabytes)
 		var memoryUnit = systemMemory >= 1000 ? 'gb' : 'mb';
 
 		var texts = [
 			'OSA: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
-            
+
 			'FPS: ${currentFPS}',
 			'MEM: ${systemMemory} / ${maxMemory}${memoryUnit}',
 		];
 
 		text = texts.join('\n');
-		width = defaultTextFormat.size * ((FlxG.width - (x * 2)) / defaultTextFormat.size);
+		width = textWidth * 1.1;
 
 		textColor = FlxColor.WHITE;
 		if (maxMemory > 3000 || currentFPS <= FlxG.drawFramerate / 2)

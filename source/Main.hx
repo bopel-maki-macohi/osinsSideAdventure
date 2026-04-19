@@ -16,7 +16,8 @@ class Main extends Sprite
 	{
 		super();
 
-		debugDisplay = new DebugDisplay(5, 5);
+		debugDisplay = new DebugDisplay();
+		debugDisplay.createBackground();
 
 		FlxG.stage.window.title = '${Application.current.meta.get('name')} ${Application.current.meta.get('version')}';
 
