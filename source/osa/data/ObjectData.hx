@@ -4,6 +4,7 @@ import osa.util.WindowUtil;
 
 class ObjectData<T>
 {
+	@:jignored
 	public var className(get, never):String;
 
 	function get_className():String
