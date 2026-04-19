@@ -1,12 +1,12 @@
 package osa.modding;
 
-import osa.modding.events.BasicScriptEvent;
+import osa.modding.events.ScriptEvent;
 
 interface IScriptedEventClass
 {
-	public function onCreate(event:BasicScriptEvent) {}
+	public function onCreate(event:ScriptEvent) {}
 
-	public function onUpdate(event:BasicScriptEvent) {}
+	public function onUpdate(event:ScriptEvent) {}
 
-	public function onDestroy(event:BasicScriptEvent) {}
+	public function onDestroy(event:ScriptEvent) {}
 }

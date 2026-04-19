@@ -1,6 +1,6 @@
 package osa.modding.events;
 
-class BasicScriptEvent
+class ScriptEvent
 {
 	public var type(default, null):ScriptEventType;
 
