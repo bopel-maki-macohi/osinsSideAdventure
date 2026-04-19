@@ -21,6 +21,8 @@ class TaleEditor extends OSAState
 	public var line_dialogueText:FlxText;
 	public var line_speaker:VNSpeaker;
 
+	public var storymenu_displayText:FlxText;
+
 	override function create()
 	{
 		_tale = new TaleData(null);
@@ -31,8 +33,13 @@ class TaleEditor extends OSAState
 		line_dialogueText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
 		line_dialogueText.alignment = CENTER;
 
+		storymenu_displayText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
+		storymenu_displayText.alignment = CENTER;
+
 		add(line_dialogueText);
 		add(line_speaker = new VNSpeaker(null));
+
+		add(storymenu_displayText);
 
 		add(uiBox);
 
@@ -77,9 +84,16 @@ class TaleEditor extends OSAState
 
 		line_speaker.visible = (line_dialogueText.visible = uiBox.selected_tab == 1) && line_speaker.data != null;
 
+		storymenu_displayText.visible = uiBox.selected_tab == 2;
+
+		if (_tale.storymenu?.display != null)
+			storymenu_displayText.text = _tale.storymenu?.display;
+		else
+			storymenu_displayText.text = uiBox.dataTabGroup._taleID;
+
 		if (controls.justPressed.LEAVE)
 		{
-			if (uiBox.dataTabGroup.taleID.hasFocus)
+			if (uiBox.dataTabGroup.taleIDInput.hasFocus)
 				return;
 
 			if (uiBox.linesTabGroup.textInput.hasFocus)
