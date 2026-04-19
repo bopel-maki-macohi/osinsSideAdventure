@@ -36,9 +36,11 @@ class VNEditor extends OSAState
 
 		uiBox.storyTabGroup.onTitleAssetChangeCallback = onTitleAssetChange;
 		uiBox.storyTabGroup.onDisplayTextChangeCallback = onDisplayTextChange;
+		uiBox.storyTabGroup.onAddFilterCallback = onNewFilter;
+		uiBox.storyTabGroup.onRemoveFilterCallback = onRemoveFilter;
 
 		onNewLine();
-		
+
 		super.create();
 
 		FlxG.mouse.visible = true;
@@ -59,6 +61,35 @@ class VNEditor extends OSAState
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
+	}
+
+	function onRemoveFilter(filter:String)
+	{
+		if (_tale?.storymenu?.filters == null || !_tale.storymenu.filters.contains(filter))
+			return;
+
+		_tale.storymenu.filters.remove(filter);
+
+		loadTale(null);
+
+		uiBox.storyTabGroup.filtersDropdown.selectedId = uiBox.storyTabGroup.btnFilters[uiBox.storyTabGroup.btnFilters.length - 1]?.name;
+	}
+
+	function onNewFilter(filter:String)
+	{
+		if (_tale?.storymenu == null)
+			_tale.storymenu = {};
+		if (_tale?.storymenu?.filters == null)
+			_tale.storymenu.filters = [];
+
+		if (_tale.storymenu.filters.contains(filter))
+			return;
+
+		_tale.storymenu.filters.push(filter);
+
+		loadTale(null);
+
+		uiBox.storyTabGroup.filtersDropdown.selectedId = uiBox.storyTabGroup.btnFilters[uiBox.storyTabGroup.btnFilters.length - 1]?.name;
 	}
 
 	function onDisplayTextChange(text:String)
@@ -141,5 +172,6 @@ class VNEditor extends OSAState
 		}
 
 		uiBox.linesTabGroup.updateList();
+		uiBox.storyTabGroup.updateList();
 	}
 }
