@@ -24,6 +24,7 @@ class VNEditor extends OSAState
 
 		uiBox.linesTabGroup.onTextChangeCallback = onLineTextChange;
 		uiBox.linesTabGroup.onSpeakerChangeCallback = onLineSpeakerChange;
+		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
 
 		super.create();
 
@@ -45,6 +46,14 @@ class VNEditor extends OSAState
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
+	}
+
+	function onLineSpeakerStateChange(newState:String, index:Int)
+	{
+		if (_tale.lines[index]?.speaker == null)
+			onLineSpeakerChange(uiBox.linesTabGroup.speakersDropdown.selectedLabel, index);
+
+		_tale.lines[index].speaker.state = newState;
 	}
 
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
