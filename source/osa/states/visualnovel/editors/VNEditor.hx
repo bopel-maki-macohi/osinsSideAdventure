@@ -1,5 +1,7 @@
 package osa.states.visualnovel.editors;
 
+import osa.util.Constants;
+import osa.util.DateUtil;
 import osa.data.visualnovel.SpeakerData;
 import json2object.JsonParser;
 import openfl.net.FileReference;
@@ -21,6 +23,10 @@ class VNEditor extends OSAState
 		add(uiBox = new TabMenu(_tale));
 
 		uiBox.dataTabGroup.loadJSONCallback = loadTale;
+		uiBox.dataTabGroup.saveJSONPreCallback = function()
+		{
+			_tale.generatedBy = Constants.GENERATED_BY;
+		};
 
 		uiBox.linesTabGroup.onTextChangeCallback = onLineTextChange;
 		uiBox.linesTabGroup.onSpeakerChangeCallback = onLineSpeakerChange;
@@ -88,7 +94,7 @@ class VNEditor extends OSAState
 		if (file != null)
 		{
 			var taleData:TaleData = new JsonParser<TaleData>().fromJson(file.data.toString(), file.name);
-			_tale.build(taleData.iteration, taleData.lines, taleData.storymenu);
+			_tale.build(taleData.iteration, taleData.lines, taleData.storymenu, taleData.generatedBy);
 		}
 
 		uiBox.linesTabGroup.updateList();
