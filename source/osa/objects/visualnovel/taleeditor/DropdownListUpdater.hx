@@ -30,7 +30,7 @@ class DropdownListUpdater
 
 		if (Math.abs(diffs) > 0)
 		{
-			trace('Updated Dropdown ($diffs diffs)');
+			trace('Updated Dropdown(${dropdown.name}) ($diffs diffs)');
 
 			if (SMLList.length == 0)
 			{

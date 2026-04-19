@@ -36,6 +36,7 @@ class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 		filtersDropdown = new FlxUIDropDownMenu(10, 20, null);
 		add(makeText(filtersDropdown, 'Filters: '));
 		add(filtersDropdown);
+		filtersDropdown.name = 'Filters';
 
 		titleAssetInput = new FlxUIInputText(filtersDropdown.x + filtersDropdown.width + 10, filtersDropdown.y, 480, '', 8);
 		titleAssetInput.callback = onTitleAssetChange;

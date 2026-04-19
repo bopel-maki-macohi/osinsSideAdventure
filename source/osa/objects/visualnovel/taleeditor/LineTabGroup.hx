@@ -37,6 +37,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		name = 'Lines';
 
 		linesDropdown = new FlxUIDropDownMenu(10, 20, null, onChangedLine);
+		linesDropdown.name = 'Lines';
 
 		var speakers = [for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)];
 		speakers.insert(0, new StrNameLabel('', ''));
