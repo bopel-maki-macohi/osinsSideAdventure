@@ -103,6 +103,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 
 		_taleID = Path.withoutExtension(e.target.name);
 		lockedInTaleID = true;
+		taleIDInput.text = _taleID;
 
 		dispatchSaveJSONCallback();
 	}
@@ -150,6 +151,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 
 		_taleID = Path.withoutExtension(e.target.name);
 		lockedInTaleID = true;
+		taleIDInput.text = _taleID;
 
 		if (loadJSONCallback != null)
 			loadJSONCallback(fileRef);
