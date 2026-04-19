@@ -15,7 +15,7 @@ class VNEditor extends OSAState
 	{
 		_tale = new TaleData(null);
 
-		add(uiBox = new TabMenu());
+		add(uiBox = new TabMenu(_tale));
 
 		super.create();
 	}
@@ -23,6 +23,8 @@ class VNEditor extends OSAState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		uiBox._tale = _tale;
 
 		if (controls.justPressed.LEAVE)
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));

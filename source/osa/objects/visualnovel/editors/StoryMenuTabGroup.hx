@@ -1,7 +1,11 @@
 package osa.objects.visualnovel.editors;
 
-class StoryMenuTabGroup extends TabGroup
+import osa.data.visualnovel.TaleData;
+
+class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 {
+	public var _tale:TaleData;
+
 	override function create()
 	{
 		super.create();
