@@ -23,6 +23,12 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 		super(file);
 	}
 
+	public function build(iteration:Int, states:Array<SpeakerStateData>)
+	{
+		this.iteration = iteration ?? Constants.ITERATION_SPEAKERDATA;
+		this.states = states ?? [];
+	}
+
 	override function load(file:String)
 	{
 		super.load(file);
@@ -32,8 +38,7 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 		var data:SpeakerData = new JsonParser<SpeakerData>().fromJson(file.readText(), file);
 
-		this.iteration = data?.iteration ?? Constants.ITERATION_SPEAKERDATA;
-		this.states = data?.states ?? [];
+		build(data.iteration, data.states);
 	}
 
 	public function getStateInfo(stateID:String):SpeakerStateData
