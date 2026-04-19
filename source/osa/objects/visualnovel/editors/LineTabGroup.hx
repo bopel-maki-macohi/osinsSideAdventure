@@ -29,7 +29,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y, speakers);
 
-		add(makeText(linesDropdown, 'Line: '));
+		add(makeText(linesDropdown, 'Selected Line: '));
 		add(linesDropdown);
 
 		add(makeText(speakersDropdown, 'Speaker: '));
