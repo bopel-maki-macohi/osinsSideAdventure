@@ -49,6 +49,8 @@ class InitState extends OSAState
 
 		ScreenshotPlugin.init();
 
+		ScriptUtil.init();
+		
 		ModCore.reload();
 
 		FlxG.signals.postUpdate.add(modReloadCheck);

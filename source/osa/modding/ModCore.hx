@@ -1,5 +1,6 @@
 package osa.modding;
 
+import osa.modding.scripting.ScriptHandler;
 import osa.util.WindowUtil;
 import osa.modding.modules.ModuleHandler;
 import polymod.format.ParseRules;
@@ -47,11 +48,13 @@ class ModCore
 			Polymod.onError = onPolymodError;
 
 		// ModuleHandler.clearModules();
+		ScriptHandler.clearScripts();
 		Polymod.clearScripts();
 
 		loadAllMods();
 
 		// ModuleHandler.loadModules();
+		ScriptHandler.loadScripts();
 	}
 
 	public static function loadAllMods()
