@@ -10,7 +10,7 @@ class ScriptUtil
 	{
 		buildDEFAULT_IMPORTS();
 
-		trace('${[for (key => val in DEFAULT_IMPORTS) key]} default import(s)');
+		trace('${[for (key => val in DEFAULT_IMPORTS) key].length} default import(s)');
 	}
 
 	public static function buildDEFAULT_IMPORTS()
