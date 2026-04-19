@@ -15,7 +15,7 @@ class VNEditor extends OSAState
 	{
 		_tale = new TaleData(null);
 
-		var tabs = [{name: 'Lines', label: 'Lines'}];
+		var tabs = [{name: 'Lines', label: 'Lines'}, {name: 'Storymenu', label: 'Storymenu'},];
 
 		uiBox = new FlxUITabMenu(null, null, tabs, true);
 		add(uiBox);
