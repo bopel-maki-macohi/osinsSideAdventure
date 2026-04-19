@@ -1,4 +1,4 @@
-package osa.modding.events.bases;
+package osa.modding.events;
 
 class ScriptEvent
 {
