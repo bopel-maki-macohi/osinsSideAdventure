@@ -10,7 +10,6 @@
 		"ifElse": "next",
 		"doWhile": "next",
 		"tryBody": "next",
-		"tryCatch": "next",
-		"forBody": "same"
+		"tryCatch": "next"
 	}
 }

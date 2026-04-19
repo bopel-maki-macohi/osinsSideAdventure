@@ -33,14 +33,20 @@ class ScriptUtil
 
 		var classes:Array<Dynamic> = [];
 
-		for (cls in ClassMacro.listClassesInPackage('flixel')) classes.push(cls);
-		for (cls in ClassMacro.listClassesInPackage('flixel-addons')) classes.push(cls);
-		for (cls in ClassMacro.listClassesInPackage('flixel-ui')) classes.push(cls);
-		for (cls in ClassMacro.listClassesInPackage('flixel-controls')) classes.push(cls);
+		for (cls in ClassMacro.listClassesInPackage('flixel'))
+			classes.push(cls);
+		for (cls in ClassMacro.listClassesInPackage('flixel-addons'))
+			classes.push(cls);
+		for (cls in ClassMacro.listClassesInPackage('flixel-ui'))
+			classes.push(cls);
+		for (cls in ClassMacro.listClassesInPackage('flixel-controls'))
+			classes.push(cls);
 
-		for (cls in ClassMacro.listClassesInPackage('lime')) classes.push(cls);
+		for (cls in ClassMacro.listClassesInPackage('lime'))
+			classes.push(cls);
 
-		for (cls in ClassMacro.listClassesInPackage('openfl')) classes.push(cls);
+		for (cls in ClassMacro.listClassesInPackage('openfl'))
+			classes.push(cls);
 
 		for (cls in classes)
 		{
