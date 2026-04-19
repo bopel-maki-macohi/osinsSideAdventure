@@ -109,19 +109,15 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	{
 		var index:Int = Std.parseInt(indexStr);
 
-		var line:TaleLineData = _tale.lines[index] ?? null;
+		var line:TaleLineData = _tale?.lines[index] ?? null;
 
-		if (line == null)
-		{
-			trace('Null line');
-			return;
-		}
-
-		speakersDropdown.selectedId = speakersDropdown.getBtnById(line.speaker?.id ?? SpeakerData.speakers[0])?.name;
+		speakersDropdown.selectedId = speakersDropdown.getBtnById(line?.speaker?.id ?? SpeakerData.speakers[0])?.name;
 		textInput.text = line?.text ?? '';
 
+		onTextChange(textInput.text, '');
+
 		onSpeakerChange(speakersDropdown.selectedId);
-		speakersStateDropdown.selectedId = speakersStateDropdown.getBtnById(line.speaker?.state ?? speakersStateDropdown.selectedId)?.name;
+		speakersStateDropdown.selectedId = speakersStateDropdown.getBtnById(line?.speaker?.state ?? speakersStateDropdown.selectedId)?.name;
 	}
 
 	public var lines(get, never):Array<StrNameLabel>;

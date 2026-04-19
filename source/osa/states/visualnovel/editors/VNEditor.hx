@@ -1,5 +1,7 @@
 package osa.states.visualnovel.editors;
 
+import flixel.text.FlxText;
+import osa.objects.visualnovel.VNSpeaker;
 import osa.util.Constants;
 import osa.data.visualnovel.SpeakerData;
 import json2object.JsonParser;
@@ -15,12 +17,24 @@ class VNEditor extends OSAState
 
 	public var uiBox:TabMenu;
 
+	public var dialogueText:FlxText;
+
+	public var speaker:VNSpeaker;
+
 	override function create()
 	{
 		_tale = new TaleData(null);
 		_tale.storymenu = {};
 
-		add(uiBox = new TabMenu(_tale));
+		uiBox = new TabMenu(_tale);
+
+		dialogueText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
+		dialogueText.alignment = CENTER;
+
+		add(dialogueText);
+		add(speaker = new VNSpeaker(null));
+
+		add(uiBox);
 
 		uiBox.dataTabGroup.loadJSONCallback = loadTale;
 		uiBox.dataTabGroup.saveJSONPreCallback = function()
@@ -40,6 +54,7 @@ class VNEditor extends OSAState
 		uiBox.storyTabGroup.onRemoveFilterCallback = onRemoveFilter;
 
 		onNewLine();
+		uiBox.linesTabGroup.onChangedLine('0');
 
 		super.create();
 
@@ -51,6 +66,11 @@ class VNEditor extends OSAState
 		super.update(elapsed);
 
 		uiBox._tale = _tale;
+
+		dialogueText.screenCenter(X);
+
+		speaker.screenCenter();
+		speaker.x = FlxG.width - speaker.width * 2;
 
 		if (controls.justPressed.LEAVE)
 		{
@@ -134,6 +154,8 @@ class VNEditor extends OSAState
 			onLineSpeakerChange(uiBox.linesTabGroup.speakersDropdown.selectedLabel, index);
 
 		_tale.lines[index].speaker.state = newState;
+
+		speaker.build(newState);
 	}
 
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
@@ -141,9 +163,11 @@ class VNEditor extends OSAState
 		if (_tale.lines[index] == null)
 			onLineTextChange(uiBox.linesTabGroup.textInput.text, index);
 
+		speaker.data = new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile()));
+
 		_tale.lines[index].speaker = {
 			id: newSpeaker,
-			state: new SpeakerData(newSpeaker, newSpeaker.speakerAsset('data'.jsonFile())).states[0].id,
+			state: speaker.data.states[0].id,
 		}
 	}
 
@@ -161,6 +185,8 @@ class VNEditor extends OSAState
 		{
 			_tale.lines[index].text = newText;
 		}
+
+		dialogueText.text = newText;
 	}
 
 	function loadTale(file:FileReference)
