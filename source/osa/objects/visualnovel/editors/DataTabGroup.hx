@@ -37,16 +37,18 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 		_fileReference.browse([new FileFilter('Data File', 'json')]);
 	}
 
-	function removeFileReferenceEvents()
+	function clearFileReferenceEvents()
 	{
 		_fileReference.removeEventListener(Event.COMPLETE, onLoadComplete);
 		_fileReference.removeEventListener(Event.CANCEL, onLoadCancel);
 		_fileReference.removeEventListener(IOErrorEvent.IO_ERROR, onLoadError);
+
+		_fileReference = null;
 	}
 
 	function onLoadComplete(e:Event)
 	{
-		removeFileReferenceEvents();
+		clearFileReferenceEvents();
 
 		trace('Load Complete: ' + e);
 
@@ -56,14 +58,14 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 
 	function onLoadCancel(e:Event)
 	{
-		removeFileReferenceEvents();
+		clearFileReferenceEvents();
 
 		trace('Load Cancel: ' + e);
 	}
 
 	function onLoadError(e:Event)
 	{
-		removeFileReferenceEvents();
+		clearFileReferenceEvents();
 		
 		trace('Load Error: ' + e);
 	}
