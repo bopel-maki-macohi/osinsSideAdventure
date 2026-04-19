@@ -1,5 +1,7 @@
 package osa.objects.visualnovel.editors;
 
+import osa.util.DateUtil;
+import flixel.addons.ui.FlxUIInputText;
 import json2object.JsonWriter;
 import openfl.events.IOErrorEvent;
 import openfl.events.Event;
@@ -17,6 +19,8 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 	public var saveJSON:FlxButton;
 	public var saveJSONCallback:String->Void;
 
+	public var taleID:FlxUIInputText;
+
 	override function create()
 	{
 		super.create();
@@ -30,6 +34,10 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 
 		saveJSON = new FlxButton(loadJSON.x + loadJSON.width + 10, loadJSON.y, 'Save JSON', saveJSONMethod);
 		add(saveJSON);
+
+		taleID = new FlxUIInputText(loadJSON.x, loadJSON.y + loadJSON.height + 20, 620, '');
+		add(makeText(taleID, 'Tale Name / ID'));
+		add(taleID);
 	}
 
 	function saveJSONMethod()
@@ -40,7 +48,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 		fileRef.addEventListener(Event.CANCEL, onSaveCancel);
 		fileRef.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 
-		fileRef.save(new JsonWriter<TaleData>().write(_tale, '\t'), 'VNEditor.json');
+		fileRef.save(new JsonWriter<TaleData>().write(_tale, '\t'), '${(taleID.text.length > 0) ? taleID.text : 'VNEditor-${DateUtil.getTimestamp()}'}.json');
 	}
 
 	function onSaveComplete(e:Event)
