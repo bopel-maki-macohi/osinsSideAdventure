@@ -36,7 +36,7 @@ class ModCore
 		}
 
 		if (e.severity == ERROR || e.severity == WARNING)
-			WindowUtil.alert('Polymod ${e.severity}', msg);
+			WindowUtil.alert('POLYMOD ${e.severity}', msg);
 		else
 			trace(msg);
 	}
