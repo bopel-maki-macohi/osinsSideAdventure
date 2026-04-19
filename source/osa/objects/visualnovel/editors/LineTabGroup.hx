@@ -1,5 +1,8 @@
 package osa.objects.visualnovel.editors;
 
+import flixel.text.FlxText;
+import haxe.io.Path;
+import lime.utils.Assets;
 import flixel.addons.ui.FlxUIButton;
 import flixel.addons.ui.StrNameLabel;
 import osa.data.visualnovel.TaleData;
@@ -11,14 +14,36 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public var linesDropdown:FlxUIDropDownMenu;
 
+	public var speakersDropdown:FlxUIDropDownMenu;
+
 	override function create()
 	{
 		super.create();
 
 		name = 'Lines';
 
-		linesDropdown = new FlxUIDropDownMenu(10, 10, null);
+		linesDropdown = new FlxUIDropDownMenu(10, 20, null);
+
+		var speakers:Array<StrNameLabel> = [];
+
+		final speakersDir = 'speakers/'.visualNovelAsset().getFilesInDirectory().filter(f -> return f.endsWith('data'.jsonFile()));
+
+		for (file in speakersDir)
+		{
+			var sf = Path.withoutExtension(file).split('/');
+
+			var speakerID = sf[sf.length - 2];
+
+			speakers.push(new StrNameLabel(speakerID, speakerID));
+		}
+
+		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y, speakers);
+		
+		add(makeText(linesDropdown, 'Line: '));
 		add(linesDropdown);
+		
+		add(makeText(speakersDropdown, 'Speaker: '));
+		add(speakersDropdown);
 	}
 
 	public var lines(get, never):Array<StrNameLabel>;

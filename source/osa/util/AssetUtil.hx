@@ -66,4 +66,7 @@ class AssetUtil
 
 		return lines;
 	}
+
+	public static function getFilesInDirectory(directory:String):Array<String>
+		return Assets.list().filter(f -> return f.startsWith(directory));
 }

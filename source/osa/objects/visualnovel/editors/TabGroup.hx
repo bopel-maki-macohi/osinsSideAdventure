@@ -1,5 +1,8 @@
 package osa.objects.visualnovel.editors;
 
+import flixel.FlxSprite;
+import flixel.text.FlxText;
+import flixel.FlxBasic;
 import flixel.addons.ui.FlxUITabMenu;
 import flixel.addons.ui.FlxUI;
 
@@ -13,4 +16,9 @@ class TabGroup extends FlxUI
 	}
 
 	public function create() {}
+
+	public function makeText(parent:FlxSprite, text:String):FlxText
+	{
+		return new FlxText(parent.x, parent.y - 16, 0, text, 8);
+	}
 }

@@ -16,7 +16,7 @@ class SoundUtil
 	{
 		var sounds:Array<FlxSound> = [];
 
-		for (file in Assets.list().filter(f -> return f.startsWith(directory)))
+		for (file in directory.getFilesInDirectory())
 		{
 			if (!file.endsWith(''.audioFile())) continue;
 
