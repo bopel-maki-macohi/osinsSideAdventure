@@ -2,13 +2,13 @@ package osa.modding.events;
 
 class BasicScriptEvent
 {
-	public var id(default, null):String;
+	public var type(default, null):ScriptEventType;
 
 	public var cancelled(default, null):Bool = false;
 
-	public function new(id:String)
+	public function new(type:ScriptEventType)
 	{
-		this.id = id;
+		this.type = type;
 	}
 
 	public function cancel()
@@ -16,6 +16,6 @@ class BasicScriptEvent
 
 	public function toString():String
 	{
-		return '$id | $cancelled';
+		return '$type | $cancelled';
 	}
 }
