@@ -56,6 +56,8 @@ class ScriptHandler
 					registeredScripts.set(script.config.name, script);
 				};
 		}
+
+		call('create');
 	}
 
 	public static function clearScripts()
@@ -66,4 +68,8 @@ class ScriptHandler
 			script.destroy();
 		}
 	}
+
+	public static function call(func:String, ?args:Array<Dynamic>)
+		for (script in registeredScripts)
+			script.call(func, args);
 }
