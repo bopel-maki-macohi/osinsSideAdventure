@@ -73,14 +73,14 @@ class ModCore
 			framework: OPENFL,
 			customFilesystem: modFileSystem,
 			errorCallback: onPolymodError,
-			
+
 		});
 
 		loadedMods = [];
 		for (mod in mods)
 			loadedMods.set(mod.id, mod);
 
-		trace('Loaded mods: ${[for (mod in loadedMods) mod]}');
+		trace('Loaded mods: ${[for (mod in loadedMods) mod.id]}');
 
 		for (type in [
 			PolymodAssetType.AUDIO_GENERIC,
