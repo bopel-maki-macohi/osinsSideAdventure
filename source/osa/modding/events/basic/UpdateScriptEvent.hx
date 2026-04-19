@@ -13,6 +13,6 @@ class UpdateScriptEvent extends BasicScriptEvent
 
 	override function toString():String
 	{
-		return '$elapsed';
+		return '$type | $elapsed';
 	}
 }
