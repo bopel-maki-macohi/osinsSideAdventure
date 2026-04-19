@@ -35,6 +35,8 @@ class OSASubState extends FlxSubState
 	{
 		super.update(elapsed);
 
+		dispatchEvent(new UpdateScriptEvent(elapsed));
+
 		if (rhythmManager != null)
 			rhythmManager.update();
 	}
