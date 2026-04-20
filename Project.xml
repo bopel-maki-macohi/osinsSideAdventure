@@ -5,7 +5,7 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<app title="Osin's Side Adventures" file="OSA" package="com.maki.osa" />
+	<app title="Visual Novel Engine" file="VNE" package="com.maki.vne" />
 	<app main="Main" />
 	<app company="Maki" />
 	<app version="0.12.0" />

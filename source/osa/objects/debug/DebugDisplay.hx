@@ -122,7 +122,7 @@ class DebugDisplay extends TextField
 		var memoryUnit = systemMemory >= 1000 ? 'gb' : 'mb';
 
 		var texts = [
-			'OSA: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
+			'VNE: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
 
 			'FPS: ${currentFPS}',
 			'MEM: ${systemMemory} / ${maxMemory}${memoryUnit}',

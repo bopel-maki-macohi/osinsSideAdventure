@@ -1,6 +1,6 @@
-# Osin's Side Adventures
+# Visual Novel Engine
 
-It's Osin's time in the spotlight.
+A nice open-source Visual Novel Engine made using [HaxeFlixel](https://haxeflixel.com/)!
 
 ## Controls
 
