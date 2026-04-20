@@ -30,13 +30,13 @@ class OptionsSubState extends TitleSubStateBase
 				#end
 		});
 
-		addOption('debugDisplay', () ->
+		addOption('fpsCounter', () ->
 		{
-			return 'Debug Display (${getEnabledString(Save.options.get().fpsCounter)})' + ' : Toggles the Debug Display at the top left';
+			return 'FPS Counter (${getEnabledString(Save.options.get().fpsCounter)})' + ' : Toggles the FPS Counter at the top left';
 		}, () ->
 			{
-				Save.options.get().debugDisplay = !Save.options.get().debugDisplay;
-				Main.debugDisplay.visible = Save.options.get().debugDisplay;
+				Save.options.get().fpsCounter = !Save.options.get().fpsCounter;
+				Main.FPSCounter.visible = Save.options.get().fpsCounter;
 			});
 	}
 
