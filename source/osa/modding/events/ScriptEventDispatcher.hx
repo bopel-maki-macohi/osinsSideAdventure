@@ -9,7 +9,7 @@ class ScriptEventDispatcher
 		if (target == null || event == null)
 			return;
 
-		target.onScriptEvent(event);
+		target.onScriptEvent(cast event);
 
 		switch (event.type)
 		{

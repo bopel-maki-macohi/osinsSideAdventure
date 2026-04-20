@@ -4,23 +4,23 @@ class BasicScriptEvent
 {
 	public var type(default, null):ScriptEventType;
 
-	public var cancelled(default, null):Bool = false;
-	public var cancellable(default, null):Bool = false;
+	public var canceled(default, null):Bool = false;
+	public var cancelable(default, null):Bool = false;
 
-	public function new(type:ScriptEventType, cancellable:Bool = true)
+	public function new(type:ScriptEventType, cancelable:Bool = true)
 	{
 		this.type = type;
-		this.cancellable = cancellable;
+		this.cancelable = cancelable;
 	}
 
 	public function cancel()
 	{
-		if (cancellable)
-			cancelled = true;
+		if (cancelable)
+			canceled = true;
 	}
 
 	public function toString():String
 	{
-		return '$type | $cancelled';
+		return '$type | $canceled';
 	}
 }
