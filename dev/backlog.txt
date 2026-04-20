@@ -2,14 +2,14 @@ HIGH PRIORITY
 
 - Mod Menu
 
-- Speaker Editor (#2)
-
 - Update Trailer
 
 - OSA Launch Mod
 - Biso Launch Mod
 
 LOW PRIORITY
+
+- Speaker Editor (#2)
 
 - Mobile Support (#1)
 - Linux Build (Use chromebook)
