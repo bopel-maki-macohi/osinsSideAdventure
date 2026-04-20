@@ -1,5 +1,5 @@
 {
-    "iteration": 2,
+    "iteration": 4,
     
     "props": [
         {
@@ -10,6 +10,12 @@
             "height": 720,
 
             "color": "0xFFFFFF"
+        },
+        {
+            "id": "randomImage",
+            "type": "image",
+            
+            "asset": "misc/goonersSideAdventure"
         }
     ]
 }

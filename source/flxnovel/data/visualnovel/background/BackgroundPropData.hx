@@ -2,21 +2,37 @@ package flxnovel.data.visualnovel.background;
 
 typedef BackgroundPropData =
 {
+	> GeneralData,
+	> ImageData,
+	> ShapeData,
+
 	var id:String;
 
-    @:default(shape)
+	@:default(shape)
 	var type:BackgroundPropType;
+}
 
-    @:optional
-    var scale:Float;
+typedef GeneralData =
+{
+	@:optional
+	var scale:Float;
 
-    @:optional
-    var width:Int;
-    
-    @:optional
-    var height:Int;
-    
-    @:optional
-    @:default('0xFFFFFF')
-    var color:String;
+	@:optional
+	@:default('0xFFFFFF')
+	var color:String;
+}
+
+typedef ImageData =
+{
+	@:optional
+	var asset:String;
+}
+
+typedef ShapeData =
+{
+	@:optional
+	var width:Int;
+
+	@:optional
+	var height:Int;
 }

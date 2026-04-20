@@ -52,7 +52,7 @@ class VNBackground extends FlxSpriteGroup
 					makeShapeProp(propData);
 
 				case image:
-					// TBA
+					makeImageProp(propData);
 			}
 		}
 	}
@@ -78,20 +78,35 @@ class VNBackground extends FlxSpriteGroup
 		if (data?.height == null)
 			return;
 
-		var clr:FlxColor = FlxColor.WHITE;
-
-		if (data?.color != null)
-			clr = FlxColor.fromString(data.color) ?? FlxColor.WHITE;
-
-		var shape:FlxSprite = new FlxSprite().makeGraphic(data.width, data.height, clr);
-
+		var shape:FlxSprite = new FlxSprite().makeGraphic(data.width, data.height, FlxColor.WHITE);
 		shape = applyGeneralPropInfo(shape, data);
 
 		addProp(shape, data.id);
 	}
 
+	public function makeImageProp(data:BackgroundPropData)
+	{
+		if (data?.asset == null)
+			return;
+
+		var image:FlxSprite = new FlxSprite();
+		image.loadGraphic(data.asset.imageFile());
+
+		image = applyGeneralPropInfo(image, data);
+
+		addProp(image, data.id);
+	}
+
 	public function applyGeneralPropInfo(prop:FlxSprite, data:BackgroundPropData)
 	{
+		if (data?.color != null)
+		{
+			var clr:FlxColor = FlxColor.WHITE;
+			clr = FlxColor.fromString(data.color) ?? FlxColor.WHITE;
+
+			prop.color = clr;
+		}
+
 		if (data.scale != null)
 			prop.scale.set(data.scale, data.scale);
 
