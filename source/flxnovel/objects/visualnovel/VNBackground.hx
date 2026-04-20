@@ -37,8 +37,15 @@ class VNBackground extends FlxSpriteGroup
 		if (data?.props == null || data.props.length < 1)
 			return;
 
-		for (propData in data.props)
+		for (i => propData in data.props)
 		{
+			if (propData?.id == null)
+			{
+				WindowUtil.alert('VNBackground Warning : Missing Prop ID',
+					'Prop #${i + 1} (type: ${propData.type}) is missing an ID and thus cannot be parsed');
+				continue;
+			}
+
 			switch (propData.type)
 			{
 				case shape:
@@ -78,6 +85,6 @@ class VNBackground extends FlxSpriteGroup
 
 		var shape:FlxSprite = new FlxSprite().makeGraphic(data.width, data.height, clr);
 
-		addProp(shape, 'shape');
+		addProp(shape, data.id);
 	}
 }

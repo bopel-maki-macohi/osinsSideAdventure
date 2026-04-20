@@ -2,6 +2,8 @@ package flxnovel.data.visualnovel.background;
 
 typedef BackgroundPropData =
 {
+	var id:String;
+
     @:default(shape)
 	var type:BackgroundPropType;
 
