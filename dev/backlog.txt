@@ -1,6 +1,5 @@
 HIGH PRIORITY
 
-- VNBackgrounds graphic prop implementation
 - VNBackgrounds image prop implementation
 
 - Mod Menu
