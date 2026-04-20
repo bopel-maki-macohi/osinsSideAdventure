@@ -1,4 +1,4 @@
-package flxnovel.objects.debug;
+package flxnovel.states.debug;
 
 import flxnovel.data.visualnovel.BackgroundData;
 import flxnovel.objects.visualnovel.VNBackground;
