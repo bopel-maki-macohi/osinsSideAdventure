@@ -1,6 +1,6 @@
-package osa.modding.events.basic;
+package osa.modding.events;
 
-class BasicScriptEvent
+class ScriptEvent
 {
 	public var type(default, null):ScriptEventType;
 
@@ -22,5 +22,22 @@ class BasicScriptEvent
 	public function toString():String
 	{
 		return '$type | $canceled';
+	}
+}
+
+class UpdateScriptEvent extends ScriptEvent
+{
+	public var elapsed:Float;
+
+	override public function new(elapsed:Float)
+	{
+		super(UPDATE, false);
+
+		this.elapsed = elapsed;
+	}
+
+	override public function toString():String
+	{
+		return '$type | $elapsed';
 	}
 }

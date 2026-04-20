@@ -26,14 +26,14 @@ class ModuleHandler
 			}
 		}
 
-		dispatchEvent(new BasicScriptEvent(CREATE, false));
+		dispatchEvent(new ScriptEvent(CREATE, false));
 	}
 
 	public static function clearModules()
 	{
 		var removed:Int = 0;
 
-		dispatchEvent(new BasicScriptEvent(DESTROY, false));
+		dispatchEvent(new ScriptEvent(DESTROY, false));
 
 		for (id => module in modules)
 		{
@@ -43,7 +43,7 @@ class ModuleHandler
 		trace('Cleared $removed Module(s)');
 	}
 
-	public static function dispatchEvent(event:BasicScriptEvent)
+	public static function dispatchEvent(event:ScriptEvent)
 	{
 		for (module in modules)
 			ScriptEventDispatcher.dispatch(module, event);

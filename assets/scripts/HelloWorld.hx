@@ -1,4 +1,4 @@
-import osa.modding.events.basic.BasicScriptEvent;
+import osa.modding.events.ScriptEvent;
 import osa.modding.modules.Module;
 
 class HelloWorld extends Module
@@ -8,7 +8,7 @@ class HelloWorld extends Module
 		super('helloworld');
 	}
 
-	override function onScriptEvent(event:BasicScriptEvent)
+	override function onScriptEvent(event:ScriptEvent)
 	{
 		trace(event.toString());
 	}
