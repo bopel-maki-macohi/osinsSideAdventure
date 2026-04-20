@@ -62,7 +62,10 @@ class AssetUtil
 	public static function textSplit(text:String):Array<String>
 	{
 		if (!fileExists(text.textFile()))
+		{
+			trace('Missing file: ${text.textFile()}');
 			return [];
+		}
 
 		var file:String = text.textFile().readText();
 		var lines:Array<String> = [];
