@@ -4,12 +4,12 @@ import flxnovel.data.visualnovel.TaleData;
 import flxnovel.states.visualnovel.VNState;
 import flixel.FlxG;
 
-class StoryMenuSubState extends TitleSubStateBase
+class TalesSubState extends TitleSubStateBase
 {
 	public static var entries(get, never):Array<String>;
 
 	static function get_entries():Array<String>
-		return 'story/tales'.menuAsset().textSplit();
+		return 'tales/list'.menuAsset().textSplit();
 
 	public static var entryData(get, never):Map<String, TaleData>;
 
@@ -17,7 +17,7 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		var data:Map<String, TaleData> = [];
 
-		for (entryID in StoryMenuSubState.entries)
+		for (entryID in TalesSubState.entries)
 		{
 			var tale:TaleData = new TaleData(entryID.taleAsset().jsonFile());
 
@@ -36,7 +36,7 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		var f = ['all'];
 
-		for (entry => data in StoryMenuSubState.entryData)
+		for (entry => data in TalesSubState.entryData)
 		{
 			if (data.storymenu?.filters.length > 0)
 				for (filter in data.storymenu.filters)
@@ -51,8 +51,8 @@ class StoryMenuSubState extends TitleSubStateBase
 	{
 		super.create();
 
-		trace('filters: ' + StoryMenuSubState.filters);
-		reload(StoryMenuSubState.filters[0]);
+		trace('filters: ' + TalesSubState.filters);
+		reload(TalesSubState.filters[0]);
 	}
 
 	public var currentFilter:String = '';
@@ -111,7 +111,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 	public function addTale(tale:TaleData, entryID:String)
 	{
-		spriteList.push(makeSprite('story/titles/${tale?.storymenu?.titleAsset ?? entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
+		spriteList.push(makeSprite('tales/titles/${tale?.storymenu?.titleAsset ?? entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
 	}
 
 	public function setTaleString(tale:TaleData, entryID:String)
@@ -135,7 +135,7 @@ class StoryMenuSubState extends TitleSubStateBase
 
 		if (controls.justPressed.UP || controls.justPressed.DOWN)
 		{
-			final fs = StoryMenuSubState.filters;
+			final fs = TalesSubState.filters;
 
 			if (controls.justPressed.UP)
 				reload(fs[fs.indexOf(currentFilter) + 1] ?? fs[0]);

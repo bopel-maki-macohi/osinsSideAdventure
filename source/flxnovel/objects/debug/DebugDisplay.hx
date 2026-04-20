@@ -122,7 +122,7 @@ class DebugDisplay extends TextField
 		var memoryUnit = systemMemory >= 1000 ? 'gb' : 'mb';
 
 		var texts = [
-			'VNE: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
+			'FlxNovel: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
 
 			'FPS: ${currentFPS}',
 			'MEM: ${systemMemory} / ${maxMemory}${memoryUnit}',

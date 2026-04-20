@@ -19,7 +19,7 @@ class TitleState extends FlxNovelState
 {
 	public var titleTileScrollBG:TileScrollBG;
 
-	public var storymenuTileScrollBG:TileScrollBG;
+	public var talesTileScrollBG:TileScrollBG;
 	public var debugTileScrollBG:TileScrollBG;
 	public var creditsTileScrollBG:TileScrollBG;
 	public var optionsTileScrollBG:TileScrollBG;
@@ -32,7 +32,7 @@ class TitleState extends FlxNovelState
 	public static var blurCamBG:FlxCamera;
 	public static var blurCamFG:FlxCamera;
 
-	public var storymenuBtn:ClickableSprite;
+	public var talesBtn:ClickableSprite;
 	public var optionsBtn:ClickableSprite;
 	public var creditsBtn:ClickableSprite;
 
@@ -76,8 +76,8 @@ class TitleState extends FlxNovelState
 		debugTileScrollBG = TileScrollBG.build(null, 'tiles/tile-debug'.menuAsset(), titleTileScrollBG);
 		debugTileScrollBG.alpha = 0;
 
-		storymenuTileScrollBG = TileScrollBG.build(null, 'tiles/tile-story'.menuAsset(), titleTileScrollBG);
-		storymenuTileScrollBG.alpha = 0;
+		talesTileScrollBG = TileScrollBG.build(null, 'tiles/tile-tales'.menuAsset(), titleTileScrollBG);
+		talesTileScrollBG.alpha = 0;
 
 		creditsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-credits'.menuAsset(), titleTileScrollBG);
 		creditsTileScrollBG.alpha = 0;
@@ -86,17 +86,17 @@ class TitleState extends FlxNovelState
 		optionsTileScrollBG.alpha = 0;
 
 		add(debugTileScrollBG);
-		add(storymenuTileScrollBG);
+		add(talesTileScrollBG);
 		add(creditsTileScrollBG);
 		add(optionsTileScrollBG);
 
 		add(logo);
 
-		storymenuBtn = new ClickableSprite(0, 0, 'title/story'.menuAsset().imageFile());
+		talesBtn = new ClickableSprite(0, 0, 'title/tales'.menuAsset().imageFile());
 		optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
 		creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
 
-		for (i => btn in [storymenuBtn, creditsBtn, optionsBtn])
+		for (i => btn in [talesBtn, creditsBtn, optionsBtn])
 		{
 			btn.scale.set(0.5, 0.5);
 
@@ -117,11 +117,11 @@ class TitleState extends FlxNovelState
 				btn.screenCenter(X);
 		}
 
-		add(storymenuBtn);
+		add(talesBtn);
 		add(optionsBtn);
 		add(creditsBtn);
 
-		storymenuBtn.onClick.add(() -> onSelectionClicked(storymenuTileScrollBG, new StoryMenuSubState(() -> onSelectionExited(storymenuTileScrollBG))));
+		talesBtn.onClick.add(() -> onSelectionClicked(talesTileScrollBG, new TalesSubState(() -> onSelectionExited(talesTileScrollBG))));
 		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
 		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
 
@@ -145,7 +145,7 @@ class TitleState extends FlxNovelState
 		switch (targetState?.toLowerCase())
 		{
 			case 'storymenu':
-				TSFunc = () -> storymenuBtn.onClick.dispatch();
+				TSFunc = () -> talesBtn.onClick.dispatch();
 			case 'credits':
 				TSFunc = () -> creditsBtn.onClick.dispatch();
 			case 'optionsmenu':
@@ -158,7 +158,7 @@ class TitleState extends FlxNovelState
 		{
 			FlxG.mouse.visible = false;
 
-			for (obj in [storymenuBtn, optionsBtn, creditsBtn, logo, titleTileScrollBG,])
+			for (obj in [talesBtn, optionsBtn, creditsBtn, logo, titleTileScrollBG,])
 				obj.alpha = 0;
 
 			FlxTimer.wait(transIn.duration, () ->
@@ -218,7 +218,7 @@ class TitleState extends FlxNovelState
 
 		transitioning = true;
 
-		for (spr in [logo, storymenuBtn, creditsBtn, optionsBtn])
+		for (spr in [logo, talesBtn, creditsBtn, optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
@@ -239,7 +239,7 @@ class TitleState extends FlxNovelState
 	{
 		transitioning = false;
 
-		for (spr in [logo, storymenuBtn, creditsBtn, optionsBtn])
+		for (spr in [logo, talesBtn, creditsBtn, optionsBtn])
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});

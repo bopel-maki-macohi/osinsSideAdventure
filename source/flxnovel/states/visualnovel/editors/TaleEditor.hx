@@ -22,8 +22,8 @@ class TaleEditor extends FlxNovelState
 	public var line_dialogueText:FlxText;
 	public var line_speaker:VNSpeaker;
 
-	public var storymenu_displayText:FlxText;
-	public var storymenu_titleAsset:FlxSprite;
+	public var talemenu_displayText:FlxText;
+	public var talemenu_titleAsset:FlxSprite;
 
 	override function create()
 	{
@@ -35,16 +35,16 @@ class TaleEditor extends FlxNovelState
 		line_dialogueText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
 		line_dialogueText.alignment = CENTER;
 
-		storymenu_displayText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
-		storymenu_displayText.alignment = CENTER;
+		talemenu_displayText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
+		talemenu_displayText.alignment = CENTER;
 
-		storymenu_titleAsset = new FlxSprite();
+		talemenu_titleAsset = new FlxSprite();
 
 		add(line_dialogueText);
 		add(line_speaker = new VNSpeaker(null));
 
-		add(storymenu_displayText);
-		add(storymenu_titleAsset);
+		add(talemenu_displayText);
+		add(talemenu_titleAsset);
 
 		add(uiBox);
 
@@ -87,25 +87,25 @@ class TaleEditor extends FlxNovelState
 		line_speaker.screenCenter(Y);
 		line_speaker.x = FlxG.width - line_speaker.width * 2;
 
-		storymenu_titleAsset.screenCenter();
-		storymenu_titleAsset.x = FlxG.width - storymenu_titleAsset.width * 2;
+		talemenu_titleAsset.screenCenter();
+		talemenu_titleAsset.x = FlxG.width - talemenu_titleAsset.width * 2;
 
 		line_speaker.visible = (line_dialogueText.visible = uiBox.selected_tab == 1) && line_speaker.data != null;
 
-		storymenu_titleAsset.visible = storymenu_displayText.visible = uiBox.selected_tab == 2;
+		talemenu_titleAsset.visible = talemenu_displayText.visible = uiBox.selected_tab == 2;
 
-		if (storymenu_titleAsset.visible)
-			loadStorymenuTitle();
+		if (talemenu_titleAsset.visible)
+			loadTaleMenuTitle();
 
 		if (_tale.storymenu?.display?.trim().length > 0)
 		{
-			storymenu_displayText.text = _tale.storymenu?.display;
-			storymenu_displayText.alpha = 1;
+			talemenu_displayText.text = _tale.storymenu?.display;
+			talemenu_displayText.alpha = 1;
 		}
 		else
 		{
-			storymenu_displayText.text = uiBox.dataTabGroup._taleID;
-			storymenu_displayText.alpha = .5;
+			talemenu_displayText.text = uiBox.dataTabGroup._taleID;
+			talemenu_displayText.alpha = .5;
 		}
 
 		if (controls.justPressed.LEAVE)
@@ -129,33 +129,33 @@ class TaleEditor extends FlxNovelState
 		}
 	}
 
-	public function loadStorymenuTitle()
+	public function loadTaleMenuTitle()
 	{
-		var path:String = 'story/titles/'.menuAsset();
+		var path:String = 'tales/titles/'.menuAsset();
 
 		if (_tale.storymenu?.titleAsset?.trim().length > 0)
 		{
 			path += _tale.storymenu.titleAsset;
-			storymenu_titleAsset.alpha = 1;
+			talemenu_titleAsset.alpha = 1;
 		}
 		else
 		{
 			path += uiBox.dataTabGroup._taleID.split('-')[0];
-			storymenu_titleAsset.alpha = .5;
+			talemenu_titleAsset.alpha = .5;
 		}
 
 		path = path.imageFile();
 		if (path.fileExists())
 		{
-			storymenu_titleAsset.loadGraphic(path);
+			talemenu_titleAsset.loadGraphic(path);
 			
-			storymenu_titleAsset.scale.set(.5, .5);
-			storymenu_titleAsset.updateHitbox();
+			talemenu_titleAsset.scale.set(.5, .5);
+			talemenu_titleAsset.updateHitbox();
 
-			storymenu_titleAsset.visible = true;
+			talemenu_titleAsset.visible = true;
 		}
 		else
-			storymenu_titleAsset.visible = false;
+			talemenu_titleAsset.visible = false;
 	}
 
 	function onLineSpeakerStateChange(text:String, index:Int)

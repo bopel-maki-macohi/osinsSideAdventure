@@ -3,6 +3,7 @@
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
 - THE GAME IS NOW AN ENGINE WHICH IS CALLED "FlxNovel"
+  - Story Menu is now Tales Menu
   - The game has been un-osined
   - New logo!
     - Debug / Sinco and Options / Loroc tile assets have been swapped
