@@ -181,7 +181,7 @@ class VNState extends OSAState
 
 	public function endTale(validEnd:Bool)
 	{
-		ScriptHandler.call('onEndtale', [validEnd]);
+		ScriptHandler.call('onEndTale', [validEnd]);
 
 		FlxG.switchState(() -> new TitleState());
 	}
