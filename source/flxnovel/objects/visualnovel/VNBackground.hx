@@ -85,6 +85,16 @@ class VNBackground extends FlxSpriteGroup
 
 		var shape:FlxSprite = new FlxSprite().makeGraphic(data.width, data.height, clr);
 
+		shape = applyGeneralPropInfo(shape, data);
+
 		addProp(shape, data.id);
+	}
+
+	public function applyGeneralPropInfo(prop:FlxSprite, data:BackgroundPropData)
+	{
+		if (data.scale != null)
+			prop.scale.set(data.scale, data.scale);
+
+		return prop;
 	}
 }

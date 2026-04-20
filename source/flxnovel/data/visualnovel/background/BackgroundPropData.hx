@@ -8,6 +8,9 @@ typedef BackgroundPropData =
 	var type:BackgroundPropType;
 
     @:optional
+    var scale:Float;
+
+    @:optional
     var width:Int;
     
     @:optional
