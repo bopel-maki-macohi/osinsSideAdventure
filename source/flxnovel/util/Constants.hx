@@ -12,7 +12,7 @@ class Constants
 
 	public static final ITERATION_SPEAKERDATA:Int = 0;
 	public static final ITERATION_TALEDATA:Int = 1;
-	public static final ITERATION_BACKGROUNDDATA:Int = 4;
+	public static final ITERATION_BACKGROUNDDATA:Int = 5;
 
 	public static var GIT_STRING(get, never):String;
 

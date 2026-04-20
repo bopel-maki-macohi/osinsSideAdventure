@@ -15,6 +15,14 @@ typedef BackgroundPropData =
 typedef GeneralData =
 {
 	@:optional
+	@:default(0.0)
+	var x:Float;
+	
+	@:optional
+	@:default(0.0)
+	var y:Float;
+
+	@:optional
 	var scale:Float;
 
 	@:optional

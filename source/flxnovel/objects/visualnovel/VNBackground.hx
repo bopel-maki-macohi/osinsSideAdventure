@@ -110,6 +110,12 @@ class VNBackground extends FlxSpriteGroup
 		if (data.scale != null)
 			prop.scale.set(data.scale, data.scale);
 
+		if (data.x != null)
+			prop.x = data.x;
+
+		if (data.y != null)
+			prop.y = data.y;
+
 		return prop;
 	}
 }
