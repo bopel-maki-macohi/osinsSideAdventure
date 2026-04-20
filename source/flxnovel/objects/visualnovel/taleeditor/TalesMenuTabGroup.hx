@@ -7,7 +7,7 @@ import flixel.addons.ui.FlxUIInputText;
 import flixel.addons.ui.FlxUIDropDownMenu;
 import flxnovel.data.visualnovel.TaleData;
 
-class StoryMenuTabGroup extends TabGroup implements ITaleContainer
+class TalesMenuTabGroup extends TabGroup implements ITaleContainer
 {
 	public var _tale:TaleData;
 
@@ -31,7 +31,7 @@ class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 	{
 		super.create();
 
-		name = 'Story Menu';
+		name = 'Tales Menu';
 
 		filtersDropdown = new FlxUIDropDownMenu(10, 20, null);
 		add(makeText(filtersDropdown, 'Filters: '));
@@ -90,7 +90,7 @@ class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 
 	function get_filters():Array<StrNameLabel>
 	{
-		return [for (i => filter in _tale?.storymenu?.filters ?? []) new StrNameLabel('$i', filter)];
+		return [for (i => filter in _tale?.talesmenu?.filters ?? []) new StrNameLabel('$i', filter)];
 	}
 
 	public var btnFilters(get, never):Array<FlxUIButton>;
@@ -110,7 +110,7 @@ class StoryMenuTabGroup extends TabGroup implements ITaleContainer
 
 	public function updateAll()
 	{
-		titleAssetInput.text = _tale?.storymenu?.titleAsset ?? '';
-		displayInput.text = _tale?.storymenu?.display ?? '';
+		titleAssetInput.text = _tale?.talesmenu?.titleAsset ?? '';
+		displayInput.text = _tale?.talesmenu?.display ?? '';
 	}
 }

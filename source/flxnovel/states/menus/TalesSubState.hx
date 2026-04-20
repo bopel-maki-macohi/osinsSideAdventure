@@ -38,8 +38,8 @@ class TalesSubState extends TitleSubStateBase
 
 		for (entry => data in TalesSubState.entryData)
 		{
-			if (data.storymenu?.filters.length > 0)
-				for (filter in data.storymenu.filters)
+			if (data.talesmenu?.filters.length > 0)
+				for (filter in data.talesmenu.filters)
 					if (!f.contains(filter))
 						f.push(filter);
 		}
@@ -80,7 +80,7 @@ class TalesSubState extends TitleSubStateBase
 
 		if (filter?.toLowerCase().trim() != null)
 		{
-			var filteredTargetTales = targetTales.filter(d -> return d.tale.storymenu?.filters.contains(filter));
+			var filteredTargetTales = targetTales.filter(d -> return d.tale.talesmenu?.filters.contains(filter));
 
 			function setFilteredTales()
 			{
@@ -111,7 +111,7 @@ class TalesSubState extends TitleSubStateBase
 
 	public function addTale(tale:TaleData, entryID:String)
 	{
-		spriteList.push(makeSprite('tales/titles/${tale?.storymenu?.titleAsset ?? entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
+		spriteList.push(makeSprite('tales/titles/${tale?.talesmenu?.titleAsset ?? entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
 	}
 
 	public function setTaleString(tale:TaleData, entryID:String)
@@ -119,7 +119,7 @@ class TalesSubState extends TitleSubStateBase
 		var msg:String = '';
 
 		msg += 'Current Filter: ${currentFilter}\n';
-		msg += (tale?.storymenu?.display?.trim().length > 0) ? tale?.storymenu?.display : entryID;
+		msg += (tale?.talesmenu?.display?.trim().length > 0) ? tale?.talesmenu?.display : entryID;
 
 		return msg;
 	}

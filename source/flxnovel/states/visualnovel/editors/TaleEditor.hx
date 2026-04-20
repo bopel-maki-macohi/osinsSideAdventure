@@ -8,7 +8,7 @@ import flxnovel.util.Constants;
 import flxnovel.data.visualnovel.SpeakerData;
 import json2object.JsonParser;
 import openfl.net.FileReference;
-import flxnovel.objects.visualnovel.taleeditor.TabMenu;
+import flxnovel.objects.visualnovel.taleeditor.TaleEditorTabMenu;
 import flxnovel.data.visualnovel.TaleData;
 import flxnovel.states.menus.TitleState;
 import flixel.FlxG;
@@ -17,7 +17,7 @@ class TaleEditor extends FlxNovelState
 {
 	public var _tale:TaleData;
 
-	public var uiBox:TabMenu;
+	public var uiBox:TaleEditorTabMenu;
 
 	public var line_dialogueText:FlxText;
 	public var line_speaker:VNSpeaker;
@@ -28,9 +28,9 @@ class TaleEditor extends FlxNovelState
 	override function create()
 	{
 		_tale = new TaleData(null);
-		_tale.storymenu = {};
+		_tale.talesmenu = {};
 
-		uiBox = new TabMenu(_tale);
+		uiBox = new TaleEditorTabMenu(_tale);
 
 		line_dialogueText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
 		line_dialogueText.alignment = CENTER;
@@ -61,10 +61,10 @@ class TaleEditor extends FlxNovelState
 		uiBox.linesTabGroup.onNewLineCallback = onNewLine;
 		uiBox.linesTabGroup.onRemoveLineCallback = onRemoveLine;
 
-		uiBox.storyTabGroup.onTitleAssetChangeCallback = onTitleAssetChange;
-		uiBox.storyTabGroup.onDisplayTextChangeCallback = onDisplayTextChange;
-		uiBox.storyTabGroup.onAddFilterCallback = onNewFilter;
-		uiBox.storyTabGroup.onRemoveFilterCallback = onRemoveFilter;
+		uiBox.talesTabGroup.onTitleAssetChangeCallback = onTitleAssetChange;
+		uiBox.talesTabGroup.onDisplayTextChangeCallback = onDisplayTextChange;
+		uiBox.talesTabGroup.onAddFilterCallback = onNewFilter;
+		uiBox.talesTabGroup.onRemoveFilterCallback = onRemoveFilter;
 
 		onNewLine();
 		uiBox.linesTabGroup.onChangedLine('0');
@@ -97,9 +97,9 @@ class TaleEditor extends FlxNovelState
 		if (talemenu_titleAsset.visible)
 			loadTaleMenuTitle();
 
-		if (_tale.storymenu?.display?.trim().length > 0)
+		if (_tale.talesmenu?.display?.trim().length > 0)
 		{
-			talemenu_displayText.text = _tale.storymenu?.display;
+			talemenu_displayText.text = _tale.talesmenu?.display;
 			talemenu_displayText.alpha = 1;
 		}
 		else
@@ -118,11 +118,11 @@ class TaleEditor extends FlxNovelState
 			if (uiBox.linesTabGroup.speakersStateInput.hasFocus)
 				return;
 
-			if (uiBox.storyTabGroup.filterInput.hasFocus)
+			if (uiBox.talesTabGroup.filterInput.hasFocus)
 				return;
-			if (uiBox.storyTabGroup.displayInput.hasFocus)
+			if (uiBox.talesTabGroup.displayInput.hasFocus)
 				return;
-			if (uiBox.storyTabGroup.titleAssetInput.hasFocus)
+			if (uiBox.talesTabGroup.titleAssetInput.hasFocus)
 				return;
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
@@ -133,9 +133,9 @@ class TaleEditor extends FlxNovelState
 	{
 		var path:String = 'tales/titles/'.menuAsset();
 
-		if (_tale.storymenu?.titleAsset?.trim().length > 0)
+		if (_tale.talesmenu?.titleAsset?.trim().length > 0)
 		{
-			path += _tale.storymenu.titleAsset;
+			path += _tale.talesmenu.titleAsset;
 			talemenu_titleAsset.alpha = 1;
 		}
 		else
@@ -183,42 +183,42 @@ class TaleEditor extends FlxNovelState
 
 	function onRemoveFilter(filter:String)
 	{
-		if (_tale?.storymenu?.filters == null || !_tale.storymenu.filters.contains(filter))
+		if (_tale?.talesmenu?.filters == null || !_tale.talesmenu.filters.contains(filter))
 			return;
 
-		_tale.storymenu.filters.remove(filter);
+		_tale.talesmenu.filters.remove(filter);
 
 		refresh();
 
-		uiBox.storyTabGroup.filtersDropdown.selectedId = uiBox.storyTabGroup.btnFilters[uiBox.storyTabGroup.btnFilters.length - 1]?.name;
+		uiBox.talesTabGroup.filtersDropdown.selectedId = uiBox.talesTabGroup.btnFilters[uiBox.talesTabGroup.btnFilters.length - 1]?.name;
 	}
 
 	function onNewFilter(filter:String)
 	{
-		if (_tale?.storymenu == null)
-			_tale.storymenu = {};
-		if (_tale?.storymenu?.filters == null)
-			_tale.storymenu.filters = [];
+		if (_tale?.talesmenu == null)
+			_tale.talesmenu = {};
+		if (_tale?.talesmenu?.filters == null)
+			_tale.talesmenu.filters = [];
 
-		if (_tale.storymenu.filters.contains(filter))
+		if (_tale.talesmenu.filters.contains(filter))
 			return;
 
-		_tale.storymenu.filters.push(filter);
+		_tale.talesmenu.filters.push(filter);
 
 		refresh();
 
-		uiBox.storyTabGroup.filtersDropdown.selectedId = uiBox.storyTabGroup.btnFilters[uiBox.storyTabGroup.btnFilters.length - 1]?.name;
+		uiBox.talesTabGroup.filtersDropdown.selectedId = uiBox.talesTabGroup.btnFilters[uiBox.talesTabGroup.btnFilters.length - 1]?.name;
 	}
 
 	function onDisplayTextChange(text:String)
 	{
-		_tale.storymenu.display = text;
+		_tale.talesmenu.display = text;
 		refresh();
 	}
 
 	function onTitleAssetChange(text:String)
 	{
-		_tale.storymenu.titleAsset = text;
+		_tale.talesmenu.titleAsset = text;
 		refresh();
 	}
 
@@ -311,7 +311,7 @@ class TaleEditor extends FlxNovelState
 		if (file != null)
 		{
 			var taleData:TaleData = new JsonParser<TaleData>().fromJson(file.data.toString(), file.name);
-			_tale.build(taleData.iteration, taleData.lines, taleData.storymenu, taleData.generatedBy);
+			_tale.build(taleData.iteration, taleData.lines, taleData.talesmenu, taleData.generatedBy);
 		}
 
 		refresh();
@@ -320,6 +320,6 @@ class TaleEditor extends FlxNovelState
 	function refresh()
 	{
 		uiBox.linesTabGroup.updateList();
-		uiBox.storyTabGroup.updateList();
+		uiBox.talesTabGroup.updateList();
 	}
 }

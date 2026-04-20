@@ -1,5 +1,5 @@
 {
-	"iteration": 1,
+	"iteration": 2,
 	"lines": [
 		{
 			"speaker": {
@@ -23,7 +23,7 @@
 			"text": "Lorem Ipsum Dolor Sit Amet!"
 		}
 	],
-	"storymenu": {
+	"talesmenu": {
 		"display": "Lorem Tale 2 : Dummy tale, testing tale, but sequaled",
 		"filters": [
 			"debug",
@@ -31,5 +31,5 @@
 		],
 		"titleAsset": "lorem"
 	},
-	"generatedBy": "Osin's Side Adventures 0.12.0 (internal/newDirection:aff5ad4)"
+	"generatedBy": "Maki"
 }

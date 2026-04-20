@@ -3,20 +3,20 @@ package flxnovel.objects.visualnovel.taleeditor;
 import flxnovel.data.visualnovel.TaleData;
 import flixel.addons.ui.FlxUITabMenu;
 
-class TabMenu extends FlxUITabMenu implements ITaleContainer
+class TaleEditorTabMenu extends FlxUITabMenu implements ITaleContainer
 {
 	public var _tale:TaleData;
 
 	public var dataTabGroup:DataTabGroup;
 	public var linesTabGroup:LineTabGroup;
-	public var storyTabGroup:StoryMenuTabGroup;
+	public var talesTabGroup:TalesMenuTabGroup;
 
 	override public function new(tale:TaleData)
 	{
 		super(null, null, [
 			{name: 'Data', label: 'Data'},
 			{name: 'Lines', label: 'Lines'},
-			{name: 'Story Menu', label: 'Story Menu'},
+			{name: 'Tales Menu', label: 'Tales Menu'},
 		], true);
 
 		resize(640, 480);
@@ -28,19 +28,19 @@ class TabMenu extends FlxUITabMenu implements ITaleContainer
 
 		dataTabGroup = new DataTabGroup(this);
 		linesTabGroup = new LineTabGroup(this);
-		storyTabGroup = new StoryMenuTabGroup(this);
+		talesTabGroup = new TalesMenuTabGroup(this);
 
 		_tale = tale;
 
 		addGroup(dataTabGroup);
 		addGroup(linesTabGroup);
-		addGroup(storyTabGroup);
+		addGroup(talesTabGroup);
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		dataTabGroup._tale = linesTabGroup._tale = storyTabGroup._tale = _tale;
+		dataTabGroup._tale = linesTabGroup._tale = talesTabGroup._tale = _tale;
 	}
 }

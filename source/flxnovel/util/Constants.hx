@@ -11,7 +11,7 @@ class Constants
 	public static final DEFAULT_LERP_SPEED:Float = 0.04;
 
 	public static final ITERATION_SPEAKERDATA:Int = 0;
-	public static final ITERATION_TALEDATA:Int = 1;
+	public static final ITERATION_TALEDATA:Int = 2;
 	public static final ITERATION_BACKGROUNDDATA:Int = 7;
 
 	public static var GIT_STRING(get, never):String;

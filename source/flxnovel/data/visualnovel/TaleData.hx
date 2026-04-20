@@ -10,7 +10,7 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 
 	public var lines:Array<TaleLineData>;
 
-	public var storymenu:TaleStoryMenuData;
+	public var talesmenu:TaleTalesMenuData;
 
 	@:optional
 	public var generatedBy:String;
@@ -22,13 +22,13 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 		super(file);
 	}
 
-	public function build(?iteration:Int, ?lines:Array<TaleLineData>, ?storymenu:TaleStoryMenuData, ?generatedBy:String)
+	public function build(?iteration:Int, ?lines:Array<TaleLineData>, ?talesmenu:TaleTalesMenuData, ?generatedBy:String)
 	{
 		this.iteration = iteration ?? Constants.ITERATION_TALEDATA;
 		this.lines = lines ?? [];
-		this.storymenu = storymenu ?? null;
+		this.talesmenu = talesmenu ?? null;
 
-		this.generatedBy = generatedBy ?? 'TaleData.build($iteration, $lines, $storymenu)';
+		this.generatedBy = generatedBy ?? 'TaleData.build($iteration, $lines, $talesmenu)';
 	}
 
 	override function load(file:String)
@@ -43,6 +43,6 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 
 		var data:TaleData = new JsonParser<TaleData>().fromJson(file.readText(), file);
 
-		build(data.iteration, data.lines, data.storymenu, data.generatedBy);
+		build(data.iteration, data.lines, data.talesmenu, data.generatedBy);
 	}
 }

@@ -1,6 +1,6 @@
 package flxnovel.data.visualnovel.tales;
 
-typedef TaleStoryMenuData =
+typedef TaleTalesMenuData =
 {
 	@:optional
 	var titleAsset:String;

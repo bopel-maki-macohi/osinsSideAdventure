@@ -1,5 +1,5 @@
 {
-	"iteration": 1,
+	"iteration": 2,
 	"lines": [
 		{
 			"speaker": {
@@ -16,12 +16,12 @@
 			"text": "Lorem ipsum dolor sit amet?"
 		}
 	],
-	"storymenu": {
+	"talesmenu": {
 		"display": "Lorem Tale : Dummy tale, testing tale.",
 		"filters": [
 			"debug"
 		],
 		"titleAsset": "lorem"
 	},
-	"generatedBy": "Osin's Side Adventures 0.12.0 (internal/newDirection:f5c7551)"
+	"generatedBy": "Maki"
 }

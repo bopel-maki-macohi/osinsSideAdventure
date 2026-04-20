@@ -88,7 +88,7 @@ class CrashHandler
 		final filename:String = '$CRASH_DIRECTORY/${DateUtil.getTimestamp()}.txt';
 
 		errorMessage += '\nGame Version: ${VersionUtil.VERSION}';
-		
+
 		#if CRASHHANDLER_INCLUDE_GIT
 		errorMessage += '\nGit info: ${Constants.GIT_STRING}';
 		#end
@@ -99,17 +99,6 @@ class CrashHandler
 
 		switch (currentState)
 		{
-			case 'flxnovel.states.menus.StoryMenuState':
-				stateFields = [
-					'_currentSelection',
-
-					'_chapters',
-
-					'_chapterTitle',
-					'_chapterIcon',
-					'_chapterDialogueFile'
-				];
-
 			case 'flxnovel.states.visualnovel.VNState':
 				stateFields = [
 					'_dialogueEntry',

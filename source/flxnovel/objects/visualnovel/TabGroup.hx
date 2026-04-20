@@ -1,4 +1,4 @@
-package flxnovel.objects.visualnovel.taleeditor;
+package flxnovel.objects.visualnovel;
 
 import flixel.FlxSprite;
 import flixel.text.FlxText;
