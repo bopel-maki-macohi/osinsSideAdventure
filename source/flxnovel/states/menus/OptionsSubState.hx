@@ -32,7 +32,7 @@ class OptionsSubState extends TitleSubStateBase
 
 		addOption('debugDisplay', () ->
 		{
-			return 'Debug Display (${getEnabledString(Save.options.get().fpsCounter)})' + ' : Toggles the Debug Display at the top left';
+			return 'Debug Display (${getEnabledString(Save.options.get().debugDisplay)})' + ' : Toggles the Debug Display at the top left';
 		}, () ->
 			{
 				Save.options.get().debugDisplay = !Save.options.get().debugDisplay;

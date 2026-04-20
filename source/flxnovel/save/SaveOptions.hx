@@ -2,8 +2,11 @@ package flxnovel.save;
 
 typedef SaveOptions =
 {
-	pcname:Null<Bool>,
+	var pcname:Null<Bool>;
 	
-	?fpsCounter:Null<Bool>,
-	debugDisplay:Null<Bool>,
+	@:allow(Save)
+	@:depricated('fpsCounter save field is depricated, use debugDisplay')
+	var ?fpsCounter:Null<Bool>;
+
+	var debugDisplay:Null<Bool>;
 }
