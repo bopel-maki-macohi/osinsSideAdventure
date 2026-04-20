@@ -14,7 +14,7 @@ class BackgroundTesting extends FlxNovelState
 	{
 		super.create();
 
-		bg = new VNBackground(BackgroundData.fileBuild('void'));
+		bg = new VNBackground(BackgroundData.fileBuild('test'));
 		add(bg);
 	}
 
