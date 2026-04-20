@@ -2,3 +2,8 @@
 - VNBackgrounds image prop implementation
 
 - Mod Menu
+
+- Mobile Support (#1)
+- Linux Build
+
+- Speaker Editor (#2)
