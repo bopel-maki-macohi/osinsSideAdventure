@@ -28,7 +28,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	override function create()
 	{
-		_tale = new TaleData(null);
+		_tale = TaleData.fileBuild(null);
 		_tale.talesmenu = {};
 
 		uiBox = new TaleEditorTabMenu(_tale);

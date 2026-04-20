@@ -23,7 +23,7 @@ class VNState extends FlxNovelState implements ITaleContainer
 	{
 		super();
 
-		_tale = new TaleData(taleID.jsonFile().visualNovelTaleAsset());
+		_tale = TaleData.fileBuild(taleID);
 
 		for (taleLine in _tale.lines)
 		{

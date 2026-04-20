@@ -19,7 +19,7 @@ class TalesSubState extends TitleSubStateBase
 
 		for (entryID in TalesSubState.entries)
 		{
-			var tale:TaleData = new TaleData(entryID.visualNovelTaleAsset().jsonFile());
+			var tale:TaleData = TaleData.fileBuild(entryID);
 
 			if (tale == null)
 				continue;
