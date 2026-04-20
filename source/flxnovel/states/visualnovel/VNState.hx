@@ -1,5 +1,6 @@
 package flxnovel.states.visualnovel;
 
+import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flxnovel.modding.scripting.ScriptHandler;
 import flixel.util.FlxColor;
 import flxnovel.objects.HoldToPerformGadge;
@@ -12,9 +13,9 @@ import flxnovel.data.visualnovel.tales.TaleLineData;
 import flxnovel.objects.visualnovel.*;
 import flxnovel.data.visualnovel.*;
 
-class VNState extends FlxNovelState
+class VNState extends FlxNovelState implements ITaleContainer
 {
-	public var taleData:TaleData;
+	public var _tale:TaleData;
 
 	public static var instance:VNState;
 
@@ -22,9 +23,9 @@ class VNState extends FlxNovelState
 	{
 		super();
 
-		taleData = new TaleData(taleID.jsonFile().visualNovelTaleAsset());
+		_tale = new TaleData(taleID.jsonFile().visualNovelTaleAsset());
 
-		for (taleLine in taleData.lines)
+		for (taleLine in _tale.lines)
 		{
 			if (taleLine.speaker == null)
 				continue;
@@ -57,7 +58,7 @@ class VNState extends FlxNovelState
 
 	function get_line():TaleLineData
 	{
-		return taleData?.lines[lineNumber] ?? null;
+		return _tale?.lines[lineNumber] ?? null;
 	}
 
 	override function create()
@@ -124,7 +125,7 @@ class VNState extends FlxNovelState
 			return;
 		}
 
-		if (lineNumber + increment >= taleData.lines.length)
+		if (lineNumber + increment >= _tale.lines.length)
 		{
 			endTale(true);
 

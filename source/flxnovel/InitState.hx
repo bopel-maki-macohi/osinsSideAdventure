@@ -1,7 +1,7 @@
 package flxnovel;
 
 import flxnovel.modding.ModCore;
-import flxnovel.states.visualnovel.editors.TaleEditor;
+import flxnovel.states.visualnovel.editors.*;
 import flxnovel.states.visualnovel.VNState;
 import flxnovel.util.*;
 import flxnovel.states.transition.SplashState;
@@ -107,6 +107,8 @@ class InitState extends FlxNovelState
 			FlxG.switchState(() -> new TestVideoState());
 		else if (MacroUtil.isDefined('TALEEDITOR'))
 			FlxG.switchState(() -> new TaleEditor());
+		else if (MacroUtil.isDefined('SPEAKEREDITOR'))
+			FlxG.switchState(() -> new SpeakerEditor());
 		else if (MacroUtil.isDefined('BGDEBUG'))
 			FlxG.switchState(() -> new BackgroundTesting());
 		else

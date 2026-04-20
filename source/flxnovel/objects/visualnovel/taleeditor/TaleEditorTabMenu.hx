@@ -1,5 +1,6 @@
 package flxnovel.objects.visualnovel.taleeditor;
 
+import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flxnovel.data.visualnovel.TaleData;
 import flixel.addons.ui.FlxUITabMenu;
 

@@ -1,5 +1,7 @@
 package flxnovel.objects.visualnovel.taleeditor;
 
+import flxnovel.util.DropdownListUpdater;
+import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flixel.addons.ui.FlxUIButton;
 import flixel.addons.ui.StrNameLabel;
 import flixel.ui.FlxButton;

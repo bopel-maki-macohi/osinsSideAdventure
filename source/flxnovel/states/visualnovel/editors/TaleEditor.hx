@@ -1,5 +1,6 @@
 package flxnovel.states.visualnovel.editors;
 
+import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.text.FlxText;
@@ -13,7 +14,7 @@ import flxnovel.data.visualnovel.TaleData;
 import flxnovel.states.menus.TitleState;
 import flixel.FlxG;
 
-class TaleEditor extends FlxNovelState
+class TaleEditor extends FlxNovelState implements ITaleContainer
 {
 	public var _tale:TaleData;
 

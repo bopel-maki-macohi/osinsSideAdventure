@@ -1,5 +1,6 @@
 package flxnovel.objects.visualnovel.taleeditor;
 
+import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;

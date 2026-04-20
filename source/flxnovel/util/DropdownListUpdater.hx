@@ -1,4 +1,4 @@
-package flxnovel.objects.visualnovel.taleeditor;
+package flxnovel.util;
 
 import flixel.addons.ui.FlxUIDropDownMenu;
 import flixel.addons.ui.FlxUIButton;
