@@ -23,7 +23,7 @@ class BackgroundData extends ObjectData<BackgroundData>
 
 	public static function fileBuild(file:String)
 	{
-		return new BackgroundData(file, file.visualNovelBackgroundAsset().jsonFile());
+		return new BackgroundData(file, file?.visualNovelBackgroundAsset()?.jsonFile());
 	}
 
 	public function build(?iteration:Int, ?props:Array<BackgroundPropData>)
