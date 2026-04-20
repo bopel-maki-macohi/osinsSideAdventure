@@ -267,7 +267,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		}
 		else
 		{
-			line_speaker.data = new SpeakerData(newSpeaker, newSpeaker.visualNovelSpeakerAsset('data'.jsonFile()));
+			line_speaker.data = SpeakerData.fileBuild(newSpeaker);
 
 			if (_tale.lines[index].speaker == null)
 			{

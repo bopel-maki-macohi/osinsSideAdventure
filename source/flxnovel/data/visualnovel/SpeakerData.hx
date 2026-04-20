@@ -54,6 +54,11 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 		super(file);
 	}
 
+	public static function fileBuild(file:String)
+	{
+		return new SpeakerData(file, file?.visualNovelSpeakerAsset('data'.jsonFile()));
+	}
+
 	public function build(?iteration:Int, ?states:Array<SpeakerStateData>)
 	{
 		this.iteration = iteration ?? Constants.ITERATION_SPEAKERDATA;
