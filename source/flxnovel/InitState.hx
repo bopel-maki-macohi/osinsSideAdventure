@@ -3,7 +3,6 @@ package flxnovel;
 import flxnovel.modding.ModCore;
 import flxnovel.states.visualnovel.editors.TaleEditor;
 import flxnovel.states.visualnovel.VNState;
-import flxnovel.states.debug.TestVideoState;
 import flxnovel.util.*;
 import flxnovel.states.transition.SplashState;
 import flxnovel.objects.RhythmManager;
@@ -15,6 +14,7 @@ import flxnovel.states.menus.TitleState;
 import flixel.FlxG;
 import flxnovel.util.plugins.ScreenshotPlugin;
 import flxnovel.states.FlxNovelState;
+import flxnovel.states.debug.*;
 
 class InitState extends FlxNovelState
 {
