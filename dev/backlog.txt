@@ -17,4 +17,6 @@ LOW PRIORITY
 - Mobile Support (#1)
 - Linux Build (Use chromebook)
 
-- Stage Editor
+- Background Editor
+
+- Discord RPC
