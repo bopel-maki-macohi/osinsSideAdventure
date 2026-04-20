@@ -1,5 +1,6 @@
 package flxnovel.states.menus;
 
+import flxnovel.util.ArrayUtil;
 import flxnovel.util.SoundUtil;
 import flxnovel.shaders.GrayscaleShader;
 import flixel.util.FlxTimer;
@@ -21,6 +22,7 @@ class TitleState extends FlxNovelState
 
 	public var talesTileScrollBG:TileScrollBG;
 	public var debugTileScrollBG:TileScrollBG;
+	public var modsTileScrollBG:TileScrollBG;
 	public var creditsTileScrollBG:TileScrollBG;
 	public var optionsTileScrollBG:TileScrollBG;
 
@@ -35,6 +37,7 @@ class TitleState extends FlxNovelState
 	public var talesBtn:ClickableSprite;
 	public var optionsBtn:ClickableSprite;
 	public var creditsBtn:ClickableSprite;
+	public var modsBtn:ClickableSprite;
 
 	public static var bgScrolling:Bool = false;
 
@@ -45,6 +48,13 @@ class TitleState extends FlxNovelState
 		super();
 
 		this.targetState = targetState;
+	}
+
+	public var btns(get, never):Array<ClickableSprite>;
+
+	function get_btns():Array<ClickableSprite>
+	{
+		return [talesBtn, creditsBtn, optionsBtn, modsBtn];
 	}
 
 	override function create()
@@ -85,7 +95,11 @@ class TitleState extends FlxNovelState
 		optionsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-options'.menuAsset(), titleTileScrollBG);
 		optionsTileScrollBG.alpha = 0;
 
+		modsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-mods'.menuAsset(), titleTileScrollBG);
+		modsTileScrollBG.alpha = 0;
+
 		add(debugTileScrollBG);
+		add(modsTileScrollBG);
 		add(talesTileScrollBG);
 		add(creditsTileScrollBG);
 		add(optionsTileScrollBG);
@@ -95,8 +109,9 @@ class TitleState extends FlxNovelState
 		talesBtn = new ClickableSprite(0, 0, 'title/tales'.menuAsset().imageFile());
 		optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
 		creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
+		modsBtn = new ClickableSprite(0, 0, 'title/mods'.menuAsset().imageFile());
 
-		for (i => btn in [talesBtn, creditsBtn, optionsBtn])
+		for (i => btn in btns)
 		{
 			btn.scale.set(0.5, 0.5);
 			btn.updateHitbox();
@@ -107,15 +122,14 @@ class TitleState extends FlxNovelState
 
 			btn.overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(btn, 0.6, 0.5));
 			btn.unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
-		}
 
-		add(talesBtn);
-		add(optionsBtn);
-		add(creditsBtn);
+			add(btn);
+		}
 
 		talesBtn.onClick.add(() -> onSelectionClicked(talesTileScrollBG, new TalesSubState(() -> onSelectionExited(talesTileScrollBG))));
 		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
 		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
+		modsBtn.onClick.add(() -> onSelectionClicked(modsTileScrollBG, new DebugSubState(() -> onSelectionExited(modsTileScrollBG))));
 
 		persistentUpdate = true;
 
@@ -142,6 +156,8 @@ class TitleState extends FlxNovelState
 				TSFunc = () -> creditsBtn.onClick.dispatch();
 			case 'optionsmenu':
 				TSFunc = () -> optionsBtn.onClick.dispatch();
+			case 'mods':
+				TSFunc = () -> modsBtn.onClick.dispatch();
 			case 'debugmenu':
 				TSFunc = debugSubState;
 		}
@@ -150,7 +166,9 @@ class TitleState extends FlxNovelState
 		{
 			FlxG.mouse.visible = false;
 
-			for (obj in [talesBtn, optionsBtn, creditsBtn, logo, titleTileScrollBG,])
+			for (obj in btns)
+				obj.alpha = 0;
+			for (obj in [logo, titleTileScrollBG,])
 				obj.alpha = 0;
 
 			FlxTimer.wait(transIn.duration, () ->
@@ -166,7 +184,7 @@ class TitleState extends FlxNovelState
 	{
 		super.update(elapsed);
 
-		for (i => btn in [talesBtn, creditsBtn, optionsBtn])
+		for (i => btn in btns)
 		{
 			btn.y = FlxG.height - btn.height - (128 / 4);
 			btn.x = 128 + ((256 * i) * padding);
@@ -218,7 +236,7 @@ class TitleState extends FlxNovelState
 
 		transitioning = true;
 
-		for (spr in [logo, talesBtn, creditsBtn, optionsBtn])
+		for (spr in ArrayUtil.merge([logo], btns))
 		{
 			FlxTween.cancelTweensOf(spr);
 			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
