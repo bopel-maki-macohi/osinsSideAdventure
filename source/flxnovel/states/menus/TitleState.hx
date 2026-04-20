@@ -166,10 +166,13 @@ class TitleState extends FlxNovelState
 		{
 			FlxG.mouse.visible = false;
 
-			for (obj in btns)
-				obj.alpha = 0;
-			for (obj in [logo, titleTileScrollBG,])
-				obj.alpha = 0;
+			for (obj in ArrayUtil.merge([logo, titleTileScrollBG], btns))
+			{
+				var spr:FlxSprite = cast obj;
+
+				if (spr != null)
+					spr.alpha = 0;
+			}
 
 			FlxTimer.wait(transIn.duration, () ->
 			{
@@ -236,10 +239,15 @@ class TitleState extends FlxNovelState
 
 		transitioning = true;
 
-		for (spr in ArrayUtil.merge([logo], btns))
+		for (obj in ArrayUtil.merge([logo], btns))
 		{
-			FlxTween.cancelTweensOf(spr);
-			FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
+			var spr:FlxSprite = cast obj;
+
+			if (spr != null)
+			{
+				FlxTween.cancelTweensOf(spr);
+				FlxTween.tween(spr, {alpha: 0}, this.transIn.duration, {ease: FlxEase.sineInOut});
+			}
 		}
 
 		if (tileScrollBG != null)
@@ -257,10 +265,15 @@ class TitleState extends FlxNovelState
 	{
 		transitioning = false;
 
-		for (spr in [logo, talesBtn, creditsBtn, optionsBtn])
+		for (obj in ArrayUtil.merge([logo], btns))
 		{
-			FlxTween.cancelTweensOf(spr);
-			FlxTween.tween(spr, {alpha: 1}, this.transOut.duration, {ease: FlxEase.sineInOut});
+			var spr:FlxSprite = cast obj;
+
+			if (spr != null)
+			{
+				FlxTween.cancelTweensOf(spr);
+				FlxTween.tween(spr, {alpha: 1}, this.transIn.duration, {ease: FlxEase.sineInOut});
+			}
 		}
 
 		if (titleTileScrollBG.alpha < 1)
