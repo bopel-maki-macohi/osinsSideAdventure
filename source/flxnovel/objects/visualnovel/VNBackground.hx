@@ -26,5 +26,8 @@ class VNBackground extends FlxSpriteGroup
 		}
 
 		clear();
+
+		if (data == null) return;
+		if (data.props == null) return;
 	}
 }

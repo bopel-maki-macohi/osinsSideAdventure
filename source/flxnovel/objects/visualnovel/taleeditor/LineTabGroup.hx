@@ -100,7 +100,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		if (speakerID.trim() == '')
 			speaker = new SpeakerData(null, null);
 		else
-			speaker = new SpeakerData(speakerID, speakerID.speakerAsset('data'.jsonFile()));
+			speaker = new SpeakerData(speakerID, speakerID.visualNovelSpeakerAsset('data'.jsonFile()));
 
 		if (onSpeakerChangeCallback != null)
 			onSpeakerChangeCallback(speakerID, Std.parseInt(linesDropdown.selectedId));

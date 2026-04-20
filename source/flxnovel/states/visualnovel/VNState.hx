@@ -31,7 +31,7 @@ class VNState extends FlxNovelState
 			if (speakers.exists(taleLine.speaker.id))
 				continue;
 
-			speakers.set(taleLine.speaker.id, new SpeakerData(taleLine.speaker.id, taleLine.speaker.id.speakerAsset('data'.jsonFile())));
+			speakers.set(taleLine.speaker.id, new SpeakerData(taleLine.speaker.id, taleLine.speaker.id.visualNovelSpeakerAsset('data'.jsonFile())));
 		}
 
 		trace('$taleID speakers: ${[for (id => speaker in speakers) id]}');

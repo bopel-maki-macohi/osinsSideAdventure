@@ -31,10 +31,13 @@ class AssetUtil
 	public static inline function visualNovelAsset(file:String):String
 		return assetPath('visualnovel/$file');
 
-	public static inline function taleAsset(file:String):String
+	public static inline function visualNovelTaleAsset(file:String):String
 		return visualNovelAsset('tales/$file');
 
-	public static inline function speakerAsset(speaker:String, file:String):String
+	public static inline function visualNovelBackgroundAsset(file:String):String
+		return visualNovelAsset('backgrounds/$file');
+
+	public static inline function visualNovelSpeakerAsset(speaker:String, file:String):String
 		return visualNovelAsset('speakers/$speaker/$file');
 
 	public static inline function scriptFile(file:String):String

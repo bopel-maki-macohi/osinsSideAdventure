@@ -48,8 +48,8 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 	override public function new(id:String, file:String)
 	{
-		build();
 		this.id = id;
+		build();
 
 		super(file);
 	}

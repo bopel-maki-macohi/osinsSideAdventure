@@ -107,6 +107,8 @@ class InitState extends FlxNovelState
 			FlxG.switchState(() -> new TestVideoState());
 		else if (MacroUtil.isDefined('TALEEDITOR'))
 			FlxG.switchState(() -> new TaleEditor());
+		else if (MacroUtil.isDefined('BGDEBUG'))
+			FlxG.switchState(() -> new BackgroundTesting());
 		else
 			FlxG.switchState(() -> new SplashState());
 	}

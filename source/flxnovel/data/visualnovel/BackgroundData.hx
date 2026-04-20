@@ -9,11 +9,20 @@ class BackgroundData extends ObjectData<BackgroundData>
 
 	public var props:Array<BackgroundPropData>;
 
-	override public function new(file:String)
+	@:jignored
+	public var id:String;
+
+	override public function new(id:String, file:String)
 	{
+		this.id = id;
 		build();
 
 		super(file);
+	}
+
+	public static function fileBuild(file:String)
+	{
+		return new BackgroundData(file, file.visualNovelBackgroundAsset().jsonFile());
 	}
 
 	public function build(?iteration:Int, ?props:Array<BackgroundPropData>)

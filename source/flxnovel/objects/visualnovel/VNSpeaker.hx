@@ -42,7 +42,7 @@ class VNSpeaker extends FlxSprite
 			return;
 		}
 
-		loadGraphic(speaker.speakerAsset('imgs/${stateInfo.asset}').imageFile());
+		loadGraphic(speaker.visualNovelSpeakerAsset('imgs/${stateInfo.asset}').imageFile());
 	}
 
 	public function copy():VNSpeaker
