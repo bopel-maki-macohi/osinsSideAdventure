@@ -1,7 +1,11 @@
+import flxnovel.objects.visualnovel.VNBackground;
+import flxnovel.util.ScriptUtil;
 import flixel.FlxSprite;
-import flxnovel.data.visualnovel.BackgroundData;
 
-function buildBackground(data:BackgroundData, props:Map<String, FlxSprite>)
+function buildBackground(bg:VNBackground)
 {
-	props.get('randomImage').screenCenter();
+	var sprite:FlxSprite = bg.props.get('randomImage');
+
+	trace(Std.string(sprite));
+	ScriptUtil.centerSprite(sprite);
 }

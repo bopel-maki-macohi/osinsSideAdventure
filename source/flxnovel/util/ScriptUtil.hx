@@ -1,9 +1,15 @@
 package flxnovel.util;
 
+import flixel.FlxSprite;
 import polymod.hscript._internal.PolymodScriptClass;
 
 class ScriptUtil
 {
+	public static function centerSprite(sprite:FlxSprite)
+	{
+		sprite.screenCenter();
+	}
+
 	public static var DEFAULT_IMPORTS(default, null):Map<String, Dynamic>;
 
 	public static function init()

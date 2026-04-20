@@ -1,11 +1,11 @@
+import flxnovel.objects.visualnovel.VNBackground;
 import flixel.FlxSprite;
-import flxnovel.data.visualnovel.BackgroundData;
 import flxnovel.objects.visualnovel.VNSpeaker;
 
 function create()
 {
-	trace('create1 : 5');
-	trace('create2 : 6');
+	trace('create1');
+	trace('create2');
 }
 
 var calledUpdate:Int = 0;
@@ -59,14 +59,14 @@ function onEndTale(validEnd:Bool)
 	trace('onEndTale: ' + validEnd);
 }
 
-function buildBackground(data:BackgroundData, props:Map<String, FlxSprite>)
+function buildBackground(bg:VNBackground)
 {
 	trace('buildBackground: ');
-	trace(' * data: ' + data);
+	trace(' * data: ' + bg.data);
 
 	var propKeys:Array<String> = [];
 
-	for (s in props.keys())
+	for (s in bg.props.keys())
 	{
 		propKeys.push(s);
 	}

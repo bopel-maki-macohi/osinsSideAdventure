@@ -57,7 +57,7 @@ class VNBackground extends FlxSpriteGroup
 			}
 		}
 
-		ScriptHandler.call('buildBackground', [data, props]);
+		ScriptHandler.call('buildBackground', [this]);
 	}
 
 	public var props:Map<String, FlxSprite> = [];
