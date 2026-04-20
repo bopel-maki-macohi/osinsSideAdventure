@@ -1,0 +1,17 @@
+package source.flxnovel.data.visualnovel.background;
+
+typedef BackgroundPropData =
+{
+    @:default(graphic)
+	var type:BackgroundPropType;
+
+    @:optional
+    var width:Int;
+    
+    @:optional
+    var height:Int;
+    
+    @:optional
+    @:default('0xFFFFFF')
+    var color:String;
+}
