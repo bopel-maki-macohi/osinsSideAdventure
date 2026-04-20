@@ -25,8 +25,12 @@ class TitleSubStateBase extends FlxNovelSubState
 		this.onExit = onExit;
 	}
 
+	public var leaving:Bool = false;
+
 	override function close()
 	{
+		leaving = true;
+
 		onExit();
 
 		FlxTimer.wait(FlxNovelState.DEFAULT_TRANSITION.duration, () ->
@@ -57,10 +61,8 @@ class TitleSubStateBase extends FlxNovelSubState
 		if (controls.justPressed.LEAVE)
 			close();
 
-		if (!TitleState.bgScrolling)
-		{
+		if (!TitleState.bgScrolling && !leaving)
 			nonScrollingControls();
-		}
 
 		positionSpritesGroup();
 
