@@ -1,5 +1,6 @@
 package flxnovel.objects.visualnovel;
 
+import flxnovel.modding.scripting.ScriptHandler;
 import flxnovel.util.WindowUtil;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
@@ -55,6 +56,8 @@ class VNBackground extends FlxSpriteGroup
 					makeImageProp(propData);
 			}
 		}
+
+		ScriptHandler.call('buildBackground', [data, props]);
 	}
 
 	public var props:Map<String, FlxSprite> = [];
@@ -90,7 +93,7 @@ class VNBackground extends FlxSpriteGroup
 			return;
 
 		var image:FlxSprite = new FlxSprite();
-		image.loadGraphic(data.asset.imageFile());
+		image.loadGraphic(data.asset.assetPath().imageFile());
 
 		image = applyGeneralPropInfo(image, data);
 

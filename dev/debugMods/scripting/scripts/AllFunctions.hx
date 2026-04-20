@@ -1,3 +1,5 @@
+import flixel.FlxSprite;
+import flxnovel.data.visualnovel.BackgroundData;
 import flxnovel.objects.visualnovel.VNSpeaker;
 
 function create()
@@ -55,4 +57,19 @@ function onBuiltSpeaker(speaker:VNSpeaker)
 function onEndTale(validEnd:Bool)
 {
 	trace('onEndTale: ' + validEnd);
+}
+
+function buildBackground(data:BackgroundData, props:Map<String, FlxSprite>)
+{
+	trace('buildBackground: ');
+	trace(' * data: ' + data);
+
+	var propKeys:Array<String> = [];
+
+	for (s in props.keys())
+	{
+		propKeys.push(s);
+	}
+
+	trace(' * prop IDs: ' + propKeys);
 }
