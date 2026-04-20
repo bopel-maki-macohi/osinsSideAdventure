@@ -7,7 +7,7 @@ import json2object.JsonParser;
 
 class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 {
-	public var iteration:Int;
+	public var iteration:Int = 0;
 
 	public var states:Array<SpeakerStateData>;
 
