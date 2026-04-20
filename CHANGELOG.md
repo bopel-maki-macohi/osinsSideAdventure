@@ -6,10 +6,12 @@ THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANT
   - Displays the game's version
   - Displays the current FPS
   - Displays memory info (if it can)
+
 - ADDED MODDING SUPPORT VIA POLYMOD (WOH)
 - Reading text files that dont exist no longer crashes the game
 - ADDED TALE EDITOR
 - Removed Assets Cache System
+
 - Rebuilt Visual Novel stuff (pretty much) all the way from the ground up
   - Redone Story Menu (kinda)
     - It works by looking at a list file that lists tale json names, and inside the tale jsons there's info for storymenu stuff
