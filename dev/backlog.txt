@@ -1,7 +1,5 @@
 HIGH PRIORITY
 
-- VNBackgrounds image prop implementation
-
 - Mod Menu
 
 - Speaker Editor (#2)
