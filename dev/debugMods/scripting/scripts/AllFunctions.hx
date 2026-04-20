@@ -1,4 +1,4 @@
-import osa.data.visualnovel.SpeakerData;
+import osa.objects.visualnovel.VNSpeaker;
 
 function create()
 {
@@ -18,17 +18,40 @@ function update(elapsed:Float)
 
 function onBeatHit(beat:Int)
 {
-	trace('beat: $beat');
+	trace('beat: ' + beat);
 }
 
 function onStepHit(step:Int)
 {
-	trace('step: $step');
+	trace('step: ' + step);
 }
 
-function onAttemptedUnderflow() {}
-function onChangedLine(line:Int) {}
-function onDialogueStartedWriting() {}
-function onDialogueFinishedWriting() {}
-function onBuiltSpeaker(speaker:SpeakerData) {}
-function onEndTale(validEnd:Bool) {}
+function onAttemptedUnderflow()
+{
+	trace('onAttemptedUnderflow');
+}
+
+function onChangedLine(line:Int)
+{
+	trace('onChangedLine: ' + line);
+}
+
+function onDialogueStartedWriting()
+{
+	trace('onDialogueStartedWriting');
+}
+
+function onDialogueFinishedWriting()
+{
+	trace('onDialogueFinishedWriting');
+}
+
+function onBuiltSpeaker(speaker:VNSpeaker)
+{
+	trace('onBuiltSpeaker: ' + speaker);
+}
+
+function onEndTale(validEnd:Bool)
+{
+	trace('onEndTale: ' + validEnd);
+}
