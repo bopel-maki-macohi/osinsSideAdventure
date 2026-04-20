@@ -1,5 +1,6 @@
 package flxnovel.modding.scripting;
 
+import flxnovel.util.ScriptUtil;
 import flxnovel.objects.RhythmManager;
 import flxnovel.util.WindowUtil;
 import haxe.io.Path;
@@ -58,6 +59,9 @@ class ScriptHandler
 				};
 		}
 
+		for (key => value in ScriptUtil.DEFAULT_IMPORTS)
+			set(key, value);
+
 		call('create');
 
 		RhythmManager.instance.beatHit.add(onBeatHit);
@@ -86,4 +90,8 @@ class ScriptHandler
 		for (script in registeredScripts)
 			if (script.exists(func))
 				script.call(func, args);
+
+	public static function set(v:String, vv:Dynamic)
+		for (script in registeredScripts)
+			script.set(v, vv);
 }
