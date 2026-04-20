@@ -30,7 +30,7 @@ class OptionsSubState extends TitleSubStateBase
 				#end
 		});
 
-		addOption('fpsCounter', () ->
+		addOption('debugDisplay', () ->
 		{
 			return 'Debug Display (${getEnabledString(Save.options.get().fpsCounter)})' + ' : Toggles the Debug Display at the top left';
 		}, () ->
