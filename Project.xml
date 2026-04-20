@@ -5,7 +5,7 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<app title="Visual Novel Engine" file="VNE" package="com.maki.vne" />
+	<app title="FlxNovel" file="FN" package="com.maki.flxnovel" />
 	<app main="Main" />
 	<app company="Maki" />
 	<app version="0.12.0" />

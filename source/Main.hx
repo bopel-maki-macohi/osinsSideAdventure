@@ -1,6 +1,6 @@
-import osa.objects.debug.DebugDisplay;
+import flxnovel.objects.debug.DebugDisplay;
 import flixel.system.FlxAssets;
-import osa.util.Constants;
+import flxnovel.util.Constants;
 import lime.app.Application;
 import flixel.FlxG;
 import flixel.util.FlxColor;
@@ -25,7 +25,7 @@ class Main extends Sprite
 		FlxG.stage.window.title += ' (${Constants.GIT_STRING})';
 		#end
 
-		addChild(new FlxGame(1280, 720, osa.InitState));
+		addChild(new FlxGame(1280, 720, flxnovel.InitState));
 		addChild(debugDisplay);
 	}
 }

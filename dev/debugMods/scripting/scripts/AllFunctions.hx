@@ -1,4 +1,4 @@
-import osa.objects.visualnovel.VNSpeaker;
+import flxnovel.objects.visualnovel.VNSpeaker;
 
 function create()
 {
