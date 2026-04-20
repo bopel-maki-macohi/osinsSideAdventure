@@ -4,6 +4,6 @@
 - Mod Menu
 
 - Mobile Support (#1)
-- Linux Build
+- Linux Build (Use chromebook)
 
 - Speaker Editor (#2)
