@@ -7,6 +7,7 @@ THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANT
 - Added "Go to Background Testing" Debug menu option
 
 - THE GAME IS NOW AN ENGINE WHICH IS CALLED "FlxNovel"
+  - New Icon!
   - Story Menu is now Tales Menu
   - The game has been un-osined
   - New logo!
