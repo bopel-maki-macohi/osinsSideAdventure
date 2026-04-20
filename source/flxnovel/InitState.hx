@@ -93,8 +93,8 @@ class InitState extends FlxNovelState
 
 		if (ENTER_VN != null)
 			FlxG.switchState(() -> new VNState(ENTER_VN));
-		else if (MacroUtil.isDefined('STORYMENU'))
-			FlxG.switchState(() -> new TitleState('STORYMENU'));
+		else if (MacroUtil.isDefined('TALESMENU'))
+			FlxG.switchState(() -> new TitleState('TALESMENU'));
 		else if (MacroUtil.isDefined('CREDITS'))
 			FlxG.switchState(() -> new TitleState('CREDITS'));
 		else if (MacroUtil.isDefined('OPTIONSMENU'))
@@ -105,7 +105,7 @@ class InitState extends FlxNovelState
 			FlxG.switchState(() -> new TitleState());
 		else if (MacroUtil.isDefined('VIDEODEBUG'))
 			FlxG.switchState(() -> new TestVideoState());
-		else if (MacroUtil.isDefined('VNEDITOR') || MacroUtil.isDefined('TALEEDITOR'))
+		else if (MacroUtil.isDefined('TALEEDITOR'))
 			FlxG.switchState(() -> new TaleEditor());
 		else
 			FlxG.switchState(() -> new SplashState());

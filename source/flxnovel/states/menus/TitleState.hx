@@ -144,7 +144,7 @@ class TitleState extends FlxNovelState
 
 		switch (targetState?.toLowerCase())
 		{
-			case 'storymenu':
+			case 'talesmenu':
 				TSFunc = () -> talesBtn.onClick.dispatch();
 			case 'credits':
 				TSFunc = () -> creditsBtn.onClick.dispatch();

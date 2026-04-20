@@ -183,6 +183,6 @@ class VNState extends FlxNovelState
 	{
 		ScriptHandler.call('onEndTale', [validEnd]);
 
-		FlxG.switchState(() -> new TitleState());
+		FlxG.switchState(() -> new TitleState('TALESMENU'));
 	}
 }
