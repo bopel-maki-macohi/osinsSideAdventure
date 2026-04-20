@@ -92,16 +92,15 @@ class TitleState extends FlxNovelState
 
 		add(logo);
 
-		storymenuBtn = new ClickableSprite(0, 0, 'title/play'.menuAsset().imageFile());
+		storymenuBtn = new ClickableSprite(0, 0, 'title/story'.menuAsset().imageFile());
 		optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
 		creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
 
-		for (btn in [storymenuBtn, optionsBtn, creditsBtn])
+		for (i => btn in [storymenuBtn, creditsBtn, optionsBtn])
 		{
 			btn.scale.set(0.5, 0.5);
 
 			btn.updateHitbox();
-			btn.screenCenter();
 
 			btn.cameras = [blurCamFG];
 
@@ -109,10 +108,14 @@ class TitleState extends FlxNovelState
 			btn.unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
 
 			btn.y = FlxG.height - btn.height - (128 / 4);
-		}
 
-		storymenuBtn.x = 128;
-		creditsBtn.x = FlxG.width - creditsBtn.width - storymenuBtn.x;
+			btn.x = 128;
+			if (i == 2)
+				btn.x = FlxG.width - btn.width - btn.x;
+
+			if (i == 1)
+				btn.screenCenter(X);
+		}
 
 		add(storymenuBtn);
 		add(optionsBtn);
