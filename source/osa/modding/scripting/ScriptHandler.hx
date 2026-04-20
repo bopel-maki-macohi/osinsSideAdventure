@@ -39,19 +39,8 @@ class ScriptHandler
 
 					trace('Potential script: $path$file');
 
-					if (registeredScripts.exists(Path.withoutExtension(file)))
-					{
-						var oldScript = registeredScripts.get(Path.withoutExtension(file));
-
-						@:privateAccess
-						trace('Overriding "${oldScript.scriptCode.split('\n')[0].substr(2)}" with "$path$file"');
-
-						registeredScripts.remove(Path.withoutExtension(file));
-						oldScript.destroy();
-					}
-
-					var script:Iris = new Iris('// ${path + file}\n\n' + '$path$file'.readText(), {
-						name: Path.withoutExtension(file)
+					var script:Iris = new Iris('//${path + file}\n\n' + '$path$file'.readText(), {
+						name: '$path$file'
 					});
 
 					registeredScripts.set(script.config.name, script);
