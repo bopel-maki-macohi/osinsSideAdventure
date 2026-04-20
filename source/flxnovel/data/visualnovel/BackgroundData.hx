@@ -2,6 +2,7 @@ package flxnovel.data.visualnovel;
 
 import json2object.JsonParser;
 import flxnovel.util.Constants;
+import flxnovel.data.visualnovel.background.BackgroundPropData;
 
 class BackgroundData extends ObjectData<BackgroundData>
 {

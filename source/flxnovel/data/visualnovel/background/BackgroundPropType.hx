@@ -1,4 +1,4 @@
-package source.flxnovel.data.visualnovel.background;
+package flxnovel.data.visualnovel.background;
 
 enum abstract BackgroundPropType(String) from String to String
 {

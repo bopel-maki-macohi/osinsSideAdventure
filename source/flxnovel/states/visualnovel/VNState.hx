@@ -22,7 +22,7 @@ class VNState extends FlxNovelState
 	{
 		super();
 
-		taleData = new TaleData(taleID.jsonFile().taleAsset());
+		taleData = new TaleData(taleID.jsonFile().visualNovelTaleAsset());
 
 		for (taleLine in taleData.lines)
 		{
