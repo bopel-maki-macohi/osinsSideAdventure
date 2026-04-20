@@ -7,3 +7,8 @@
 - Linux Build (Use chromebook)
 
 - Speaker Editor (#2)
+
+- Update Trailer
+
+- OSA Launch Mod
+- Biso Launch Mod
