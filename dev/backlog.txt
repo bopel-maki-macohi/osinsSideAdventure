@@ -1,10 +1,9 @@
+HIGH PRIORITY
+
 - VNBackgrounds graphic prop implementation
 - VNBackgrounds image prop implementation
 
 - Mod Menu
-
-- Mobile Support (#1)
-- Linux Build (Use chromebook)
 
 - Speaker Editor (#2)
 
@@ -12,3 +11,10 @@
 
 - OSA Launch Mod
 - Biso Launch Mod
+
+LOW PRIORITY
+
+- Mobile Support (#1)
+- Linux Build (Use chromebook)
+
+- Stage Editor
