@@ -1,5 +1,6 @@
 package flxnovel.objects.visualnovel;
 
+import flxnovel.data.visualnovel.background.BackgroundPropCallback;
 import flxnovel.modding.scripting.ScriptHandler;
 import flxnovel.util.WindowUtil;
 import flixel.util.FlxColor;
@@ -82,9 +83,8 @@ class VNBackground extends FlxSpriteGroup
 			return;
 
 		var shape:FlxSprite = new FlxSprite().makeGraphic(data.width, data.height, FlxColor.WHITE);
-		shape = applyGeneralPropInfo(shape, data);
 
-		addProp(shape, data.id);
+		addProp(applyGeneralPropInfo(shape, data), data.id);
 	}
 
 	public function makeImageProp(data:BackgroundPropData)
@@ -95,9 +95,7 @@ class VNBackground extends FlxSpriteGroup
 		var image:FlxSprite = new FlxSprite();
 		image.loadGraphic(data.asset.assetPath().imageFile());
 
-		image = applyGeneralPropInfo(image, data);
-
-		addProp(image, data.id);
+		addProp(applyGeneralPropInfo(image, data), data.id);
 	}
 
 	public function applyGeneralPropInfo(prop:FlxSprite, data:BackgroundPropData)
@@ -119,20 +117,25 @@ class VNBackground extends FlxSpriteGroup
 		if (data.y != null)
 			prop.y = data.y;
 
-		if (data.callbacks != null && data.callbacks.length > 0)
+		if (data.callbacks != null)
 			for (callback in data.callbacks)
-			{
-				switch (callback)
-				{
-					case centerXY:
-						prop.screenCenter(XY);
-					case centerX:
-						prop.screenCenter(X);
-					case centerY:
-						prop.screenCenter(Y);
-				}
-			}
+				performCallback(prop, callback);
 
 		return prop;
+	}
+
+	public function performCallback(prop:FlxSprite, callback:BackgroundPropCallback)
+	{
+		switch (callback)
+		{
+			case center, centerXY:
+				prop.screenCenter(XY);
+			case centerX:
+				prop.screenCenter(X);
+			case centerY:
+				prop.screenCenter(Y);
+
+			default:
+		}
 	}
 }
