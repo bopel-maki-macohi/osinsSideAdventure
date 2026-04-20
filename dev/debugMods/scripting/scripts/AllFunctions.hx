@@ -2,7 +2,8 @@ import osa.objects.visualnovel.VNSpeaker;
 
 function create()
 {
-	trace('create');
+	trace('create1 : 5');
+	trace('create2 : 6');
 }
 
 var calledUpdate:Int = 0;
