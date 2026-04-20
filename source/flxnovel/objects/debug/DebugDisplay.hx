@@ -47,7 +47,7 @@ class DebugDisplay extends TextField
 	override function __enterFrame(deltaTime:Float):Void
 	{
 		debugDisplayBG.visible = this.visible;
-		
+
 		final now:Float = haxe.Timer.stamp() * 1000;
 		times.push(now);
 		while (times[0] < now - 1000)
@@ -123,7 +123,7 @@ class DebugDisplay extends TextField
 
 		var texts = [
 			'FlxNovel: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
-
+			'',
 			'FPS: ${currentFPS}',
 			'MEM: ${systemMemory} / ${maxMemory}${memoryUnit}',
 		];
