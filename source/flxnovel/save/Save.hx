@@ -4,19 +4,17 @@ import flixel.FlxG;
 
 class Save
 {
-	public static var issues:SaveField<Array<String>>;
-	public static var beatissues:SaveField<Array<String>>;
+	public static var enabledMods:SaveField<Array<String>>;
 
 	public static var options:SaveField<SaveOptions>;
 
 	static function fieldInit()
 	{
-		issues = new SaveField<Array<String>>('issues', []);
+		enabledMods = new SaveField<Array<String>>('enabledMods', []);
 		options = new SaveField<SaveOptions>('options', {
 			pcname: true,
 			debugDisplay: true,
 		});
-		beatissues = new SaveField<Array<String>>('beatissues', []);
 
 		options.get().pcname ??= true;
 		#if html5

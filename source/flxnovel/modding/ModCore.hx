@@ -1,5 +1,6 @@
 package flxnovel.modding;
 
+import flxnovel.save.Save;
 import flxnovel.modding.scripting.ScriptHandler;
 import flxnovel.util.WindowUtil;
 import polymod.format.ParseRules;
@@ -44,15 +45,19 @@ class ModCore
 			trace(msg);
 	}
 
+	public static var allModIDs(default, null):Array<String> = [];
+
 	public static function reload()
 	{
 		if (Polymod.onError == null)
 			Polymod.onError = onPolymodError;
 
+		allModIDs = getAllModIds();
+
 		ScriptHandler.clearScripts();
 		Polymod.clearScripts();
 
-		loadAllMods();
+		loadEnabledMods();
 
 		ScriptHandler.loadScripts();
 	}
@@ -60,6 +65,11 @@ class ModCore
 	public static function loadAllMods()
 	{
 		loadMods(getAllModIds());
+	}
+
+	public static function loadEnabledMods()
+	{
+		loadMods(Save.enabledMods.get());
 	}
 
 	public static function getAllModIds():Array<String>
