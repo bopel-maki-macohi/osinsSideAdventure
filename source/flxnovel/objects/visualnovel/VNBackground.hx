@@ -1,5 +1,9 @@
 package flxnovel.objects.visualnovel;
 
+import flxnovel.util.WindowUtil;
+import flixel.util.FlxColor;
+import flixel.FlxSprite;
+import flxnovel.data.visualnovel.background.BackgroundPropData;
 import flxnovel.data.visualnovel.BackgroundData;
 import flixel.group.FlxSpriteGroup;
 
@@ -25,6 +29,7 @@ class VNBackground extends FlxSpriteGroup
 				sprite.destroy();
 			}
 
+		props.clear();
 		clear();
 
 		if (data == null)
@@ -37,10 +42,42 @@ class VNBackground extends FlxSpriteGroup
 			switch (propData.type)
 			{
 				case shape:
+					makeShapeProp(propData);
 
 				case image:
 					// TBA
 			}
 		}
+	}
+
+	public var props:Map<String, FlxSprite> = [];
+
+	public function addProp(prop:FlxSprite, id:String)
+	{
+		if (props.exists(id))
+		{
+			WindowUtil.alert('VNBackground Warning : Duplicate Prop ID', 'The following prop ID already has been used and cannot be used again: $id');
+			return;
+		}
+
+		props.set(id, prop);
+		add(prop);
+	}
+
+	public function makeShapeProp(data:BackgroundPropData)
+	{
+		if (data?.width == null)
+			return;
+		if (data?.height == null)
+			return;
+
+		var clr:FlxColor = FlxColor.WHITE;
+
+		if (data?.color != null)
+			clr = FlxColor.fromString(data.color) ?? FlxColor.WHITE;
+
+		var shape:FlxSprite = new FlxSprite().makeGraphic(data.width, data.height, clr);
+
+		addProp(shape, 'shape');
 	}
 }
