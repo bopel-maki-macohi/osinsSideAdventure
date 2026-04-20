@@ -34,6 +34,7 @@
 	<haxedef name="POLYMOD_ROOT_PATH" value="scripts/" />
 	<haxedef name="POLYMOD_DEBUG" if="debug"/>
 
+	<define name="HAS_MODDING" if="debug"/>
 	<define name="INCLUDE_DEBUG_MODS" if="debug"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->

@@ -112,6 +112,9 @@ class ModCore
 
 	static function loadMods(dirs:Array<String>)
 	{
+		#if !HAS_MODDING
+		return;
+		#end
 		trace('Attempting to load ${dirs.length} mod(s)');
 
 		var mods = Polymod.init({
