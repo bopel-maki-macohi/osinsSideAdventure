@@ -19,8 +19,7 @@ class SplashState extends FlxNovelState
 	override public function new()
 	{
 		final thisOutro = FlxNovelState.DEFAULT_TRANSITION;
-		if (!MacroUtil.isDefined('SKIP_SPLASH'))
-			thisOutro.duration = 8;
+		thisOutro.duration = 8;
 
 		super(FlxNovelState.DEFAULT_TRANSITION, thisOutro);
 	}

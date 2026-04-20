@@ -111,6 +111,10 @@ class TitleState extends FlxNovelState
 		creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
 		modsBtn = new ClickableSprite(0, 0, 'title/mods'.menuAsset().imageFile());
 
+		#if html5
+		modsBtn.shader = new GrayscaleShader(.75);
+		#end
+
 		for (i => btn in btns)
 		{
 			btn.scale.set(0.5, 0.5);
@@ -129,7 +133,9 @@ class TitleState extends FlxNovelState
 		talesBtn.onClick.add(() -> onSelectionClicked(talesTileScrollBG, new TalesSubState(() -> onSelectionExited(talesTileScrollBG))));
 		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
 		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
+		#if !html5
 		modsBtn.onClick.add(() -> onSelectionClicked(modsTileScrollBG, new DebugSubState(() -> onSelectionExited(modsTileScrollBG))));
+		#end
 
 		persistentUpdate = true;
 
@@ -181,7 +187,8 @@ class TitleState extends FlxNovelState
 		}
 	}
 
-	public var padding:Float = 1.6;
+	public var paddingStart:Float = 0.3;
+	public var paddingInc:Float = 1.3;
 
 	override function update(elapsed:Float)
 	{
@@ -190,7 +197,7 @@ class TitleState extends FlxNovelState
 		for (i => btn in btns)
 		{
 			btn.y = FlxG.height - btn.height - (128 / 4);
-			btn.x = 128 + ((256 * i) * padding);
+			btn.x = (128 * paddingStart) + ((256 * i) * paddingInc);
 		}
 
 		bgScrolling = titleTileScrollBG.debugModeInUse;

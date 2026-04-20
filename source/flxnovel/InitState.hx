@@ -103,7 +103,7 @@ class InitState extends FlxNovelState
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		else if (MacroUtil.isDefined('MODS'))
 			FlxG.switchState(() -> new TitleState('MODS'));
-		else if (MacroUtil.isDefined('TITLE'))
+		else if (MacroUtil.isDefined('TITLE') || MacroUtil.isDefined('SKIP_SPLASH'))
 			FlxG.switchState(() -> new TitleState());
 		else if (MacroUtil.isDefined('VIDEODEBUG'))
 			FlxG.switchState(() -> new TestVideoState());
