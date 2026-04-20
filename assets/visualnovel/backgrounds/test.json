@@ -1,5 +1,5 @@
 {
-    "iteration": 4,
+    "iteration": 6,
     
     "props": [
         {
@@ -14,6 +14,10 @@
         {
             "id": "randomImage",
             "type": "image",
+
+            "callbacks": [
+                "center"
+            ],
             
             "asset": "misc/goonersSideAdventure"
         }

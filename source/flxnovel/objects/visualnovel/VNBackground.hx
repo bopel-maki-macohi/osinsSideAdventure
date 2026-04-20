@@ -119,6 +119,20 @@ class VNBackground extends FlxSpriteGroup
 		if (data.y != null)
 			prop.y = data.y;
 
+		if (data.callbacks != null && data.callbacks.length > 0)
+			for (callback in data.callbacks)
+			{
+				switch (callback)
+				{
+					case centerXY:
+						prop.screenCenter(XY);
+					case centerX:
+						prop.screenCenter(X);
+					case centerY:
+						prop.screenCenter(Y);
+				}
+			}
+
 		return prop;
 	}
 }

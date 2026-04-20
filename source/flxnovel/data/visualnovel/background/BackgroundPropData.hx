@@ -15,11 +15,9 @@ typedef BackgroundPropData =
 typedef GeneralData =
 {
 	@:optional
-	@:default(0.0)
 	var x:Float;
-	
+
 	@:optional
-	@:default(0.0)
 	var y:Float;
 
 	@:optional
@@ -28,6 +26,10 @@ typedef GeneralData =
 	@:optional
 	@:default('0xFFFFFF')
 	var color:String;
+
+	@:optional
+	@:default([])
+	var callbacks:Array<BackgroundPropCallback>;
 }
 
 typedef ImageData =
