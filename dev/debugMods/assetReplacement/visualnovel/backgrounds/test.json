@@ -1,0 +1,25 @@
+{
+    "iteration": 7,
+    
+    "props": [
+        {
+            "id": "whiteBG",
+            "type": "shape",
+
+            "width": 1280,
+            "height": 720,
+
+            "color": "0xFFFFFF"
+        },
+        {
+            "id": "randomImage",
+            "type": "image",
+
+            "callbacks": [
+                "center"
+            ],
+            
+            "asset": "misc/goonerSideAdventure"
+        }
+    ]
+}
