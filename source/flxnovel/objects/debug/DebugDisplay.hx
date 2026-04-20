@@ -126,7 +126,9 @@ class DebugDisplay extends TextField
 			'FlxNovel: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
 			'',
 			'FPS: ${currentFPS}',
+			#if !html5
 			'MEM: ${systemMemory} / ${maxMemory}${memoryUnit}',
+			#end
 		];
 
 		if (MacroUtil.getDefine('GIVING_CONTEXT') != null)
