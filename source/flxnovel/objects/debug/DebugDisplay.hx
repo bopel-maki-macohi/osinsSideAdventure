@@ -1,5 +1,6 @@
 package flxnovel.objects.debug;
 
+import flxnovel.util.macros.MacroUtil;
 import openfl.events.Event;
 import flxnovel.util.Constants;
 import flxnovel.util.VersionUtil;
@@ -127,6 +128,12 @@ class DebugDisplay extends TextField
 			'FPS: ${currentFPS}',
 			'MEM: ${systemMemory} / ${maxMemory}${memoryUnit}',
 		];
+
+		if (MacroUtil.getDefine('GIVING_CONTEXT') != null)
+		{
+			texts.push('');
+			texts.push('Context: ' + MacroUtil.getDefine('GIVING_CONTEXT'));
+		}
 
 		text = texts.join('\n');
 		width = textWidth * 1.1;
