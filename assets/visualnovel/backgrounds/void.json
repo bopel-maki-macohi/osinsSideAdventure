@@ -1,9 +1,9 @@
 {
-    "iteration": 0,
+    "iteration": 1,
     
     "props": [
         {
-            "type": "graphic",
+            "type": "shape",
 
             "width": 1280,
             "height": 720,
