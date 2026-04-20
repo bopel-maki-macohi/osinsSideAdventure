@@ -2,6 +2,7 @@
 
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
+- The outdated image graphic is now a single blank pixel, so the image is gone visibly but mods can still override it and it's there
 - Pogo is gone from the credits now as the song isn't used anymore
 - Added "Go to Background Testing" Debug menu option
 
