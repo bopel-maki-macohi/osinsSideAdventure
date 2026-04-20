@@ -73,16 +73,16 @@ class TitleState extends FlxNovelState
 
 		add(titleTileScrollBG);
 
-		debugTileScrollBG = TileScrollBG.build(null, 'tiles/tile-sinco'.menuAsset(), titleTileScrollBG);
+		debugTileScrollBG = TileScrollBG.build(null, 'tiles/tile-debug'.menuAsset(), titleTileScrollBG);
 		debugTileScrollBG.alpha = 0;
 
-		storymenuTileScrollBG = TileScrollBG.build(null, 'tiles/tile-osin'.menuAsset(), titleTileScrollBG);
+		storymenuTileScrollBG = TileScrollBG.build(null, 'tiles/tile-story'.menuAsset(), titleTileScrollBG);
 		storymenuTileScrollBG.alpha = 0;
 
-		creditsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-tirok'.menuAsset(), titleTileScrollBG);
+		creditsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-credits'.menuAsset(), titleTileScrollBG);
 		creditsTileScrollBG.alpha = 0;
 
-		optionsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-loroc'.menuAsset(), titleTileScrollBG);
+		optionsTileScrollBG = TileScrollBG.build(null, 'tiles/tile-options'.menuAsset(), titleTileScrollBG);
 		optionsTileScrollBG.alpha = 0;
 
 		add(debugTileScrollBG);
@@ -107,10 +107,11 @@ class TitleState extends FlxNovelState
 
 			btn.overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(btn, 0.6, 0.5));
 			btn.unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
+
+			btn.y = FlxG.height - btn.height - (128 / 4);
 		}
 
 		storymenuBtn.x = 128;
-		optionsBtn.y = FlxG.height - optionsBtn.height - (storymenuBtn.x / 4);
 		creditsBtn.x = FlxG.width - creditsBtn.width - storymenuBtn.x;
 
 		add(storymenuBtn);

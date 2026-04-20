@@ -3,6 +3,8 @@
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
 - THE GAME IS NOW AN ENGINE WHICH IS CALLED "FlxNovel"
+  - New logo!
+    - *Slightly* different title layout to accomodate
 
 - Replaced FPS Counter with a Debug Display
   - Displays the game's version
