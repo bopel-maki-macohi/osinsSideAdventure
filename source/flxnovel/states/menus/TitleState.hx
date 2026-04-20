@@ -99,22 +99,14 @@ class TitleState extends FlxNovelState
 		for (i => btn in [talesBtn, creditsBtn, optionsBtn])
 		{
 			btn.scale.set(0.5, 0.5);
-
 			btn.updateHitbox();
+
+			btn.ID = i;
 
 			btn.cameras = [blurCamFG];
 
 			btn.overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(btn, 0.6, 0.5));
 			btn.unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(btn, 0.5, 0.5));
-
-			btn.y = FlxG.height - btn.height - (128 / 4);
-
-			btn.x = 128;
-			if (i == 2)
-				btn.x = FlxG.width - btn.width - btn.x;
-
-			if (i == 1)
-				btn.screenCenter(X);
 		}
 
 		add(talesBtn);
@@ -168,9 +160,17 @@ class TitleState extends FlxNovelState
 		}
 	}
 
+	public var padding:Float = 1.6;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		for (i => btn in [talesBtn, creditsBtn, optionsBtn])
+		{
+			btn.y = FlxG.height - btn.height - (128 / 4);
+			btn.x = 128 + ((256 * i) * padding);
+		}
 
 		bgScrolling = titleTileScrollBG.debugModeInUse;
 		if (bgScrolling)
