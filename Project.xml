@@ -40,6 +40,9 @@
 	<define name="DONT_INCLUDE_LAUNCH_MODS" unless="debug" />
 	<define name="INCLUDE_LAUNCH_MODS" unless="DONT_INCLUDE_LAUNCH_MODS" />
 
+	<define name="DONT_RUN_OXIPNG" if="debug"/>
+	<prebuild command=".\dev\oxipng.bat" unless="DONT_RUN_OXIPNG"/>
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/release" />
