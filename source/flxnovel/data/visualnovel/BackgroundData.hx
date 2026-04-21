@@ -1,5 +1,6 @@
 package flxnovel.data.visualnovel;
 
+import haxe.io.Path;
 import json2object.JsonParser;
 import flxnovel.util.Constants;
 import flxnovel.data.visualnovel.background.BackgroundPropData;
@@ -12,6 +13,33 @@ class BackgroundData extends ObjectData<BackgroundData>
 
 	@:jignored
 	public var id:String;
+
+	public static var backgrounds(default, null):Array<String> = [];
+	public static var backgroundsLowercase(default, null):Array<String> = [];
+
+	public static function reloadBackgrounds()
+	{
+		var newBGs:Array<String> = [];
+
+		for (dir in 'backgrounds/'.visualNovelAsset().getDirectories())
+		{
+			final bgDir = dir.getFilesInDirectory().filter(f -> return f.endsWith(''.jsonFile()));
+
+			for (file in bgDir)
+			{
+				var bf = Path.withoutExtension(file).split('/');
+
+				var backgroundID = bf[bf.length - 1];
+
+				newBGs.push(backgroundID);
+			}
+		}
+
+		backgrounds = newBGs;
+		backgroundsLowercase = [for (bg in newBGs) bg.toLowerCase()];
+
+		trace('Backgrounds: $backgrounds');
+	}
 
 	override public function new(id:String, file:String)
 	{

@@ -1,5 +1,7 @@
 package flxnovel.states.visualnovel.editors;
 
+import flxnovel.objects.visualnovel.VNBackground;
+import flxnovel.data.visualnovel.BackgroundData;
 import flxnovel.util.plugins.VolumeManagerPlugin;
 import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flixel.FlxSprite;
@@ -24,6 +26,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	public var line_dialogueText:FlxText;
 	public var line_speaker:VNSpeaker;
+	public var line_background:VNBackground;
 
 	public var talemenu_displayText:FlxText;
 	public var talemenu_titleAsset:FlxSprite;
@@ -45,6 +48,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		add(line_dialogueText);
 		add(line_speaker = new VNSpeaker(null));
+		add(line_background = new VNBackground(null));
 
 		add(talemenu_displayText);
 		add(talemenu_titleAsset);
@@ -57,13 +61,14 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			_tale.generatedBy = Constants.GENERATED_BY;
 		};
 
-		uiBox.linesTabGroup.onTextChangeCallback = onLineTextChange;
+		uiBox.linesTabGroup.onLineTextChangeCallback = onLineTextChange;
 		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
 		uiBox.linesTabGroup.onSpeakerChangeCallback = onLineSpeakerChange;
 		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
 		uiBox.linesTabGroup.onNewLineCallback = onNewLine;
 		uiBox.linesTabGroup.onRemoveLineCallback = onRemoveLine;
 		uiBox.linesTabGroup.onAutoSkipStepCallback = onAutoSkipStep;
+		uiBox.linesTabGroup.onBGTextChangeCallback = onLineBGTextChange;
 
 		uiBox.talesTabGroup.onTitleAssetChangeCallback = onTitleAssetChange;
 		uiBox.talesTabGroup.onDisplayTextChangeCallback = onDisplayTextChange;
@@ -142,8 +147,11 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		return [
 			uiBox.dataTabGroup.taleIDInput,
-			uiBox.linesTabGroup.textInput,
+
+			uiBox.linesTabGroup.bgTextInput,
 			uiBox.linesTabGroup.speakersStateInput,
+			uiBox.linesTabGroup.bgTextInput,
+
 			uiBox.talesTabGroup.filterInput,
 			uiBox.talesTabGroup.displayInput,
 			uiBox.talesTabGroup.titleAssetInput,
@@ -179,17 +187,32 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			talemenu_titleAsset.visible = false;
 	}
 
+	function onLineBGTextChange(text:String, index:Int)
+	{
+		if (_tale.lines[index] == null)
+			addNewLineTo(index);
+
+		_tale.lines[index].background = text;
+
+		line_background.visible = false;
+		if (BackgroundData.backgrounds.contains(text))
+		{
+			uiBox.linesTabGroup.bgTextInput.color = FlxColor.GREEN;
+
+			line_background.data = BackgroundData.fileBuild(text);
+			line_background.build();
+			line_background.visible = true;
+		}
+		else if (BackgroundData.backgroundsLowercase.contains(text.toLowerCase()))
+			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.YELLOW;
+		else
+			uiBox.linesTabGroup.bgTextInput.color = FlxColor.RED;
+	}
+
 	function onAutoSkipStep(value:Float, index:Int)
 	{
 		if (_tale.lines[index] == null)
-			_tale.lines[index] = {
-				text: uiBox.linesTabGroup.textInput.text,
-				speaker: {
-					id: uiBox.linesTabGroup.speakersDropdown.selectedId,
-					state: uiBox.linesTabGroup.speakersStateInput.text,
-				},
-				autoSkip: 0
-			}
+			addNewLineTo(index);
 
 		_tale.lines[index].autoSkip = value;
 
@@ -198,8 +221,15 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onLineSpeakerStateChange(text:String, index:Int)
 	{
-		if (_tale.lines[index].speaker == null)
+		if (_tale.lines[index]?.speaker == null)
 		{
+			if (_tale.lines[index] == null)
+			{
+				_tale.lines[index] = {
+					text: uiBox.linesTabGroup.lineTextInput.text
+				};
+			}
+
 			_tale.lines[index].speaker = {
 				id: uiBox.linesTabGroup.speakersDropdown.selectedId,
 				state: text,
@@ -213,7 +243,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.GREEN;
 			line_speaker.build(text);
 		}
-		else if (line_speaker?.data?.hasStateIDLowercase(text) && line_speaker.state != null)
+		else if (line_speaker?.data?.hasStateIDLowercase(text.toLowerCase()) && line_speaker.state != null)
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.YELLOW;
 		else
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.RED;
@@ -271,18 +301,25 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		ldd.selectedId = (ldd.list[index - 1] ?? ldd.list[ldd.list.length - 1])?.name ?? '0';
 	}
 
-	function onNewLine()
+	function addNewLineTo(index:Int)
 	{
-		_tale.lines.push({
-			text: '',
-			speaker: {
-				id: 'test',
-				state: 'default',
-			},
-			autoSkip: 0.0,
-		});
+		if (index > 0)
+			_tale.lines[index] = {
+				text: uiBox.linesTabGroup.bgTextInput.text,
+				speaker: {
+					id: uiBox.linesTabGroup.speakersDropdown.selectedId,
+					state: uiBox.linesTabGroup.speakersStateInput.text,
+				},
+				autoSkip: uiBox.linesTabGroup.autoSkipStepper.value,
+				background: uiBox.linesTabGroup.bgTextInput.text
+			};
 
 		refresh();
+	}
+
+	function onNewLine()
+	{
+		addNewLineTo(_tale.lines.length - 1);
 
 		var ldd = uiBox.linesTabGroup.linesDropdown;
 
@@ -292,7 +329,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
 	{
 		if (_tale.lines[index] == null)
-			onLineTextChange(uiBox.linesTabGroup.textInput.text, index);
+			onLineTextChange(uiBox.linesTabGroup.bgTextInput.text, index);
 
 		if (newSpeaker == '' || newSpeaker == null)
 		{

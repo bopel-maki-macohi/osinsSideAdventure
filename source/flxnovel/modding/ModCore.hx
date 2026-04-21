@@ -1,5 +1,6 @@
 package flxnovel.modding;
 
+import flxnovel.data.visualnovel.BackgroundData;
 import polymod.util.DefineUtil;
 import flxnovel.save.Save;
 import flxnovel.modding.scripting.ScriptHandler;
@@ -72,6 +73,7 @@ class ModCore
 		ScriptHandler.loadScripts();
 
 		SpeakerData.reloadSpeakers();
+		BackgroundData.reloadBackgrounds();
 	}
 
 	public static function loadAllMods()

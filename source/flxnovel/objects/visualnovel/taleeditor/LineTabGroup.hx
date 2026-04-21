@@ -25,8 +25,8 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public var speakersStateInput:FlxUIInputText;
 	public var onSpeakerStateChangeCallback:String->Int->Void;
 
-	public var textInput:FlxUIInputText;
-	public var onTextChangeCallback:String->Int->Void;
+	public var lineTextInput:FlxUIInputText;
+	public var onLineTextChangeCallback:String->Int->Void;
 
 	public var newLineBTN:FlxButton;
 	public var onNewLineCallback:Void->Void;
@@ -36,6 +36,9 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public var autoSkipStepper:FlxUINumericStepper;
 	public var onAutoSkipStepCallback:Float->Int->Void;
+
+	public var bgTextInput:FlxUIInputText;
+	public var onBGTextChangeCallback:String->Int->Void;
 
 	override function create()
 	{
@@ -52,13 +55,18 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y, speakers, onSpeakerChange);
 		speakersDropdown.selectedId = '';
 
-		textInput = new FlxUIInputText(speakersDropdown.x + speakersDropdown.width + 10, speakersDropdown.y, 320, '', 8);
-		textInput.callback = onTextChange;
+		lineTextInput = new FlxUIInputText(speakersDropdown.x + speakersDropdown.width + 10, speakersDropdown.y, 320, '', 8);
+		lineTextInput.callback = onLineTextChange;
 
-		speakersStateInput = new FlxUIInputText(textInput.x, textInput.y + textInput.height + 20, Math.round(textInput.width), '', textInput.size);
+		speakersStateInput = new FlxUIInputText(lineTextInput.x, lineTextInput.y + lineTextInput.height + 20, Math.round(lineTextInput.width), '',
+			lineTextInput.size);
 		speakersStateInput.callback = onSpeakerStateChange;
 
-		newLineBTN = new FlxButton(speakersStateInput.x, speakersStateInput.y + speakersStateInput.height + 10, 'New Line', onNewLine);
+		bgTextInput = new FlxUIInputText(speakersStateInput.x, speakersStateInput.y + speakersStateInput.height + 20, Math.round(lineTextInput.width), '',
+			lineTextInput.size);
+		bgTextInput.callback = onLineBGTextChange;
+
+		newLineBTN = new FlxButton(bgTextInput.x, bgTextInput.y + bgTextInput.height + 10, 'New Line', onNewLine);
 
 		removeLineBTN = new FlxButton(newLineBTN.x + newLineBTN.width + 10, newLineBTN.y, 'Remove Line', onRemoveLine);
 
@@ -72,11 +80,14 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		add(makeText(speakersDropdown, 'Line Speaker ID: '));
 		add(speakersDropdown);
 
-		add(makeText(textInput, 'Line Text: '));
-		add(textInput);
+		add(makeText(lineTextInput, 'Line Text: '));
+		add(lineTextInput);
 
 		add(makeText(speakersStateInput, 'Line Speaker State: '));
 		add(speakersStateInput);
+
+		add(makeText(bgTextInput, 'Line BG: '));
+		add(bgTextInput);
 
 		add(newLineBTN);
 		add(removeLineBTN);
@@ -85,6 +96,12 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		add(autoSkipStepper);
 
 		onSpeakerChange(speakersDropdown.selectedLabel);
+	}
+
+	public function onLineBGTextChange(text:String, action:String)
+	{
+		if (onBGTextChangeCallback != null)
+			onBGTextChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
 	}
 
 	// small yoink from FNF legacy code
@@ -135,17 +152,16 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 			onSpeakerChangeCallback(speakerID, Std.parseInt(linesDropdown.selectedId));
 	}
 
-	public function onTextChange(text:String, action:String)
+	public function onLineTextChange(text:String, action:String)
 	{
-		if (onTextChangeCallback != null)
-			onTextChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
+		if (onLineTextChangeCallback != null)
+			onLineTextChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
 	}
 
 	public function onChangedLine(indexStr:String)
 	{
 		onChangedLineBasic(indexStr);
-
-		onChangedLineCallback();
+		onChangedLineCallbacks();
 	}
 
 	public function onChangedLineBasic(indexStr:String)
@@ -153,16 +169,20 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		var line:TaleLineData = _tale?.lines[Std.parseInt(indexStr)] ?? null;
 
 		speakersDropdown.selectedId = line?.speaker?.id ?? '';
-		textInput.text = line?.text ?? '';
+
+		lineTextInput.text = line?.text ?? '';
 		speakersStateInput.text = line?.speaker?.state ?? '';
+		bgTextInput.text = line?.background ?? '';
+
 		autoSkipStepper.value = line?.autoSkip ?? 0.0;
 	}
 
-	public function onChangedLineCallback()
+	public function onChangedLineCallbacks()
 	{
 		onSpeakerChange(speakersDropdown.selectedId);
-		onTextChange(textInput.text, '');
+		onLineTextChange(lineTextInput.text, '');
 		onSpeakerStateChange(speakersStateInput.text, '');
+		onLineBGTextChange(bgTextInput.text, '');
 	}
 
 	public var lines(get, never):Array<StrNameLabel>;

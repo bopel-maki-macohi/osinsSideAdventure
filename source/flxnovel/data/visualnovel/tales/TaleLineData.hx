@@ -12,4 +12,8 @@ typedef TaleLineData =
     @:optional
     @:default(0)
     var autoSkip:Float;
+
+    @:optional
+    @:default('')
+    var background:String;
 }
