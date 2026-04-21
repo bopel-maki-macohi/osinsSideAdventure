@@ -19,7 +19,7 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 	public static var speakers(default, null):Array<String> = [];
 
-	public static function reloadSpeakers():Array<String>
+	public static function reloadSpeakers()
 	{
 		var newSpeakers:Array<String> = [];
 
