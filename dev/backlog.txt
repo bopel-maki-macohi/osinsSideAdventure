@@ -2,10 +2,9 @@ HIGH PRIORITY
 
 - Update Trailer
 
-- OSA Mod v1
-- Biso Mod v1
-
 LOW PRIORITY
+
+- Music playing in Tales via the JSON
 
 - Speaker Editor (#2)
 
