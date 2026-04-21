@@ -75,7 +75,7 @@ class AssetUtil
 
 		if (file == null)
 		{
-			trace('Null file content: $text');
+			trace('Null file content: ${text.textFile()}');
 			return [];
 		}
 
