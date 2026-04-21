@@ -21,6 +21,11 @@
       "version": "2.6.4"
     },
     {
+      "name": "hscript",
+      "type": "haxelib",
+      "version": "2.7.0"
+    },
+    {
       "name": "hscript-iris",
       "type": "haxelib",
       "version": "1.1.3"
