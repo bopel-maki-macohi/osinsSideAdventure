@@ -133,7 +133,7 @@ class TitleState extends FlxNovelState
 			add(btn);
 		}
 
-		talesBtn.onClick.add(() -> if (TalesSubState.entries.length > 0) onSelectionClicked(talesTileScrollBG,
+		talesBtn.onClick.add(() -> if (talesBtn.shader == null) onSelectionClicked(talesTileScrollBG,
 			new TalesSubState(() -> onSelectionExited(talesTileScrollBG))));
 		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
 		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
