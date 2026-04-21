@@ -48,10 +48,6 @@ class InitState extends FlxNovelState
 
 		Save.init();
 
-		RhythmManager.instance = new RhythmManager();
-
-		Controls.instance = new Controls('Main');
-
 		ScriptUtil.init();
 
 		ScreenshotPlugin.init();

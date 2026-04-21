@@ -39,6 +39,11 @@ enum Inputs
 
 class Controls extends FlxControls<Inputs> implements ISingletonAutomake
 {
+	override public function new()
+	{
+		super('Main');
+	}
+
 	public var keys(get, never):Map<Inputs, Array<Key>>;
 
 	function get_keys():Map<Inputs, Array<Key>>
