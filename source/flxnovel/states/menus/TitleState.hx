@@ -111,6 +111,9 @@ class TitleState extends FlxNovelState
 		creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
 		modsBtn = new ClickableSprite(0, 0, 'title/mods'.menuAsset().imageFile());
 
+		if (TalesSubState.entries.length < 1)
+			talesBtn.shader = new GrayscaleShader(.75);
+		
 		#if html5
 		modsBtn.shader = new GrayscaleShader(.75);
 		#end
@@ -130,7 +133,8 @@ class TitleState extends FlxNovelState
 			add(btn);
 		}
 
-		talesBtn.onClick.add(() -> onSelectionClicked(talesTileScrollBG, new TalesSubState(() -> onSelectionExited(talesTileScrollBG))));
+		talesBtn.onClick.add(() -> if (TalesSubState.entries.length > 0) onSelectionClicked(talesTileScrollBG,
+			new TalesSubState(() -> onSelectionExited(talesTileScrollBG))));
 		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
 		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
 		#if !html5

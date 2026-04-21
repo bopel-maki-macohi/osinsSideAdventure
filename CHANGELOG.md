@@ -21,6 +21,7 @@ THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANT
 - Rebuilt Visual Novel stuff (pretty much) all the way from the ground up
   - Redone Story Menu (kinda)
     - It works by looking at a list file that lists tale json names, and inside the tale jsons there's info for storymenu stuff
+    - You can no longer enter the menu if there aren't any tales availible 
   - New typing sounds!
   - The typing sound system from 0.10 is now gone
   - Speakers are now sperate from Tales and are also JSON
