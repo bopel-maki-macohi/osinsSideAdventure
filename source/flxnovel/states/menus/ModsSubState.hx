@@ -31,8 +31,6 @@ class ModsSubState extends TitleSubStateBase
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		hasChangedList = !(Save.enabledMods.get() == ogEnabledMods);
 	}
 
 	override function close()
@@ -78,6 +76,7 @@ class ModsSubState extends TitleSubStateBase
 		enabledMods.sort(SortUtil.alphabetically);
 
 		Save.enabledMods.set(enabledMods);
+        hasChangedList = (enabledMods.copy() != ogEnabledMods.copy());
 	}
 
 	function getModStr(modID:String)
