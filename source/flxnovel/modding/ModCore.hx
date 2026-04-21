@@ -26,7 +26,7 @@ class ModCore
 
 	static function onPolymodError(e:PolymodError)
 	{
-		final msg:String = '${e.code ?? 'debug'}'.toUpperCase() + ' : ' + e.message;
+		var msg:String = '${e.code ?? 'debug'}'.toUpperCase() + ' : ' + e.message;
 
 		switch (e.code)
 		{
@@ -35,6 +35,9 @@ class ModCore
 
 			case MOD_MISSING_ICON:
 				return;
+
+			case MOD_MISSING_METADATA:
+				msg += '\nThe mod is most likely not there anymore,\nand thus will be removed from your enabledMods save field';
 
 			default:
 		}
