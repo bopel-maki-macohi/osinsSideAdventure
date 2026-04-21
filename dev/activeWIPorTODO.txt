@@ -1,4 +1,2 @@
 - OSA Mod v1
 - Biso Mod v1
-
-- autoSkip Tale Editor UI Element
