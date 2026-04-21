@@ -37,6 +37,8 @@ class ModsSubState extends TitleSubStateBase
 			'',
 			'API Version: ${mod.apiVersion}',
 			'Mod Version: ${mod.modVersion}',
+            '',
+            'Enabled: ${ModCore.loadedMods.exists(modID)}'
 		];
 
 		return infos.join('\n');
