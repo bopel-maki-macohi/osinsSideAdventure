@@ -1,5 +1,6 @@
 package flxnovel.states.menus;
 
+import flxnovel.modding.ModCore;
 import flxnovel.util.ArrayUtil;
 import flxnovel.util.SoundUtil;
 import flxnovel.shaders.GrayscaleShader;
@@ -113,10 +114,9 @@ class TitleState extends FlxNovelState
 
 		if (TalesSubState.entries.length < 1)
 			talesBtn.shader = new GrayscaleShader(.75);
-		
-		#if html5
-		modsBtn.shader = new GrayscaleShader(.75);
-		#end
+
+		if (ModCore.allModIDs.length < 1)
+			modsBtn.shader = new GrayscaleShader(.75);
 
 		for (i => btn in btns)
 		{
@@ -137,9 +137,8 @@ class TitleState extends FlxNovelState
 			new TalesSubState(() -> onSelectionExited(talesTileScrollBG))));
 		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
 		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
-		#if !html5
-		modsBtn.onClick.add(() -> onSelectionClicked(modsTileScrollBG, new ModsSubState(() -> onSelectionExited(modsTileScrollBG))));
-		#end
+		modsBtn.onClick.add(() -> if (ModCore.allModIDs.length > 0) onSelectionClicked(modsTileScrollBG,
+			new ModsSubState(() -> onSelectionExited(modsTileScrollBG))));
 
 		persistentUpdate = true;
 
