@@ -73,3 +73,13 @@ function buildBackground(bg:VNBackground)
 
 	trace(' * prop IDs: ' + propKeys);
 }
+
+function splashSpecialCase(specialCaseFunc:Dynamic, specialCaseID:String)
+{
+	trace(specialCaseID);
+
+	if (specialCaseID == 'SURPRISEMF')
+	{
+		trace('ARE YOU SURPRISED BECH?');
+	}
+}

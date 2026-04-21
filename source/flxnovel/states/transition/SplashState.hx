@@ -1,6 +1,7 @@
 package flxnovel.states.transition;
 
 import flixel.util.FlxColor;
+import flxnovel.modding.scripting.ScriptHandler;
 import flixel.text.FlxText;
 import flxnovel.util.VersionUtil;
 import flxnovel.states.menus.OutdatedState;
@@ -133,6 +134,9 @@ class SplashState extends FlxNovelState
 			trace(msg.specialCase);
 			var specialCase:Dynamic = Reflect.field(this, msg.specialCase);
 
+			ScriptHandler.call('splashSpecialCase', [specialCase, msg.specialCase]);
+
+			trace(specialCase);
 			if (specialCase != null)
 			{
 				FlxTimer.wait(this.transIn.duration * 2, specialCase);
