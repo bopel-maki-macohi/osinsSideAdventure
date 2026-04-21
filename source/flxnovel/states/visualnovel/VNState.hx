@@ -12,6 +12,7 @@ import flixel.addons.text.FlxTypeText;
 import flxnovel.data.visualnovel.tales.TaleLineData;
 import flxnovel.objects.visualnovel.*;
 import flxnovel.data.visualnovel.*;
+import flixel.util.FlxTimer;
 
 class VNState extends FlxNovelState implements ITaleContainer
 {
@@ -153,9 +154,23 @@ class VNState extends FlxNovelState implements ITaleContainer
 
 	public function finishWritingDialogue()
 	{
-		finishedWriting = true;
+		if (line.autoSkip != null && line.autoSkip > 0)
+		{
+			FlxTimer.wait(line.autoSkip, autoSkipDialogue);
+		}
+		else
+		{
+			finishedWriting = true;
+		}
 
 		ScriptHandler.call('onDialogueFinishedWriting', []);
+	}
+
+	public function autoSkipDialogue()
+	{
+		changeLine(1);
+
+		ScriptHandler.call('onDialogueAutoSkip', []);
 	}
 
 	public function buildSpeaker()

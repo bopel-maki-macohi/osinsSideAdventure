@@ -160,13 +160,15 @@ class TitleState extends FlxNovelState
 		switch (targetState?.toLowerCase())
 		{
 			case 'talesmenu':
-				TSFunc = () -> talesBtn.onClick.dispatch();
+				if (talesBtn.shader == null)
+					TSFunc = () -> talesBtn.onClick.dispatch();
 			case 'credits':
 				TSFunc = () -> creditsBtn.onClick.dispatch();
 			case 'optionsmenu':
 				TSFunc = () -> optionsBtn.onClick.dispatch();
 			case 'mods':
-				TSFunc = () -> modsBtn.onClick.dispatch();
+				if (ModCore.allModIDs.length > 0)
+					TSFunc = () -> modsBtn.onClick.dispatch();
 			case 'debugmenu':
 				TSFunc = debugSubState;
 		}
