@@ -16,16 +16,23 @@ class ModsSubState extends TitleSubStateBase
 {
 	override function create()
 	{
-		ogEnabledMods = Save.enabledMods.get();
+		ogEnabledMods = Save.enabledMods.get().copy();
 
 		addDefaultScaleThingies = false;
 		useDefaultScale = false;
 
-        spacing = Math.round(Constants.MOD_ICON_SIZE_PIXELS * 1.5);
+		spacing = Math.round(Constants.MOD_ICON_SIZE_PIXELS * 1.5);
 
 		loadMods();
 
 		super.create();
+	}
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		hasChangedList = !(Save.enabledMods.get() == ogEnabledMods);
 	}
 
 	override function close()
@@ -70,7 +77,7 @@ class ModsSubState extends TitleSubStateBase
 			enabledMods.push(modID);
 		enabledMods.sort(SortUtil.alphabetically);
 
-		hasChangedList = (enabledMods != ogEnabledMods);
+		Save.enabledMods.set(enabledMods);
 	}
 
 	function getModStr(modID:String)
