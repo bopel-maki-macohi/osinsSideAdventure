@@ -1,5 +1,6 @@
 package flxnovel.states.visualnovel;
 
+import flxnovel.util.ISingletonManual;
 import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flxnovel.modding.scripting.ScriptHandler;
 import flixel.util.FlxColor;
@@ -14,11 +15,9 @@ import flxnovel.objects.visualnovel.*;
 import flxnovel.data.visualnovel.*;
 import flixel.util.FlxTimer;
 
-class VNState extends FlxNovelState implements ITaleContainer
+class VNState extends FlxNovelState implements ITaleContainer implements ISingletonManual
 {
 	public var _tale:TaleData;
-
-	public static var instance:VNState;
 
 	override public function new(taleID:String)
 	{

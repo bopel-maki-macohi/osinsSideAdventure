@@ -1,5 +1,6 @@
 package flxnovel.objects;
 
+import flxnovel.util.ISingletonAutomake;
 import flixel.FlxG;
 import flixel.util.FlxSignal.FlxTypedSignal;
 
@@ -7,14 +8,12 @@ import flixel.util.FlxSignal.FlxTypedSignal;
  * Yoinked from WTFEngine
  * https://github.com/VirtuGuy/WTF-Engine/blob/main/source/funkin/Conductor.hx
  */
-class RhythmManager
+class RhythmManager implements ISingletonAutomake
 {
 	public static final MS_PER_SEC:Int = 1000;
 	public static final SECS_PER_MIN:Int = 60;
 	public static final PIXELS_PER_MS:Float = 0.45;
 	public static final STEPS_PER_BEAT:Int = 4;
-
-	public static var instance:RhythmManager;
 
 	public var time:Float;
 	public var bpm(default, set):Float;

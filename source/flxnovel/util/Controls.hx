@@ -37,10 +37,8 @@ enum Inputs
 	VOLUME_MUTE;
 }
 
-class Controls extends FlxControls<Inputs>
+class Controls extends FlxControls<Inputs> implements ISingletonAutomake
 {
-	public static var instance:Controls;
-
 	public var keys(get, never):Map<Inputs, Array<Key>>;
 
 	function get_keys():Map<Inputs, Array<Key>>
