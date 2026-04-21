@@ -94,7 +94,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		talemenu_titleAsset.screenCenter();
 		talemenu_titleAsset.x = FlxG.width - talemenu_titleAsset.width * 2;
 
-		line_speaker.visible = (line_dialogueText.visible = uiBox.selected_tab == 1) && line_speaker.data != null;
+		line_speaker.visible = (line_dialogueText.visible = uiBox.selected_tab == 1) && line_speaker.data != null && line_speaker.active;
 
 		talemenu_titleAsset.visible = talemenu_displayText.visible = uiBox.selected_tab == 2;
 
