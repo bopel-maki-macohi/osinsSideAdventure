@@ -1,4 +1,4 @@
 function create()
 {
-	trace('Hello World but modded');
+	trace('Hello World but real');
 }
