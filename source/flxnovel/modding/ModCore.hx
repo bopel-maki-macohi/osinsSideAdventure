@@ -38,7 +38,7 @@ class ModCore
 				return;
 
 			case MOD_MISSING_METADATA:
-				msg += '\nThe mod is most likely not there anymore,\nand thus will be removed from your enabledMods save field';
+				msg += '\nThe mod is most likely not there anymore,\nand thus will be removed from your "enabledMods" save field';
 
 			default:
 		}
