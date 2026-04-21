@@ -17,11 +17,11 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 	@:jignored
 	public var id:String;
 
-	public static var speakers(get, never):Array<String>;
+	public static var speakers(default, null):Array<String> = [];
 
-	static function get_speakers():Array<String>
+	public static function reloadSpeakers():Array<String>
 	{
-		var speakers:Array<String> = [];
+		var newSpeakers:Array<String> = [];
 
 		for (dir in 'speakers/'.visualNovelAsset().getDirectories())
 		{
@@ -33,11 +33,12 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 				var speakerID = sf[sf.length - 2];
 
-				speakers.push(speakerID);
+				newSpeakers.push(speakerID);
 			}
 		}
 
-		return speakers;
+		speakers = newSpeakers;
+		trace('Speakers: $speakers');
 	}
 
 	override public function new(id:String, file:String)

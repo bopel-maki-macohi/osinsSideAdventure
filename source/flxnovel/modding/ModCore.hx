@@ -8,6 +8,7 @@ import polymod.format.ParseRules;
 import polymod.backends.PolymodAssets.PolymodAssetType;
 import polymod.fs.ZipFileSystem;
 import polymod.Polymod;
+import flxnovel.data.visualnovel.SpeakerData;
 
 class ModCore
 {
@@ -69,6 +70,8 @@ class ModCore
 		loadEnabledMods();
 
 		ScriptHandler.loadScripts();
+
+		SpeakerData.reloadSpeakers();
 	}
 
 	public static function loadAllMods()
