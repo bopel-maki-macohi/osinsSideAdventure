@@ -1,0 +1,15 @@
+{
+    "iteration": 0,
+
+    "states": [
+        {
+            "id": "cheerful",
+            "asset": "cheerful",
+
+            "offsets": [
+                0,
+                0
+            ]
+        }
+    ]
+}
