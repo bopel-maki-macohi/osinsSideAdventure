@@ -1,3 +1,7 @@
+DO IT WHEN YOU GET THE CHANCE
+
+- AutoSkip Tale Line Field
+
 HIGH PRIORITY
 
 - Update Trailer
@@ -10,8 +14,8 @@ LOW PRIORITY
 - Speaker Editor (#2)
 
 - Mobile Support (#1)
-- Linux Build (Use chromebook)
 
+- Linux Build (Use chromebook)
 - Background Editor
 
 - Discord RPC
