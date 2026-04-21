@@ -62,7 +62,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		removeLineBTN = new FlxButton(newLineBTN.x + newLineBTN.width + 10, newLineBTN.y, 'Remove Line', onRemoveLine);
 
-		autoSkipStepper = new FlxUINumericStepper(removeLineBTN.x, removeLineBTN.y, 0.1, 0, 0.0, 60.0, 1);
+		autoSkipStepper = new FlxUINumericStepper(removeLineBTN.x + removeLineBTN.width + 10, removeLineBTN.y + 5, 0.1, 0, 0.0, 60.0, 1);
 		autoSkipStepper.value = 0;
 		autoSkipStepper.name = 'line_autoSkip';
 
