@@ -13,6 +13,7 @@ import flxnovel.objects.visualnovel.taleeditor.TaleEditorTabMenu;
 import flxnovel.data.visualnovel.TaleData;
 import flxnovel.states.menus.TitleState;
 import flixel.FlxG;
+import flixel.addons.ui.FlxUIInputText;
 
 class TaleEditor extends FlxNovelState implements ITaleContainer
 {
@@ -111,23 +112,26 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		if (controls.justPressed.LEAVE)
 		{
-			if (uiBox.dataTabGroup.taleIDInput.hasFocus)
-				return;
-
-			if (uiBox.linesTabGroup.textInput.hasFocus)
-				return;
-			if (uiBox.linesTabGroup.speakersStateInput.hasFocus)
-				return;
-
-			if (uiBox.talesTabGroup.filterInput.hasFocus)
-				return;
-			if (uiBox.talesTabGroup.displayInput.hasFocus)
-				return;
-			if (uiBox.talesTabGroup.titleAssetInput.hasFocus)
-				return;
+			for (inputText in typingInputs)
+				if (inputText.hasFocus)
+					return;
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
+	}
+
+	public var typingInputs(get, never):Array<FlxUIInputText>;
+
+	function get_typingInputs():Array<FlxUIInputText>
+	{
+		return [
+			uiBox.dataTabGroup.taleIDInput,
+			uiBox.linesTabGroup.textInput,
+			uiBox.linesTabGroup.speakersStateInput,
+			uiBox.talesTabGroup.filterInput,
+			uiBox.talesTabGroup.displayInput,
+			uiBox.talesTabGroup.titleAssetInput,
+		];
 	}
 
 	public function loadTaleMenuTitle()
