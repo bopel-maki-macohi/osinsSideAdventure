@@ -2,8 +2,8 @@ HIGH PRIORITY
 
 - Update Trailer
 
-- OSA Launch Mod
-- Biso Launch Mod
+- OSA Mod v1
+- Biso Mod v1
 
 LOW PRIORITY
 
