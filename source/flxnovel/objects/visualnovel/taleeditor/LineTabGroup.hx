@@ -1,5 +1,7 @@
 package flxnovel.objects.visualnovel.taleeditor;
 
+import flixel.addons.ui.FlxUICheckBox;
+import flixel.addons.ui.FlxUINumericStepper;
 import flxnovel.util.DropdownListUpdater;
 import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flixel.ui.FlxButton;
@@ -32,6 +34,9 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public var removeLineBTN:FlxButton;
 	public var onRemoveLineCallback:Int->Void;
 
+	public var autoSkipStepper:FlxUINumericStepper;
+	public var onAutoSkipStepCallback:Float->Int->Void;
+
 	override function create()
 	{
 		super.create();
@@ -57,6 +62,10 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		removeLineBTN = new FlxButton(newLineBTN.x + newLineBTN.width + 10, newLineBTN.y, 'Remove Line', onRemoveLine);
 
+		autoSkipStepper = new FlxUINumericStepper(removeLineBTN.x, removeLineBTN.y, 0.1, 0, 0.0, 60.0, 1);
+		autoSkipStepper.value = 0;
+		autoSkipStepper.name = 'line_autoSkip';
+
 		add(makeText(linesDropdown, 'Selected Line: '));
 		add(linesDropdown);
 
@@ -72,7 +81,32 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		add(newLineBTN);
 		add(removeLineBTN);
 
+		add(makeText(autoSkipStepper, 'Auto Skip Time (Seconds): '));
+		add(autoSkipStepper);
+
 		onSpeakerChange(speakersDropdown.selectedLabel);
+	}
+
+	// small yoink from FNF legacy code
+	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
+	{
+		var index:Int = Std.parseInt(linesDropdown.selectedId) ?? 0;
+
+		if (id == FlxUICheckBox.CLICK_EVENT)
+		{
+			var check:FlxUICheckBox = cast sender;
+			var label = check.getLabel().text;
+
+			switch (label) {}
+		}
+		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))
+		{
+			var nums:FlxUINumericStepper = cast sender;
+			var wname = nums.name;
+
+			if (wname == 'line_autoSkip' && onAutoSkipStepCallback != null)
+				onAutoSkipStepCallback(nums.value, index);
+		}
 	}
 
 	public function onSpeakerStateChange(text:String, action:String)
@@ -121,6 +155,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		speakersDropdown.selectedId = line?.speaker?.id ?? '';
 		textInput.text = line?.text ?? '';
 		speakersStateInput.text = line?.speaker?.state ?? '';
+		autoSkipStepper.value = line?.autoSkip ?? 0.0;
 	}
 
 	public function onChangedLineCallback()

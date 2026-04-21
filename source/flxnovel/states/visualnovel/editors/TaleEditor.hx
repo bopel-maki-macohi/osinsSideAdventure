@@ -63,6 +63,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
 		uiBox.linesTabGroup.onNewLineCallback = onNewLine;
 		uiBox.linesTabGroup.onRemoveLineCallback = onRemoveLine;
+		uiBox.linesTabGroup.onAutoSkipStepCallback = onAutoSkipStep;
 
 		uiBox.talesTabGroup.onTitleAssetChangeCallback = onTitleAssetChange;
 		uiBox.talesTabGroup.onDisplayTextChangeCallback = onDisplayTextChange;
@@ -169,6 +170,16 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			talemenu_titleAsset.visible = false;
 	}
 
+	function onAutoSkipStep(value:Float, index:Int)
+	{
+		if (_tale.lines[index] == null)
+			onLineTextChange(uiBox.linesTabGroup.textInput.text, index);
+
+		_tale.lines[index].autoSkip = value;
+
+		refresh();
+	}
+
 	function onLineSpeakerStateChange(text:String, index:Int)
 	{
 		if (_tale.lines[index].speaker == null)
@@ -251,7 +262,8 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			speaker: {
 				id: 'test',
 				state: 'default',
-			}
+			},
+			autoSkip: 0.0,
 		});
 
 		refresh();
