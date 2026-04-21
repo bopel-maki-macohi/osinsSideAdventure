@@ -1,5 +1,7 @@
 package flxnovel.states.visualnovel.editors;
 
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import flxnovel.objects.visualnovel.VNBackground;
 import flxnovel.data.visualnovel.BackgroundData;
 import flxnovel.util.plugins.VolumeManagerPlugin;
@@ -25,14 +27,27 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	public var uiBox:TaleEditorTabMenu;
 
 	public var line_dialogueText:FlxText;
+	public var dialogueTextBG:FlxSprite;
+
 	public var line_speaker:VNSpeaker;
 	public var line_background:VNBackground;
 
 	public var talemenu_displayText:FlxText;
 	public var talemenu_titleAsset:FlxSprite;
 
+	override function onExit()
+	{
+		super.onExit();
+
+		FlxTween.cancelTweensOf(Main.debugDisplay);
+		FlxTween.tween(Main.debugDisplay, {x: 10, y: 10}, this.transOut.duration, {ease: FlxEase.sineInOut});
+	}
+
 	override function create()
 	{
+		FlxTween.cancelTweensOf(Main.debugDisplay);
+		FlxTween.tween(Main.debugDisplay, {x: 10, y: FlxG.height - Main.debugDisplay.height - 10}, this.transIn.duration, {ease: FlxEase.sineInOut});
+
 		_tale = TaleData.fileBuild(null);
 		_tale.talesmenu = {};
 
@@ -41,6 +56,9 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		line_dialogueText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
 		line_dialogueText.alignment = CENTER;
 
+		dialogueTextBG = new FlxSprite().makeGraphic(1, 1, FlxColor.BLACK);
+		dialogueTextBG.alpha = .1;
+
 		talemenu_displayText = new FlxText(0, 20, Math.round(FlxG.width / 1), '', 16);
 		talemenu_displayText.alignment = CENTER;
 
@@ -48,6 +66,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		add(line_background = new VNBackground(null));
 		add(line_speaker = new VNSpeaker(null));
+		add(dialogueTextBG);
 		add(line_dialogueText);
 
 		add(talemenu_displayText);
@@ -92,6 +111,12 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		uiBox._tale = _tale;
 
 		line_dialogueText.screenCenter(X);
+
+		dialogueTextBG.scale.set(line_dialogueText.width, line_dialogueText.height);
+		dialogueTextBG.updateHitbox();
+
+		dialogueTextBG.x = line_dialogueText.x;
+		dialogueTextBG.y = line_dialogueText.y;
 
 		line_speaker.applyOrientation();
 		line_speaker.x += uiBox.width - (line_speaker.width / 2);

@@ -1,5 +1,6 @@
 package flxnovel.objects.debug;
 
+import flixel.tweens.FlxTween;
 import flxnovel.util.MemoryUtil;
 import flxnovel.util.macros.MacroUtil;
 import openfl.events.Event;
@@ -47,6 +48,11 @@ class DebugDisplay extends TextField
 
 	override function __enterFrame(deltaTime:Float):Void
 	{
+		var hasTweens:Bool = false;
+
+		@:privateAccess
+		FlxTween.globalManager.forEachTweensOf(this, null, (t) -> hasTweens = true);
+
 		debugDisplayBG.visible = this.visible;
 
 		final now:Float = haxe.Timer.stamp() * 1000;
@@ -55,7 +61,9 @@ class DebugDisplay extends TextField
 			times.shift();
 
 		// If the time between updates is less than 50 milliseconds, don't update the display yet.
-		if (deltaTimeout < 50)
+		// If there are tweens of this tho, keep updating
+		
+		if (deltaTimeout < 50 && !hasTweens)
 		{
 			deltaTimeout += deltaTime;
 			return;
