@@ -32,9 +32,13 @@
 
 	<define name="hscriptPos" />
 	<haxedef name="POLYMOD_ROOT_PATH" value="scripts/" />
-	<haxedef name="POLYMOD_DEBUG" if="debug"/>
+	<haxedef name="POLYMOD_DEBUG" if="debug" />
 
-	<define name="INCLUDE_DEBUG_MODS" if="debug"/>
+	<define name="DONT_INCLUDE_DEBUG_MODS" unless="debug" />
+	<define name="INCLUDE_DEBUG_MODS" unless="DONT_INCLUDE_DEBUG_MODS" />
+
+	<define name="DONT_INCLUDE_LAUNCH_MODS" unless="debug" />
+	<define name="INCLUDE_LAUNCH_MODS" unless="DONT_INCLUDE_LAUNCH_MODS" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -43,8 +47,11 @@
 
 	<source path="source" />
 	<assets path="assets" />
+	
 	<assets path="mods" />
-	<assets path="dev/debugMods" rename="mods" if="INCLUDE_DEBUG_MODS"/>
+	<assets path="dev/debugMods" rename="mods" if="INCLUDE_DEBUG_MODS" />
+	<assets path="dev/launchMods" rename="mods" if="INCLUDE_LAUNCH_MODS" />
+
 	<assets path="CHANGELOG.md" />
 
 	<!-- _______________________________ Libraries ______________________________ -->

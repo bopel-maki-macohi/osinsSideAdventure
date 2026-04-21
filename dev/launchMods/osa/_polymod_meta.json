@@ -1,0 +1,12 @@
+{
+    "title": "Biso",
+    "description": "Young fighter Biso has been practicing his whole life for this moment! To become the strongest under the heavens!",
+    "contributors": [
+        {
+            "name": "Maki"
+        }
+    ],
+    "api_version": "0.12.0",
+    "mod_version": "1.0.0",
+    "license": "MIT"
+}
