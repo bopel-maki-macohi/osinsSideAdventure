@@ -2,12 +2,7 @@
 
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
-- Fixed Title Submenus not having the little overlap scale thing (when did this happen?)
 - ADDED MODS MENU (TRIPLE FUCKING WOOOOOOOH)
-- Fixed being able to still use menu controls while leaving a title submenu
-- The outdated image graphic is now a single blank pixel, so the image is gone visibly but mods can still override it and it's there
-- Pogo is gone from the credits now as the song isn't used anymore
-- Added "Go to Background Testing" Debug menu option
 
 - THE GAME IS NOW AN ENGINE WHICH IS CALLED "FlxNovel"
   - New Icon!
@@ -17,17 +12,11 @@ THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANT
     - Debug / Sinco and Options / Loroc tile assets have been swapped
     - Different title layout to accomodate
 
-- Replaced FPS Counter with a Debug Display
-  - Displays the game's version
-  - Displays the current FPS
-  - Displays memory info (if it can)
-
 - ADDED SCRIPT SUPPORT VIA HSCRIPT-IRIS (DOUBLE WOH)
 - ADDED MODDING SUPPORT VIA POLYMOD (WOH)
   - Mods are loaded alphabetically (by id) btw so uh yeah if a earlier alphabet mod like, replaces a file your mod replaced then whoopsie :(
-- Reading text files that dont exist no longer crashes the game
+
 - ADDED TALE EDITOR
-- Removed Assets Cache System
 
 - Rebuilt Visual Novel stuff (pretty much) all the way from the ground up
   - Redone Story Menu (kinda)
@@ -37,6 +26,20 @@ THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANT
   - Speakers are now sperate from Tales and are also JSON
   - Tales are now JSON!
   - Issues are Tales now
+
+- Fixed Title Submenus not having the little overlap scale thing (when did this happen?)
+- Fixed being able to still use menu controls while leaving a title submenu
+- The outdated image graphic is now a single blank pixel, so the image is gone visibly but mods can still override it and it's there
+- Pogo is gone from the credits now as the song isn't used anymore
+- Added "Go to Background Testing" Debug menu option
+
+- Replaced FPS Counter with a Debug Display
+  - Displays the game's version
+  - Displays the current FPS
+  - Displays memory info (if it can)
+
+- Reading text files that dont exist no longer crashes the game
+- Removed Assets Cache System
 
 # 0.11.2 (4/17/2026)
 
