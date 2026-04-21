@@ -46,6 +46,7 @@ class ModCore
 	}
 
 	public static var allModIDs(default, null):Array<String> = [];
+	public static var allModMetadata(default, null):Map<String, ModMetadata> = [];
 
 	public static function reload()
 	{
@@ -90,6 +91,12 @@ class ModCore
 			fileSystem: modFileSystem,
 			errorCallback: onPolymodError
 		});
+
+		for (mod in modMetadata)
+		{
+			allModMetadata.set(mod.id, mod);
+		}
+
 		trace('Found ${modMetadata.length} mods when scanning.');
 		return modMetadata;
 	}

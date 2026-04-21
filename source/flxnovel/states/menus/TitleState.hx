@@ -134,7 +134,7 @@ class TitleState extends FlxNovelState
 		optionsBtn.onClick.add(() -> onSelectionClicked(optionsTileScrollBG, new OptionsSubState(() -> onSelectionExited(optionsTileScrollBG))));
 		creditsBtn.onClick.add(() -> onSelectionClicked(creditsTileScrollBG, new CreditsSubState(() -> onSelectionExited(creditsTileScrollBG))));
 		#if !html5
-		modsBtn.onClick.add(() -> onSelectionClicked(modsTileScrollBG, new DebugSubState(() -> onSelectionExited(modsTileScrollBG))));
+		modsBtn.onClick.add(() -> onSelectionClicked(modsTileScrollBG, new ModsSubState(() -> onSelectionExited(modsTileScrollBG))));
 		#end
 
 		persistentUpdate = true;

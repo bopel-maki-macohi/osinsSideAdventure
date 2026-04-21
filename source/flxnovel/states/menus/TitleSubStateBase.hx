@@ -122,7 +122,7 @@ class TitleSubStateBase extends FlxNovelSubState
 
 	public function makeSprite(asset:String, optionText:Void->String, ?onClick:Void->Void):ClickableSprite
 	{
-		var credSpr:ClickableSprite = new ClickableSprite(0, 0, asset.menuAsset().imageFile());
+		var credSpr:ClickableSprite = new ClickableSprite(0, 0, asset?.menuAsset()?.imageFile());
 		credSpr.overlapUpdate.add(() -> setText((optionText == null) ? 'Unknown' : optionText()));
 
 		if (onClick != null)
