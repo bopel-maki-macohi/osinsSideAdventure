@@ -46,9 +46,9 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		talemenu_titleAsset = new FlxSprite();
 
-		add(line_dialogueText);
-		add(line_speaker = new VNSpeaker(null));
 		add(line_background = new VNBackground(null));
+		add(line_speaker = new VNSpeaker(null));
+		add(line_dialogueText);
 
 		add(talemenu_displayText);
 		add(talemenu_titleAsset);
@@ -238,10 +238,13 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		else
 			_tale.lines[index].speaker.state = text;
 
+		line_speaker.active = false;
 		if (line_speaker?.data?.hasStateID(text) && line_speaker.state != null)
 		{
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.GREEN;
+
 			line_speaker.build(text);
+			line_speaker.active = true;
 		}
 		else if (line_speaker?.data?.hasStateIDLowercase(text.toLowerCase()) && line_speaker.state != null)
 			uiBox.linesTabGroup.speakersStateInput.color = FlxColor.YELLOW;
