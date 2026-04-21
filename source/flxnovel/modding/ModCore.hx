@@ -26,7 +26,8 @@ class ModCore
 
 	static function onPolymodError(e:PolymodError)
 	{
-		var msg:String = '${e.code ?? 'debug'}'.toUpperCase() + ' : ' + e.message;
+		final code:String = '${e.code ?? 'debug'}'.toUpperCase();
+		var msg:String = code + ' : ' + e.message;
 
 		switch (e.code)
 		{
@@ -43,7 +44,7 @@ class ModCore
 		}
 
 		if (e.severity == ERROR || e.severity == WARNING)
-			WindowUtil.alert('POLYMOD ${e.severity}', msg);
+			WindowUtil.alert('POLYMOD ${e.severity} : $code', msg.replace(' : ', '\n\n'));
 		else
 			trace(msg);
 	}
