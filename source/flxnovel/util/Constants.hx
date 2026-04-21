@@ -14,6 +14,8 @@ class Constants
 	public static final ITERATION_TALEDATA:Int = 2;
 	public static final ITERATION_BACKGROUNDDATA:Int = 7;
 
+	public static final MOD_ICON_SIZE_PIXELS:Int = 150;
+
 	public static var GIT_STRING(get, never):String;
 
 	static function get_GIT_STRING():String

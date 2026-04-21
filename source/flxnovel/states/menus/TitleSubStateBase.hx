@@ -89,7 +89,7 @@ class TitleSubStateBase extends FlxNovelSubState
 
 	public function positionSpritesGroup()
 	{
-		sprites.x = FlxMath.lerp(sprites.x, currentSelection * -256, 0.1);
+		sprites.x = FlxMath.lerp(sprites.x, currentSelection * -spacing, 0.1);
 	}
 
 	public function nonScrollingControls()
@@ -172,7 +172,7 @@ class TitleSubStateBase extends FlxNovelSubState
 		for (sprite in sprites.members)
 		{
 			sprite.screenCenter();
-			sprite.x += sprite.ID * 256;
+			sprite.x += sprite.ID * spacing;
 		}
 	}
 
@@ -182,8 +182,11 @@ class TitleSubStateBase extends FlxNovelSubState
 		{
 			obj.useMouse = false;
 
-			obj.scale.set(.5, .5);
-			obj.updateHitbox();
+			if (useDefaultScale)
+			{
+				obj.scale.set(.5, .5);
+				obj.updateHitbox();
+			}
 
 			obj.ID = i;
 			if (addDefaultScaleThingies)
@@ -198,5 +201,8 @@ class TitleSubStateBase extends FlxNovelSubState
 		positionSprites();
 	}
 
-	public var addDefaultScaleThingies:Bool = false;
+	public var addDefaultScaleThingies:Bool = true;
+	public var useDefaultScale:Bool = true;
+
+	public var spacing:Float = 256;
 }

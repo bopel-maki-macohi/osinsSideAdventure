@@ -1,5 +1,6 @@
 package flxnovel.states.menus;
 
+import flxnovel.util.Constants;
 import flixel.FlxG;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
@@ -16,6 +17,11 @@ class ModsSubState extends TitleSubStateBase
 	override function create()
 	{
 		ogEnabledMods = Save.enabledMods.get();
+
+		addDefaultScaleThingies = false;
+		useDefaultScale = false;
+
+        spacing = Math.round(Constants.MOD_ICON_SIZE_PIXELS * 1.5);
 
 		loadMods();
 
@@ -39,7 +45,13 @@ class ModsSubState extends TitleSubStateBase
 		else
 			entry.loadGraphic('mods/defaultIcon'.menuAsset().imageFile());
 
-        entry.setGraphicSize(300);
+		entry.setGraphicSize(Constants.MOD_ICON_SIZE_PIXELS);
+		entry.updateHitbox();
+
+		var curEntryScale = entry.scale.x;
+
+		entry.overlapUpdate.add(() -> ClickableSprite.overlapUpdateScale(entry, curEntryScale * 1.1, .1));
+		entry.unoverlapUpdate.add(() -> ClickableSprite.unoverlapUpdateScale(entry, curEntryScale, .1));
 
 		spriteList.push(entry);
 	}

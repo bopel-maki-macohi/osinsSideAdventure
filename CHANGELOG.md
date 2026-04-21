@@ -2,6 +2,7 @@
 
 THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANTING TO COME BACK TO THIS.
 
+- Fixed Title Submenus not having the little overlap scale thing (when did this happen?)
 - ADDED MODS MENU (TRIPLE FUCKING WOOOOOOOH)
 - Fixed being able to still use menu controls while leaving a title submenu
 - The outdated image graphic is now a single blank pixel, so the image is gone visibly but mods can still override it and it's there
