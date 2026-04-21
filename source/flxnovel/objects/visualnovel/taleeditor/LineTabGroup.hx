@@ -109,17 +109,24 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onChangedLine(indexStr:String)
 	{
-		var index:Int = Std.parseInt(indexStr);
+		onChangedLineBasic(indexStr);
 
-		var line:TaleLineData = _tale?.lines[index] ?? null;
+		onChangedLineCallback();
+	}
+
+	public function onChangedLineBasic(indexStr:String)
+	{
+		var line:TaleLineData = _tale?.lines[Std.parseInt(indexStr)] ?? null;
 
 		speakersDropdown.selectedId = line?.speaker?.id ?? '';
-		onSpeakerChange(speakersDropdown.selectedId);
-
 		textInput.text = line?.text ?? '';
-		onTextChange(textInput.text, '');
-
 		speakersStateInput.text = line?.speaker?.state ?? '';
+	}
+
+	public function onChangedLineCallback()
+	{
+		onSpeakerChange(speakersDropdown.selectedId);
+		onTextChange(textInput.text, '');
 		onSpeakerStateChange(speakersStateInput.text, '');
 	}
 

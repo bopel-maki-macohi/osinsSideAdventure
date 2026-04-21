@@ -149,7 +149,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		if (path.fileExists())
 		{
 			talemenu_titleAsset.loadGraphic(path);
-			
+
 			talemenu_titleAsset.scale.set(.5, .5);
 			talemenu_titleAsset.updateHitbox();
 
@@ -322,5 +322,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		uiBox.linesTabGroup.updateList();
 		uiBox.talesTabGroup.updateList();
+
+		uiBox.linesTabGroup.onChangedLineBasic(uiBox.linesTabGroup.linesDropdown.selectedId);
 	}
 }
