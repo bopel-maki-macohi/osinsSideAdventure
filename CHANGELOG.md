@@ -23,6 +23,7 @@ THE GAME IS TAKING A NEW DIRECTION NOW. EVERYONE THANK REQUAZAR FOR ME EVEN WANT
 
 - ADDED SCRIPT SUPPORT VIA HSCRIPT-IRIS (DOUBLE WOH)
 - ADDED MODDING SUPPORT VIA POLYMOD (WOH)
+  - Mods are loaded alphabetically (by id) btw so uh yeah if a earlier alphabet mod like, replaces a file your mod replaced then whoopsie :(
 - Reading text files that dont exist no longer crashes the game
 - ADDED TALE EDITOR
 - Removed Assets Cache System
