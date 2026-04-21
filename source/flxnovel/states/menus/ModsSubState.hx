@@ -39,6 +39,8 @@ class ModsSubState extends TitleSubStateBase
 		else
 			entry.loadGraphic('mods/defaultIcon'.menuAsset().imageFile());
 
+        entry.setGraphicSize(300);
+
 		spriteList.push(entry);
 	}
 
