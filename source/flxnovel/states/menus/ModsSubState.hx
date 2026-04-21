@@ -44,12 +44,7 @@ class ModsSubState extends TitleSubStateBase
 
 	public function loadMods()
 	{
-		spriteList = [];
-		sprites.clear();
-
 		for (id in ModCore.allModIDs)
-		{
 			makeModEntry(id);
-		}
 	}
 }
