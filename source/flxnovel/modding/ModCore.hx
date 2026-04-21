@@ -135,8 +135,6 @@ class ModCore
 		return output;
 	}
 
-	static var extensionMap:Map<String, PolymodAssetType> = ['pdn' => BYTES,];
-
 	static function loadMods(dirs:Array<String>)
 	{
 		trace('Attempting to load ${dirs.length} mod(s)');
@@ -161,8 +159,6 @@ class ModCore
 			},
 
 			skipDependencyErrors: true,
-
-			extensionMap: extensionMap
 		});
 
 		loadedMods = [];
@@ -172,37 +168,5 @@ class ModCore
 		var modIDs = [for (mod in loadedMods) mod.id];
 
 		trace('Loaded mods: ${modIDs}');
-
-		for (type in [
-			PolymodAssetType.AUDIO_GENERIC,
-			PolymodAssetType.AUDIO_MUSIC,
-			PolymodAssetType.AUDIO_SOUND,
-			// PolymodAssetType.BYTES,
-			PolymodAssetType.FONT,
-			PolymodAssetType.IMAGE,
-			PolymodAssetType.MANIFEST,
-			PolymodAssetType.TEMPLATE,
-			PolymodAssetType.TEXT,
-			PolymodAssetType.UNKNOWN,
-			PolymodAssetType.VIDEO,
-		])
-		{
-			var files:Array<String> = [for (asset in Polymod.listModFiles(type)) asset];
-
-			for (file in files)
-				if (file == DefineUtil.getDefineString('POLYMOD_MOD_METADATA_FILE'))
-					files.remove(file);
-
-			var amt:Int = files.length;
-
-			if (amt > 0)
-			{
-				trace(' * Replaced / Added ${amt} ${type} file(s)');
-				#if LIST_MOD_FILES
-				for (file in files)
-					trace('   * $file');
-				#end
-			}
-		}
 	}
 }
