@@ -127,7 +127,8 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		}
 	}
 
-	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>) {
+	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
+	{
 		super.getEvent(id, sender, data, params);
 
 		uiBox?.dataTabGroup?.getEvent(id, sender, data, params);
@@ -361,5 +362,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		uiBox.talesTabGroup.updateList();
 
 		uiBox.linesTabGroup.onChangedLineBasic(uiBox.linesTabGroup.linesDropdown.selectedId);
+
+		onLineSpeakerStateChange(uiBox.linesTabGroup.speakersStateInput.text, Std.parseInt(uiBox.linesTabGroup.linesDropdown.selectedId));
 	}
 }
