@@ -54,6 +54,11 @@ class ModCore
 			Polymod.onError = onPolymodError;
 
 		allModIDs = getAllModIds();
+		for (modID in Save.enabledMods.get())
+		{
+			if (!allModIDs.contains(modID))
+				Save.enabledMods.get().remove(modID);
+		}
 
 		ScriptHandler.clearScripts();
 		Polymod.clearScripts();
