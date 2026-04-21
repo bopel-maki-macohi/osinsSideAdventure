@@ -1,11 +1,13 @@
 {
-    "iteration": 0,
-
+    "iteration": 2,
+    "config": {
+        "orientation": "bottom",
+        "orientationOffset": 100
+    },
     "states": [
         {
             "id": "cheerful",
             "asset": "cheerful",
-
             "offsets": [
                 0,
                 0

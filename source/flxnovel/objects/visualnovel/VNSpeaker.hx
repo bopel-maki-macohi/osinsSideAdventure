@@ -53,7 +53,7 @@ class VNSpeaker extends FlxSprite
 		switch (data?.config?.orientation)
 		{
 			case bottom:
-				y = FlxG.height - this.height;
+				y = (FlxG.height - this.height) - (data?.config?.orientationOffset ?? 0);
 
 			case center:
 		}
