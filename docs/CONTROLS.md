@@ -1,5 +1,13 @@
 # Controls
 
+## Misc
+
+PLUS / NUMPAD PLUS : Volume Up
+
+MINUS / NUMPAD MINUS : Volume Down
+
+ZERO : Mute
+
 ## Extra
 
 F1 - Crash the Game
@@ -10,9 +18,9 @@ F5 - Reload Mods and Scripts
 
 ## Title Menu Controls
 
-7 - Debug Menu
+SEVEN - Debug Menu
 
-SPACE - Switch to the Title State (This was a transition test and I never removed the key ¯\\_\(ツ)\_/¯)
+SPACE - Switch to the Title State (This was a transition test and I never removed the key ¯\\\_\(ツ)\_/¯)
 
 SHIFT - Enabling moving the scroll bg
 

@@ -31,6 +31,10 @@ enum Inputs
 	DEBUG_CRASH;
 	SCREENSHOT;
 	MOD_RELOAD;
+
+	VOLUME_UP;
+	VOLUME_DOWN;
+	VOLUME_MUTE;
 }
 
 class Controls extends FlxControls<Inputs>
@@ -59,6 +63,10 @@ class Controls extends FlxControls<Inputs>
 			DEBUG_CRASH => [Key.F1],
 			SCREENSHOT => [Key.F3],
 			MOD_RELOAD => [Key.F5],
+
+			VOLUME_UP => [Key.PLUS, Key.NUMPADPLUS],
+			VOLUME_DOWN => [Key.MINUS, Key.NUMPADMINUS],
+			VOLUME_MUTE => [Key.ZERO],
 		];
 	}
 

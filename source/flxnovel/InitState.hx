@@ -1,5 +1,6 @@
 package flxnovel;
 
+import flxnovel.util.plugins.VolumeManagerPlugin;
 import flxnovel.modding.ModCore;
 import flxnovel.states.visualnovel.editors.*;
 import flxnovel.states.visualnovel.VNState;
@@ -47,10 +48,15 @@ class InitState extends FlxNovelState
 
 		Save.init();
 
-		ScreenshotPlugin.init();
+		RhythmManager.instance = new RhythmManager();
+
+		Controls.instance = new Controls('Main');
 
 		ScriptUtil.init();
-		
+
+		ScreenshotPlugin.init();
+		VolumeManagerPlugin.init();
+
 		FlxG.signals.postUpdate.add(modReloadCheck);
 
 		FlxG.console.registerClass(Constants);
@@ -71,12 +77,8 @@ class InitState extends FlxNovelState
 
 	function unimportantInit()
 	{
-		RhythmManager.instance = new RhythmManager();
-
-		Controls.instance = new Controls('Main');
-
 		ModCore.reload();
-		
+
 		#if DISABLE_OUTDATEDSTATE
 		flxnovel.states.menus.OutdatedState.SEEN = true;
 		#end

@@ -1,5 +1,6 @@
 package flxnovel.states.visualnovel.editors;
 
+import flxnovel.util.plugins.VolumeManagerPlugin;
 import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
@@ -109,6 +110,11 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			talemenu_displayText.text = uiBox.dataTabGroup._taleID;
 			talemenu_displayText.alpha = .5;
 		}
+
+		VolumeManagerPlugin.volumeKeysActive = true;
+		for (inputText in typingInputs)
+			if (inputText.hasFocus)
+				VolumeManagerPlugin.volumeKeysActive = false;
 
 		if (controls.justPressed.LEAVE)
 		{

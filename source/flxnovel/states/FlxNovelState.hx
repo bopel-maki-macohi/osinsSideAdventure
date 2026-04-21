@@ -1,5 +1,6 @@
 package flxnovel.states;
 
+import flxnovel.util.plugins.VolumeManagerPlugin;
 import flxnovel.modding.scripting.ScriptHandler;
 import flxnovel.util.VersionUtil;
 import flxnovel.util.Constants;
@@ -48,6 +49,8 @@ class FlxNovelState extends FlxUIState
 		}
 
 		FlxG.inputs.addInput(controls);
+
+		VolumeManagerPlugin.volumeKeysActive = true;
 	}
 
 	public static var TRANSITION_CAMERA:FlxCamera;
