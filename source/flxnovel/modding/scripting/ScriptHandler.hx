@@ -15,13 +15,7 @@ class ScriptHandler
 
 	static function get_SCRIPT_PATHS():Array<String>
 	{
-		var rootPath:String = DefineUtil.getDefineString('POLYMOD_ROOT_PATH');
-		var paths:Array<String> = [rootPath.assetPath()];
-
-		for (mod in ModCore.loadedMods)
-			paths.push(ModCore.MOD_ROOT + '/' + mod.dirName + '/' + rootPath);
-
-		return paths;
+		return DefineUtil.getDefineString('POLYMOD_ROOT_PATH').getDirectories();
 	}
 
 	public static function loadScripts()

@@ -1,5 +1,6 @@
 package flxnovel.util;
 
+import flxnovel.modding.ModCore;
 import lime.utils.Assets;
 
 class AssetUtil
@@ -49,7 +50,7 @@ class AssetUtil
 	public static inline function fileExists(file:String):Bool
 		return Assets.exists(file);
 
-	public static inline function readText(file:String):String
+	public static function readText(file:String):String
 	{
 		try
 		{
@@ -88,4 +89,19 @@ class AssetUtil
 
 	public static function getFilesInDirectory(directory:String):Array<String>
 		return Assets.list().filter(f -> return f.startsWith(directory));
+
+	public static function getDirectories(directory:String):Array<String>
+	{
+		var rootPath:String = directory;
+
+		if (rootPath.startsWith('assets/'))
+			rootPath = rootPath.substr('assets/'.length);
+
+		var paths:Array<String> = [rootPath.assetPath()];
+
+		for (mod in ModCore.loadedMods)
+			paths.push(ModCore.MOD_ROOT + '/' + mod.dirName + '/' + directory);
+
+		return paths;
+	}
 }

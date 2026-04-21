@@ -85,7 +85,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		line_dialogueText.screenCenter(X);
 
-		line_speaker.screenCenter(Y);
+		line_speaker.applyOrientation();
 		line_speaker.x = FlxG.width - line_speaker.width * 2;
 
 		talemenu_titleAsset.screenCenter();

@@ -11,17 +11,8 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 	public var states:Array<SpeakerStateData>;
 
-	public function getStateIDS():Array<String>
-		return [for (data in states) data.id.trim()];
-
-	public function getStateIDSLowercase():Array<String>
-		return [for (id in getStateIDS()) id.toLowerCase()];
-
-	public function hasStateID(id:String):Bool
-		return getStateIDS().contains(id.trim());
-
-	public function hasStateIDLowercase(id:String):Bool
-		return getStateIDSLowercase().contains(id.trim().toLowerCase());
+	@:optional
+	public var config:SpeakerConfigData;
 
 	@:jignored
 	public var id:String;
@@ -32,15 +23,18 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 	{
 		var speakers:Array<String> = [];
 
-		final speakersDir = 'speakers/'.visualNovelAsset().getFilesInDirectory().filter(f -> return f.endsWith('data'.jsonFile()));
-
-		for (file in speakersDir)
+		for (dir in 'speakers/'.visualNovelAsset().getDirectories())
 		{
-			var sf = Path.withoutExtension(file).split('/');
+			final speakersDir = dir.getFilesInDirectory().filter(f -> return f.endsWith('data'.jsonFile()));
 
-			var speakerID = sf[sf.length - 2];
+			for (file in speakersDir)
+			{
+				var sf = Path.withoutExtension(file).split('/');
 
-			speakers.push(speakerID);
+				var speakerID = sf[sf.length - 2];
+
+				speakers.push(speakerID);
+			}
 		}
 
 		return speakers;
@@ -59,10 +53,11 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 		return new SpeakerData(file, file?.visualNovelSpeakerAsset('data'.jsonFile()));
 	}
 
-	public function build(?iteration:Int, ?states:Array<SpeakerStateData>)
+	public function build(?iteration:Int, ?states:Array<SpeakerStateData>, ?config:SpeakerConfigData)
 	{
 		this.iteration = iteration ?? Constants.ITERATION_SPEAKERDATA;
 		this.states = states ?? [];
+		this.config = config ?? {};
 	}
 
 	override function load(file:String)
@@ -74,8 +69,20 @@ class SpeakerData extends ObjectData<SpeakerData> implements IIterationBasedData
 
 		var data:SpeakerData = new JsonParser<SpeakerData>().fromJson(file.readText(), file);
 
-		build(data.iteration, data.states);
+		build(data.iteration, data.states, data.config);
 	}
+
+	public function getStateIDS():Array<String>
+		return [for (data in states) data.id.trim()];
+
+	public function getStateIDSLowercase():Array<String>
+		return [for (id in getStateIDS()) id.toLowerCase()];
+
+	public function hasStateID(id:String):Bool
+		return getStateIDS().contains(id.trim());
+
+	public function hasStateIDLowercase(id:String):Bool
+		return getStateIDSLowercase().contains(id.trim().toLowerCase());
 
 	public function getStateInfo(stateID:String):SpeakerStateData
 	{

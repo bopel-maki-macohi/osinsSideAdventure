@@ -1,5 +1,6 @@
 package flxnovel.modding;
 
+import polymod.util.DefineUtil;
 import flxnovel.save.Save;
 import flxnovel.modding.scripting.ScriptHandler;
 import flxnovel.util.WindowUtil;
@@ -169,9 +170,9 @@ class ModCore
 		trace('Loaded mods: ${modIDs}');
 
 		for (type in [
-			PolymodAssetType.AUDIO_GENERIC,
+			// PolymodAssetType.AUDIO_GENERIC,
 			// PolymodAssetType.AUDIO_MUSIC,
-			// PolymodAssetType.AUDIO_SOUND,
+			PolymodAssetType.AUDIO_SOUND,
 			// PolymodAssetType.BYTES,
 			PolymodAssetType.FONT,
 			PolymodAssetType.IMAGE,
@@ -182,13 +183,22 @@ class ModCore
 			PolymodAssetType.VIDEO,
 		])
 		{
-			var amt:Int = [for (asset in Polymod.listModFiles(type)) asset].length;
+			var files:Array<String> = [for (asset in Polymod.listModFiles(type)) asset];
 
-			if (type == TEXT)
-				amt -= modIDs.length; // I don't wanna count the metadata files
+			for (file in files)
+				if (file == DefineUtil.getDefineString('POLYMOD_MOD_METADATA_FILE'))
+					files.remove(file);
+
+			var amt:Int = files.length;
 
 			if (amt > 0)
+			{
 				trace(' * Replaced / Added ${amt} ${type} file(s)');
+				#if debug
+				for (file in files)
+					trace('   * $file');
+				#end
+			}
 		}
 	}
 }

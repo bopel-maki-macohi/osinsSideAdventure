@@ -175,7 +175,7 @@ class VNState extends FlxNovelState implements ITaleContainer
 			speaker.visible = speaker.active = false;
 		}
 
-		speaker.screenCenter();
+		speaker.applyOrientation();
 
 		ScriptHandler.call('onBuiltSpeaker', [speaker]);
 	}
