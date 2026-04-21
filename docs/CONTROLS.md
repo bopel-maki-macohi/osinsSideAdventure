@@ -6,6 +6,8 @@ F1 - Crash the Game
 
 (Desktop Only) F3 - Screenshot
 
+F5 - Reload Mods and Scripts
+
 ## Title Menu Controls
 
 7 - Debug Menu
