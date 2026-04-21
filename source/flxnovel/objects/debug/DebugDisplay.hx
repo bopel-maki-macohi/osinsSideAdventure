@@ -1,5 +1,7 @@
 package flxnovel.objects.debug;
 
+import flixel.tweens.FlxEase;
+import flixel.math.FlxPoint;
 import flixel.tweens.FlxTween;
 import flxnovel.util.MemoryUtil;
 import flxnovel.util.macros.MacroUtil;
@@ -32,6 +34,8 @@ class DebugDisplay extends TextField
 
 	var debugDisplayBG:Shape;
 
+	var startingPosition:FlxPoint;
+
 	override public function new(x:Float = 10, y:Float = 10)
 	{
 		super();
@@ -39,9 +43,25 @@ class DebugDisplay extends TextField
 		this.x = x;
 		this.y = y;
 
+		startingPosition = new FlxPoint(x, y);
+
 		times = [];
 
 		defaultTextFormat = new openfl.text.TextFormat(flixel.system.FlxAssets.FONT_DEFAULT, 12, FlxColor.WHITE);
+	}
+
+	public var startingVOrientation:Bool = true;
+
+	public function changeVerticalOrientation(duration:Float, ?ease:EaseFunction)
+	{
+		startingVOrientation = !startingVOrientation;
+
+		FlxTween.cancelTweensOf(this, ['y']);
+		
+		if (startingVOrientation)
+			FlxTween.tween(this, {y: startingPosition.y}, duration, {ease: ease ?? FlxEase.sineInOut});
+		else
+			FlxTween.tween(this, {y: FlxG.height - this.height - startingPosition.y}, duration, {ease: ease ?? FlxEase.sineInOut});
 	}
 
 	var deltaTimeout:Float = 0.0;
@@ -62,7 +82,7 @@ class DebugDisplay extends TextField
 
 		// If the time between updates is less than 50 milliseconds, don't update the display yet.
 		// If there are tweens of this tho, keep updating
-		
+
 		if (deltaTimeout < 50 && !hasTweens)
 		{
 			deltaTimeout += deltaTime;

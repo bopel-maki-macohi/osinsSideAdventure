@@ -39,14 +39,12 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		super.onExit();
 
-		FlxTween.cancelTweensOf(Main.debugDisplay);
-		FlxTween.tween(Main.debugDisplay, {x: 10, y: 10}, this.transOut.duration, {ease: FlxEase.sineInOut});
+		Main.debugDisplay.changeVerticalOrientation(this.transOut.duration);
 	}
 
 	override function create()
 	{
-		FlxTween.cancelTweensOf(Main.debugDisplay);
-		FlxTween.tween(Main.debugDisplay, {x: 10, y: FlxG.height - Main.debugDisplay.height - 10}, this.transIn.duration, {ease: FlxEase.sineInOut});
+		Main.debugDisplay.changeVerticalOrientation(this.transIn.duration);
 
 		_tale = TaleData.fileBuild(null);
 		_tale.talesmenu = {};
