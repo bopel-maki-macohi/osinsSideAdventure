@@ -174,6 +174,9 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		if (_tale.lines[index] == null)
 			onLineTextChange(uiBox.linesTabGroup.textInput.text, index);
+		
+		if (_tale.lines[index].autoSkip == null)
+			_tale.lines[index].autoSkip = 0;
 
 		_tale.lines[index].autoSkip = value;
 
