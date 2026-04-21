@@ -194,7 +194,7 @@ class ModCore
 			if (amt > 0)
 			{
 				trace(' * Replaced / Added ${amt} ${type} file(s)');
-				#if debug
+				#if LIST_MOD_FILES
 				for (file in files)
 					trace('   * $file');
 				#end
