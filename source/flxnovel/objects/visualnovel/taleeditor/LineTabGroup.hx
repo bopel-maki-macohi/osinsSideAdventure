@@ -92,13 +92,6 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	{
 		var index:Int = Std.parseInt(linesDropdown.selectedId) ?? 0;
 
-		trace({
-			id: id,
-			sender: sender,
-			data: data,
-			params: params,
-		});
-
 		if (id == FlxUICheckBox.CLICK_EVENT)
 		{
 			var check:FlxUICheckBox = cast sender;

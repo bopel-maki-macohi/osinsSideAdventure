@@ -127,6 +127,14 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		}
 	}
 
+	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>) {
+		super.getEvent(id, sender, data, params);
+
+		uiBox?.dataTabGroup?.getEvent(id, sender, data, params);
+		uiBox?.linesTabGroup?.getEvent(id, sender, data, params);
+		uiBox?.talesTabGroup?.getEvent(id, sender, data, params);
+	}
+
 	public var typingInputs(get, never):Array<FlxUIInputText>;
 
 	function get_typingInputs():Array<FlxUIInputText>
