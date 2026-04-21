@@ -135,6 +135,8 @@ class ModCore
 		return output;
 	}
 
+	static var extensionMap:Map<String, PolymodAssetType> = ['pdn' => BYTES,];
+
 	static function loadMods(dirs:Array<String>)
 	{
 		trace('Attempting to load ${dirs.length} mod(s)');
@@ -159,6 +161,8 @@ class ModCore
 			},
 
 			skipDependencyErrors: true,
+
+			extensionMap: extensionMap
 		});
 
 		loadedMods = [];
@@ -170,16 +174,16 @@ class ModCore
 		trace('Loaded mods: ${modIDs}');
 
 		for (type in [
-			// PolymodAssetType.AUDIO_GENERIC,
-			// PolymodAssetType.AUDIO_MUSIC,
+			PolymodAssetType.AUDIO_GENERIC,
+			PolymodAssetType.AUDIO_MUSIC,
 			PolymodAssetType.AUDIO_SOUND,
 			// PolymodAssetType.BYTES,
 			PolymodAssetType.FONT,
 			PolymodAssetType.IMAGE,
-			// PolymodAssetType.MANIFEST,
-			// PolymodAssetType.TEMPLATE,
+			PolymodAssetType.MANIFEST,
+			PolymodAssetType.TEMPLATE,
 			PolymodAssetType.TEXT,
-			// PolymodAssetType.UNKNOWN,
+			PolymodAssetType.UNKNOWN,
 			PolymodAssetType.VIDEO,
 		])
 		{
