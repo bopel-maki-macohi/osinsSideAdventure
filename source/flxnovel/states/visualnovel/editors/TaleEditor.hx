@@ -173,10 +173,14 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	function onAutoSkipStep(value:Float, index:Int)
 	{
 		if (_tale.lines[index] == null)
-			onLineTextChange(uiBox.linesTabGroup.textInput.text, index);
-		
-		if (_tale.lines[index].autoSkip == null)
-			_tale.lines[index].autoSkip = 0;
+			_tale.lines[index] = {
+				text: uiBox.linesTabGroup.textInput.text,
+				speaker: {
+					id: uiBox.linesTabGroup.speakersDropdown.selectedId,
+					state: uiBox.linesTabGroup.speakersStateInput.text,
+				},
+				autoSkip: 0
+			}
 
 		_tale.lines[index].autoSkip = value;
 

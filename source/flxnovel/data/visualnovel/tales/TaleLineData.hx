@@ -10,5 +10,6 @@ typedef TaleLineData =
     var speaker:SpeakerTaleData;
 
     @:optional
+    @:default(0)
     var autoSkip:Float;
 }
