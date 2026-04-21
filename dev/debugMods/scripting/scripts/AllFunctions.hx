@@ -1,3 +1,5 @@
+import flixel.util.FlxTimer;
+import flxnovel.states.transition.SplashState;
 import flxnovel.objects.visualnovel.VNBackground;
 import flixel.FlxSprite;
 import flxnovel.objects.visualnovel.VNSpeaker;
@@ -80,6 +82,11 @@ function splashSpecialCase(specialCaseFunc:Dynamic, specialCaseID:String)
 
 	if (specialCaseID == 'SURPRISEMF')
 	{
-		trace('ARE YOU SURPRISED BECH?');
+		SplashState.instance.specialCase = function()
+		{
+			trace('ARE YOU SURPRISED BECH?');
+			
+			FlxTimer.wait(2, SplashState.instance.leave);
+		}
 	}
 }

@@ -119,6 +119,8 @@ class SplashState extends FlxNovelState implements ISingletonAutomake
 		trace(line.replace('\n', '--'));
 	}
 
+	public var specialCase:Dynamic;
+
 	function displayMsg()
 	{
 		if (msg != null && msg.clearWatermark)
@@ -133,7 +135,7 @@ class SplashState extends FlxNovelState implements ISingletonAutomake
 		if (msg?.specialCase != null)
 		{
 			trace(msg.specialCase);
-			var specialCase:Dynamic = Reflect.field(this, msg.specialCase);
+			specialCase = Reflect.field(this, msg.specialCase);
 
 			ScriptHandler.call('splashSpecialCase', [specialCase, msg.specialCase]);
 
@@ -148,7 +150,7 @@ class SplashState extends FlxNovelState implements ISingletonAutomake
 		FlxTimer.wait(this.transIn.duration * 2, leave);
 	}
 
-	function leave()
+	public function leave()
 	{
 		if (VersionUtil.OUTDATED && !OutdatedState.SEEN)
 			FlxG.switchState(() -> new OutdatedState());
@@ -156,7 +158,7 @@ class SplashState extends FlxNovelState implements ISingletonAutomake
 			FlxG.switchState(() -> new TitleState());
 	}
 
-	function piracy()
+	public function piracy()
 	{
 		FlxG.sound.play('prowler'.miscAsset().audioFile(), 1.0, false, null, true, leave);
 	}
