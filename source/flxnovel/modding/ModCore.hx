@@ -40,10 +40,6 @@ class ModCore
 			case MOD_MISSING_METADATA:
 				msg += '\nThe mod is most likely not there anymore,\nand thus will be removed from your "enabledMods" save field.\n\nPlease remove the mod from your mods folder to avoid seeing this again.';
 
-				#if ALLOW_DELETING_MISSING_MODS
-				msg += '\n\nAnd your mods folder ;)';
-				#end
-
 			default:
 		}
 
@@ -63,16 +59,8 @@ class ModCore
 
 		allModIDs = getAllModIds();
 		for (modID in Save.enabledMods.get())
-		{
 			if (!allModIDs.contains(modID))
-			{
 				Save.enabledMods.get().remove(modID);
-
-				#if ALLOW_DELETING_MISSING_MODS
-				sys.FileSystem.deleteDirectory('${MOD_ROOT}/${modID}');
-				#end
-			}
-		}
 
 		ScriptHandler.clearScripts();
 		Polymod.clearScripts();
