@@ -1,5 +1,6 @@
 package flxnovel.states.transition;
 
+import flxnovel.util.ISingletonAutomake;
 import flixel.util.FlxColor;
 import flxnovel.modding.scripting.ScriptHandler;
 import flixel.text.FlxText;
@@ -15,7 +16,7 @@ import haxe.Json;
 import flxnovel.data.SplashTextsData;
 import flixel.FlxG;
 
-class SplashState extends FlxNovelState
+class SplashState extends FlxNovelState implements ISingletonAutomake
 {
 	override public function new()
 	{
