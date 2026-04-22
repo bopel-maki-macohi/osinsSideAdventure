@@ -84,7 +84,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 		taleIDPreviewText.visible = !lockedInTaleID;
 	}
 
-	function saveJSONMethod()
+	public function saveJSONMethod()
 	{
 		if (saveJSONPreCallback != null)
 			saveJSONPreCallback();
@@ -127,7 +127,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 			saveJSONPostCallback();
 	}
 
-	function loadJSONMethod()
+	public function loadJSONMethod()
 	{
 		var fileRef = new FileReference();
 

@@ -44,7 +44,7 @@ class OutdatedState extends FlxNovelState
 
 		if (controls.justPressed.ACCEPT)
 		{
-			if (controls.pressed.SHIFT)
+			if (FlxG.keys.pressed.SHIFT)
 				FlxG.openURL('https://bopel-maki-macohi.itch.io/osins-side-adventure');
 			else
 				FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure/releases/latest');

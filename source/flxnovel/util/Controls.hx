@@ -27,7 +27,7 @@ enum Inputs
 
 	TITLE_DEBUG;
 	TITLE_DEBUG_TRANSITION;
-	SHIFT;
+
 	DEBUG_CRASH;
 	SCREENSHOT;
 	MOD_RELOAD;
@@ -61,7 +61,6 @@ class Controls extends FlxControls<Inputs> implements ISingletonAutomake
 
 			TITLE_DEBUG => [Key.SEVEN],
 			TITLE_DEBUG_TRANSITION => [Key.SPACE],
-			SHIFT => [Key.SHIFT],
 
 			DEBUG_CRASH => [Key.F1],
 			SCREENSHOT => [Key.F3],

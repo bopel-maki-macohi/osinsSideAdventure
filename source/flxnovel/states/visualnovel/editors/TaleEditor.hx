@@ -142,27 +142,41 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			if (inputText.hasFocus)
 				VolumeManagerPlugin.volumeKeysActive = false;
 
-		if (controls.pressed.SHIFT && VolumeManagerPlugin.volumeKeysActive)
+		if (VolumeManagerPlugin.volumeKeysActive)
 		{
-			var lld = uiBox.linesTabGroup.linesDropdown;
-			var lineNum = Std.parseInt(lld.selectedId);
+			if (FlxG.keys.pressed.SHIFT)
+			{
+				var lld = uiBox.linesTabGroup.linesDropdown;
+				var lineNum = Std.parseInt(lld.selectedId);
 
-			if (controls.justPressed.LEFT)
-				lld.selectedId = lld.list[(lineNum - 1) ?? 0]?.name ?? lld.list[lld.list.length - 1]?.name ?? '0';
+				if (controls.justPressed.LEFT)
+					lld.selectedId = lld.list[(lineNum - 1) ?? 0]?.name ?? lld.list[lld.list.length - 1]?.name ?? '0';
 
-			if (controls.justPressed.RIGHT)
-				lld.selectedId = lld.list[(lineNum + 1) ?? 0]?.name ?? '0';
+				if (controls.justPressed.RIGHT)
+					lld.selectedId = lld.list[(lineNum + 1) ?? 0]?.name ?? '0';
 
-			if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
-				refreshLinesGrp();
-		}
+				if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
+					refreshLinesGrp();
+			}
 
-		if (controls.justPressed.LEAVE)
-		{
-			if (!VolumeManagerPlugin.volumeKeysActive)
-				return;
+			if (FlxG.keys.pressed.CONTROL)
+			{
+				if (FlxG.keys.justPressed.S)
+				{
+					uiBox.selected_tab = 0;
+					uiBox.dataTabGroup.saveJSONMethod();
+				}
+				
+				if (FlxG.keys.justPressed.O)
+				{
+					uiBox.selected_tab = 0;
+					uiBox.dataTabGroup.saveJSONMethod();
+					uiBox.dataTabGroup.loadJSONMethod();
+				}
+			}
 
-			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
+			if (controls.justPressed.LEAVE)
+				FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
 	}
 
