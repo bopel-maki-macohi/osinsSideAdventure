@@ -405,6 +405,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			_tale.lines[index].text = newText;
 		}
 
+		line_dialogueText.text = newText;
 		refresh();
 	}
 
@@ -424,11 +425,11 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		uiBox.linesTabGroup.updateList();
 		uiBox.talesTabGroup.updateList();
 
-		uiBox.linesTabGroup.onChangedLineBasic(uiBox.linesTabGroup.linesDropdown.selectedId);
-
 		var index:Int = Std.parseInt(uiBox.linesTabGroup.linesDropdown.selectedId);
 
-		onLineSpeakerStateChange(uiBox.linesTabGroup.bgTextInput.text, index);
+		uiBox.linesTabGroup.onChangedLineBasic('$index');
+
+		onLineSpeakerStateChange(uiBox.linesTabGroup.speakersStateInput.text, index);
 
 		line_dialogueText.text = _tale?.lines[index]?.text ?? '';
 	}
