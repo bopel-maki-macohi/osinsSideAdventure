@@ -405,7 +405,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			_tale.lines[index].text = newText;
 		}
 
-		line_dialogueText.text = newText;
 		refresh();
 	}
 
