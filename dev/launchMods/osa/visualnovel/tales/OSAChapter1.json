@@ -33,7 +33,7 @@
 			"background": "",
 			"speaker": {
 				"id": "osin",
-				"state": "cheerful"
+				"state": "cheerful-lookSide"
 			},
 			"text": "C'mon Tirok we've got to eventually go-"
 		},
@@ -42,7 +42,7 @@
 			"background": "",
 			"speaker": {
 				"id": "osin",
-				"state": "cheerful"
+				"state": "shock"
 			},
 			"text": "..."
 		},
@@ -51,7 +51,7 @@
 			"background": "",
 			"speaker": {
 				"id": "osin",
-				"state": "cheerful"
+				"state": "shock"
 			},
 			"text": "What?"
 		},
