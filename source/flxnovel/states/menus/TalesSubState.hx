@@ -38,7 +38,7 @@ class TalesSubState extends TitleSubStateBase
 
 		for (entry => data in TalesSubState.entryData)
 		{
-			if (data.talesmenu?.filters.length > 0)
+			if (data.talesmenu?.filters?.length > 0)
 				for (filter in data.talesmenu.filters)
 					if (!f.contains(filter))
 						f.push(filter);
