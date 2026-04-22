@@ -81,6 +81,15 @@
 				"state": "stare"
 			},
 			"text": "I..."
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "stare"
+			},
+			"text": "I don't know."
 		}
 	],
 	"talesmenu": {
@@ -91,5 +100,5 @@
 		],
 		"titleAsset": ""
 	},
-	"generatedBy": "FlxNovel 0.12.0 (FlxNovel_Indev:e0b8029)"
+	"generatedBy": "FlxNovel 0.12.0.122acde"
 }
