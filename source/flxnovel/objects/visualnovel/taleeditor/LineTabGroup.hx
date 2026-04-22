@@ -128,7 +128,6 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onSpeakerStateChange(text:String, action:String)
 	{
-		trace('onSpeakerStateChange : $action');
 		if (onSpeakerStateChangeCallback != null)
 			onSpeakerStateChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
 	}
@@ -147,8 +146,6 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onSpeakerChange(speakerID:String)
 	{
-		// trace('new speaker: "$speakerID"');
-
 		if (onSpeakerChangeCallback != null)
 			onSpeakerChangeCallback(speakerID, Std.parseInt(linesDropdown.selectedId));
 	}

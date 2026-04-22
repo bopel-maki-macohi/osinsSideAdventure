@@ -437,7 +437,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		uiBox.linesTabGroup.onChangedLineBasic('$index');
 
-		trace('refreshLinesGrp');
-		onLineSpeakerStateChange(_tale?.lines[index]?.speaker?.state ?? uiBox.linesTabGroup.speakersStateInput.text, index);
+		onLineSpeakerStateChange(_tale?.lines[index]?.speaker?.state ?? '', index);
 	}
 }
