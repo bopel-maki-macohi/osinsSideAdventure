@@ -79,7 +79,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		};
 
 		uiBox.linesTabGroup.onLineTextChangeCallback = onLineTextChange;
-		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
 		uiBox.linesTabGroup.onSpeakerChangeCallback = onLineSpeakerChange;
 		uiBox.linesTabGroup.onSpeakerStateChangeCallback = onLineSpeakerStateChange;
 		uiBox.linesTabGroup.onNewLineCallback = onNewLine;
@@ -99,7 +98,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		FlxG.mouse.visible = true;
 
-		refresh();
+		refreshAll();
 	}
 
 	override function update(elapsed:Float)
@@ -239,7 +238,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		_tale.lines[index].autoSkip = value;
 
-		refresh();
+		refreshLinesGrp();
 	}
 
 	function onLineSpeakerStateChange(text:String, index:Int)
@@ -284,9 +283,9 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		_tale.talesmenu.filters.remove(filter);
 
-		refresh();
-
 		uiBox.talesTabGroup.filtersDropdown.selectedId = uiBox.talesTabGroup.btnFilters[uiBox.talesTabGroup.btnFilters.length - 1]?.name;
+		
+		refreshTalesGroup();
 	}
 
 	function onNewFilter(filter:String)
@@ -301,35 +300,34 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		_tale.talesmenu.filters.push(filter);
 
-		refresh();
-
 		uiBox.talesTabGroup.filtersDropdown.selectedId = uiBox.talesTabGroup.btnFilters[uiBox.talesTabGroup.btnFilters.length - 1]?.name;
+
+		refreshTalesGroup();
 	}
 
 	function onDisplayTextChange(text:String)
 	{
 		_tale.talesmenu.display = text;
-		refresh();
+		refreshTalesGroup();
 	}
 
 	function onTitleAssetChange(text:String)
 	{
 		_tale.talesmenu.titleAsset = text;
-		refresh();
+		refreshTalesGroup();
 	}
 
 	function onRemoveLine(index:Int)
 	{
 		_tale.lines.remove(_tale.lines[index]);
 
-		refresh();
-
 		var ldd = uiBox.linesTabGroup.linesDropdown;
-
 		ldd.selectedId = (ldd.list[index - 1] ?? ldd.list[ldd.list.length - 1])?.name ?? '0';
+
+		refreshLinesGrp();
 	}
 
-	function addNewLineTo(index:Int)
+	function addNewLineTo(index:Int, ?allowRefresh:Bool = true)
 	{
 		if (index > 0)
 			_tale.lines[index] = {
@@ -342,17 +340,18 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 				background: uiBox.linesTabGroup.bgTextInput.text
 			};
 
-		refresh();
+		if (allowRefresh)
+			refreshLinesGrp();
 	}
 
 	function onNewLine()
 	{
-		addNewLineTo(_tale.lines.length);
+		addNewLineTo(_tale.lines.length, false);
 
 		var ldd = uiBox.linesTabGroup.linesDropdown;
 		ldd.selectedId = ldd.list[ldd.list.length - 1]?.name ?? '0';
 
-		refresh();
+		refreshLinesGrp();
 	}
 
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
@@ -390,8 +389,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 			line_speaker.build(_tale.lines[index].speaker.state);
 		}
-
-		refresh();
 	}
 
 	function onLineTextChange(newText:String, index:Int)
@@ -407,7 +404,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			_tale.lines[index].text = newText;
 		}
 
-		refresh();
+		line_dialogueText.text = _tale?.lines[index]?.text ?? '';
 	}
 
 	function loadTale(file:FileReference)
@@ -418,20 +415,29 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			_tale.build(taleData.iteration, taleData.lines, taleData.talesmenu, taleData.generatedBy);
 		}
 
-		refresh();
+		refreshAll();
 	}
 
-	function refresh()
+	function refreshAll()
+	{
+		refreshLinesGrp();
+		refreshTalesGroup();
+	}
+
+	function refreshTalesGroup()
+	{
+		uiBox.talesTabGroup.updateList();
+	}
+
+	function refreshLinesGrp()
 	{
 		uiBox.linesTabGroup.updateList();
-		uiBox.talesTabGroup.updateList();
 
 		var index:Int = Std.parseInt(uiBox.linesTabGroup.linesDropdown.selectedId);
 
 		uiBox.linesTabGroup.onChangedLineBasic('$index');
 
-		onLineSpeakerStateChange(uiBox.linesTabGroup.speakersStateInput.text, index);
-
-		line_dialogueText.text = _tale?.lines[index]?.text ?? '';
+		trace('refreshLinesGrp');
+		onLineSpeakerStateChange(_tale?.lines[index]?.speaker?.state ?? uiBox.linesTabGroup.speakersStateInput.text, index);
 	}
 }
