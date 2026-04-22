@@ -165,7 +165,9 @@ class DebugDisplay extends TextField
 		}
 
 		text = texts.join('\n');
+
 		width = textWidth * 1.05;
+		height = textHeight * 1.2;
 
 		textColor = FlxColor.WHITE;
 		if (maxMemory > 3000 || currentFPS <= FlxG.drawFramerate / 2)
