@@ -76,12 +76,13 @@ function buildBackground(bg:VNBackground)
 	trace(' * prop IDs: ' + propKeys);
 }
 
-function splashSpecialCase(specialCaseFunc:Dynamic, specialCaseID:String)
+function splashSpecialCase(specialCaseID:String)
 {
 	trace(specialCaseID);
 
 	if (specialCaseID == 'SURPRISEMF')
 	{
+		SplashState.instance.splashText.textField.text = 'ARE YOU SURPRISED BECH?';
 		SplashState.instance.specialCase = function()
 		{
 			trace('ARE YOU SURPRISED BECH?');

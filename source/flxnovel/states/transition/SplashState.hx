@@ -47,7 +47,7 @@ class SplashState extends FlxNovelState implements ISingletonAutomake
 		displayMsg();
 	}
 
-	var splashText:FlxText;
+	public var splashText:FlxText;
 
 	function initTextOBJ()
 	{
@@ -136,8 +136,7 @@ class SplashState extends FlxNovelState implements ISingletonAutomake
 		{
 			trace(msg.specialCase);
 			specialCase = Reflect.field(this, msg.specialCase);
-
-			ScriptHandler.call('splashSpecialCase', [specialCase, msg.specialCase]);
+			ScriptHandler.call('splashSpecialCase', [msg.specialCase]);
 
 			trace(specialCase);
 			if (specialCase != null)
