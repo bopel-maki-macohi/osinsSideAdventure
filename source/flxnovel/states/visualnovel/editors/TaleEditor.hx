@@ -345,7 +345,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onNewLine()
 	{
-		addNewLineTo(_tale.lines.length - 1);
+		addNewLineTo(_tale.lines.length);
 
 		var ldd = uiBox.linesTabGroup.linesDropdown;
 
