@@ -90,6 +90,24 @@
 				"state": "stare"
 			},
 			"text": "I don't know."
+		},
+		{
+			"autoSkip": 0.3,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "stare"
+			},
+			"text": "It's..."
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "stare"
+			},
+			"text": "It's been too long..."
 		}
 	],
 	"talesmenu": {
@@ -100,5 +118,5 @@
 		],
 		"titleAsset": ""
 	},
-	"generatedBy": "FlxNovel 0.12.0.122acde"
+	"generatedBy": "FlxNovel 0.12.0.f4a2bf8"
 }
