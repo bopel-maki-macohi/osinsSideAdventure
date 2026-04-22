@@ -244,6 +244,8 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onLineSpeakerStateChange(text:String, index:Int)
 	{
+		trace(text);
+
 		if (_tale.lines[index]?.speaker == null)
 		{
 			if (_tale.lines[index] == null)

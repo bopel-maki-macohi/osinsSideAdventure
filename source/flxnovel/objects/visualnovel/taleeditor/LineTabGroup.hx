@@ -168,21 +168,22 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	{
 		var line:TaleLineData = _tale?.lines[Std.parseInt(indexStr)] ?? null;
 
-		speakersDropdown.selectedId = line?.speaker?.id ?? '';
-
 		lineTextInput.text = line?.text ?? '';
-		speakersStateInput.text = line?.speaker?.state ?? '';
 		bgTextInput.text = line?.background ?? '';
+
+		speakersDropdown.selectedId = line?.speaker?.id ?? '';
+		speakersStateInput.text = line?.speaker?.state ?? '';
 
 		autoSkipStepper.value = line?.autoSkip ?? 0.0;
 	}
 
 	public function onChangedLineCallbacks()
 	{
-		onSpeakerChange(speakersDropdown.selectedId);
-		onLineTextChange(lineTextInput.text, '');
-		onSpeakerStateChange(speakersStateInput.text, '');
 		onLineBGTextChange(bgTextInput.text, '');
+		onLineTextChange(lineTextInput.text, '');
+		
+		onSpeakerChange(speakersDropdown.selectedId);
+		onSpeakerStateChange(speakersStateInput.text, '');
 	}
 
 	public var lines(get, never):Array<StrNameLabel>;
