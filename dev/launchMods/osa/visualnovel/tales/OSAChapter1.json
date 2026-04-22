@@ -1,0 +1,38 @@
+{
+	"iteration": 4,
+	"lines": [
+		{
+			"autoSkip": 0.2,
+			"background": "",
+			"speaker": {
+				"id": "osin",
+				"state": "cheerful"
+			},
+			"text": "Holy shit dude!"
+		},
+		{
+			"autoSkip": 0.2,
+			"background": "",
+			"speaker": {
+				"id": "osin",
+				"state": "cheerful"
+			},
+			"text": "That was just... So..."
+		},
+		{
+			"autoSkip": 0.2,
+			"background": "",
+			"speaker": {
+				"id": "osin",
+				"state": "cheerful"
+			},
+			"text": "Amazing!"
+		}
+	],
+	"talesmenu": {
+		"display": null,
+		"filters": null,
+		"titleAsset": null
+	},
+	"generatedBy": "FlxNovel 0.12.0 (FlxNovel_Indev:53c1651)"
+}
