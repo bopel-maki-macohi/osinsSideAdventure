@@ -20,7 +20,12 @@ import openfl.utils.ByteArray;
  */
 class ScreenshotPlugin extends FlxBasic
 {
-	public static final SCREENSHOT_FOLDER:String = 'screenshots';
+	public static final SCREENSHOT_FOLDER:String =
+		#if debug
+		'../../../../dump/screenshots';
+		#else
+		'screenshots';
+		#end
 
 	var tookScreenshot:Bool = false;
 
