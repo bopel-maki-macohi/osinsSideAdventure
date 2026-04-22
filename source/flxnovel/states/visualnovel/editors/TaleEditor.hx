@@ -348,8 +348,9 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		addNewLineTo(_tale.lines.length);
 
 		var ldd = uiBox.linesTabGroup.linesDropdown;
-
 		ldd.selectedId = ldd.list[ldd.list.length - 1]?.name ?? '0';
+
+		refresh();
 	}
 
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
