@@ -1,5 +1,6 @@
 package flxnovel.states.visualnovel;
 
+import flxnovel.util.DateUtil;
 import flxnovel.util.ISingletonManual;
 import flxnovel.data.visualnovel.tales.ITaleContainer;
 import flxnovel.modding.scripting.ScriptHandler;
@@ -147,8 +148,11 @@ class VNState extends FlxNovelState implements ITaleContainer implements ISingle
 	{
 		finishedWriting = false;
 
-		dialogueText.resetText(line.text);
+		dialogueText.resetText(line?.text ?? '');
 		dialogueText.start(textWriteDelay, true, false, [], finishWritingDialogue);
+
+		if (line.text?.length < 1)
+			FlxTimer.wait((DateUtil.getTimestamp().length / 2) * textWriteDelay, finishWritingDialogue);
 
 		ScriptHandler.call('onDialogueStartedWriting', []);
 	}
