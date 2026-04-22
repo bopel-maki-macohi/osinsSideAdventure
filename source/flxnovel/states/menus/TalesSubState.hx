@@ -17,7 +17,7 @@ class TalesSubState extends TitleSubStateBase
 	{
 		var data:Map<String, TaleData> = [];
 
-		for (entryID in TalesSubState.entries)
+		for (entryID in entries)
 		{
 			var tale:TaleData = TaleData.fileBuild(entryID);
 
@@ -36,7 +36,7 @@ class TalesSubState extends TitleSubStateBase
 	{
 		var f = ['all'];
 
-		for (entry => data in TalesSubState.entryData)
+		for (entry => data in entryData)
 		{
 			if (data.talesmenu?.filters?.length > 0)
 				for (filter in data.talesmenu.filters)
@@ -51,8 +51,8 @@ class TalesSubState extends TitleSubStateBase
 	{
 		super.create();
 
-		trace('filters: ' + TalesSubState.filters);
-		reload(TalesSubState.filters[0]);
+		trace('filters: ' + filters);
+		reload(filters[0]);
 	}
 
 	public var currentFilter:String = '';
@@ -80,7 +80,7 @@ class TalesSubState extends TitleSubStateBase
 
 		if (filter?.toLowerCase().trim() != null)
 		{
-			var filteredTargetTales = targetTales.filter(d -> return d.tale.talesmenu?.filters.contains(filter));
+			var filteredTargetTales = targetTales.filter(d -> return d.tale?.talesmenu?.filters?.contains(filter));
 
 			function setFilteredTales()
 			{
@@ -135,7 +135,7 @@ class TalesSubState extends TitleSubStateBase
 
 		if (controls.justPressed.UP || controls.justPressed.DOWN)
 		{
-			final fs = TalesSubState.filters;
+			final fs = filters;
 
 			if (controls.justPressed.UP)
 				reload(fs[fs.indexOf(currentFilter) + 1] ?? fs[0]);
