@@ -31,6 +31,8 @@ class VNState extends FlxNovelState implements ITaleContainer implements ISingle
 				continue;
 			if (speakers.exists(taleLine.speaker.id))
 				continue;
+			if (taleLine.speaker.id.trim().length < 1)
+				continue;
 
 			speakers.set(taleLine.speaker.id, SpeakerData.fileBuild(taleLine.speaker.id));
 		}
