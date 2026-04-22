@@ -33,30 +33,30 @@
 			"background": "",
 			"speaker": {
 				"id": "osin",
-				"state": "cheerful-lookSide"
+				"state": "cheerful"
 			},
 			"text": "C'mon Tirok we've got to eventually go-"
 		},
 		{
-			"autoSkip": 2.77555756156289e-17,
+			"autoSkip": 0,
 			"background": "",
 			"speaker": {
 				"id": "osin",
-				"state": "shock"
+				"state": "cheerful"
 			},
 			"text": "..."
 		},
 		{
-			"autoSkip": 2.77555756156289e-17,
+			"autoSkip": 0,
 			"background": "",
 			"speaker": {
 				"id": "osin",
-				"state": "shock"
+				"state": "cheerful"
 			},
 			"text": "What?"
 		},
 		{
-			"autoSkip": 2.77555756156289e-17,
+			"autoSkip": 0,
 			"background": "tempoCity-ruin",
 			"speaker": {
 				"id": "",
@@ -66,7 +66,7 @@
 		},
 		{
 			"autoSkip": null,
-			"background": null,
+			"background": "",
 			"speaker": {
 				"id": "",
 				"state": ""
@@ -79,5 +79,5 @@
 		"filters": null,
 		"titleAsset": null
 	},
-	"generatedBy": "FlxNovel 0.12.0 (local_FlxNovel_Indev:f4edda1)"
+	"generatedBy": "FlxNovel 0.12.0 (local_FlxNovel_Indev:88c3c74)"
 }
