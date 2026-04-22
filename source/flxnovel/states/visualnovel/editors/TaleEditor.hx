@@ -329,7 +329,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		}
 
 		refreshLinesGrp();
-		
+
 		ldd.selectedId = '${index - 1}';
 
 		refreshLinesGrp();
@@ -340,7 +340,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		if (index > 0)
 		{
 			_tale.lines[index] = {
-				text: uiBox.linesTabGroup.bgTextInput.text,
+				text: uiBox.linesTabGroup.lineTextInput.text,
 				speaker: {
 					id: uiBox.linesTabGroup.speakersDropdown.selectedId,
 					state: uiBox.linesTabGroup.speakersStateInput.text,
