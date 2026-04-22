@@ -20,7 +20,7 @@ class Constants
 
 	static function get_GIT_STRING():String
 	{
-		return '.${GitMacro.getGitCommit()}_${GitMacro.getGitBranch()}';
+		return '.${GitMacro.getGitCommit()}';
 	}
 
 	public static var GENERATED_BY(get, never):String;
