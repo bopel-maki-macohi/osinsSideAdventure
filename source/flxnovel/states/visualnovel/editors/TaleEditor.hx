@@ -362,8 +362,8 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		{
 			uiBox.linesTabGroup.speakersStateInput.text = '';
 
-			line_speaker.build(null);
 			line_speaker.data = null;
+			line_speaker.build(null);
 
 			_tale.lines[index].speaker = null;
 		}
