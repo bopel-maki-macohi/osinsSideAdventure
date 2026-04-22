@@ -41,7 +41,9 @@
 	<define name="INCLUDE_LAUNCH_MODS" unless="DONT_INCLUDE_LAUNCH_MODS" />
 
 	<define name="DONT_RUN_OXIPNG" if="debug"/>
-	<prebuild command=".\dev\oxipng.bat" unless="DONT_RUN_OXIPNG"/>
+	<define name="RUN_OXIPNG" unless="DONT_RUN_OXIPNG"/>
+	
+	<prebuild command=".\dev\oxipng.bat" if="RUN_OXIPNG"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
