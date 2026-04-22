@@ -134,7 +134,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onRemoveLine()
 	{
-		if (onRemoveLineCallback != null)
+     		if (onRemoveLineCallback != null)
 			onRemoveLineCallback(Std.parseInt(linesDropdown.selectedId));
 	}
 
