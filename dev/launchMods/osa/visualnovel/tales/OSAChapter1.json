@@ -63,6 +63,24 @@
 				"state": ""
 			},
 			"text": ""
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "osin",
+				"state": "pissed"
+			},
+			"text": "What... happened?"
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "stare"
+			},
+			"text": "I..."
 		}
 	],
 	"talesmenu": {
