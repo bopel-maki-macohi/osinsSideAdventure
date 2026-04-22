@@ -2,6 +2,8 @@ package dev.post_0_12.scripts;
 
 import sys.io.Process;
 
+using StringTools;
+
 /**
  * haxe -m dev.post_0_12.scripts.GitDiff --interp
  */
@@ -54,10 +56,10 @@ class GitDiff
 		var mainCommit = getGitCommit('stable');
 		var curCommit = getGitCommit(curBranch);
 
-		var process = new Process('git', ['diff', '$mainCommit...$curCommit', '--shortstat']);
-		if (process.exitCode() != 0)
-			return;
-
-		trace(process.stdout.readLine());
+		var differences = new Process('git', ['diff', '$mainCommit...$curCommit', '--shortstat']);
+		var commitDiff = new Process('git', ['rev-list', '$curBranch...stable', '--pretty=oneline', '--count']);
+		
+		trace('commit distance: ' + commitDiff.stdout.readLine().trim());
+		trace('commit file differences: ' + differences.stdout.readLine().trim());
 	}
 }
