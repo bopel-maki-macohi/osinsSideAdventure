@@ -1,8 +1,5 @@
 package flxnovel.states.visualnovel.editors;
 
-import flxnovel.util.DropdownListUpdater;
-import flixel.tweens.FlxEase;
-import flixel.tweens.FlxTween;
 import flxnovel.objects.visualnovel.VNBackground;
 import flxnovel.data.visualnovel.BackgroundData;
 import flxnovel.util.plugins.VolumeManagerPlugin;
@@ -145,11 +142,25 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			if (inputText.hasFocus)
 				VolumeManagerPlugin.volumeKeysActive = false;
 
+		if (controls.pressed.SHIFT && VolumeManagerPlugin.volumeKeysActive)
+		{
+			var lld = uiBox.linesTabGroup.linesDropdown;
+			var lineNum = Std.parseInt(lld.selectedId);
+
+			if (controls.justPressed.LEFT)
+				lld.selectedId = lld.list[(lineNum - 1) ?? 0].name ?? lld.list[lld.list.length - 1]?.name ?? '0';
+
+			if (controls.justPressed.RIGHT)
+				lld.selectedId = lld.list[(lineNum + 1) ?? 0].name ?? '0';
+
+			if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
+				refreshLinesGrp();
+		}
+
 		if (controls.justPressed.LEAVE)
 		{
-			for (inputText in typingInputs)
-				if (inputText.hasFocus)
-					return;
+			if (!VolumeManagerPlugin.volumeKeysActive)
+				return;
 
 			FlxG.switchState(() -> new TitleState('DEBUGMENU'));
 		}
