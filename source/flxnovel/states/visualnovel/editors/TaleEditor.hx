@@ -328,9 +328,9 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			}
 		}
 
-		refreshLinesGrp();
-
 		ldd.selectedId = '${index - 1}';
+		
+		refreshLinesGrp();
 	}
 
 	function addNewLineTo(index:Int, ?allowRefresh:Bool = true)
@@ -356,10 +356,10 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		addNewLineTo(_tale.lines.length, false);
 
-		refreshLinesGrp();
-
 		var ldd = uiBox.linesTabGroup.linesDropdown;
 		ldd.selectedId = ldd.list[ldd.list.length - 1]?.name ?? '0';
+
+		refreshLinesGrp();
 	}
 
 	function onLineSpeakerChange(newSpeaker:String, index:Int)
