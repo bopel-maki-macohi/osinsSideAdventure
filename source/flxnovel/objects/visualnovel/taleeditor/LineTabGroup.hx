@@ -122,7 +122,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 			var wname = nums.name;
 
 			if (wname == 'line_autoSkip' && onAutoSkipStepCallback != null)
-				onAutoSkipStepCallback(nums.value, index);
+				onAutoSkipStepCallback(nums.value.roundDecimal(2), index);
 		}
 	}
 
