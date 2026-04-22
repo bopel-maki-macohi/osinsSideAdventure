@@ -1,5 +1,6 @@
 package flxnovel.states.visualnovel.editors;
 
+import flxnovel.util.DropdownListUpdater;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flxnovel.objects.visualnovel.VNBackground;
@@ -247,6 +248,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		{
 			if (_tale.lines[index] == null)
 			{
+				trace('Add $index via onLineSpeakerStateChange');
 				_tale.lines[index] = {
 					text: uiBox.linesTabGroup.lineTextInput.text
 				};
@@ -282,7 +284,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		_tale.talesmenu.filters.remove(filter);
 
 		uiBox.talesTabGroup.filtersDropdown.selectedId = uiBox.talesTabGroup.btnFilters[uiBox.talesTabGroup.btnFilters.length - 1]?.name;
-		
+
 		refreshTalesGroup();
 	}
 
@@ -317,17 +319,27 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onRemoveLine(index:Int)
 	{
-		_tale.lines.remove(_tale.lines[index]);
-
 		var ldd = uiBox.linesTabGroup.linesDropdown;
-		ldd.selectedId = (ldd.list[index - 1] ?? ldd.list[ldd.list.length - 1])?.name ?? '0';
+
+		for (i => line in _tale.lines)
+		{
+			if (i == index)
+			{
+				trace('remove $index');
+				_tale.lines.remove(line);
+			}
+		}
 
 		refreshLinesGrp();
+
+		ldd.selectedId = '${index - 1}';
 	}
 
 	function addNewLineTo(index:Int, ?allowRefresh:Bool = true)
 	{
 		if (index > 0)
+		{
+			trace('add $index');
 			_tale.lines[index] = {
 				text: uiBox.linesTabGroup.bgTextInput.text,
 				speaker: {
@@ -337,6 +349,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 				autoSkip: uiBox.linesTabGroup.autoSkipStepper.value,
 				background: uiBox.linesTabGroup.bgTextInput.text
 			};
+		}
 
 		if (allowRefresh)
 			refreshLinesGrp();
@@ -393,6 +406,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		if (_tale.lines[index] == null)
 		{
+			trace('add $index via onLineTextChange');
 			_tale.lines[index] = {
 				text: newText,
 			};

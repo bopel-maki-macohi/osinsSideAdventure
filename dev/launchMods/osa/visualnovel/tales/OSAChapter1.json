@@ -63,15 +63,6 @@
 				"state": ""
 			},
 			"text": ""
-		},
-		{
-			"autoSkip": null,
-			"background": "",
-			"speaker": {
-				"id": "",
-				"state": ""
-			},
-			"text": ""
 		}
 	],
 	"talesmenu": {
@@ -79,5 +70,5 @@
 		"filters": null,
 		"titleAsset": null
 	},
-	"generatedBy": "FlxNovel 0.12.0 (local_FlxNovel_Indev:88c3c74)"
+	"generatedBy": "FlxNovel 0.12.0 (local_FlxNovel_Indev:9aec19f)"
 }
