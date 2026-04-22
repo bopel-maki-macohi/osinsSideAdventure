@@ -248,7 +248,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		{
 			if (_tale.lines[index] == null)
 			{
-				trace('Add $index via onLineSpeakerStateChange');
 				_tale.lines[index] = {
 					text: uiBox.linesTabGroup.lineTextInput.text
 				};
@@ -325,7 +324,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		{
 			if (i == index)
 			{
-				trace('remove $index');
 				_tale.lines.remove(line);
 			}
 		}
@@ -339,7 +337,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		if (index > 0)
 		{
-			trace('add $index');
 			_tale.lines[index] = {
 				text: uiBox.linesTabGroup.bgTextInput.text,
 				speaker: {
@@ -406,7 +403,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		if (_tale.lines[index] == null)
 		{
-			trace('add $index via onLineTextChange');
 			_tale.lines[index] = {
 				text: newText,
 			};
