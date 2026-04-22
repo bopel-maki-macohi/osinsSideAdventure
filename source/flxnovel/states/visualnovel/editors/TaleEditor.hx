@@ -346,7 +346,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 					id: uiBox.linesTabGroup.speakersDropdown.selectedId,
 					state: uiBox.linesTabGroup.speakersStateInput.text,
 				},
-				autoSkip: uiBox.linesTabGroup.autoSkipStepper.value,
+				autoSkip: 0,
 				background: uiBox.linesTabGroup.bgTextInput.text
 			};
 		}
