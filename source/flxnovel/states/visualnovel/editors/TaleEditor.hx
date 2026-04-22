@@ -171,7 +171,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		return [
 			uiBox.dataTabGroup.taleIDInput,
 
-			uiBox.linesTabGroup.bgTextInput,
+			uiBox.linesTabGroup.lineTextInput,
 			uiBox.linesTabGroup.speakersStateInput,
 			uiBox.linesTabGroup.bgTextInput,
 
