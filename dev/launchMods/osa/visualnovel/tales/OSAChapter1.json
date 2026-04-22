@@ -20,13 +20,58 @@
 			"text": "That was just... So..."
 		},
 		{
-			"autoSkip": 0.2,
+			"autoSkip": 1,
 			"background": "",
 			"speaker": {
 				"id": "osin",
 				"state": "cheerful"
 			},
 			"text": "Amazing!"
+		},
+		{
+			"autoSkip": 0.1,
+			"background": "",
+			"speaker": {
+				"id": "osin",
+				"state": "cheerful-lookSide"
+			},
+			"text": "C'mon Tirok we've got to eventually go-"
+		},
+		{
+			"autoSkip": 2.77555756156289e-17,
+			"background": "",
+			"speaker": {
+				"id": "osin",
+				"state": "shock"
+			},
+			"text": "..."
+		},
+		{
+			"autoSkip": 2.77555756156289e-17,
+			"background": "",
+			"speaker": {
+				"id": "osin",
+				"state": "shock"
+			},
+			"text": "What?"
+		},
+		{
+			"autoSkip": 2.77555756156289e-17,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "",
+				"state": ""
+			},
+			"text": ""
+		},
+		{
+			"autoSkip": null,
+			"background": null,
+			"speaker": {
+				"id": "",
+				"state": ""
+			},
+			"text": ""
 		}
 	],
 	"talesmenu": {
@@ -34,5 +79,5 @@
 		"filters": null,
 		"titleAsset": null
 	},
-	"generatedBy": "FlxNovel 0.12.0 (FlxNovel_Indev:53c1651)"
+	"generatedBy": "FlxNovel 0.12.0 (local_FlxNovel_Indev:f4edda1)"
 }
