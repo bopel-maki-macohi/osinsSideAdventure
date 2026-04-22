@@ -16,7 +16,7 @@ import haxe.Json;
 import flxnovel.data.SplashTextsData;
 import flixel.FlxG;
 
-class SplashState extends FlxNovelState implements ISingletonAutomake
+class SplashState extends FlxNovelState
 {
 	override public function new()
 	{
@@ -136,9 +136,7 @@ class SplashState extends FlxNovelState implements ISingletonAutomake
 		{
 			trace(msg.specialCase);
 			specialCase = Reflect.field(this, msg.specialCase);
-			ScriptHandler.call('splashSpecialCase', [msg.specialCase]);
 
-			trace(specialCase);
 			if (specialCase != null)
 			{
 				FlxTimer.wait(this.transIn.duration * 2, specialCase);

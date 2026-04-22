@@ -75,19 +75,3 @@ function buildBackground(bg:VNBackground)
 
 	trace(' * prop IDs: ' + propKeys);
 }
-
-function splashSpecialCase(specialCaseID:String)
-{
-	trace(specialCaseID);
-
-	if (specialCaseID == 'SURPRISEMF')
-	{
-		SplashState.instance.splashText.textField.text = 'ARE YOU SURPRISED BECH?';
-		SplashState.instance.specialCase = function()
-		{
-			trace('ARE YOU SURPRISED BECH?');
-			
-			FlxTimer.wait(2, SplashState.instance.leave);
-		}
-	}
-}
