@@ -84,9 +84,12 @@
 		}
 	],
 	"talesmenu": {
-		"display": null,
-		"filters": null,
-		"titleAsset": null
+		"display": "Osin's Side Adventure Chapter 1",
+		"filters": [
+			"osa",
+			"official"
+		],
+		"titleAsset": ""
 	},
-	"generatedBy": "FlxNovel 0.12.0 (local_FlxNovel_Indev:b49ffe9)"
+	"generatedBy": "FlxNovel 0.12.0 (FlxNovel_Indev:e0b8029)"
 }
