@@ -328,8 +328,10 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 			}
 		}
 
-		ldd.selectedId = '${index - 1}';
+		refreshLinesGrp();
 		
+		ldd.selectedId = '${index - 1}';
+
 		refreshLinesGrp();
 	}
 
@@ -355,6 +357,8 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	function onNewLine()
 	{
 		addNewLineTo(_tale.lines.length, false);
+
+		refreshLinesGrp();
 
 		var ldd = uiBox.linesTabGroup.linesDropdown;
 		ldd.selectedId = ldd.list[ldd.list.length - 1]?.name ?? '0';
