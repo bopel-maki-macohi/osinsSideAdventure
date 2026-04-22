@@ -28,8 +28,6 @@
 
 	<define name="DISABLE_OUTDATEDSTATE" if="html5 || debug" />
 
-	<define name="CRASHHANDLER_INCLUDE_GIT" if="debug || hl" />
-
 	<define name="hscriptPos" />
 	<haxedef name="POLYMOD_ROOT_PATH" value="scripts/" />
 	<haxedef name="POLYMOD_DEBUG" if="debug" />

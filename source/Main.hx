@@ -1,3 +1,4 @@
+import flxnovel.util.VersionUtil;
 import flxnovel.objects.debug.DebugDisplay;
 import flixel.system.FlxAssets;
 import flxnovel.util.Constants;
@@ -19,10 +20,10 @@ class Main extends Sprite
 		debugDisplay = new DebugDisplay();
 		debugDisplay.createBackground();
 
-		FlxG.stage.window.title = '${Application.current.meta.get('name')} ${Application.current.meta.get('version')}';
+		FlxG.stage.window.title = '${Application.current.meta.get('name')} ${VersionUtil.VERSION}';
 
 		#if WINDOWTITLE_GIT
-		FlxG.stage.window.title += ' (${Constants.GIT_STRING})';
+		FlxG.stage.window.title += '${Constants.GIT_STRING}';
 		#end
 
 		addChild(new FlxGame(1280, 720, flxnovel.InitState));

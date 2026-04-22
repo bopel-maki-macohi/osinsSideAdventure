@@ -87,11 +87,7 @@ class CrashHandler
 
 		final filename:String = '$CRASH_DIRECTORY/${DateUtil.getTimestamp()}.txt';
 
-		errorMessage += '\nGame Version: ${VersionUtil.VERSION}';
-
-		#if CRASHHANDLER_INCLUDE_GIT
-		errorMessage += '\nGit info: ${Constants.GIT_STRING}';
-		#end
+		errorMessage += '\nGame Version: ${VersionUtil.FULL_VERSION}';
 
 		errorMessage += '\nCurrent State: ${currentState}';
 

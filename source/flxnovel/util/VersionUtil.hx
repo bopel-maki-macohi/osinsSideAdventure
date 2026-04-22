@@ -24,4 +24,11 @@ class VersionUtil
 	{
 		return Application.current.meta.get('version');
 	}
+
+	public static var FULL_VERSION(get, null):String;
+
+	static function get_FULL_VERSION():String
+	{
+		return '${VERSION}${Constants.GIT_STRING}';
+	}
 }

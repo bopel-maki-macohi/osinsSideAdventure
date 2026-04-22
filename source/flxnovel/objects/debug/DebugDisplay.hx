@@ -150,7 +150,7 @@ class DebugDisplay extends TextField
 		var memoryUnit = systemMemory >= 1000 ? 'gb' : 'mb';
 
 		var texts = [
-			'FlxNovel: ${VersionUtil.VERSION} (${Constants.GIT_STRING})',
+			'FlxNovel: ${VersionUtil.FULL_VERSION}',
 			'',
 			'FPS: ${currentFPS}',
 			#if !html5

@@ -51,7 +51,7 @@ class SplashState extends FlxNovelState
 
 	function initTextOBJ()
 	{
-		splashText = new FlxText(10, 10, FlxG.width, 'O.S.A. ${VersionUtil.VERSION} (${Constants.GIT_STRING})', 16);
+		splashText = new FlxText(10, 10, FlxG.width, 'O.S.A. ${VersionUtil.FULL_VERSION}', 16);
 		splashText.alignment = LEFT;
 		splashText.color = FlxColor.WHITE;
 		splashText.y = FlxG.height - splashText.height;
