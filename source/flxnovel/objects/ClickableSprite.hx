@@ -1,6 +1,5 @@
 package flxnovel.objects;
 
-import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.util.FlxSignal;
 import flixel.FlxSprite;
@@ -9,14 +8,13 @@ class ClickableSprite extends FlxSprite
 {
 	public static function overlapUpdateScale(sprite:ClickableSprite, ?scale:Float = 1.1, ?lerp:Float = 0.04)
 	{
-		sprite.scale.x = FlxMath.lerp(sprite.scale.x, scale, lerp);
-		sprite.scale.y = FlxMath.lerp(sprite.scale.y, scale, lerp);
+		sprite.scale.x = sprite.scale.x.lerp(scale, lerp);
+		sprite.scale.y = sprite.scale.y.lerp(scale, lerp);
 	}
 
 	public static function unoverlapUpdateScale(sprite:ClickableSprite, ?scale:Float = 1.0, ?lerp:Float = 0.04)
 	{
-		sprite.scale.x = FlxMath.lerp(sprite.scale.x, scale, lerp);
-		sprite.scale.y = FlxMath.lerp(sprite.scale.y, scale, lerp);
+		overlapUpdateScale(sprite, scale, lerp);
 	}
 
 	public var overlapUpdate:FlxSignal = new FlxSignal();

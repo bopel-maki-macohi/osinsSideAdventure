@@ -237,7 +237,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		if (_tale.lines[index] == null)
 			addNewLineTo(index);
 
-		trace(value);
 		_tale.lines[index].autoSkip = value;
 
 		refresh();

@@ -8,7 +8,6 @@ import flxnovel.util.macros.MacroUtil;
 import openfl.events.Event;
 import flxnovel.util.Constants;
 import flxnovel.util.VersionUtil;
-import flixel.math.FlxMath;
 import flixel.FlxG;
 import flixel.util.FlxColor;
 import openfl.display.Shape;
@@ -89,7 +88,7 @@ class DebugDisplay extends TextField
 			return;
 		}
 
-		systemMemory = Math.abs(FlxMath.roundDecimal(MemoryUtil.totalMemory / 1000000, 2)); // Convert bytes to megabytes and round to 2 decimal places.
+		systemMemory = Math.abs((MemoryUtil.totalMemory / 1000000).roundDecimal(2)); // Convert bytes to megabytes and round to 2 decimal places.
 		if (systemMemory > maxMemory)
 			maxMemory = systemMemory; // Update max memory if current memory exceeds it.
 

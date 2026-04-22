@@ -2,7 +2,6 @@ package flxnovel.states.menus;
 
 import flxnovel.util.SoundUtil;
 import flxnovel.util.Constants;
-import flixel.math.FlxMath;
 import flixel.group.FlxSpriteContainer.FlxTypedSpriteContainer;
 import flixel.tweens.FlxEase;
 import flixel.util.FlxTimer;
@@ -89,7 +88,7 @@ class TitleSubStateBase extends FlxNovelSubState
 
 	public function positionSpritesGroup()
 	{
-		sprites.x = FlxMath.lerp(sprites.x, currentSelection * -spacing, 0.1);
+		sprites.x = sprites.x.lerp(currentSelection * -spacing, 0.1);
 	}
 
 	public function nonScrollingControls()

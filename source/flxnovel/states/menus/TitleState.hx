@@ -9,7 +9,6 @@ import flxnovel.util.Constants;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flxnovel.objects.ClickableSprite;
-import flixel.math.FlxMath;
 import flixel.FlxCamera;
 import openfl.filters.BlurFilter;
 import flixel.FlxSprite;
@@ -195,6 +194,9 @@ class TitleState extends FlxNovelState
 	public var paddingStart:Float = 0.3;
 	public var paddingInc:Float = 1.3;
 
+	var blurFilterBGTargetBlur:Float = 0;
+	var blurFilterFGTargetBlur:Float = 0;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -208,24 +210,23 @@ class TitleState extends FlxNovelState
 		bgScrolling = titleTileScrollBG.debugModeInUse;
 		if (bgScrolling)
 		{
-			blurFilterBG.blurX = FlxMath.lerp(blurFilterBG.blurX, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
-			blurFilterBG.blurY = FlxMath.lerp(blurFilterBG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterBGTargetBlur = blurFilterBGTargetBlur.lerp(Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterFGTargetBlur = blurFilterFGTargetBlur.lerp(Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
 
-			blurFilterFG.blurX = FlxMath.lerp(blurFilterFG.blurX, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
-			blurFilterFG.blurY = FlxMath.lerp(blurFilterFG.blurY, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
-			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 0.15, Constants.DEFAULT_LERP_SPEED);
+			blurCamFG.alpha = blurCamFG.alpha.lerp(0.15, Constants.DEFAULT_LERP_SPEED);
 		}
 		else
 		{
-			blurFilterBG.blurX = FlxMath.lerp(blurFilterBG.blurX, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
-			blurFilterBG.blurY = FlxMath.lerp(blurFilterBG.blurY, Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterBGTargetBlur = blurFilterBGTargetBlur.lerp(Constants.DEFAULT_BLUR_UNFOCUS, Constants.DEFAULT_LERP_SPEED);
+			blurFilterFGTargetBlur = blurFilterFGTargetBlur.lerp(Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
 
-			blurFilterFG.blurX = FlxMath.lerp(blurFilterFG.blurX, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
-			blurFilterFG.blurY = FlxMath.lerp(blurFilterFG.blurY, Constants.DEFAULT_BLUR_FOCUS, Constants.DEFAULT_LERP_SPEED);
-			blurCamFG.alpha = FlxMath.lerp(blurCamFG.alpha, 1, Constants.DEFAULT_LERP_SPEED);
+			blurCamFG.alpha = blurCamFG.alpha.lerp(1, Constants.DEFAULT_LERP_SPEED);
 
 			nonScrollingControls();
 		}
+
+		blurFilterBG.blurX = blurFilterBG.blurY = blurFilterBGTargetBlur;
+		blurFilterFG.blurX = blurFilterFG.blurY = blurFilterFGTargetBlur;
 
 		if (controls.justPressed.TITLE_DEBUG && subState == null)
 			debugSubState();
