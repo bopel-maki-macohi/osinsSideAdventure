@@ -15,9 +15,9 @@ cd ../../../../
 cd "launchMods"
 
 echo 7ZIPPING: OSA LAUNCH MOD
-wsl 7z a "osa.zip" "osa"
-wsl mv "osa.zip" export/
+wsl 7z a "launchMod-osa.zip" "osa"
+wsl mv "launchMod-osa.zip" export/
 
 echo 7ZIPPING: BISO LAUNCH MOD
-wsl 7z a "biso.zip" "biso"
-wsl mv "biso.zip" export/
+wsl 7z a "launchMod-biso.zip" "biso"
+wsl mv "launchMod-biso.zip" export/
