@@ -21,6 +21,7 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 	{
 		build();
 
+		trace(file);
 		super(file);
 	}
 
