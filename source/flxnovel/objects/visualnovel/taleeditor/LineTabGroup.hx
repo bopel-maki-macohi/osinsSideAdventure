@@ -1,5 +1,6 @@
 package flxnovel.objects.visualnovel.taleeditor;
 
+import flixel.text.FlxText;
 import flixel.addons.ui.FlxUICheckBox;
 import flixel.addons.ui.FlxUINumericStepper;
 import flxnovel.util.DropdownListUpdater;
@@ -17,7 +18,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 {
 	public var _tale:TaleData;
 
-	public var linesDropdown:FlxUIDropDownMenu;
+	public var lineText:FlxText;
 
 	public var speakersDropdown:FlxUIDropDownMenu;
 	public var onSpeakerChangeCallback:String->Int->Void;
@@ -46,13 +47,13 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		name = 'Lines';
 
-		linesDropdown = new FlxUIDropDownMenu(10, 20, null, onChangedLine);
-		linesDropdown.name = 'Lines';
+		lineText = new FlxText(10, 20, 0, 'Selected Line: None', 16);
+		lineText.ID = 0;
 
 		var speakers = [for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)];
 		speakers.insert(0, new StrNameLabel('', ''));
 
-		speakersDropdown = new FlxUIDropDownMenu(linesDropdown.x + linesDropdown.width + 10, linesDropdown.y, speakers, onSpeakerChange);
+		speakersDropdown = new FlxUIDropDownMenu(lineText.x + lineText.width + 10, lineText.y, speakers, onSpeakerChange);
 		speakersDropdown.selectedId = '';
 
 		lineTextInput = new FlxUIInputText(speakersDropdown.x + speakersDropdown.width + 10, speakersDropdown.y, 320, '', 8);
@@ -74,8 +75,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		autoSkipStepper.value = 0;
 		autoSkipStepper.name = 'line_autoSkip';
 
-		add(makeText(linesDropdown, 'Selected Line: '));
-		add(linesDropdown);
+		add(lineText);
 
 		add(makeText(speakersDropdown, 'Line Speaker ID: '));
 		add(speakersDropdown);
@@ -101,13 +101,13 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public function onLineBGTextChange(text:String, action:String)
 	{
 		if (onBGTextChangeCallback != null)
-			onBGTextChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
+			onBGTextChangeCallback(text, lineText.ID);
 	}
 
 	// small yoink from FNF legacy code
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
 	{
-		var index:Int = Std.parseInt(linesDropdown.selectedId) ?? 0;
+		var index:Int = lineText.ID;
 
 		if (id == FlxUICheckBox.CLICK_EVENT)
 		{
@@ -129,13 +129,13 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public function onSpeakerStateChange(text:String, action:String)
 	{
 		if (onSpeakerStateChangeCallback != null)
-			onSpeakerStateChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
+			onSpeakerStateChangeCallback(text, lineText.ID);
 	}
 
 	public function onRemoveLine()
 	{
-     		if (onRemoveLineCallback != null)
-			onRemoveLineCallback(Std.parseInt(linesDropdown.selectedId));
+		if (onRemoveLineCallback != null)
+			onRemoveLineCallback(lineText.ID);
 	}
 
 	public function onNewLine()
@@ -147,17 +147,19 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public function onSpeakerChange(speakerID:String)
 	{
 		if (onSpeakerChangeCallback != null)
-			onSpeakerChangeCallback(speakerID, Std.parseInt(linesDropdown.selectedId));
+			onSpeakerChangeCallback(speakerID, lineText.ID);
 	}
 
 	public function onLineTextChange(text:String, action:String)
 	{
 		if (onLineTextChangeCallback != null)
-			onLineTextChangeCallback(text, Std.parseInt(linesDropdown.selectedId));
+			onLineTextChangeCallback(text, lineText.ID);
 	}
 
 	public function onChangedLine(indexStr:String)
 	{
+		lineText.text = 'Selected Line: ${(_tale?.lines?.length > 0) ? 0 : Std.parseInt(indexStr) + 1} / ${_tale?.lines?.length ?? 0}';
+
 		onChangedLineBasic(indexStr);
 		onChangedLineCallbacks();
 	}
@@ -184,23 +186,8 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		onSpeakerStateChange(speakersStateInput.text, '');
 	}
 
-	public var lines(get, never):Array<StrNameLabel>;
-
-	function get_lines():Array<StrNameLabel>
-	{
-		return [for (i => line in _tale?.lines ?? []) new StrNameLabel('$i', 'Line #${i + 1}')];
-	}
-
-	public var btnLines(get, never):Array<FlxUIButton>;
-
-	function get_btnLines():Array<FlxUIButton>
-	{
-		@:privateAccess
-		return [for (i => line in lines) linesDropdown.makeListButton(i, line.label, line.name)];
-	}
-
 	public function updateList()
 	{
-		DropdownListUpdater.updateList(lines, btnLines, linesDropdown, '0', () -> onChangedLine('0'));
+		onChangedLine('${lineText.ID}');
 	}
 }

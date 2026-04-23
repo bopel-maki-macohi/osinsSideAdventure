@@ -90,7 +90,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		uiBox.talesTabGroup.onRemoveFilterCallback = onRemoveFilter;
 
 		onNewLine();
-		uiBox.linesTabGroup.onChangedLine('0');
 
 		super.create();
 
@@ -146,14 +145,16 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		{
 			if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
 			{
-				var lld = uiBox.linesTabGroup.linesDropdown;
-				var lineNum = Std.parseInt(lld.selectedId);
-
 				if (controls.justPressed.LEFT)
-					lld.selectedId = lld.list[(lineNum - 1) ?? 0]?.name ?? lld.list[lld.list.length - 1]?.name ?? '0';
-
+					uiBox.linesTabGroup.lineText.ID--;
 				if (controls.justPressed.RIGHT)
-					lld.selectedId = lld.list[(lineNum + 1) ?? 0]?.name ?? '0';
+					uiBox.linesTabGroup.lineText.ID++;
+
+				if (uiBox.linesTabGroup.lineText.ID < 0)
+					uiBox.linesTabGroup.lineText.ID = _tale.lines.length - 1;
+				if (uiBox.linesTabGroup.lineText.ID > _tale.lines.length - 1)
+					uiBox.linesTabGroup.lineText.ID = 0;
+
 				refreshLinesGrp();
 			}
 
@@ -339,19 +340,11 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onRemoveLine(index:Int)
 	{
-		var ldd = uiBox.linesTabGroup.linesDropdown;
-
 		for (i => line in _tale.lines)
-		{
 			if (i == index)
-			{
 				_tale.lines.remove(line);
-			}
-		}
 
-		refreshLinesGrp();
-
-		ldd.selectedId = '${index - 1}';
+		uiBox.linesTabGroup.lineText.ID = index - 1;
 
 		refreshLinesGrp();
 	}
@@ -379,11 +372,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		addNewLineTo(_tale.lines.length, false);
 
-		refreshLinesGrp();
-
-		var ldd = uiBox.linesTabGroup.linesDropdown;
-		ldd.selectedId = ldd.list[ldd.list.length - 1]?.name ?? '0';
-
+		uiBox.linesTabGroup.lineText.ID = _tale.lines.length - 1;
 		refreshLinesGrp();
 	}
 
@@ -466,7 +455,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		uiBox.linesTabGroup.updateList();
 
-		var index:Int = Std.parseInt(uiBox.linesTabGroup.linesDropdown.selectedId);
+		var index:Int = uiBox.linesTabGroup.lineText.ID;
 
 		uiBox.linesTabGroup.onChangedLineBasic('$index');
 

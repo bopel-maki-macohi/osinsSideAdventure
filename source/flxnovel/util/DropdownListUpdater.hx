@@ -30,14 +30,14 @@ class DropdownListUpdater
 				}
 				dropdown.selectedId = startingValue;
 				dropdown.header.text.text = '';
+
+				@:privateAccess {
+					dropdown.dropPanel.resize(dropdown.header.background.width, dropdown.getPanelHeight());
+					dropdown.updateButtonPositions();
+				}
 			}
 			else
 				dropdown.setData(SMLList);
-
-			@:privateAccess {
-				dropdown.dropPanel.resize(dropdown.header.background.width, 10 * dropdown.header.background.height);
-				dropdown.updateButtonPositions();
-			}
 
 			if (postUpdateList != null)
 				postUpdateList();
