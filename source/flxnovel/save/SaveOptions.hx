@@ -1,5 +1,7 @@
 package flxnovel.save;
 
+import flxnovel.save.fields.*;
+
 typedef SaveOptions =
 {
 	var pcname:Null<Bool>;
@@ -9,5 +11,5 @@ typedef SaveOptions =
 
 	var debugDisplay:Null<Bool>;
 
-	var uiOrientation:SaveDataUIOrientation;
+	var uiOrientation:UIOrientation;
 }
