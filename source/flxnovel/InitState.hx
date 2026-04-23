@@ -19,6 +19,11 @@ import flxnovel.states.debug.*;
 
 class InitState extends FlxNovelState
 {
+	/**
+	 * This is to make sure
+	 * important initalization steps
+	 * are not repeated.
+	 */
 	public static var IMPORTANT_INITALIZED:Bool = false;
 
 	override public function new()
@@ -42,6 +47,11 @@ class InitState extends FlxNovelState
 		leave();
 	}
 
+	/**
+	 * Initialize important things only once.
+	 * 
+	 * Examples include the Crash Handler and Save Class
+	 */
 	function importantInit()
 	{
 		CrashHandler.init();
@@ -62,6 +72,10 @@ class InitState extends FlxNovelState
 		InitState.IMPORTANT_INITALIZED = true;
 	}
 
+	/**
+	 * Watch out for the mod reloading keybind,
+	 * if it's just pressed then `ModCore` will reload and the state will be reset
+	 */
 	function modReloadCheck()
 	{
 		if (controls.justPressed.MOD_RELOAD)
@@ -71,6 +85,10 @@ class InitState extends FlxNovelState
 		}
 	}
 
+	/**
+	 * It doens't matter if these are initalized
+	 * multiple times. It'll be fine.
+	 */
 	function unimportantInit()
 	{
 		ModCore.reload();
@@ -85,6 +103,10 @@ class InitState extends FlxNovelState
 		#end
 	}
 
+	/**
+	 * Moving on to the next state,
+	 * alot of this is checking for defines.
+	 */
 	function leave()
 	{
 		var ENTER_VN = MacroUtil.getDefine('ENTER_VN');
