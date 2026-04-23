@@ -53,7 +53,7 @@
 	
 	<assets path="mods" />
 	<assets path="dev/debugMods" rename="mods" if="INCLUDE_DEBUG_MODS" />
-	<assets path="dev/launchMods" rename="mods" if="INCLUDE_LAUNCH_MODS" exclude="export/"/>
+	<assets path="dev/launchMods" rename="mods" if="INCLUDE_LAUNCH_MODS" exclude="export"/>
 
 	<assets path="CHANGELOG.md" />
 
