@@ -119,13 +119,94 @@
 			"text": "There wasn't anything on the news related to a war happening so it can't be that..."
 		},
 		{
+			"autoSkip": 2,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "osin",
+				"state": "stare"
+			},
+			"text": "..."
+		},
+		{
 			"autoSkip": 0,
 			"background": "tempoCity-ruin",
 			"speaker": {
 				"id": "osin",
-				"state": "cheerful"
+				"state": "stare-lookUp"
 			},
-			"text": ""
+			"text": "Now what?"
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "stare-turn"
+			},
+			"text": "We..."
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "stare-turn"
+			},
+			"text": "We go to the Base of Operations."
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "stare-turn"
+			},
+			"text": "Get what we need."
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "commanding"
+			},
+			"text": "And move."
+		},
+		{
+			"autoSkip": 0.1,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "osin",
+				"state": "panic"
+			},
+			"text": "WE HAVE TO MOVE?"
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "osin",
+				"state": "panic-shakeHead"
+			},
+			"text": "NONONONONONONO"
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "osin",
+				"state": "panic-shakeHead"
+			},
+			"text": "We can't move!"
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "commanding-scream"
+			},
+			"text": "WHAT CHOICE DO WE HAVE?"
 		}
 	],
 	"talesmenu": {
@@ -136,5 +217,5 @@
 		],
 		"titleAsset": ""
 	},
-	"generatedBy": "FlxNovel 0.12.0.fabc9ea"
+	"generatedBy": "FlxNovel 0.12.0.1e368ff"
 }

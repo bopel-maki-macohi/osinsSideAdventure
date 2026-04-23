@@ -162,7 +162,8 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 				if (FlxG.keys.justPressed.S || FlxG.keys.justPressed.O)
 				{
 					uiBox.selected_tab = 0;
-					uiBox.dataTabGroup.update(FlxG.elapsed);
+
+					uiBox.update(FlxG.elapsed);
 					uiBox.dataTabGroup.saveJSONMethod();
 
 					if (FlxG.keys.justPressed.O)
