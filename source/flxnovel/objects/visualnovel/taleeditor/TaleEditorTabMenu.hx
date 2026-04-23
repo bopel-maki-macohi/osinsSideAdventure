@@ -22,7 +22,7 @@ class TaleEditorTabMenu extends FlxUITabMenu implements ITaleContainer
 
 		resize(640, 480);
 
-		setPosition(20, 20);
+		setPosition(10, 10);
 		screenCenter(Y);
 
 		selected_tab = 0;
