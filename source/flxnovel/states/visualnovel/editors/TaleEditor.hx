@@ -152,10 +152,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 				if (controls.justPressed.RIGHT)
 					uiBox.linesTabGroup.lineText.ID++;
 
-				if (uiBox.linesTabGroup.lineText.ID < 0)
-					uiBox.linesTabGroup.lineText.ID = _tale.lines.length - 1;
-				if (uiBox.linesTabGroup.lineText.ID > _tale.lines.length - 1)
-					uiBox.linesTabGroup.lineText.ID = 0;
+				uiBox.linesTabGroup.preventOverflowAndUnderflow();
 
 				refreshLinesGrp();
 			}
@@ -460,10 +457,10 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function refreshLinesGrp()
 	{
-		trace('refreshLinesGrp');
-		// uiBox.linesTabGroup.updateList();
+		uiBox.linesTabGroup.preventOverflowAndUnderflow();
 
 		var index:Int = uiBox.linesTabGroup.lineText.ID;
+		trace('refreshLinesGrp $index');
 
 		uiBox.linesTabGroup.onChangedLineBasic('$index');
 
