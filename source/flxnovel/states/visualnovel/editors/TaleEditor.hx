@@ -355,7 +355,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function addNewLineTo(index:Int, ?allowRefresh:Bool = true)
 	{
-		trace('addNewLineTo');
+		trace('addNewLineTo $index');
 		if (index > 0)
 		{
 			_tale.lines[index] = {
@@ -461,13 +461,13 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	function refreshLinesGrp()
 	{
 		trace('refreshLinesGrp');
-		uiBox.linesTabGroup.updateList();
+		// uiBox.linesTabGroup.updateList();
 
-		// var index:Int = uiBox.linesTabGroup.lineText.ID;
+		var index:Int = uiBox.linesTabGroup.lineText.ID;
 
-		// uiBox.linesTabGroup.onChangedLineBasic('$index');
+		uiBox.linesTabGroup.onChangedLineBasic('$index');
 
-		// onLineSpeakerStateChange(_tale?.lines[index]?.speaker?.state ?? '', index);
-		// onLineTextChange(_tale?.lines[index]?.text ?? '', index);
+		onLineSpeakerStateChange(_tale?.lines[index]?.speaker?.state ?? '', index);
+		onLineTextChange(_tale?.lines[index]?.text ?? '', index);
 	}
 }
