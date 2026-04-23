@@ -33,13 +33,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	public var talemenu_displayText:FlxText;
 	public var talemenu_titleAsset:FlxSprite;
 
-	override function onExit()
-	{
-		super.onExit();
-
-		Main.debugDisplay.changeVerticalOrientation(this.transOut.duration);
-	}
-
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
 	{
 		super.getEvent(id, sender, data, params);
@@ -124,6 +117,13 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		FlxG.mouse.visible = true;
 
 		refreshAll();
+	}
+
+	override function onExit()
+	{
+		super.onExit();
+
+		Main.debugDisplay.changeVerticalOrientation(this.transOut.duration);
 	}
 
 	override function update(elapsed:Float)
