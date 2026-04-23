@@ -457,6 +457,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function refreshLinesGrp()
 	{
-		uiBox.linesTabGroup.updateList();
+		uiBox.linesTabGroup.updateCall();
 	}
 }

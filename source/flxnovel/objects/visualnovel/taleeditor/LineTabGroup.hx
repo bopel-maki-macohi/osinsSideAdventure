@@ -188,7 +188,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 		onSpeakerStateChange(speakersStateInput.text, '');
 	}
 
-	public function updateList()
+	public function updateCall()
 	{
 		preventOverflowAndUnderflow();
 		onChangedLine('${lineText.ID}');
