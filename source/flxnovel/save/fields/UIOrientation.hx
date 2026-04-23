@@ -1,4 +1,4 @@
-package source.flxnovel.save.fields;
+package flxnovel.save.fields;
 
 enum abstract UIOrientation(String) from String to String
 {
