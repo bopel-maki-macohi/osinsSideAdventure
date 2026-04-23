@@ -42,6 +42,8 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	override function create()
 	{
+		trace('create');
+
 		Main.debugDisplay.changeVerticalOrientation(this.transIn.duration);
 
 		_tale = TaleData.fileBuild(null);
@@ -234,6 +236,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onLineBGTextChange(text:String, index:Int)
 	{
+		trace('onLineBGTextChange');
 		if (_tale.lines[index] == null)
 			addNewLineTo(index);
 
@@ -256,8 +259,9 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onAutoSkipStep(value:Float, index:Int)
 	{
+		trace('onAutoSkipStep');
 		if (_tale.lines[index] == null)
-			addNewLineTo(index);
+			addNewLineTo(index, false);
 
 		_tale.lines[index].autoSkip = value;
 
@@ -351,6 +355,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function addNewLineTo(index:Int, ?allowRefresh:Bool = true)
 	{
+		trace('addNewLineTo');
 		if (index > 0)
 		{
 			_tale.lines[index] = {
@@ -370,6 +375,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onNewLine()
 	{
+		trace('onNewLine');
 		addNewLineTo(_tale.lines.length, false);
 
 		uiBox.linesTabGroup.lineText.ID = _tale.lines.length - 1;
@@ -448,18 +454,20 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function refreshTalesGroup()
 	{
+		trace('refreshTalesGroup');
 		uiBox.talesTabGroup.updateList();
 	}
 
 	function refreshLinesGrp()
 	{
+		trace('refreshLinesGrp');
 		uiBox.linesTabGroup.updateList();
 
-		var index:Int = uiBox.linesTabGroup.lineText.ID;
+		// var index:Int = uiBox.linesTabGroup.lineText.ID;
 
-		uiBox.linesTabGroup.onChangedLineBasic('$index');
+		// uiBox.linesTabGroup.onChangedLineBasic('$index');
 
-		onLineSpeakerStateChange(_tale?.lines[index]?.speaker?.state ?? '', index);
-		onLineTextChange(_tale?.lines[index]?.text ?? '', index);
+		// onLineSpeakerStateChange(_tale?.lines[index]?.speaker?.state ?? '', index);
+		// onLineTextChange(_tale?.lines[index]?.text ?? '', index);
 	}
 }
