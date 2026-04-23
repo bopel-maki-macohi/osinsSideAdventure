@@ -1,4 +1,4 @@
-package flxnovel.objects.visualnovel;
+package flxnovel.objects;
 
 import flixel.FlxSprite;
 import flixel.text.FlxText;
