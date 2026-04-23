@@ -207,6 +207,33 @@
 				"state": "commanding-scream"
 			},
 			"text": "WHAT CHOICE DO WE HAVE?"
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "commanding-scream"
+			},
+			"text": "WE DON'T KNOW WHAT'S HAPPENING HERE."
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "commanding-scream"
+			},
+			"text": "WE. HAVE. TO LEAVE."
+		},
+		{
+			"autoSkip": 1,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "osin",
+				"state": "cry"
+			},
+			"text": ""
 		}
 	],
 	"talesmenu": {
@@ -217,5 +244,5 @@
 		],
 		"titleAsset": ""
 	},
-	"generatedBy": "FlxNovel 0.12.0.1e368ff"
+	"generatedBy": "FlxNovel 0.12.0.476123f"
 }
