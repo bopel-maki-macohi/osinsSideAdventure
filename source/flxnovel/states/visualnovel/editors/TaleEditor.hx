@@ -144,20 +144,17 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		if (VolumeManagerPlugin.volumeKeysActive)
 		{
-			if (FlxG.keys.pressed.SHIFT)
-			{
-				var lld = uiBox.linesTabGroup.linesDropdown;
-				var lineNum = Std.parseInt(lld.selectedId);
+			var lld = uiBox.linesTabGroup.linesDropdown;
+			var lineNum = Std.parseInt(lld.selectedId);
 
-				if (controls.justPressed.LEFT)
-					lld.selectedId = lld.list[(lineNum - 1) ?? 0]?.name ?? lld.list[lld.list.length - 1]?.name ?? '0';
+			if (controls.justPressed.LEFT)
+				lld.selectedId = lld.list[(lineNum - 1) ?? 0]?.name ?? lld.list[lld.list.length - 1]?.name ?? '0';
 
-				if (controls.justPressed.RIGHT)
-					lld.selectedId = lld.list[(lineNum + 1) ?? 0]?.name ?? '0';
+			if (controls.justPressed.RIGHT)
+				lld.selectedId = lld.list[(lineNum + 1) ?? 0]?.name ?? '0';
 
-				if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
-					refreshLinesGrp();
-			}
+			if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
+				refreshLinesGrp();
 
 			if (FlxG.keys.pressed.CONTROL)
 			{
@@ -166,7 +163,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 					uiBox.selected_tab = 0;
 					uiBox.dataTabGroup.saveJSONMethod();
 				}
-				
+
 				if (FlxG.keys.justPressed.O)
 				{
 					uiBox.selected_tab = 0;

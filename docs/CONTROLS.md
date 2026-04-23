@@ -60,9 +60,9 @@ ENTER - Proceed through dialogue when the hand shows up
 
 ESCAPE - Leave
 
-SHIFT + LEFT / A - Move to the previous line (or to the end of the line list if you're at the first line)
+LEFT / A - Move to the previous line (or to the end of the line list if you're at the first line)
 
-SHIFT + RIGHT / D - Move to the next line (or to the beginning of the line list if you're at the last line)
+RIGHT / D - Move to the next line (or to the beginning of the line list if you're at the last line)
 
 CONTROL + S - Save Tale
 
