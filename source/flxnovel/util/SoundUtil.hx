@@ -18,7 +18,8 @@ class SoundUtil
 
 		for (file in directory.getFilesInDirectory())
 		{
-			if (!file.endsWith(''.audioFile())) continue;
+			if (!file.endsWith(''.audioFile()))
+				continue;
 
 			sounds.push(FlxG.sound.load(file));
 		}

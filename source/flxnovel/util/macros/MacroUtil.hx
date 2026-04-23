@@ -20,6 +20,22 @@ class MacroUtil
 		return macro $v{(haxe.macro.Context.definedValue(key) != null)};
 	}
 
+	public static macro var HAS_USER:Bool = false;
+
 	public static macro function getUSR()
-		return macro $v{#if windows Sys.environment()["USERNAME"] #elseif (linux || macos) return Sys.environment()["USER"] #else 'Browser' #end};
+	{
+		#if windows
+		HAS_USER = true;
+		return macro $v{Sys.environment()["USERNAME"]};
+		#elseif (linux || macos)
+		HAS_USER = true;
+		return macro $v{Sys.environment()["USER"]};
+		#elseif html5
+		HAS_USER = false;
+		return macro $v{'Browser'};
+		#else
+		HAS_USER = false;
+		return macro $v{'Unknown'};
+		#end
+	}
 }

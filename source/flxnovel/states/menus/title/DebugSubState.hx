@@ -32,8 +32,8 @@ class DebugSubState extends TitleSubStateBase
 
 			makeSprite('debug/default', () -> return 'Go to Splash', () -> FlxG.switchState(() -> new SplashState())),
 			makeSprite('debug/default', () -> return 'Go to Github Page', () -> FlxG.openURL('https://github.com/bopel-maki-macohi/osinsSideAdventure')),
-			makeSprite('debug/default', () -> return 'Go to Lorem Ipsum VN', () -> FlxG.switchState(() -> new VNState('lorem'))),			
-			makeSprite('debug/default', () -> return 'Go to Background Testing', () -> FlxG.switchState(() -> new BackgroundTesting())),			
+			makeSprite('debug/default', () -> return 'Go to Lorem Ipsum VN', () -> FlxG.switchState(() -> new VNState('lorem'))),
+			makeSprite('debug/default', () -> return 'Go to Background Testing', () -> FlxG.switchState(() -> new BackgroundTesting())),
 		];
 	}
 

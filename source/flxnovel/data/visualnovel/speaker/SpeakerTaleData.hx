@@ -4,6 +4,6 @@ typedef SpeakerTaleData =
 {
 	var id:String;
 
-    @:default('default')
+	@:default('default')
 	var state:String;
 }

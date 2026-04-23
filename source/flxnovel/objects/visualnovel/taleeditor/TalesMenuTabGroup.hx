@@ -92,7 +92,10 @@ class TalesMenuTabGroup extends TabGroup implements ITaleContainer
 
 	function get_filters():Array<StrNameLabel>
 	{
-		return [for (i => filter in _tale?.talesmenu?.filters ?? []) new StrNameLabel('$i', filter)];
+		return [
+			for (i => filter in _tale?.talesmenu?.filters ?? [])
+				new StrNameLabel('$i', filter)
+		];
 	}
 
 	public var btnFilters(get, never):Array<FlxUIButton>;
@@ -100,7 +103,10 @@ class TalesMenuTabGroup extends TabGroup implements ITaleContainer
 	function get_btnFilters():Array<FlxUIButton>
 	{
 		@:privateAccess
-		return [for (i => line in filters) filtersDropdown.makeListButton(i, line.label, line.name)];
+		return [
+			for (i => line in filters)
+				filtersDropdown.makeListButton(i, line.label, line.name)
+		];
 	}
 
 	public function updateList()

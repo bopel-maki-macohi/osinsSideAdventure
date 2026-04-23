@@ -76,7 +76,7 @@ class ModsSubState extends TitleSubStateBase
 		enabledMods.sort(SortUtil.alphabetically);
 
 		Save.enabledMods.set(enabledMods);
-        hasChangedList = (enabledMods.copy() != ogEnabledMods.copy());
+		hasChangedList = (enabledMods.copy() != ogEnabledMods.copy());
 	}
 
 	function getModStr(modID:String)

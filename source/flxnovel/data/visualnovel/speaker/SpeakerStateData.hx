@@ -1,10 +1,11 @@
 package flxnovel.data.visualnovel.speaker;
 
-typedef SpeakerStateData = {
-    var id:String;
-    
-    var asset:String;
+typedef SpeakerStateData =
+{
+	var id:String;
 
-    @:optional
-    var offsets:Array<Float>;
+	var asset:String;
+
+	@:optional
+	var offsets:Array<Float>;
 }

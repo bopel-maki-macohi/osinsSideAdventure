@@ -9,16 +9,16 @@ class SpeakerEditor extends FlxNovelState implements ISpeakerContainer
 {
 	public var _speaker:SpeakerData;
 
-    public var uiBox:SpeakerEditorTabMenu;
+	public var uiBox:SpeakerEditorTabMenu;
 
 	override function create()
 	{
-        _speaker = SpeakerData.fileBuild(null);
+		_speaker = SpeakerData.fileBuild(null);
 
-        uiBox = new SpeakerEditorTabMenu(_speaker);
+		uiBox = new SpeakerEditorTabMenu(_speaker);
 
-        super.create();
-        
+		super.create();
+
 		FlxG.mouse.visible = true;
 	}
 

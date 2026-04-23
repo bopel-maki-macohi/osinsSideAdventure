@@ -56,7 +56,7 @@ class DebugDisplay extends TextField
 		startingVOrientation = !startingVOrientation;
 
 		FlxTween.cancelTweensOf(this, ['y']);
-		
+
 		if (startingVOrientation)
 			FlxTween.tween(this, {y: startingPosition.y}, duration, {ease: ease ?? FlxEase.sineInOut});
 		else
