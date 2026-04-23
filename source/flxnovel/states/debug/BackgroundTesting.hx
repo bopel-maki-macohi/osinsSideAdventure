@@ -1,6 +1,6 @@
 package flxnovel.states.debug;
 
-import flxnovel.states.menus.TitleState;
+import flxnovel.states.menus.title.TitleState;
 import flixel.FlxG;
 import flxnovel.data.visualnovel.BackgroundData;
 import flxnovel.objects.visualnovel.VNBackground;

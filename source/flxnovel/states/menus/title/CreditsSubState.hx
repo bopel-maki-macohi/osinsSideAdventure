@@ -1,4 +1,4 @@
-package flxnovel.states.menus;
+package flxnovel.states.menus.title;
 
 import flixel.FlxG;
 

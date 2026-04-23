@@ -14,7 +14,7 @@ import json2object.JsonParser;
 import openfl.net.FileReference;
 import flxnovel.objects.visualnovel.taleeditor.TaleEditorTabMenu;
 import flxnovel.data.visualnovel.TaleData;
-import flxnovel.states.menus.TitleState;
+import flxnovel.states.menus.title.TitleState;
 import flixel.FlxG;
 import flixel.addons.ui.FlxUIInputText;
 

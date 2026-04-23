@@ -7,7 +7,7 @@ import flixel.text.FlxText;
 import flxnovel.util.VersionUtil;
 import flxnovel.states.menus.OutdatedState;
 import flxnovel.util.Constants;
-import flxnovel.states.menus.TitleState;
+import flxnovel.states.menus.title.TitleState;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flxnovel.util.macros.MacroUtil;

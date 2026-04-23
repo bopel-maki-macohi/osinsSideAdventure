@@ -7,7 +7,7 @@ import flxnovel.modding.scripting.ScriptHandler;
 import flixel.util.FlxColor;
 import flxnovel.objects.HoldToPerformGadge;
 import flxnovel.util.SoundUtil;
-import flxnovel.states.menus.TitleState;
+import flxnovel.states.menus.title.TitleState;
 import flixel.FlxSprite;
 import flixel.FlxG;
 import flixel.addons.text.FlxTypeText;

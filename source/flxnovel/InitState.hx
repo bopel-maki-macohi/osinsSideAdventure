@@ -1,19 +1,17 @@
 package flxnovel;
 
-import flxnovel.util.plugins.VolumeManagerPlugin;
+import flixel.FlxG;
+import flixel.addons.transition.FlxTransitionableState;
+import flxnovel.util.plugins.*;
 import flxnovel.modding.ModCore;
 import flxnovel.states.visualnovel.editors.*;
 import flxnovel.states.visualnovel.VNState;
 import flxnovel.util.*;
 import flxnovel.states.transition.SplashState;
-import flxnovel.objects.RhythmManager;
 import flxnovel.util.macros.*;
 import flxnovel.util.debug.CrashHandler;
 import flxnovel.save.Save;
-import flixel.addons.transition.FlxTransitionableState;
-import flxnovel.states.menus.TitleState;
-import flixel.FlxG;
-import flxnovel.util.plugins.ScreenshotPlugin;
+import flxnovel.states.menus.title.*;
 import flxnovel.states.FlxNovelState;
 import flxnovel.states.debug.*;
 

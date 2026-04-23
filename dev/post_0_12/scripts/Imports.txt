@@ -7,7 +7,7 @@ import flixel.text.FlxText; // 6
 import flxnovel.save.Save; // 5
 import flixel.util.FlxTimer; // 5
 import flixel.tweens.FlxTween; // 5
-import flxnovel.states.menus.TitleState; // 4
+import flxnovel.states.menus.title.TitleState; // 4
 import flixel.math.FlxMath; // 4
 import flxnovel.objects.ClickableSprite; // 3
 import flxnovel.data.visualnovel.SpeakerData; // 3
