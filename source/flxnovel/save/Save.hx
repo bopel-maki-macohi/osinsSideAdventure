@@ -14,6 +14,7 @@ class Save
 		options = new SaveField<SaveOptions>('options', {
 			pcname: true,
 			debugDisplay: true,
+			uiOrientation: DEFAULT,
 		});
 
 		options.get().pcname ??= true;

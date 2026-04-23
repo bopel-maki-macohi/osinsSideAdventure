@@ -8,4 +8,6 @@ typedef SaveOptions =
 	var ?fpsCounter:Null<Bool>;
 
 	var debugDisplay:Null<Bool>;
+
+	var uiOrientation:SaveDataUIOrientation;
 }
