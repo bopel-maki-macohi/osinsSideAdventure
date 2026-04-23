@@ -5,7 +5,7 @@ import haxe.macro.Expr.Access;
 
 class ConstantsMacro
 {
-	public static macro function build(file:String):Array<Field>
+	public static macro function build():Array<Field>
 	{
 		var cls:ClassType = Context.getLocalClass().get();
 		var fields:Array<Field> = Context.getBuildFields();
@@ -56,9 +56,9 @@ class ConstantsMacro
 			return v;
 		}
 
-		var constantsText:String = sys.io.File.getContent(file);
+		var constantsText:String = sys.io.File.getContent('dev/post_0_12/constants.txt');
 
-		info(file + ' : ' + constantsText);
+		info(constantsText);
 
 		for (line in constantsText.split('\n'))
 		{
@@ -73,7 +73,7 @@ class ConstantsMacro
 			var name:String = splitLine[1];
 			var value:Dynamic = splitLine[2];
 
-			fields.push({
+			fields = fields.concat({
 				name: name, // Field name.
 				access: [Access.APublic, Access.AStatic, Access.AFinal], // Access level
 				kind: haxe.macro.Expr.FieldType.FVar(macro getType(type), macro $v{setToType(value, getType(type))}), // Variable type and default value

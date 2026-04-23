@@ -3,7 +3,7 @@ package flxnovel.util;
 import flixel.FlxG;
 import flxnovel.util.macros.GitMacro;
 
-@:autoBuild(flxnovel.util.macros.ConstantsMacro.build('dev/post_0_12/constants.txt'))
+@:autoBuild(flxnovel.util.macros.ConstantsMacro.build())
 class Constants
 {
 	public static final DEFAULT_BLUR_FOCUS:Float = 0;
