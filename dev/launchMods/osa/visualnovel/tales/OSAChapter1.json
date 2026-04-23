@@ -195,7 +195,7 @@
 			"background": "tempoCity-ruin",
 			"speaker": {
 				"id": "osin",
-				"state": "panic-shakeHead"
+				"state": "panic"
 			},
 			"text": "We can't move!"
 		},
@@ -253,5 +253,5 @@
 		],
 		"titleAsset": ""
 	},
-	"generatedBy": "FlxNovel 0.12.0.a06f138"
+	"generatedBy": "FlxNovel 0.12.0.06b1005"
 }

@@ -5,13 +5,15 @@
         "orientationOffset": 100
     },
     "states": [
-        {
-            "id": "cheerful",
-            "asset": "cheerful",
-            "offsets": [
-                0,
-                0
-            ]
-        }
+        { "id": "cheerful", "asset": "cheerful" },
+        { "id": "cheerful-lookSide", "asset": "cheerful" },
+        { "id": "shock", "asset": "cheerful" },
+        { "id": "extreme-shock", "asset": "cheerful" },
+        { "id": "stare", "asset": "cheerful" },
+        { "id": "stare-lookUp", "asset": "cheerful" },
+        { "id": "panic", "asset": "cheerful" },
+        { "id": "panic-shakeHead", "asset": "cheerful" },
+        { "id": "cry", "asset": "cheerful" },
+        { "id": "cry-turn", "asset": "cheerful" }
     ]
 }
