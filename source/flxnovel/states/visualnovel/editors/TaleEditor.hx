@@ -173,17 +173,18 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		if (VolumeManagerPlugin.volumeKeysActive)
 		{
-			if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
-			{
-				if (controls.justPressed.LEFT)
-					uiBox.linesTabGroup.lineText.ID--;
-				if (controls.justPressed.RIGHT)
-					uiBox.linesTabGroup.lineText.ID++;
+			if (uiBox.selected_tab == 1)
+				if (controls.justPressed.LEFT || controls.justPressed.RIGHT)
+				{
+					if (controls.justPressed.LEFT)
+						uiBox.linesTabGroup.lineText.ID--;
+					if (controls.justPressed.RIGHT)
+						uiBox.linesTabGroup.lineText.ID++;
 
-				uiBox.linesTabGroup.preventOverflowAndUnderflow();
+					uiBox.linesTabGroup.preventOverflowAndUnderflow();
 
-				refreshLinesGrp();
-			}
+					refreshLinesGrp();
+				}
 
 			if (FlxG.keys.pressed.CONTROL)
 			{
