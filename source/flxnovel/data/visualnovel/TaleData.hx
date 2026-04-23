@@ -49,7 +49,8 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 			return;
 
 		trace(file);
-		var data:TaleData = new JsonParser<TaleData>().fromJson(file.readText(), file);
+		var parser = new JsonParser<TaleData>();
+		var data:TaleData = parser.fromJson(file.readText(), file);
 
 		build(data.iteration, data.lines, data.talesmenu, data.generatedBy);
 	}
