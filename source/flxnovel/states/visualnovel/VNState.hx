@@ -155,7 +155,7 @@ class VNState extends FlxNovelState implements ITaleContainer implements ISingle
 		dialogueText.resetText(line?.text ?? '');
 		dialogueText.start(textWriteDelay, true, false, [], onDialogueFinishedWriting);
 
-		if (line.text?.length < 1)
+		if (line.text?.isBlank())
 			FlxTimer.wait((DateUtil.getTimestamp().length / 2) * textWriteDelay, onDialogueFinishedWriting);
 
 		ScriptHandler.call('onDialogueStartedWriting', []);

@@ -74,7 +74,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 	{
 		_taleID = text.trim();
 
-		lockedInTaleID = (_taleID.length > 0);
+		lockedInTaleID = (_taleID.notBlank());
 	}
 
 	override function update(elapsed:Float)
