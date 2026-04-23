@@ -238,7 +238,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		trace('onLineBGTextChange');
 		if (_tale.lines[index] == null)
-			addNewLineTo(index);
+			addNewLineTo(index, false);
 
 		_tale.lines[index].background = text;
 
