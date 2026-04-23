@@ -1,5 +1,6 @@
 package flxnovel.data.visualnovel;
 
+import flxnovel.util.IIterationBasedData;
 import haxe.io.Path;
 import flxnovel.data.visualnovel.speaker.*;
 import flxnovel.util.Constants;

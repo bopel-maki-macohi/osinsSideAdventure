@@ -1,4 +1,4 @@
-package flxnovel.data;
+package flxnovel.util;
 
 interface IIterationBasedData
 {

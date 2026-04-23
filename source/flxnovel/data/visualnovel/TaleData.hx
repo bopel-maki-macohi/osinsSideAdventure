@@ -1,5 +1,6 @@
 package flxnovel.data.visualnovel;
 
+import flxnovel.util.IIterationBasedData;
 import json2object.JsonWriter;
 import flxnovel.data.visualnovel.tales.*;
 import json2object.JsonParser;
