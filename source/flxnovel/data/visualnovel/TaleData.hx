@@ -54,22 +54,33 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 
 	override public function cleanse():TaleData
 	{
-		var cleansedTaleData:TaleData = new TaleData(null);
-		cleansedTaleData.build(iteration, lines, talesmenu, generatedBy);
+		var baseCleanse:TaleData = new TaleData(null);
+		baseCleanse.build(iteration, lines, talesmenu, generatedBy);
 
-		for (line in cleansedTaleData.lines)
+		var cleansedTaleData:Dynamic = baseCleanse;
+
+		var lines:Array<Dynamic> = cleansedTaleData.lines;
+
+		for (line in lines)
 		{
+			if (line == null)
+				continue;
+
 			if (line?.autoSkip == 0)
 				Reflect.deleteField(line, 'autoSkip');
 
-			if (line?.speaker?.id?.isBlank())
-				Reflect.deleteField(line, 'speaker');
+			try
+			{
+				if (line?.speaker?.id.isBlank())
+					Reflect.deleteField(line, 'speaker');
 
-			if (line?.background?.isBlank())
-				Reflect.deleteField(line, 'background');
+				if (line?.background.isBlank())
+					Reflect.deleteField(line, 'background');
 
-			if (line?.text?.isBlank())
-				Reflect.deleteField(line, 'text');
+				if (line?.text.isBlank())
+					Reflect.deleteField(line, 'text');
+			}
+			catch (e) {}
 		}
 
 		if (cleansedTaleData?.talesmenu?.display?.isBlank())
