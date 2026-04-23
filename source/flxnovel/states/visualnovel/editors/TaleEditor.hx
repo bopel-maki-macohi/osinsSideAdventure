@@ -153,7 +153,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		if (talemenu_titleAsset.visible)
 			loadTaleMenuTitle();
 
-		if (_tale.talesmenu?.display?.trim().length > 0)
+		if (_tale.talesmenu?.display?.notBlank())
 		{
 			talemenu_displayText.text = _tale.talesmenu?.display;
 			talemenu_displayText.alpha = 1;
@@ -430,7 +430,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	{
 		var path:String = 'tales/titles/'.menuAsset();
 
-		if (_tale.talesmenu?.titleAsset?.trim().length > 0)
+		if (_tale.talesmenu?.titleAsset?.notBlank())
 		{
 			path += _tale.talesmenu.titleAsset;
 			talemenu_titleAsset.alpha = 1;

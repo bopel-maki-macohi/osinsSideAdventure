@@ -81,7 +81,7 @@ class AssetUtil
 		}
 
 		for (line in file.split('\n'))
-			if (line.trim().length > 0)
+			if (line.notBlank())
 				lines.push(line.trim());
 
 		return lines;

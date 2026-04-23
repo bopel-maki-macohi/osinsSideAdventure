@@ -111,7 +111,7 @@ class TalesSubState extends TitleSubStateBase
 
 	public function addTale(tale:TaleData, entryID:String)
 	{
-		spriteList.push(makeSprite('tales/titles/${tale?.talesmenu?.titleAsset ?? entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
+		spriteList.push(makeSprite('tales/titles/${(tale?.talesmenu?.titleAsset?.notBlank()) ? tale?.talesmenu?.titleAsset : entryID}', () -> setTaleString(tale, entryID), () -> taleSelected(entryID)));
 	}
 
 	public function setTaleString(tale:TaleData, entryID:String)
@@ -119,7 +119,7 @@ class TalesSubState extends TitleSubStateBase
 		var msg:String = '';
 
 		msg += 'Current Filter: ${currentFilter}\n';
-		msg += (tale?.talesmenu?.display?.trim().length > 0) ? tale?.talesmenu?.display : entryID;
+		msg += (tale?.talesmenu?.display?.notBlank()) ? tale?.talesmenu?.display : entryID;
 
 		return msg;
 	}
