@@ -1,2 +1,6 @@
+- -DLOAD_FILE define for Tale Editor to load a file for it instantly if -DTALEEDITOR is defined
+
 - auto save via an encoded tale JSON - it would be cooooooool
 - like, "zipped" tales via encoding (SHA1, SHA256) - Space on ppl's file system and also it could be a nice way to save multiple tales in one : Tale Pack
+
+- Custom debug console

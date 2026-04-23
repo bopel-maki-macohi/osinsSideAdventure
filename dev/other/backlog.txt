@@ -14,7 +14,3 @@ LOW PRIORITY
 - Background Editor
 
 - Discord RPC
-
-IDEAS
-
-- Custom debug console
