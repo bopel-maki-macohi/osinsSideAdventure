@@ -41,6 +41,10 @@ class VNState extends FlxNovelState implements ITaleContainer implements ISingle
 		trace('$taleID speakers: ${[for (id => speaker in speakers) id]}');
 	}
 
+	/**
+	 * Map of speaker data so it's already there
+	 * and the game won't have to worry about building it again.
+	 */
 	public var speakers:Map<String, SpeakerData> = [];
 
 	public var textWriteDelay:Float = 0.03;
@@ -104,7 +108,7 @@ class VNState extends FlxNovelState implements ITaleContainer implements ISingle
 
 		super.create();
 
-		changeLine(0);
+		incrementLine(0);
 	}
 
 	override function update(elapsed:Float)
@@ -116,10 +120,10 @@ class VNState extends FlxNovelState implements ITaleContainer implements ISingle
 		continueHand.visible = finishedWriting;
 
 		if (finishedWriting && controls.justPressed.ACCEPT)
-			changeLine(1);
+			incrementLine(1);
 	}
 
-	public function changeLine(increment:Int = 0)
+	public function incrementLine(increment:Int = 0)
 	{
 		if (lineNumber + increment < 0)
 		{
@@ -137,31 +141,31 @@ class VNState extends FlxNovelState implements ITaleContainer implements ISingle
 
 		lineNumber += increment;
 
-		writeDialogue();
+		onDialogueStartedWriting();
 
 		buildSpeaker();
 
 		ScriptHandler.call('onChangedLine', [lineNumber]);
 	}
 
-	public function writeDialogue()
+	public function onDialogueStartedWriting()
 	{
 		finishedWriting = false;
 
 		dialogueText.resetText(line?.text ?? '');
-		dialogueText.start(textWriteDelay, true, false, [], finishWritingDialogue);
+		dialogueText.start(textWriteDelay, true, false, [], onDialogueFinishedWriting);
 
 		if (line.text?.length < 1)
-			FlxTimer.wait((DateUtil.getTimestamp().length / 2) * textWriteDelay, finishWritingDialogue);
+			FlxTimer.wait((DateUtil.getTimestamp().length / 2) * textWriteDelay, onDialogueFinishedWriting);
 
 		ScriptHandler.call('onDialogueStartedWriting', []);
 	}
 
-	public function finishWritingDialogue()
+	public function onDialogueFinishedWriting()
 	{
 		if (line.autoSkip != null && line.autoSkip > 0)
 		{
-			FlxTimer.wait(line.autoSkip, autoSkipDialogue);
+			FlxTimer.wait(line.autoSkip, onDialogueAutoSkip);
 		}
 		else
 		{
@@ -171,9 +175,9 @@ class VNState extends FlxNovelState implements ITaleContainer implements ISingle
 		ScriptHandler.call('onDialogueFinishedWriting', []);
 	}
 
-	public function autoSkipDialogue()
+	public function onDialogueAutoSkip()
 	{
-		changeLine(1);
+		incrementLine(1);
 
 		ScriptHandler.call('onDialogueAutoSkip', []);
 	}
