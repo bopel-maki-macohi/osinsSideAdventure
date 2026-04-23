@@ -1,5 +1,6 @@
 package flxnovel.data.visualnovel;
 
+import json2object.JsonWriter;
 import flxnovel.data.visualnovel.tales.*;
 import json2object.JsonParser;
 import flxnovel.util.Constants;
@@ -49,5 +50,43 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 		var data:TaleData = new JsonParser<TaleData>().fromJson(file.readText(), file);
 
 		build(data.iteration, data.lines, data.talesmenu, data.generatedBy);
+	}
+
+	override public function cleanse():TaleData
+	{
+		var cleansedTaleData:TaleData = new TaleData(null);
+		cleansedTaleData.build(iteration, lines, talesmenu, generatedBy);
+
+		for (line in cleansedTaleData.lines)
+		{
+			if (line?.autoSkip == 0)
+				Reflect.deleteField(line, 'autoSkip');
+
+			if (line?.speaker?.id?.isBlank())
+				Reflect.deleteField(line, 'speaker');
+
+			if (line?.background?.isBlank())
+				Reflect.deleteField(line, 'background');
+
+			if (line?.text?.isBlank())
+				Reflect.deleteField(line, 'text');
+		}
+
+		if (cleansedTaleData?.talesmenu?.display?.isBlank())
+			Reflect.deleteField(cleansedTaleData.talesmenu, 'display');
+
+		if (cleansedTaleData?.talesmenu?.titleAsset?.isBlank())
+			Reflect.deleteField(cleansedTaleData.talesmenu, 'titleAsset');
+
+		if (cleansedTaleData?.talesmenu?.filters?.length < 1)
+			Reflect.deleteField(cleansedTaleData.talesmenu, 'filters');
+
+		if (Reflect.fields(cleansedTaleData?.talesmenu).length == 0)
+			Reflect.deleteField(cleansedTaleData, 'talesmenu');
+
+		if (cleansedTaleData?.generatedBy?.isBlank())
+			Reflect.deleteField(cleansedTaleData, 'generatedBy');
+
+		return cleansedTaleData;
 	}
 }

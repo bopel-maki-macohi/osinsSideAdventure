@@ -31,4 +31,15 @@ class ObjectData<T>
 	}
 
 	public function load(file:String) {}
+
+	/**
+	 * The purpose of this function is
+	 * to optimize the JSON in a way.
+	 * 
+	 * Save space and lines.
+	 */
+	public function cleanse():T
+	{
+		return null;
+	}
 }

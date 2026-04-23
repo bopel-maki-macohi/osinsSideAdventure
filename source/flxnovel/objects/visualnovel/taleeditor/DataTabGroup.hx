@@ -95,7 +95,7 @@ class DataTabGroup extends TabGroup implements ITaleContainer
 		fileRef.addEventListener(Event.CANCEL, onSaveCancel);
 		fileRef.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 
-		fileRef.save(new JsonWriter<TaleData>().write(_tale, '\t'), '$_taleID.json');
+		fileRef.save(new JsonWriter<TaleData>().write(_tale.cleanse(), '\t'), '$_taleID.json');
 	}
 
 	function onSaveComplete(e:Event)
