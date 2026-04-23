@@ -99,8 +99,6 @@ class InitState extends FlxNovelState
 		// pixel perfect render fix!
 		FlxG.stage.application.window.element.style.setProperty("image-rendering", "pixelated");
 		#end
-
-		MacroUtil.getUSER();
 	}
 
 	/**

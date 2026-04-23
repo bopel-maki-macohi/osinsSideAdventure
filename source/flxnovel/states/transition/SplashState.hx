@@ -84,7 +84,7 @@ class SplashState extends FlxNovelState
 		switch (target?.filter?.toLowerCase())
 		{
 			case 'pcname':
-				if (!MacroUtil.HAS_USER || !Save.options.get().pcname)
+				if (!Save.options.get().pcname)
 					return filterOut();
 
 			case 'debug':
