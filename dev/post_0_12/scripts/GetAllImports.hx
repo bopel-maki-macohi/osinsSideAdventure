@@ -1,6 +1,7 @@
+package dev.post_0_12.scripts;
+
 /**
- * cd dev/post_0_12/scripts
- * haxe -m GetAllImports.hx --interp
+ * haxe -m dev.post_0_12.scripts.GetAllImports --interp
  */
 
 import sys.io.File;
