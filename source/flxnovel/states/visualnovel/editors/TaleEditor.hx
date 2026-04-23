@@ -40,6 +40,32 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		Main.debugDisplay.changeVerticalOrientation(this.transOut.duration);
 	}
 
+	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
+	{
+		super.getEvent(id, sender, data, params);
+
+		uiBox?.dataTabGroup?.getEvent(id, sender, data, params);
+		uiBox?.linesTabGroup?.getEvent(id, sender, data, params);
+		uiBox?.talesTabGroup?.getEvent(id, sender, data, params);
+	}
+
+	public var typingInputs(get, never):Array<FlxUIInputText>;
+
+	function get_typingInputs():Array<FlxUIInputText>
+	{
+		return [
+			uiBox.dataTabGroup.taleIDInput,
+
+			uiBox.linesTabGroup.lineTextInput,
+			uiBox.linesTabGroup.speakersStateInput,
+			uiBox.linesTabGroup.bgTextInput,
+
+			uiBox.talesTabGroup.filterInput,
+			uiBox.talesTabGroup.displayInput,
+			uiBox.talesTabGroup.titleAssetInput,
+		];
+	}
+
 	override function create()
 	{
 		trace('create');
@@ -72,7 +98,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		add(uiBox);
 
-		uiBox.dataTabGroup.loadJSONCallback = loadTale;
+		uiBox.dataTabGroup.loadJSONCallback = onLoadTale;
 		uiBox.dataTabGroup.saveJSONPreCallback = function()
 		{
 			_tale.generatedBy = Constants.GENERATED_BY;
@@ -176,61 +202,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		}
 	}
 
-	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>)
-	{
-		super.getEvent(id, sender, data, params);
-
-		uiBox?.dataTabGroup?.getEvent(id, sender, data, params);
-		uiBox?.linesTabGroup?.getEvent(id, sender, data, params);
-		uiBox?.talesTabGroup?.getEvent(id, sender, data, params);
-	}
-
-	public var typingInputs(get, never):Array<FlxUIInputText>;
-
-	function get_typingInputs():Array<FlxUIInputText>
-	{
-		return [
-			uiBox.dataTabGroup.taleIDInput,
-
-			uiBox.linesTabGroup.lineTextInput,
-			uiBox.linesTabGroup.speakersStateInput,
-			uiBox.linesTabGroup.bgTextInput,
-
-			uiBox.talesTabGroup.filterInput,
-			uiBox.talesTabGroup.displayInput,
-			uiBox.talesTabGroup.titleAssetInput,
-		];
-	}
-
-	public function loadTaleMenuTitle()
-	{
-		var path:String = 'tales/titles/'.menuAsset();
-
-		if (_tale.talesmenu?.titleAsset?.trim().length > 0)
-		{
-			path += _tale.talesmenu.titleAsset;
-			talemenu_titleAsset.alpha = 1;
-		}
-		else
-		{
-			path += uiBox.dataTabGroup._taleID.split('-')[0];
-			talemenu_titleAsset.alpha = .5;
-		}
-
-		path = path.imageFile();
-		if (path.fileExists())
-		{
-			talemenu_titleAsset.loadGraphic(path);
-
-			talemenu_titleAsset.scale.set(.5, .5);
-			talemenu_titleAsset.updateHitbox();
-
-			talemenu_titleAsset.visible = true;
-		}
-		else
-			talemenu_titleAsset.visible = false;
-	}
-
 	function onLineBGTextChange(text:String, index:Int)
 	{
 		if (_tale.lines[index] == null)
@@ -255,7 +226,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onAutoSkipStep(value:Float, index:Int)
 	{
-		trace('onAutoSkipStep');
 		if (_tale.lines[index] == null)
 			addNewLineTo(index, false);
 
@@ -349,25 +319,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		refreshLinesGrp();
 	}
 
-	function addNewLineTo(index:Int, ?allowRefresh:Bool = true)
-	{
-		if (index < 0)
-			return;
-
-		_tale.lines[index] = {
-			text: uiBox.linesTabGroup.lineTextInput.text,
-			speaker: {
-				id: uiBox.linesTabGroup.speakersDropdown.selectedId,
-				state: uiBox.linesTabGroup.speakersStateInput.text,
-			},
-			autoSkip: 0,
-			background: uiBox.linesTabGroup.bgTextInput.text
-		};
-
-		if (allowRefresh)
-			refreshLinesGrp();
-	}
-
 	function onNewLine()
 	{
 		addNewLineTo(_tale.lines.length, false);
@@ -429,7 +380,7 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		line_dialogueText.text = _tale?.lines[index]?.text ?? '';
 	}
 
-	function loadTale(file:FileReference)
+	function onLoadTale(file:FileReference)
 	{
 		if (file != null)
 		{
@@ -454,5 +405,53 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 	function refreshLinesGrp()
 	{
 		uiBox.linesTabGroup.updateCall();
+	}
+
+	function addNewLineTo(index:Int, ?allowRefresh:Bool = true)
+	{
+		if (index < 0)
+			return;
+
+		_tale.lines[index] = {
+			text: uiBox.linesTabGroup.lineTextInput.text,
+			speaker: {
+				id: uiBox.linesTabGroup.speakersDropdown.selectedId,
+				state: uiBox.linesTabGroup.speakersStateInput.text,
+			},
+			autoSkip: 0,
+			background: uiBox.linesTabGroup.bgTextInput.text
+		};
+
+		if (allowRefresh)
+			refreshLinesGrp();
+	}
+
+	public function loadTaleMenuTitle()
+	{
+		var path:String = 'tales/titles/'.menuAsset();
+
+		if (_tale.talesmenu?.titleAsset?.trim().length > 0)
+		{
+			path += _tale.talesmenu.titleAsset;
+			talemenu_titleAsset.alpha = 1;
+		}
+		else
+		{
+			path += uiBox.dataTabGroup._taleID.split('-')[0];
+			talemenu_titleAsset.alpha = .5;
+		}
+
+		path = path.imageFile();
+		if (path.fileExists())
+		{
+			talemenu_titleAsset.loadGraphic(path);
+
+			talemenu_titleAsset.scale.set(.5, .5);
+			talemenu_titleAsset.updateHitbox();
+
+			talemenu_titleAsset.visible = true;
+		}
+		else
+			talemenu_titleAsset.visible = false;
 	}
 }
