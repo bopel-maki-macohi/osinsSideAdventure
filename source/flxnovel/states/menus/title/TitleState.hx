@@ -106,10 +106,10 @@ class TitleState extends FlxNovelState
 
 		add(logo);
 
-		talesBtn = new ClickableSprite(0, 0, 'title/tales'.menuAsset().imageFile());
-		optionsBtn = new ClickableSprite(0, 0, 'title/options'.menuAsset().imageFile());
-		creditsBtn = new ClickableSprite(0, 0, 'title/credits'.menuAsset().imageFile());
-		modsBtn = new ClickableSprite(0, 0, 'title/mods'.menuAsset().imageFile());
+		talesBtn = new ClickableSprite(0, 0, 'title/tales'.imageFile().menuAsset());
+		optionsBtn = new ClickableSprite(0, 0, 'title/options'.imageFile().menuAsset());
+		creditsBtn = new ClickableSprite(0, 0, 'title/credits'.imageFile().menuAsset());
+		modsBtn = new ClickableSprite(0, 0, 'title/mods'.imageFile().menuAsset());
 
 		if (TalesSubState.entries.length < 1)
 			talesBtn.shader = new GrayscaleShader(.75);

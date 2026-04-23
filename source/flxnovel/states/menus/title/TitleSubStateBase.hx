@@ -36,6 +36,7 @@ class TitleSubStateBase extends FlxNovelSubState
 		{
 			if (_parentState != null && _parentState.subState == this)
 			{
+				FlxG.mouse.visible = true;
 				_parentState.closeSubState();
 			}
 		});
@@ -121,7 +122,7 @@ class TitleSubStateBase extends FlxNovelSubState
 
 	public function makeSprite(asset:String, optionText:Void->String, ?onClick:Void->Void):ClickableSprite
 	{
-		var credSpr:ClickableSprite = new ClickableSprite(0, 0, asset?.menuAsset()?.imageFile());
+		var credSpr:ClickableSprite = new ClickableSprite(0, 0, asset?.imageFile()?.menuAsset());
 		credSpr.overlapUpdate.add(() -> setText((optionText == null) ? 'Unknown' : optionText()));
 
 		if (onClick != null)

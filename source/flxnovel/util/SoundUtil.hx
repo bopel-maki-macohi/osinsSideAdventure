@@ -7,10 +7,10 @@ import flixel.FlxG;
 class SoundUtil
 {
 	public static inline function selectSfx()
-		FlxG.sound.play('sounds/select${FlxG.random.int(1, 4)}'.menuAsset().audioFile());
+		FlxG.sound.play('sounds/select${FlxG.random.int(1, 4)}'.audioFile().menuAsset());
 
 	public static inline function cancelSfx()
-		FlxG.sound.play('sounds/cancel'.menuAsset().audioFile());
+		FlxG.sound.play('sounds/cancel'.audioFile().menuAsset());
 
 	public static function getLoadedSoundsFromDirectory(directory:String)
 	{

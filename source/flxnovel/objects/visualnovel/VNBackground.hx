@@ -93,7 +93,7 @@ class VNBackground extends FlxSpriteGroup
 			return;
 
 		var image:FlxSprite = new FlxSprite();
-		image.loadGraphic(data.asset.assetPath().imageFile());
+		image.loadGraphic(data.asset.imageFile().assetPath());
 
 		addProp(applyGeneralPropInfo(image, data), data.id);
 	}

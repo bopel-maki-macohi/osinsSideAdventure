@@ -39,7 +39,7 @@ class SplashState extends FlxNovelState
 
 		line = 'Have fun!';
 
-		msgs = Json.parse('splashTexts'.miscAsset().jsonFile().readText());
+		msgs = Json.parse('splashTexts'.jsonFile().miscAsset().readText());
 		debugMsgs = msgs.lines.filter(l -> return l?.filter == 'debug');
 
 		initTextOBJ();
@@ -157,6 +157,6 @@ class SplashState extends FlxNovelState
 
 	public function piracy()
 	{
-		FlxG.sound.play('prowler'.miscAsset().audioFile(), 1.0, false, null, true, leave);
+		FlxG.sound.play('prowler'.audioFile().miscAsset(), 1.0, false, null, true, leave);
 	}
 }

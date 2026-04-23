@@ -5,8 +5,21 @@ import lime.utils.Assets;
 
 class AssetUtil
 {
-	public static inline function assetPath(path:String):String
+	public static function assetPath(path:String, ?getModPath:Bool = true):String
+	{
+		if (getModPath)
+		{
+			for (mod in ModCore.loadedMods)
+			{
+				final modPath:String = ModCore.MOD_ROOT + '/' + mod.dirName + '/' + path;
+
+				if (modPath.fileExists())
+					return modPath;
+			}
+		}
+
 		return 'assets/$path';
+	}
 
 	public static inline function textFile(file:String):String
 		return '$file.txt';
@@ -97,7 +110,7 @@ class AssetUtil
 		if (rootPath.startsWith('assets/'))
 			rootPath = rootPath.substr('assets/'.length);
 
-		var paths:Array<String> = [rootPath.assetPath()];
+		var paths:Array<String> = [rootPath.assetPath(false)];
 
 		for (mod in ModCore.loadedMods)
 			paths.push(ModCore.MOD_ROOT + '/' + mod.dirName + '/' + directory);

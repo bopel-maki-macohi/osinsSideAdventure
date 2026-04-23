@@ -21,13 +21,12 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 	{
 		build();
 
-		trace(file);
 		super(file);
 	}
 
 	public static function fileBuild(file:String)
 	{
-		return new TaleData(file?.visualNovelTaleAsset()?.jsonFile());
+		return new TaleData(file?.jsonFile()?.visualNovelTaleAsset());
 	}
 
 	public function build(?iteration:Int, ?lines:Array<TaleLineData>, ?talesmenu:TaleTalesMenuData, ?generatedBy:String)
@@ -49,6 +48,7 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 		if (!file.fileExists())
 			return;
 
+		trace(file);
 		var data:TaleData = new JsonParser<TaleData>().fromJson(file.readText(), file);
 
 		build(data.iteration, data.lines, data.talesmenu, data.generatedBy);

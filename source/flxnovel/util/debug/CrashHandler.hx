@@ -85,7 +85,7 @@ class CrashHandler
 				currentState = Type.getClassName(currentStateCls) ?? 'No state loaded';
 		}
 
-		final filename:String = '$CRASH_DIRECTORY/${DateUtil.getTimestamp()}.txt';
+		final filename:String = '$CRASH_DIRECTORY/${DateUtil.getTimestamp()}'.textFile();
 
 		errorMessage += '\nGame Version: ${VersionUtil.FULL_VERSION}';
 

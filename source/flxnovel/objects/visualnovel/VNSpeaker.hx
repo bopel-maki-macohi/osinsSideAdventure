@@ -44,7 +44,7 @@ class VNSpeaker extends FlxSprite
 			return;
 		}
 
-		loadGraphic(speaker.visualNovelSpeakerAsset('imgs/${stateInfo.asset}').imageFile());
+		loadGraphic(speaker.visualNovelSpeakerAsset('imgs/${stateInfo.asset}'.imageFile()));
 
 		offset.set(0, 0);
 		if (stateInfo.offsets != null)

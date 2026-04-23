@@ -148,7 +148,7 @@ class ModCore
 			modRoot: MOD_ROOT,
 			apiVersionRule: API_VERSION_RULE,
 			dirs: dirs,
-			framework: OPENFL,
+			framework: LIME,
 			customFilesystem: modFileSystem,
 			errorCallback: onPolymodError,
 

@@ -48,7 +48,7 @@ class ModsSubState extends TitleSubStateBase
 		if (ModCore.allModMetadata.get(modID).icon != null)
 			entry.loadGraphic(FlxGraphic.fromBitmapData(BitmapData.fromBytes(ModCore.allModMetadata.get(modID).icon)));
 		else
-			entry.loadGraphic('mods/defaultIcon'.menuAsset().imageFile());
+			entry.loadGraphic('mods/defaultIcon'.imageFile().menuAsset());
 
 		entry.setGraphicSize(Constants.MOD_ICON_SIZE_PIXELS);
 		entry.updateHitbox();
