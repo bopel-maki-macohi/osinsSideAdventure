@@ -47,7 +47,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 		name = 'Lines';
 
-		lineText = new FlxText(10, 20, 0, 'Selected Line: None', 16);
+		lineText = new FlxText(10, 20, 0, 'Selected Line: None', 8);
 		lineText.ID = 0;
 
 		var speakers = [for (speakerID in SpeakerData.speakers) new StrNameLabel(speakerID, speakerID)];
@@ -197,8 +197,11 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 	public function preventOverflowAndUnderflow()
 	{
 		if (lineText.ID < 0)
-			lineText.ID = _tale.lines.length - 1;
-		if (lineText.ID > _tale.lines.length - 1)
+			lineText.ID = _tale?.lines?.length - 1;
+		if (lineText.ID > _tale?.lines?.length - 1)
 			lineText.ID = 0;
+
+		// Reset to 0 if it's still less then 0
+		if (lineText.ID < 0) lineText.ID = 0;
 	}
 }
