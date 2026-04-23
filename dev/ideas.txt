@@ -1,0 +1,1 @@
+- auto save via an encoded tale JSON - it would be cooooooool
