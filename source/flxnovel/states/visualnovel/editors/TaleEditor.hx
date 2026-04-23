@@ -448,7 +448,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function refreshTalesGroup()
 	{
-		trace('refreshTalesGroup');
 		uiBox.talesTabGroup.updateList();
 	}
 
