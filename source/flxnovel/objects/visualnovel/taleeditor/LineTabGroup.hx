@@ -158,7 +158,10 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onChangedLine(indexStr:String)
 	{
-		lineText.text = 'Selected Line: ${(_tale?.lines?.length > 0) ? 0 : Std.parseInt(indexStr) + 1} / ${_tale?.lines?.length ?? 0}';
+		if (_tale?.lines?.length < 1)
+			lineText.text = 'Selected Line: None';
+		else
+			lineText.text = 'Selected Line: ${Std.parseInt(indexStr) + 1} / ${_tale?.lines?.length ?? 0}';
 
 		onChangedLineBasic(indexStr);
 		onChangedLineCallbacks();
@@ -200,6 +203,7 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 			lineText.ID = 0;
 
 		// Reset to 0 if it's still less then 0
-		if (lineText.ID < 0) lineText.ID = 0;
+		if (lineText.ID < 0)
+			lineText.ID = 0;
 	}
 }
