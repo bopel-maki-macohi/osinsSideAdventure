@@ -234,6 +234,15 @@
 				"state": "cry"
 			},
 			"text": ""
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "osin",
+				"state": "cry-turn"
+			},
+			"text": "Fine..."
 		}
 	],
 	"talesmenu": {
@@ -244,5 +253,5 @@
 		],
 		"titleAsset": ""
 	},
-	"generatedBy": "FlxNovel 0.12.0.476123f"
+	"generatedBy": "FlxNovel 0.12.0.a06f138"
 }
