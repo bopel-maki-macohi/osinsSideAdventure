@@ -158,10 +158,17 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onChangedLine(indexStr:String)
 	{
+		lineText.text = 'Selected Line: ';
 		if (_tale?.lines?.length < 1)
-			lineText.text = 'Selected Line: None';
+			lineText.text += 'None';
 		else
-			lineText.text = 'Selected Line: ${Std.parseInt(indexStr) + 1} / ${_tale?.lines?.length ?? 0}';
+		{
+			lineText.text += '${Std.parseInt(indexStr) + 1} / ${_tale?.lines?.length ?? 0}';
+
+			#if RFTICC
+			lineText.text += '\n\n${haxe.crypto.Sha1.encode('${_tale.lines[Std.parseInt(indexStr)]}')}';
+			#end
+		}
 
 		onChangedLineBasic(indexStr);
 		onChangedLineCallbacks();
