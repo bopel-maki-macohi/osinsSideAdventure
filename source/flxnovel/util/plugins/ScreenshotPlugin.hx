@@ -79,7 +79,12 @@ class ScreenshotPlugin extends FlxBasic
 	function fancyPreview(screenshot:BitmapData)
 	{
 		var preview:FlxSprite = new FlxSprite(0, 0, screenshot);
-		FlxG.state.add(preview);
+
+		if (FlxG.state.subState != null)
+			FlxG.state.subState.add(preview);
+		else
+			FlxG.state.add(preview);
+
 		preview.screenCenter();
 
 		var grayscale:GrayscaleShader = new GrayscaleShader(1);
@@ -89,6 +94,11 @@ class ScreenshotPlugin extends FlxBasic
 			ease: FlxEase.sineInOut,
 			onUpdate: t ->
 			{
+				// Would this be destroyed with the substate?
+				// No idea but I ain't risking it.
+				if (grayscale == null)
+					t.cancel();
+
 				grayscale.setAmount(1 - t.percent);
 			}
 		});
@@ -103,7 +113,10 @@ class ScreenshotPlugin extends FlxBasic
 			ease: FlxEase.sineInOut,
 			onUpdate: t ->
 			{
-				preview.updateHitbox();
+				if (preview == null)
+					t.cancel();
+				else
+					preview.updateHitbox();
 			},
 		});
 
@@ -113,8 +126,17 @@ class ScreenshotPlugin extends FlxBasic
 				ease: FlxEase.sineInOut,
 				onComplete: t ->
 				{
-					FlxG.state.remove(preview);
+					if (preview != null)
+						if (FlxG.state.subState != null)
+							FlxG.state.subState.remove(preview);
+						else
+							FlxG.state.remove(preview);
 					preview.destroy();
+				},
+				onUpdate: t ->
+				{
+					if (preview == null)
+						t.cancel();
 				}
 			});
 		});
