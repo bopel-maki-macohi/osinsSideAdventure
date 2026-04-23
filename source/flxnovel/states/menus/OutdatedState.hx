@@ -1,7 +1,7 @@
 package flxnovel.states.menus;
 
+import flxnovel.states.menus.title.TitleState;
 import flxnovel.util.VersionUtil;
-import flxnovel.util.Constants;
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.FlxSprite;
