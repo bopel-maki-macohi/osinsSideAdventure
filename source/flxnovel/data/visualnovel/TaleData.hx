@@ -31,6 +31,8 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 
 	public function build(?iteration:Int, ?lines:Array<TaleLineData>, ?talesmenu:TaleTalesMenuData, ?generatedBy:String)
 	{
+		trace(lines);
+
 		this.iteration = iteration ?? Constants.ITERATION_TALEDATA;
 		this.lines = lines ?? [];
 		this.talesmenu = talesmenu ?? null;
