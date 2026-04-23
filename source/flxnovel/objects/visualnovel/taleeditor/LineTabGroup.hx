@@ -166,7 +166,6 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onChangedLineBasic(indexStr:String)
 	{
-		trace('onChangedLineBasic $indexStr');
 		var line:TaleLineData = _tale?.lines[Std.parseInt(indexStr)] ?? null;
 
 		lineTextInput.text = line?.text ?? '';
@@ -180,7 +179,6 @@ class LineTabGroup extends TabGroup implements ITaleContainer
 
 	public function onChangedLineCallbacks()
 	{
-		trace('onChangedLineCallbacks');
 		onLineBGTextChange(bgTextInput.text, '');
 		onLineTextChange(lineTextInput.text, '');
 

@@ -233,7 +233,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onLineBGTextChange(text:String, index:Int)
 	{
-		trace('onLineBGTextChange');
 		if (_tale.lines[index] == null)
 			addNewLineTo(index, false);
 
@@ -352,7 +351,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function addNewLineTo(index:Int, ?allowRefresh:Bool = true)
 	{
-		trace('addNewLineTo $index');
 		if (index < 0)
 			return;
 
@@ -372,7 +370,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 	function onNewLine()
 	{
-		trace('onNewLine');
 		addNewLineTo(_tale.lines.length, false);
 
 		uiBox.linesTabGroup.lineText.ID = _tale.lines.length - 1;
