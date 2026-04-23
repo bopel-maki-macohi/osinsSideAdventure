@@ -1,4 +1,4 @@
-package source.flxnovel.util;
+package flxnovel.util;
 
 class StringUtil
 {
