@@ -3,23 +3,35 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
 
-	<!-- _________________________________ Custom _______________________________ -->
+	<!-- Initalize Application Information -->
 
 	<app title="FlxNovel" file="FlxNovel" package="com.maki.flxnovel" />
 	<app main="Main" />
 	<app company="Maki" />
-	<app version="0.12.0" />
+	<app version="0.12.0" />	
+
+	<!-- This is the web preloader, I don't think it's used on desktop at all... -->
+	<app preloader="flixel.system.FlxPreloader" />
+
+	<!-- I don't know what this is used for actually... -->
+	<set name="SWF_VERSION" value="11.8" />
+
+	<!-- Set Application Icon -->
 
 	<icon path="dev/icon.png" />
 
+	<!-- Enable DCE for optimization + extra compiling speed -->
+
 	<haxeflag name="--dce full" />
 
-	<define name="DISABLE_TITLE_WATERMARK_BLUR" unless="ENABLE_TITLE_WATERMARK_BLUR" />
+	<!-- Crash handler defines -->
 
 	<haxedef name="openfl-enable-handle-error" />
 	<define name="HXCPP_CHECK_POINTER" />
 	<define name="HXCPP_STACK_LINE" />
 	<define name="HXCPP_STACK_TRACE" />
+
+	<!-- Content-related defines -->
 
 	<define name="SCREENSHOT_PLUGIN" if="desktop" />
 
@@ -27,6 +39,8 @@
 	<define name="WINDOWTITLE_GIT" unless="DISABLE_WINDOWTITLE_GIT" />
 
 	<define name="DISABLE_OUTDATEDSTATE" if="html5 || debug" />
+
+	<!-- Modding-related defines -->
 
 	<define name="hscriptPos" />
 	<haxedef name="POLYMOD_ROOT_PATH" value="scripts/" />
@@ -38,15 +52,23 @@
 	<define name="DONT_INCLUDE_LAUNCH_MODS" unless="debug" />
 	<define name="INCLUDE_LAUNCH_MODS" unless="DONT_INCLUDE_LAUNCH_MODS" />
 
+	<!-- OXIPNG section for optimizing the assets -->
+
 	<define name="DONT_RUN_OXIPNG" if="debug"/>
 	<define name="RUN_OXIPNG" unless="DONT_RUN_OXIPNG"/>
 	
 	<prebuild command=".\dev\oxipng.bat" if="RUN_OXIPNG"/>
 
-	<!-- _____________________________ Path Settings ____________________________ -->
+	<!-- This is set so a lime macro doesn't rebuild a useless variable each compiling time -->
+	 
+	<haxedef name="lime_disable_assets_version" />
+
+	<!-- Build Directories -->
 
 	<set name="BUILD_DIR" value="export/release" />
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
+
+	<!-- Source directory and Asset directories -->
 
 	<source path="source" />
 	<assets path="assets" />
@@ -57,7 +79,7 @@
 
 	<assets path="CHANGELOG.md" />
 
-	<!-- _______________________________ Libraries ______________________________ -->
+	<!-- Librarys -->
 
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
@@ -71,12 +93,7 @@
 
 	<haxelib name="hxvlc" if="desktop" unless="hl" />
 
-	<!-- _________________________ Application Settings _________________________ -->
-
-	<app preloader="flixel.system.FlxPreloader" />
-	<set name="SWF_VERSION" value="11.8" />
-
-	<!-- ____________________________ Window Settings ___________________________ -->
+	<!-- Default Window Settings and Platform Window Settings -->
 
 	<window width="1280" height="720" fps="60" background="#000000" hardware="true" vsync="false" />
 
@@ -84,7 +101,7 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
 
-	<!-- ______________________________ Haxedefines _____________________________ -->
+	<!-- Default Haxe Defines from generating the Flixel project -->
 
 	<haxedef name="FLX_NO_HEALTH" />
 
@@ -96,7 +113,5 @@
 	<haxedef name="FLX_NO_DEBUG" unless="debug" />
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 	<haxedef name="message.reporting" value="pretty" />
-
-	<haxedef name="lime_disable_assets_version" />
 
 </project>
