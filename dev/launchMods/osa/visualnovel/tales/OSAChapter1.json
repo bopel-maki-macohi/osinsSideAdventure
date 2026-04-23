@@ -51,7 +51,7 @@
 			"background": "",
 			"speaker": {
 				"id": "osin",
-				"state": "shock"
+				"state": "extreme-shock"
 			},
 			"text": "What?"
 		},
@@ -69,7 +69,7 @@
 			"background": "tempoCity-ruin",
 			"speaker": {
 				"id": "osin",
-				"state": "pissed"
+				"state": "shock"
 			},
 			"text": "What... happened?"
 		},
@@ -87,7 +87,7 @@
 			"background": "tempoCity-ruin",
 			"speaker": {
 				"id": "tirok",
-				"state": "stare"
+				"state": "stare-turn"
 			},
 			"text": "I don't know."
 		},
@@ -108,6 +108,24 @@
 				"state": "stare"
 			},
 			"text": "It's been too long..."
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "tirok",
+				"state": "panic"
+			},
+			"text": "There wasn't anything on the news related to a war happening so it can't be that..."
+		},
+		{
+			"autoSkip": 0,
+			"background": "tempoCity-ruin",
+			"speaker": {
+				"id": "osin",
+				"state": "cheerful"
+			},
+			"text": ""
 		}
 	],
 	"talesmenu": {
@@ -118,5 +136,5 @@
 		],
 		"titleAsset": ""
 	},
-	"generatedBy": "FlxNovel 0.12.0.f4a2bf8"
+	"generatedBy": "FlxNovel 0.12.0.fabc9ea"
 }
