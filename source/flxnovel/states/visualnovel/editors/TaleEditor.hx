@@ -86,6 +86,11 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 		add(dialogueTextBG);
 		add(line_dialogueText);
 
+		line_speaker.afterApplyOrientation = function(orientation)
+		{
+			line_speaker.x += uiBox.width - (line_speaker.width / 2);
+		}
+
 		add(talemenu_displayText);
 		add(talemenu_titleAsset);
 
@@ -139,9 +144,6 @@ class TaleEditor extends FlxNovelState implements ITaleContainer
 
 		dialogueTextBG.x = line_dialogueText.x;
 		dialogueTextBG.y = line_dialogueText.y;
-
-		line_speaker.applyOrientation();
-		line_speaker.x += uiBox.width - (line_speaker.width / 2);
 
 		talemenu_titleAsset.screenCenter();
 		talemenu_titleAsset.x = FlxG.width - talemenu_titleAsset.width * 2;

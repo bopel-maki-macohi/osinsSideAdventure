@@ -1,5 +1,6 @@
 package flxnovel.objects.visualnovel;
 
+import flxnovel.data.visualnovel.speaker.SpeakerOrientation;
 import flixel.FlxG;
 import flxnovel.data.visualnovel.speaker.SpeakerStateData;
 import flixel.FlxSprite;
@@ -44,10 +45,17 @@ class VNSpeaker extends FlxSprite
 		}
 
 		loadGraphic(speaker.visualNovelSpeakerAsset('imgs/${stateInfo.asset}').imageFile());
-		offset.set(stateInfo?.offsets[0] ?? 0, stateInfo?.offsets[1] ?? 0);
+
+		offset.set(0, 0);
+		if (stateInfo.offsets != null)
+			offset.set(stateInfo?.offsets[0] ?? 0, stateInfo?.offsets[1] ?? 0);
+
+		applyOrientation();
 	}
 
-	public dynamic function applyOrientation()
+	public var afterApplyOrientation:SpeakerOrientation->Void;
+
+	public function applyOrientation()
 	{
 		screenCenter();
 		switch (data?.config?.orientation)
@@ -57,6 +65,9 @@ class VNSpeaker extends FlxSprite
 
 			case center:
 		}
+
+		if (afterApplyOrientation != null)
+			afterApplyOrientation(data?.config?.orientation);
 	}
 
 	public function copy():VNSpeaker
