@@ -56,7 +56,6 @@ class SingletonMacro
 		var fields:Array<Field> = Context.getBuildFields();
 
 		var clsType:ComplexType = Context.getType('${cls.module}.${cls.name}').toComplexType();
-		var newExpr:String = 'new ${cls.module}.${cls.name}()';
 
 		fields = fields.concat((macro class TempClass
 			{
