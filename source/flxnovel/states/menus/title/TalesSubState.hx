@@ -11,9 +11,9 @@ class TalesSubState extends TitleSubStateBase
 	static function get_entries():Array<String>
 		return 'tales/list'.menuAsset().textSplit();
 
-	public static var entryData(get, never):Map<String, TaleData>;
+	public static var entryData:Map<String, TaleData> = [];
 
-	static function get_entryData():Map<String, TaleData>
+	public static function makeEntryData()
 	{
 		var data:Map<String, TaleData> = [];
 
@@ -27,7 +27,7 @@ class TalesSubState extends TitleSubStateBase
 			data.set(entryID, tale);
 		}
 
-		return data;
+		entryData = data;
 	}
 
 	public static var filters(get, never):Array<String>;
@@ -49,6 +49,8 @@ class TalesSubState extends TitleSubStateBase
 
 	override public function create()
 	{
+		makeEntryData();
+
 		super.create();
 
 		trace('filters: ' + filters);
