@@ -61,13 +61,13 @@ class AssetUtil
 		return assetPath('shaders/$file.frag');
 
 	public static inline function fileExists(file:String):Bool
-		return Assets.exists(file);
+		return ModCore.modFileSystem.exists(file);
 
 	public static function readText(file:String):String
 	{
 		try
 		{
-			return Assets.getText(file);
+			return ModCore.modFileSystem.getFileContent(file);
 		}
 		catch (e)
 		{
@@ -76,20 +76,22 @@ class AssetUtil
 		}
 	}
 
-	public static function textSplit(text:String):Array<String>
+	public static function textSplit(file:String):Array<String>
 	{
-		if (!fileExists(text.textFile()))
+		file = file.replace('assets/', '').textFile().assetPath(false);
+
+		if (!fileExists(file))
 		{
-			trace('Missing file: ${text.textFile()}');
+			trace('Missing file: ${file}');
 			return [];
 		}
 
-		var file:String = text.textFile().readText();
+		var file:String = file.readText();
 		var lines:Array<String> = [];
 
 		if (file == null)
 		{
-			trace('Null file content: ${text.textFile()}');
+			trace('Null file content: ${file}');
 			return [];
 		}
 
