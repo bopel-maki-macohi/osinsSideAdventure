@@ -33,7 +33,6 @@ class TaleData extends ObjectData<TaleData> implements IIterationBasedData
 	{
 		this.iteration = iteration ?? Constants.ITERATION_TALEDATA;
 		this.lines = lines ?? [];
-		trace(this.lines);
 
 		this.talesmenu = talesmenu ?? null;
 
